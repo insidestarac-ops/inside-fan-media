@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inside Fan Media</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+    :root{
+      --gold-main:#d4af37;
+      --gold-soft:#f1e5ac;
+      --gold-dark:#a8891f;
+    }
+
+    body{
+      margin:0;
+      background:#2a303a;
+      font-family:'Quicksand',sans-serif;
+      color:#fff;
+    }
+
+    h1{
+      text-align:center;
+      margin:40px 0;
+      font-weight:700;
+    }
+
+    .grid{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:24px;
+      padding:0 16px 40px;
+    }
+
+    .card{
+      border-radius:18px;
+      overflow:hidden;
+      background:linear-gradient(180deg,#1b1b1b,var(--gold-dark));
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:scale(1.04);
+      box-shadow:0 8px 22px rgba(212,175,55,.45);
+    }
+
+    .card img{
+      width:100%;
+      aspect-ratio:3/4;
+      object-fit:cover;
+    }
+
+    .card-info{
+      background:linear-gradient(to top,var(--gold-main),var(--gold-soft));
+      padding:12px;
+      text-align:center;
+      color:#000;
+    }
+
+    .card-info h3{
+      margin:0;
+      font-size:15px;
+    }
+
+    .card-info p{
+      margin-top:4px;
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Les Académiciens</h1>
+
+<div class="grid">
+  <div class="card">
+    <img src="https://i.postimg.cc/pXmZw9N4/Ambre.jpg">
+    <div class="card-info"><h3>Ambre</h3><p>18 ans • Paris (75)</p></div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.postimg.cc/L6JTcqdQ/Anouk.jpg">
+    <div class="card-info"><h3>Anouk</h3><p>20 ans • Belgique</p></div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.postimg.cc/hPXrkJFY/Bastiann.jpg">
+    <div class="card-info"><h3>Bastiann</h3><p>23 ans • Le Mesnil-Le-Roi (78)</p></div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.postimg.cc/XvqCsv1v/Ema.jpg">
+    <div class="card-info"><h3>Ema</h3><p>25 ans • Toulouse (31)</p></div>
+  </div>
+</div>
+
+</body>
+</html>
