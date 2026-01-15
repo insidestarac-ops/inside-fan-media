@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Académie – Inside Star Ac</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="32x32" href="logo-star-ac.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<style>
+:root{
+  --violet:#7C4DFF;
+  --violet-soft:#EDE7FF;
+  --bg:#F7F6FF;
+  --card:#FFFFFF;
+  --text:#1E1E2E;
+  --muted:#6E6E90;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.container{
+  max-width:1300px;
+  margin:auto;
+  padding:0 24px;
+}
+
+/* ===== HEADER ===== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #e4e0ff;
+}
+
+.header-inner{
+  max-width:1300px;
+  margin:auto;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:92px;
+}
+
+/* ===== BRAND ===== */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.brand img{height:64px}
+
+.brand span{
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:.5px;
+  color:var(--violet);
+}
+
+/* ===== NAV ===== */
+.main-nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;
+  padding:0;
+}
+
+.main-nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  font-size:14px;
+  transition:color .25s ease;
+}
+
+.main-nav li:hover > a{
+  color:var(--violet);
+}
+
+/* ===== DROPDOWN MENU FIX ===== */
+
+.has-dropdown{
+  position:relative;
+}
+
+/* Sous-menu */
+.has-dropdown{
+  position:relative;
+}
+
+.dropdown{
+  position:absolute;
+  top:100%;
+  left:0;
+  margin-top:12px;
+
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(124,77,255,.2);
+  overflow:hidden;
+  min-width:220px;
+  z-index:50;
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s;
+}
+
+.dropdown a{
+  padding:14px 18px;
+  display:block;
+  color:var(--text);
+  font-weight:600;
+  font-size:14px;
+  border-radius:12px;
+  transition:background .25s ease, color .25s ease;
+}
+
+.dropdown a:hover{
+  background:var(--violet-soft);
+  color:var(--violet);
+}
+
+
+/* Affichage menu (hover + accessibilité) */
+.has-dropdown:hover > .dropdown,
+.has-dropdown:focus-within > .dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* Zone tampon invisible (évite la fermeture involontaire) */
+.has-dropdown::before{
+  content:"";
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  height:20px;
+}
+
+
+/* ===== HERO PAGE ===== */
+.page-hero{
+  background:
+    radial-gradient(circle at top left,#b39dff,transparent 55%),
+    linear-gradient(135deg,#7C4DFF,#5E35FF);
+  color:#fff;
+  padding:110px 0;
+}
+.page-hero h1{
+  font-size:48px;
+  margin:0 0 12px;
+}
+.page-hero p{
+  max-width:620px;
+  font-size:18px;
+  opacity:.95;
+}
+
+/* ===== SECTIONS ===== */
+.section{padding:90px 0}
+.section-title{
+  font-size:30px;
+  margin-bottom:36px;
+}
+
+/* ===== ACADEMY CARD (1080x1350) ===== */
+.academy-card{
+  background:#fff;
+  border-radius:30px;
+  overflow:hidden;
+  text-align:center;
+  box-shadow:0 24px 60px rgba(124,77,255,.22);
+  transition:.4s ease;
+  cursor:default;
+}
+.academy-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(...);
+}
+.academy-card img{
+  width:100%;
+  aspect-ratio:4/5; /* 1080x1350 */
+  object-fit:cover;
+}
+.academy-card h3{
+  margin:18px 0 4px;
+  font-size:18px;
+  font-weight:800;
+}
+.academy-card span{
+  font-size:13px;
+  color:var(--muted);
+  padding-bottom:18px;
+  display:block;
+}
+
+/* ===== SWIPER STYLE PREMIUM ===== */
+.academy-swiper{
+  padding-bottom:70px;
+  position:relative;
+}
+
+/* Pagination (pointillés TF1-like) */
+.swiper-pagination{
+  bottom:22px !important;
+}
+.swiper-pagination-bullet{
+  width:8px;
+  height:8px;
+  background:var(--violet);
+  opacity:.35;
+  transition:.3s;
+}
+.swiper-pagination-bullet-active{
+  width:20px;
+  border-radius:10px;
+  opacity:1;
+}
+
+/* Flèches custom */
+.swiper-button-next,
+.swiper-button-prev{
+  width:46px;
+  height:46px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:0 14px 36px rgba(124,77,255,.35);
+  color:var(--violet);
+  transition:.3s;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after{
+  font-size:16px;
+  font-weight:900;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+  transform:scale(1.12);
+}
+.swiper-button-prev{left:-18px}
+.swiper-button-next{right:-18px}
+
+@media(max-width:768px){
+  .swiper-button-next,
+  .swiper-button-prev{display:none}
+}
+
+/* ===== FOOTER (IDENTIQUE ACCUEIL) ===== */
+.site-footer{
+  background:#fff;
+  border-top:1px solid #e4e0ff;
+}
+.footer-grid{
+  max-width:1300px;
+  margin:0 auto;
+  padding:70px 24px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:5px;
+}
+.site-footer h4{
+  color:var(--violet);
+  margin-bottom:14px;
+}
+.site-footer a{
+  display:block;
+  text-decoration:none;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.footer-bottom{
+  text-align:center;
+  padding:18px;
+  font-size:13px;
+  color:#888;
+  border-top:1px solid #eee;
+}
+
+.card-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  height:100%;
+}
+
+.vote-disclaimer{
+  margin-top:18px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  opacity:.85;
+}
+
+</style>
+
+<link rel="stylesheet" href="CSS-Mobile.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo cliquable -->
+   <a href="index.html" class="brand" style="text-decoration:none; color:inherit;">
+    <img src="logo-inside-fan-media.png" alt="INSIDE FAN MEDIA">
+    <span>INSIDE FAN MEDIA</span>
+   </a>
+
+    <!-- Burger animé -->
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+
+        <li class="has-dropdown">
+          <a href="Inside-star-ac.html">Inside Star Ac</a>
+          <div class="dropdown">
+            <a href="Nommes.html">Nommés</a>
+            <a href="Academie.html">Académie</a>
+          </div>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="Inside-dals.html">Inside DALS</a>
+          <div class="dropdown">
+            <a href="Casting.html">Casting</a>
+            <a href="Classement.html">Classement</a>
+            <a href="Sondage.html">Sondage</a>
+          </div>
+        </li>
+
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="A propos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>L’Académie</h1>
+    <p>Directeur, professeurs et académiciens réunis dans un carrousel immersif.</p>
+  </div>
+</section>
+
+<!-- DIRECTEUR -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Directeur</h2>
+    <div class="swiper academy-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide academy-card">
+          <img src="Profs/Michael.jpg">
+          <h3>Michael Goldman</h3>
+          <span>Directeur</span>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  <p class="vote-disclaimer">
+  © Crédit images : Sipa Press TF1
+  </p>
+  </div>
+</section>
+
+<!-- REPETITRICE -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Répétitrices</h2>
+    <div class="swiper academy-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide academy-card">
+          <img src="Profs/Lucie.jpg">
+          <h3>Lucie Bernardoni</h3>
+          <span>Répétitrice</span>
+        </div>
+        <div class="swiper-slide academy-card">
+          <img src="Profs/Fanny.jpg">
+          <h3>Fanny Delaigue</h3>
+          <span>Répétitrice</span>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  <p class="vote-disclaimer">
+  © Crédit images : Sipa Press TF1
+  </p>
+  </div>
+</section>
+
+<!-- PROFESSEURS -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Professeurs</h2>
+    <div class="swiper academy-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide academy-card"><img src="Profs/Sofia.jpg"><h3>Sofia Morgavi</h3><span>Professeur de Chant</span></div>
+        <div class="swiper-slide academy-card"><img src="Profs/Jonathan.jpg"><h3>Jonathan Jenvrin</h3><span>Professeur de Danse</span></div>
+        <div class="swiper-slide academy-card"><img src="Profs/Marlène.jpg"><h3>Marlène Schaff</h3><span>Professeur d'Expression Scénique</span></div>
+        <div class="swiper-slide academy-card"><img src="Profs/Alain.jpg"><h3>Papy</h3><span>Professeur de Théâtre</span></div>
+        <div class="swiper-slide academy-card"><img src="Profs/Ladji.jpg"><h3>Ladji Doucouré</h3><span>Professeur de Sport</span></div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  <p class="vote-disclaimer">
+  © Crédit images : Sipa Press TF1
+  </p>
+  </div>
+</section>
+
+<!-- ACADÉMICIENS -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Académiciens</h2>
+    <div class="swiper academy-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide academy-card"><img src="Eleve/Ambre.jpg"><h3>Ambre</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Anouk.jpg"><h3>Anouk</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Bastiaan.jpg"><h3>Bastiaan</h3><span>Académicien</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Ema.jpg"><h3>Ema</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Jeanne.jpg"><h3>Jeanne</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Léa.jpg"><h3>Léa</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Léane.jpg"><h3>Léane</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Léo.jpg"><h3>Léo</h3><span>Académicien</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Lenny.jpg"><h3>Lenny</h3><span>Académicien</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Lily.jpg"><h3>Lily</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Mehdi.webp"><h3>Mehdi</h3><span>Académicien</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Mélissa.jpg"><h3>Mélissa</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Noah.jpg"><h3>Noah</h3><span>Académicien</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Sarah.jpg"><h3>Sarah</h3><span>Académicienne</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Théo-L.jpeg"><h3>Théo L.</h3><span>Académicien</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Théo-P.jpg"><h3>Théo P.</h3><span>Académicien</span></div>
+        <div class="swiper-slide academy-card"><img src="Eleve/Victor.jpg"><h3>Victor</h3><span>Académicien</span></div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  <p class="vote-disclaimer">
+  © Crédit images : Sipa Press TF1
+  </p>
+  </div>
+</section>
+
+<!-- PRESENTATEUR -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Répétitrices</h2>
+    <div class="swiper academy-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide academy-card">
+          <img src="Profs/Karima.jpg">
+          <h3>Karima Charni</h3>
+          <span>Présentatrice</span>
+        </div>
+        <div class="swiper-slide academy-card">
+          <img src="Profs/Nikos.jpg">
+          <h3>Nikos Aliagas</h3>
+          <span>Présentateur</span>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  <p class="vote-disclaimer">
+  © Crédit images : Nikos Aliagas (Purepeople) & Karima Charni (Sipa Press TF1)
+  </p>
+  </div>
+</section>
+
+<!-- PARRAINS -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Parrains</h2>
+    <div class="swiper academy-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide academy-card">
+          <img src="Profs/Charlotte.jpg">
+          <h3>Charlotte Cardin</h3>
+          <span>Marraine</span>
+        </div>
+        <div class="swiper-slide academy-card">
+            <img src="Profs/ed.jpg">
+            <h3>Ed Sheeran</h3>
+            <span>Parrain</span>
+          </a>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+   <p class="vote-disclaimer">
+  © Crédit images : Ed Sheeran (Getty) & Charlotte Cardin (Ellie Blondeau)
+  </p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>INSIDE FAN MEDIA</h4>
+      <a href="A propos.html">À propos</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+
+    <div>
+      <h4>Émissions</h4>
+      <a href="Inside-star-ac.html">Star Academy</a>
+      <a href="Inside-dals.html">Danse avec les stars</a>
+    </div>
+
+    <div>
+      <h4>Légal</h4>
+      <a href="Mentions Legales.html">Mentions légales</a>
+      <a href="Conditions générales.html">Conditions générales</a>
+      <a href="Politique de Confidentialité.html">Politique de confidentialité</a>
+    </div>
+
+    <div>
+      <h4>Inside Fan Media</h4>
+      <a href="https://linktr.ee/insidefanmedia" target="_blank">Linktree</a>
+    </div>
+
+    <div>
+      <h4>Inside Star Academy</h4>
+      <a href="https://x.com/insidestarac" target="_blank">X (Twitter)</a>
+      <a href="https://www.tiktok.com/@insidestarac" target="_blank">TikTok</a>
+      <a href="https://discord.gg/Wa3NzCWzrg" target="_blank">Discord</a>
+    </div>
+
+    <div>
+      <h4>Inside DALS</h4>
+      <a href="https://x.com/insidedals" target="_blank">X (Twitter)</a>
+      <a href="https://www.tiktok.com/@insidedals" target="_blank">TikTok</a>
+      <a href="https://discord.gg/GmfSw6jJkZ" target="_blank">Discord</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 INSIDE FAN MEDIA — Site fan non officiel
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+document.querySelectorAll('.academy-swiper').forEach(swiperEl=>{
+  new Swiper(swiperEl,{
+    slidesPerView:3,
+    spaceBetween:30,
+    loop:true,
+    grabCursor:true,
+    simulateTouch:false,
+    navigation:{
+      nextEl:swiperEl.querySelector('.swiper-button-next'),
+      prevEl:swiperEl.querySelector('.swiper-button-prev')
+    },
+    pagination:{
+      el:swiperEl.querySelector('.swiper-pagination'),
+      clickable:true
+    },
+    breakpoints:{
+      0:{slidesPerView:1},
+      768:{slidesPerView:2},
+      1024:{slidesPerView:3}
+    }
+  });
+});
+</script>
+
+<script src="menu.js"></script>
+
+</body>
+</html>

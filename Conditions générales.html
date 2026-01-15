@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Conditions Générales – Inside Fan Media</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="32x32" href="logo-inside-fan-media.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --violet:#7C4DFF;
+  --violet-soft:#EDE7FF;
+  --bg:#F7F6FF;
+  --card:#FFFFFF;
+  --text:#1E1E2E;
+  --muted:#6E6E90;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:0 24px;
+}
+
+/* ===== HEADER ===== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #e4e0ff;
+}
+
+.header-inner{
+  max-width:1300px;
+  margin:auto;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:92px;
+}
+
+/* ===== BRAND ===== */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.brand img{height:64px}
+
+.brand span{
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:.5px;
+  color:var(--violet);
+}
+
+/* ===== NAV ===== */
+.main-nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;
+  padding:0;
+}
+
+.main-nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  font-size:14px;
+  transition:color .25s ease;
+}
+
+.main-nav li:hover > a{
+  color:var(--violet);
+}
+
+/* ===== DROPDOWN MENU FIX ===== */
+
+.has-dropdown{
+  position:relative;
+}
+
+/* Sous-menu */
+.has-dropdown{
+  position:relative;
+}
+
+.dropdown{
+  position:absolute;
+  top:100%;
+  left:0;
+  margin-top:12px;
+
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(124,77,255,.2);
+  overflow:hidden;
+  min-width:220px;
+  z-index:50;
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s;
+}
+
+.dropdown a{
+  padding:14px 18px;
+  display:block;
+  color:var(--text);
+  font-weight:600;
+  font-size:14px;
+  transition:background .25s ease, color .25s ease;
+}
+
+.dropdown a:hover{
+  background:var(--violet-soft);
+  color:var(--violet);
+}
+
+
+/* Affichage menu (hover + accessibilité) */
+.has-dropdown:hover > .dropdown,
+.has-dropdown:focus-within > .dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* Zone tampon invisible (évite la fermeture involontaire) */
+.has-dropdown::before{
+  content:"";
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  height:20px;
+}
+
+/* ===== HERO ===== */
+.page-hero{
+  background:
+    radial-gradient(circle at top left,#b39dff,transparent 55%),
+    linear-gradient(135deg,#7C4DFF,#5E35FF);
+  color:#fff;
+  padding:110px 0;
+}
+.page-hero h1{
+  font-size:48px;
+  margin-bottom:12px;
+}
+.page-hero p{
+  max-width:600px;
+  font-size:18px;
+}
+
+/* ===== SECTION ===== */
+.section{padding:90px 0}
+
+.section h2{
+  font-size:32px;
+  margin-bottom:18px;
+}
+.section p{
+  font-size:16px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:#fff;
+  border-radius:28px;
+  padding:42px;
+  box-shadow:0 20px 50px rgba(124,77,255,.18);
+  margin-bottom:48px;
+}
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:32px;
+}
+
+/* ===== ICON BOX ===== */
+.icon-box{
+  background:var(--violet-soft);
+  padding:28px;
+  border-radius:22px;
+  text-align:center;
+}
+.icon-box .icon{
+  font-size:38px;
+  margin-bottom:12px;
+}
+.icon-box h3{
+  margin:0 0 8px;
+  color:var(--violet);
+}
+
+/* ===== LOGOS ===== */
+.logo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:36px;
+  align-items:center;
+}
+.logo{
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  text-align:center;
+  box-shadow:0 14px 30px rgba(0,0,0,.08);
+  font-weight:800;
+  color:var(--violet);
+}
+
+/* ===== SOCIAL ===== */
+.socials{
+  display:flex;
+  gap:18px;
+  margin-top:18px;
+}
+.social{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#7C4DFF,#5E35FF);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  text-decoration:none;
+}
+
+/* ===== CTA ===== */
+.cta{
+  background:linear-gradient(135deg,#7C4DFF,#5E35FF);
+  color:#fff;
+  border-radius:32px;
+  padding:64px;
+  text-align:center;
+}
+.cta a{
+  display:inline-block;
+  margin-top:24px;
+  padding:14px 36px;
+  background:#fff;
+  color:var(--violet);
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:#fff;
+  border-top:1px solid #e4e0ff;
+}
+.footer-grid{
+  max-width:1300px;
+  margin:0 auto;
+  padding:70px 24px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:5px;
+}
+.site-footer h4{
+  color:var(--violet);
+  margin-bottom:14px;
+}
+.site-footer a{
+  display:block;
+  text-decoration:none;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.footer-bottom{
+  text-align:center;
+  padding:18px;
+  font-size:13px;
+  color:#888;
+  border-top:1px solid #eee;
+}
+
+.card section{
+  margin-top:36px;
+}
+
+.card header p{
+  margin-top:14px;
+  color:var(--muted);
+  max-width:800px;
+}
+
+.card h2{
+  scroll-margin-top:120px;
+}
+
+
+</style>
+
+<link rel="stylesheet" href="CSS-Mobile.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo cliquable -->
+   <a href="index.html" class="brand" style="text-decoration:none; color:inherit;">
+    <img src="logo-inside-fan-media.png" alt="INSIDE FAN MEDIA">
+    <span>INSIDE FAN MEDIA</span>
+   </a>
+
+    <!-- Burger animé -->
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+
+        <li class="has-dropdown">
+          <a href="Inside-star-ac.html">Inside Star Ac</a>
+          <div class="dropdown">
+            <a href="Nommes.html">Nommés</a>
+            <a href="Academie.html">Académie</a>
+          </div>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="Inside-dals.html">Inside DALS</a>
+          <div class="dropdown">
+            <a href="Casting.html">Casting</a>
+            <a href="Classement.html">Classement</a>
+            <a href="Sondage.html">Sondage</a>
+          </div>
+        </li>
+
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="A propos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="container section">
+    <article class="card">
+
+      <header>
+        <h1>Conditions générales d’utilisation</h1>
+        <p>
+          Les présentes conditions générales d’utilisation ont pour objet de définir
+          les modalités d’accès et d’utilisation du site <strong>INSIDE FAN MEDIA</strong>.
+          Toute navigation sur le site implique l’acceptation pleine et entière
+          des présentes conditions.
+        </p>
+      </header>
+
+      <section>
+        <h2>Accès au site</h2>
+        <p>
+          Le site INSIDE FAN MEDIA est accessible gratuitement à tout utilisateur disposant
+          d’un accès à Internet. Les frais liés à l’accès au site (connexion, matériel,
+          logiciels) restent à la charge de l’utilisateur.
+        </p>
+
+        <p>
+          L’éditeur se réserve le droit de suspendre, interrompre ou limiter l’accès
+          à tout ou partie du site, notamment pour des opérations de maintenance.
+        </p>
+      </section>
+
+      <section>
+        <h2>Objet du site</h2>
+        <p>
+          INSIDE FAN MEDIA est un média numérique indépendant à vocation informative,
+          consacré à l’actualité et à l’analyse des émissions de télévision.
+        </p>
+
+        <p>
+          Les contenus proposés sont fournis à titre informatif et éditorial,
+          sans prétention d’exhaustivité.
+        </p>
+      </section>
+
+      <section>
+        <h2>Responsabilité de l’utilisateur</h2>
+        <p>
+          L’utilisateur s’engage à utiliser le site dans le respect des lois et règlements
+          en vigueur, et à adopter un comportement respectueux à l’égard des autres utilisateurs
+          et de l’éditeur.
+        </p>
+
+        <p>
+          Toute utilisation abusive, frauduleuse ou portant atteinte au bon fonctionnement
+          du site pourra entraîner des mesures de restriction d’accès.
+        </p>
+      </section>
+
+      <section>
+        <h2>Responsabilité de l’éditeur</h2>
+        <p>
+          INSIDE FAN MEDIA s’efforce de diffuser des informations fiables et mises à jour.
+          Toutefois, l’éditeur ne saurait être tenu responsable des erreurs, omissions
+          ou indisponibilités temporaires du service.
+        </p>
+
+        <p>
+          L’éditeur ne peut être tenu responsable des dommages directs ou indirects
+          résultant de l’utilisation du site.
+        </p>
+      </section>
+
+      <section>
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          Les contenus publiés sur INSIDE FAN MEDIA sont protégés par le droit d’auteur
+          et les lois relatives à la propriété intellectuelle.
+        </p>
+
+        <p>
+          Toute reproduction ou exploitation non autorisée des contenus est strictement interdite.
+        </p>
+      </section>
+
+      <section>
+        <h2>Modification des conditions</h2>
+        <p>
+          L’éditeur se réserve le droit de modifier à tout moment les présentes conditions
+          générales d’utilisation afin de les adapter à l’évolution du site ou de la législation.
+        </p>
+      </section>
+
+    </article>
+  </section>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>INSIDE FAN MEDIA</h4>
+      <a href="A propos.html">À propos</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+
+    <div>
+      <h4>Émissions</h4>
+      <a href="Inside-star-ac.html">Star Academy</a>
+      <a href="Inside-dals.html">Danse avec les stars</a>
+    </div>
+
+    <div>
+      <h4>Légal</h4>
+      <a href="Mentions Legales.html">Mentions légales</a>
+      <a href="Conditions générales.html">Conditions générales</a>
+      <a href="Politique de Confidentialité.html">Politique de confidentialité</a>
+    </div>
+
+    <div>
+      <h4>Inside Fan Media</h4>
+      <a href="https://linktr.ee/insidefanmedia" target="_blank">Linktree</a>
+    </div>
+
+    <div>
+      <h4>Inside Star Academy</h4>
+      <a href="https://x.com/insidestarac" target="_blank">X (Twitter)</a>
+      <a href="https://www.tiktok.com/@insidestarac" target="_blank">TikTok</a>
+      <a href="https://discord.gg/Wa3NzCWzrg" target="_blank">Discord</a>
+    </div>
+
+    <div>
+      <h4>Inside DALS</h4>
+      <a href="https://x.com/insidedals" target="_blank">X (Twitter)</a>
+      <a href="https://www.tiktok.com/@insidedals" target="_blank">TikTok</a>
+      <a href="https://discord.gg/GmfSw6jJkZ" target="_blank">Discord</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 INSIDE FAN MEDIA — Site fan non officiel
+  </div>
+</footer>
+
+<script src="menu.js"></script>
+
+</body>
+</html>

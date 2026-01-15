@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Contact – Inside Fan Media</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="32x32" href="logo-inside-fan-media.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --violet:#7C4DFF;
+  --violet-soft:#EDE7FF;
+  --bg:#F7F6FF;
+  --card:#FFFFFF;
+  --text:#1E1E2E;
+  --muted:#6E6E90;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+}
+
+/* ===== HEADER ===== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #e4e0ff;
+}
+
+.header-inner{
+  max-width:1300px;
+  margin:auto;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:92px;
+}
+
+
+/* ===== BRAND ===== */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.brand img{height:64px}
+
+.brand span{
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:.5px;
+  color:var(--violet);
+}
+
+/* ===== NAV ===== */
+.main-nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;
+  padding:0;
+}
+
+.main-nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  font-size:14px;
+  transition:color .25s ease;
+}
+
+.main-nav li:hover > a{
+  color:var(--violet);
+}
+
+/* ===== DROPDOWN MENU FIX ===== */
+
+.has-dropdown{
+  position:relative;
+}
+
+/* Sous-menu */
+.has-dropdown{
+  position:relative;
+}
+
+.dropdown{
+  position:absolute;
+  top:100%;
+  left:0;
+  margin-top:12px;
+
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(124,77,255,.2);
+  overflow:hidden;
+  min-width:220px;
+  z-index:50;
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s;
+}
+
+.dropdown a{
+  padding:14px 18px;
+  display:block;
+  color:var(--text);
+  font-weight:600;
+  font-size:14px;
+  transition:background .25s ease, color .25s ease;
+}
+
+.dropdown a:hover{
+  background:var(--violet-soft);
+  color:var(--violet);
+}
+
+
+/* Affichage menu (hover + accessibilité) */
+.has-dropdown:hover > .dropdown,
+.has-dropdown:focus-within > .dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* Zone tampon invisible (évite la fermeture involontaire) */
+.has-dropdown::before{
+  content:"";
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  height:20px;
+}
+
+/* ===== HERO ===== */
+.page-hero{
+  background:
+    radial-gradient(circle at top left,#b39dff,transparent 55%),
+    linear-gradient(135deg,#7C4DFF,#5E35FF);
+  color:#fff;
+  padding:110px 0;
+}
+.page-hero h1{
+  font-size:48px;
+  margin:0 0 12px;
+}
+.page-hero p{
+  max-width:620px;
+  font-size:18px;
+}
+
+/* ===== SECTION ===== */
+.section{padding:90px 0}
+
+/* ===== FORM CARD ===== */
+.contact-card{
+  max-width:560px;
+  margin:auto;
+  background:#fff;
+  border-radius:30px;
+  padding:40px;
+  box-shadow:0 24px 60px rgba(124,77,255,.22);
+}
+
+.contact-card h2{
+  margin-top:0;
+  font-size:26px;
+}
+.contact-card p{
+  color:var(--muted);
+  margin-bottom:28px;
+}
+
+/* ===== FORM ===== */
+.form-group{margin-bottom:22px}
+
+label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+input,textarea{
+  width:100%;
+  padding:14px 16px;
+  border-radius:14px;
+  border:1px solid #ddd;
+  font-family:inherit;
+  font-size:14px;
+}
+
+input:focus,textarea:focus{
+  outline:none;
+  border-color:var(--violet);
+  box-shadow:0 0 0 3px var(--violet-soft);
+}
+
+textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+/* ===== BUTTON ===== */
+.submit-btn{
+  padding:14px 28px;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,#7C4DFF,#5E35FF);
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+  transition:.3s;
+}
+.submit-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 14px 32px rgba(124,77,255,.45);
+}
+
+/* ===== SUCCESS MESSAGE ===== */
+#form-success{
+  display:none;
+  text-align:center;
+  font-weight:800;
+  font-size:16px;
+  color:#2ECC71;
+  padding:40px 20px;
+}
+
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:#fff;
+  border-top:1px solid #e4e0ff;
+}
+.footer-grid{
+  max-width:1300px;
+  margin:0 auto;
+  padding:70px 24px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:5px;
+}
+.site-footer h4{
+  color:var(--violet);
+  margin-bottom:14px;
+}
+.site-footer a{
+  display:block;
+  text-decoration:none;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.footer-bottom{
+  text-align:center;
+  padding:18px;
+  font-size:13px;
+  color:#888;
+  border-top:1px solid #eee;
+}
+
+</style>
+
+<link rel="stylesheet" href="CSS-Mobile.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo cliquable -->
+   <a href="index.html" class="brand" style="text-decoration:none; color:inherit;">
+    <img src="logo-inside-fan-media.png" alt="INSIDE FAN MEDIA">
+    <span>INSIDE FAN MEDIA</span>
+   </a>
+
+    <!-- Burger animé -->
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+
+        <li class="has-dropdown">
+          <a href="Inside-star-ac.html">Inside Star Ac</a>
+          <div class="dropdown">
+            <a href="Nommes.html">Nommés</a>
+            <a href="Academie.html">Académie</a>
+          </div>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="Inside-dals.html">Inside DALS</a>
+          <div class="dropdown">
+            <a href="Casting.html">Casting</a>
+            <a href="Classement.html">Classement</a>
+            <a href="Sondage.html">Sondage</a>
+          </div>
+        </li>
+
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="A propos.html">À propos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Contact</h1>
+    <p>Une question, une suggestion ou un partenariat ? Écris-nous.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="contact-card">
+
+  <!-- CONTENU À CACHER -->
+  <div id="form-wrapper">
+    <h2>Nous contacter</h2>
+    <p>Remplis le formulaire ci-dessous.</p>
+
+    <form id="contact-form" action="https://formspree.io/f/xeeoyllv" method="POST">
+
+      <input type="hidden" name="_subject" value="📩 Nouveau message – Inside Fan Media">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" name="nom" placeholder="Votre nom..." required>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Votre e-mail..." required>
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" placeholder="Votre message..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Envoyer</button>
+    </form>
+  </div>
+
+  <!-- MESSAGE DE SUCCÈS -->
+  <div id="form-success">
+    ✅ Merci pour ton message,<br>nous te répondrons rapidement.
+  </div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>INSIDE FAN MEDIA</h4>
+      <a href="A propos.html">À propos</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+
+    <div>
+      <h4>Émissions</h4>
+      <a href="Inside-star-ac.html">Star Academy</a>
+      <a href="Inside-dals.html">Danse avec les stars</a>
+    </div>
+
+    <div>
+      <h4>Légal</h4>
+      <a href="Mentions Legales.html">Mentions légales</a>
+      <a href="Conditions générales.html">Conditions générales</a>
+      <a href="Politique de Confidentialité.html">Politique de confidentialité</a>
+    </div>
+
+    <div>
+      <h4>Inside Fan Media</h4>
+      <a href="https://linktr.ee/insidefanmedia" target="_blank">Linktree</a>
+    </div>
+
+    <div>
+      <h4>Inside Star Academy</h4>
+      <a href="https://x.com/insidestarac" target="_blank">X (Twitter)</a>
+      <a href="https://www.tiktok.com/@insidestarac" target="_blank">TikTok</a>
+      <a href="https://discord.gg/Wa3NzCWzrg" target="_blank">Discord</a>
+    </div>
+
+    <div>
+      <h4>Inside DALS</h4>
+      <a href="https://x.com/insidedals" target="_blank">X (Twitter)</a>
+      <a href="https://www.tiktok.com/@insidedals" target="_blank">TikTok</a>
+      <a href="https://discord.gg/GmfSw6jJkZ" target="_blank">Discord</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 INSIDE FAN MEDIA — Site fan non officiel
+  </div>
+</footer>
+
+<script>
+const form = document.getElementById('contact-form');
+const successMsg = document.getElementById('form-success');
+const formWrapper = document.getElementById('form-wrapper');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  fetch(form.action, {
+    method: form.method,
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if(response.ok){
+      formWrapper.style.display = "none";
+      successMsg.style.display = "block";
+      form.reset();
+    } else {
+      alert("Une erreur est survenue. Réessaie plus tard.");
+    }
+  })
+  .catch(() => {
+    alert("Impossible d'envoyer le message.");
+  });
+});
+</script>
+
+<script src="menu.js"></script>
+
+</body>
+</html>
