@@ -259,5 +259,20 @@
   }
 
 }
+/* Table responsive */
+.ranking-table-wrapper {
+  overflow-x:auto; /* déjà présent en desktop, ça garde scroll si besoin */
+  -webkit-overflow-scrolling: touch;
+}
+
+.ranking-table {
+  min-width:600px; /* force table à ne pas s’écraser complètement */
+}
+
+.ranking-table td span {
+  font-size:13px;
+  padding:6px 10px;
+}
+
 
 
