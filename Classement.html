@@ -421,6 +421,18 @@ body{
   box-shadow:none;
   border:1px dashed #ddd;
 }
+
+/* ===== LIVE STATE ===== */
+.live-badge{
+  display:inline-block;
+  background:#ff2d2d;
+  color:#fff;
+  font-weight:900;
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:16px;
+  animation:pulse 1.2s infinite;
+}
 </style>
   
 <link rel="stylesheet" href="CSS-Mobile.css">
@@ -478,6 +490,9 @@ body{
     <h1>Classement</h1>
     <p>Retrouvez le classement officiel des couples de Danse avec les stars, tel qu’annoncé lors de l’émission.</p>
   </div>
+  <div id="live-wrapper" style="display:none;">
+        <span class="live-badge">EN DIRECT</span>
+        <h3 id="live-title">Prime en cours</h3>
 </section>
 
 <section class="section">
@@ -713,6 +728,7 @@ body{
   
 </body>
 </html>
+
 
 
 
