@@ -433,6 +433,18 @@ body{
   margin-bottom:16px;
   animation:pulse 1.2s infinite;
 }
+
+@keyframes pulse{
+  0%{
+    box-shadow:0 0 0 0 rgba(255,45,45,.6);
+  }
+  70%{
+    box-shadow:0 0 0 14px rgba(255,45,45,0);
+  }
+  100%{
+    box-shadow:0 0 0 0 rgba(255,45,45,0);
+  }
+}
 </style>
   
 <link rel="stylesheet" href="CSS-Mobile.css">
@@ -491,9 +503,11 @@ body{
     <h1>Classement</h1>
     <p>Retrouvez le classement officiel des couples de Danse avec les stars, tel qu’annoncé lors de l’émission.</p>
 
-<div id="live-wrapper">
-  <span class="live-badge">EN DIRECT</span>
-</div>
+    <div id="live-wrapper">
+      <span class="live-badge">EN DIRECT</span>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">
@@ -728,6 +742,7 @@ body{
   
 </body>
 </html>
+
 
 
 
