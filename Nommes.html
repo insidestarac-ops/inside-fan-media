@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Nommés – Inside Star Ac</title>
+<title>Sondage – Inside DALS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" sizes="32x32" href="logo-star-ac.png">
+<link rel="icon" type="image/png" sizes="32x32" href="logo-dals.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -17,14 +18,9 @@
   --card:#FFFFFF;
   --text:#1E1E2E;
   --muted:#6E6E90;
-  --danger:#FF4D6D;
-  --success:#2ECC71;
 }
-*,
-*::before,
-*::after{
-  box-sizing:border-box;
-}
+
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -33,7 +29,6 @@ body{
   color:var(--text);
 }
 
-/* ===== CONTAINER ===== */
 .container{
   max-width:1300px;
   margin:auto;
@@ -160,7 +155,8 @@ body{
   height:20px;
 }
 
-/* ===== HERO ===== */
+
+/* ===== HERO PAGE ===== */
 .page-hero{
   background:
     radial-gradient(circle at top left,#b39dff,transparent 55%),
@@ -173,97 +169,19 @@ body{
   margin:0 0 12px;
 }
 .page-hero p{
-  max-width:640px;
+  max-width:620px;
   font-size:18px;
   opacity:.95;
 }
 
-/* ===== SECTION ===== */
-.section{
-  padding:90px 0;
+/* ===== SECTIONS ===== */
+.section{padding:90px 0}
+.section-title{
+  font-size:30px;
+  margin-bottom:36px;
 }
 
-/* ===== NOMINÉS GRID ===== */
-.nominees-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:36px;
-}
-
-/* ===== CARD ===== */
-.nominee-card{
-  background:#fff;
-  border-radius:30px;
-  overflow:hidden;
-  box-shadow:0 24px 60px rgba(124,77,255,.22);
-  transition:.4s ease;
-  position:relative;
-}
-.nominee-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 40px 100px rgba(124,77,255,.35);
-}
-
-.nominee-card img{
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  display:block;
-}
-
-/* Badge NOMMÉ */
-.badge{
-  position:absolute;
-  top:16px;
-  left:16px;
-  background:var(--danger);
-  color:#fff;
-  font-size:12px;
-  font-weight:800;
-  padding:6px 12px;
-  border-radius:999px;
-  letter-spacing:.4px;
-}
-
-.badge--success{
-  background:var(--success);
-}
-
-/* Contenu */
-.nominee-content{
-  padding:20px 18px 26px;
-  text-align:center;
-}
-.nominee-content h3{
-  margin:0 0 6px;
-  font-size:20px;
-  font-weight:900;
-}
-.nominee-content span{
-  display:block;
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:16px;
-}
-
-/* CTA */
-.vote-btn{
-  display:inline-block;
-  padding:12px 22px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#7C4DFF,#5E35FF);
-  color:#fff;
-  font-weight:700;
-  font-size:14px;
-  text-decoration:none;
-  transition:.3s;
-}
-.vote-btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 14px 32px rgba(124,77,255,.45);
-}
-
-/* ===== FOOTER ===== */
+/* ===== FOOTER (IDENTIQUE ACCUEIL) ===== */
 .site-footer{
   background:#fff;
   border-top:1px solid #e4e0ff;
@@ -293,6 +211,118 @@ body{
   color:#888;
   border-top:1px solid #eee;
 }
+
+.card-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  height:100%;
+}
+
+/* ===== CLASSEMENT ===== */
+.ranking-table-wrapper{
+  background:#fff;
+  border-radius:28px;
+  padding:32px;
+  box-shadow:0 24px 60px rgba(124,77,255,.22);
+  overflow-x:auto;
+}
+
+.ranking-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.ranking-table thead th{
+  text-align:left;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  color:var(--muted);
+  padding-bottom:16px;
+}
+
+.ranking-table tbody tr{
+  border-top:1px solid #eee;
+}
+
+.ranking-table td{
+  padding:18px 0;
+  vertical-align:middle;
+}
+
+.rank{
+  font-weight:900;
+  font-size:20px;
+  color:var(--violet);
+}
+
+.couple{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  font-weight:700;
+}
+
+.couple img{
+  width:64px;
+  height:64px;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+.votes{
+  font-weight:800;
+}
+
+.trend{
+  font-size:18px;
+  font-weight:900;
+}
+
+.trend.up{color:#2ecc71}
+.trend.down{color:#e74c3c}
+.trend.stable{color:#aaa}
+
+.ranking-note{
+  margin-top:18px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* ===== TOP 3 HIGHLIGHT ===== */
+.ranking-table tbody tr:first-child .rank{
+  color:#f1c40f; /* Or */
+}
+.ranking-table tbody tr:nth-child(2) .rank{
+  color:#bdc3c7; /* Argent */
+}
+.ranking-table tbody tr:nth-child(3) .rank{
+  color:#cd7f32; /* Bronze */
+}
+
+/* ===== PLACEHOLDER CLASSEMENT (TEMPORAIRE) ===== */
+.ranking-table-wrapper{
+  padding:80px 32px;
+  text-align:center;
+  overflow:visible;
+}
+
+.ranking-table-wrapper h3{
+  font-size:24px;
+  font-weight:800;
+  color:var(--violet);
+  margin-bottom:12px;
+}
+
+.ranking-table-wrapper p{
+  font-size:16px;
+  color:var(--muted);
+  line-height:1.6;
+  margin:0;
+}
+
+
 </style>
 
 <link rel="stylesheet" href="CSS-Mobile.css">
@@ -346,45 +376,28 @@ body{
 
 <main>
 
-<section class="page-hero">
-  <div class="container">
-    <h1>Les Nommés</h1>
-    <p>Ils sont en danger cette semaine. Votez pour sauver votre académicien préféré.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-
-    <div class="nominees-grid">
-
-      <!-- CARD -->
-      <div class="nominee-card">
-        <span class="badge">NOMMÉE</span>
-        <img src="Eleve/Ambre.jpg" alt="Sarah">
-        <div class="nominee-content">
-          <h3>Ambre</h3>
-          <span>Académicienne</span>
-          <a href="Résultats.html" class="vote-btn">Voter</a>
-        </div>
-      </div>
-
-      <div class="nominee-card">
-        <span class="badge">NOMMÉ</span>
-        <img src="Eleve/Victor.jpg" alt="Léa">
-        <div class="nominee-content">
-          <h3>Victor</h3>
-          <span>Académicien</span>
-          <a href="Résultats.html" class="vote-btn">Voter</a>
-        </div>
-      </div>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Les Nommés</h1>
+      <p>
+        Ils sont en danger cette semaine. Votez pour sauver votre académicien préféré.
+      </p>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="section">
+    <div class="container">
+
+      <div class="ranking-table-wrapper">
+        <h3>À l'année prochaine...</h3>
+      </div>
+
+    </div>
+  </section>
 
 </main>
-  
+
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -431,37 +444,7 @@ body{
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-document.querySelectorAll('.academy-swiper').forEach(swiperEl=>{
-  new Swiper(swiperEl,{
-    slidesPerView:3,
-    spaceBetween:30,
-    loop:true,
-    grabCursor:true,
-    navigation:{
-      nextEl:swiperEl.querySelector('.swiper-button-next'),
-      prevEl:swiperEl.querySelector('.swiper-button-prev')
-    },
-    pagination:{
-      el:swiperEl.querySelector('.swiper-pagination'),
-      clickable:true
-    },
-    breakpoints:{
-      0:{slidesPerView:1},
-      768:{slidesPerView:2},
-      1024:{slidesPerView:3}
-    }
-  });
-});
-</script>
-
 <script src="menu.js"></script>
 
 </body>
 </html>
-
-
-
-
-
