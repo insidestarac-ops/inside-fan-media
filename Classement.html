@@ -449,65 +449,72 @@ tr.eliminated .rank {
 }
 
 @media screen and (max-width: 768px) {
-    /* 1. On réduit les marges globales pour gagner de la place */
+    /* 1. On bloque la largeur du conteneur pour qu'il soit FIXE à 100% de l'écran */
     .ranking-table-wrapper {
-        padding: 12px !important;
-        border-radius: 20px !important;
+        padding: 8px !important; /* Marges minimales */
+        overflow: hidden !important; /* Interdiction de dépasser */
+        border-radius: 16px !important;
     }
 
-    /* 2. On rend la ligne flexible pour que les colonnes s'adaptent */
-    .ranking-table td {
-        padding: 10px 4px !important;
-        height: auto !important;
+    .ranking-table {
+        table-layout: fixed !important; /* FORCE les colonnes à respecter les largeurs */
+        width: 100% !important;
     }
 
-    /* 3. L'IMAGE ET LE TEXTE (Comme le bloc Hors Classement) */
+    /* 2. ON DÉFINIT DES LARGEURS DE COLONNES FIXES */
+    /* On donne peu de place au rang et au score pour laisser le max au couple */
+    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 30px !important; } /* # */
+    .ranking-table th:nth-child(2), .ranking-table td:nth-child(2) { width: auto !important; } /* Couple */
+    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 65px !important; } /* Total */
+    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 40px !important; } /* Evol */
+
+    /* 3. OPTIMISATION DU BLOC COUPLE (Style Hors Classement) */
     .couple {
         display: flex !important;
-        flex-direction: row !important; /* On commence en ligne */
-        flex-wrap: wrap !important;     /* MAIS on autorise le retour à la ligne */
+        flex-direction: column !important; /* On empile image et texte verticalement */
         align-items: center !important;
-        gap: 8px !important;
-        min-width: 100px !important;    /* Largeur minimum pour ne pas écraser */
+        justify-content: center !important;
+        gap: 4px !important;
+        padding: 5px 0 !important;
     }
 
     .couple img {
-        width: 45px !important;
-        height: 45px !important;
-        flex-shrink: 0 !important;      /* L'image ne rétrécit jamais */
+        width: 42px !important; /* Taille fixe optimisée */
+        height: 42px !important;
+        border-radius: 10px !important;
+        margin: 0 !important;
     }
 
     .couple span {
-        font-size: 12px !important;
-        line-height: 1.2 !important;
-        flex: 1 1 80px !important;      /* Le texte prend la place ou passe dessous */
-        min-width: 0 !important;
+        font-size: 10px !important; /* Texte petit mais lisible */
+        line-height: 1.1 !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        word-break: break-word !important;
     }
 
-    /* 4. ON ALIGNE TOUT LE RESTE SUR LE MILIEU */
-    .rank, .votes, .trend {
+    /* 4. ALIGNEMENT ET SUPPRESSION DES BLANCS */
+    .ranking-table td {
+        padding: 10px 2px !important;
         vertical-align: middle !important;
+        border-bottom: 1px solid #eee !important;
     }
 
-    /* 5. ON RÉDUIT LES BADGES (Comme les boutons du Hors Classement) */
+    /* 5. RÉDUCTION DES BADGES DE SCORE */
     .ranking-table td.total span {
-        min-width: 40px !important;
-        padding: 6px 8px !important;
-        font-size: 13px !important;
-        border-width: 1px !important; /* Bordure plus fine sur mobile */
+        min-width: 35px !important;
+        padding: 5px 4px !important;
+        font-size: 12px !important;
+        display: inline-block !important;
     }
 
-    /* 6. ON SUPPRIME LES BORDURES QUI GÊNENT */
-    .ranking-table th:nth-child(4),
-    .ranking-table td:nth-child(4) {
-        border-left: none !important;
-    }
-
-    /* 7. TITRES DES COLONNES PLUS PETITS */
+    /* 6. RÉDUCTION DES TITRES */
     .ranking-table thead th {
-        font-size: 10px !important;
-        padding-bottom: 12px !important;
-        letter-spacing: 0.5px !important;
+        font-size: 9px !important;
+        padding-bottom: 8px !important;
+        text-align: center !important;
     }
 }
 </style>
@@ -776,6 +783,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
