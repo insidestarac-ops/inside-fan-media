@@ -449,98 +449,65 @@ tr.eliminated .rank {
 }
 
 @media screen and (max-width: 768px) {
-    /* 1. On prépare le conteneur pour enlever le look "tableau" */
+    /* 1. On réduit les marges globales pour gagner de la place */
     .ranking-table-wrapper {
-        background: transparent !important;
-        padding: 0 !important;
-        box-shadow: none !important;
+        padding: 12px !important;
+        border-radius: 20px !important;
     }
 
-    /* 2. On transforme le tableau en liste de blocs (comme le hors-classement) */
-    .ranking-table, 
-    .ranking-table tbody, 
-    .ranking-table tr {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    /* 3. On cache l'en-tête du tableau */
-    .ranking-table thead {
-        display: none !important;
-    }
-
-    /* 4. Design de la ligne (La "Card") */
-    .ranking-table tbody tr {
-        background: #ffffff !important;
-        margin-bottom: 16px !important;
-        padding: 15px !important;
-        border-radius: 24px !important;
-        border: 1px solid #e4e0ff !important;
-        display: flex !important; /* On utilise Flexbox comme pour Julien & Elsa */
-        align-items: center !important;
-        gap: 15px !important;
-        position: relative !important;
-        transform: none !important;
-    }
-
-    /* 5. On gère les cellules à l'intérieur de la card */
+    /* 2. On rend la ligne flexible pour que les colonnes s'adaptent */
     .ranking-table td {
-        display: block !important;
-        padding: 0 !important;
-        border: none !important;
+        padding: 10px 4px !important;
+        height: auto !important;
     }
 
-    /* Le chiffre du rang (#) */
-    .rank {
-        font-size: 20px !important;
-        min-width: 25px !important;
-    }
-
-    /* Le couple (Image + Nom) */
+    /* 3. L'IMAGE ET LE TEXTE (Comme le bloc Hors Classement) */
     .couple {
-        flex: 1 !important; /* Prend toute la place centrale */
-        flex-direction: row !important; /* Image à gauche, texte à droite */
-        justify-content: flex-start !important;
-        text-align: left !important;
-        gap: 12px !important;
+        display: flex !important;
+        flex-direction: row !important; /* On commence en ligne */
+        flex-wrap: wrap !important;     /* MAIS on autorise le retour à la ligne */
+        align-items: center !important;
+        gap: 8px !important;
+        min-width: 100px !important;    /* Largeur minimum pour ne pas écraser */
     }
 
     .couple img {
-        width: 55px !important;
-        height: 55px !important;
-        border-radius: 15px !important;
+        width: 45px !important;
+        height: 45px !important;
+        flex-shrink: 0 !important;      /* L'image ne rétrécit jamais */
     }
 
     .couple span {
-        font-size: 14px !important;
-        max-width: 140px !important;
-        white-space: normal !important;
+        font-size: 12px !important;
+        line-height: 1.2 !important;
+        flex: 1 1 80px !important;      /* Le texte prend la place ou passe dessous */
+        min-width: 0 !important;
     }
 
-    /* Le score (à droite) */
-    .ranking-table td.total {
-        margin-left: auto !important;
+    /* 4. ON ALIGNE TOUT LE RESTE SUR LE MILIEU */
+    .rank, .votes, .trend {
+        vertical-align: middle !important;
     }
 
+    /* 5. ON RÉDUIT LES BADGES (Comme les boutons du Hors Classement) */
     .ranking-table td.total span {
-        min-width: 45px !important;
-        padding: 8px !important;
-        font-size: 15px !important;
-        border-radius: 15px !important;
+        min-width: 40px !important;
+        padding: 6px 8px !important;
+        font-size: 13px !important;
+        border-width: 1px !important; /* Bordure plus fine sur mobile */
     }
 
-    /* L'évolution (on la met en petit sous le score ou on la cache) */
-    .trend {
-        position: absolute !important;
-        right: 20px !important;
-        bottom: 10px !important;
-        font-size: 14px !important;
+    /* 6. ON SUPPRIME LES BORDURES QUI GÊNENT */
+    .ranking-table th:nth-child(4),
+    .ranking-table td:nth-child(4) {
+        border-left: none !important;
     }
 
-    /* Style spécial pour les éliminés sur mobile */
-    tr.eliminated {
-        opacity: 0.6 !important;
-        background: #f9f9f9 !important;
+    /* 7. TITRES DES COLONNES PLUS PETITS */
+    .ranking-table thead th {
+        font-size: 10px !important;
+        padding-bottom: 12px !important;
+        letter-spacing: 0.5px !important;
     }
 }
 </style>
@@ -809,6 +776,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
