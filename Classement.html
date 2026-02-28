@@ -447,6 +447,50 @@ tr.eliminated .rank {
   color: #c00;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+    /* On garde le conteneur blanc, on réduit juste les marges internes */
+    .ranking-table-wrapper {
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    /* On réduit la taille des images de couple */
+    .couple img {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+    }
+
+    /* On réduit les écarts entre les colonnes */
+    .couple { gap: 10px; }
+    
+    .ranking-table td, 
+    .ranking-table th {
+        padding: 12px 5px !important; /* Moins d'espace en haut/bas */
+    }
+
+    /* On réduit la taille de la police pour que ça rentre */
+    .rank { font-size: 18px; }
+    .couple span { font-size: 13px; }
+    
+    /* On ajuste les badges de score pour qu'ils soient moins larges */
+    .ranking-table td.votes span,
+    .ranking-table td.total span {
+        min-width: 40px;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    /* On retire les bordures de séparation à gauche pour gagner de la place */
+    .ranking-table th:nth-child(4),
+    .ranking-table td:nth-child(4) {
+        border-left: none;
+    }
+    
+    /* On réduit l'icône d'évolution */
+    .trend { font-size: 16px; }
+}
 </style>
   
 <link rel="stylesheet" href="CSS-Mobile.css">
@@ -713,6 +757,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
