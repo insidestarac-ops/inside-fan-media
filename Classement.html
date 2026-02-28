@@ -449,88 +449,91 @@ tr.eliminated .rank {
 }
 
 @media screen and (max-width: 768px) {
-    /* 1. CONTENEUR GLASSMORPHISM */
+    /* 1. CONTENEUR ULTRA-FIXE */
     .ranking-table-wrapper {
-        padding: 12px 8px !important;
-        background: rgba(255, 255, 255, 0.9) !important;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(124, 77, 255, 0.1) !important;
-        box-shadow: 0 20px 50px rgba(124, 77, 255, 0.15) !important;
-        border-radius: 28px !important;
+        padding: 10px 6px !important;
+        background: #ffffff !important;
+        border-radius: 24px !important;
+        box-shadow: 0 15px 40px rgba(124, 77, 255, 0.12) !important;
+        overflow: hidden !important; 
     }
 
     .ranking-table {
-        table-layout: fixed !important;
+        table-layout: fixed !important; /* Maintien la structure rigide */
         width: 100% !important;
-        border-spacing: 0 4px !important; /* Ajoute un micro-espace entre les lignes */
+        border-collapse: collapse !important;
     }
 
-    /* 2. LARGEURS DE COLONNES ÉQUILIBRÉES */
-    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 35px !important; } /* # */
-    .ranking-table th:nth-child(2), .ranking-table td:nth-child(2) { width: auto !important; } /* Couple */
-    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 70px !important; } /* Score */
-    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 45px !important; } /* Evol */
+    /* 2. REPARTITION DES COLONNES (Le secret du décalage) */
+    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 10% !important; } /* # Rang */
+    .ranking-table th:nth-child(2), .ranking-table td:nth-child(2) { width: 50% !important; } /* Couple */
+    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 22% !important; } /* Score */
+    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 18% !important; } /* Evol (plus de place) */
 
-    /* 3. LOOK COUPLE "INSIDE PREMIUM" */
+    /* 3. STYLE DU COUPLE (FIXE & CENTRÉ) */
     .couple {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 6px !important;
-        padding: 8px 0 !important;
+        gap: 5px !important;
+        padding: 6px 0 !important;
     }
 
     .couple img {
-        width: 52px !important; /* Un peu plus grand pour le style */
-        height: 52px !important;
-        border-radius: 16px !important;
+        width: 46px !important;
+        height: 46px !important;
+        border-radius: 14px !important;
         border: 2px solid #fff;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
     }
 
     .couple span {
-        font-size: 10.5px !important;
-        font-weight: 800 !important; /* Plus gras pour le côté Premium */
-        letter-spacing: -0.2px;
-        color: var(--text);
-        text-transform: uppercase; /* Donne un look "Officiel" */
+        font-size: 9px !important; /* Taille ajustée pour le fixe */
+        font-weight: 800 !important;
+        text-transform: uppercase;
+        text-align: center !important;
         line-height: 1.1;
+        color: var(--text);
+        max-width: 95% !important;
     }
 
-    /* 4. CELLULES ÉPURÉES */
+    /* 4. ALIGNEMENT VERTICAL PARFAIT */
     .ranking-table td {
         padding: 12px 2px !important;
-        border-bottom: 1px solid rgba(238, 234, 255, 0.5) !important;
+        vertical-align: middle !important;
+        text-align: center !important; /* Centre tout le contenu des colonnes */
     }
 
-    /* 5. BADGES DE SCORE "GLOSSY" */
+    /* 5. BADGES DE SCORE FIXES */
     .ranking-table td.total span {
-        min-width: 42px !important;
-        padding: 6px 0 !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        min-width: 38px !important;
+        height: 32px !important;
         font-size: 13px !important;
-        border-radius: 12px !important;
-        background: linear-gradient(180deg, #fff, #f6f4ff) !important;
-        box-shadow: 0 4px 12px rgba(124, 77, 255, 0.2) !important;
-        border: 1px solid var(--violet) !important;
+        border-radius: 10px !important;
+        background: #fff !important;
+        border: 1.5px solid var(--violet) !important;
     }
 
-    /* Le numéro 1 garde son badge violet plein (Gold style) */
-    .ranking-table tbody tr:first-child td.total span {
-        background: linear-gradient(135deg, #7C4DFF, #5E35FF) !important;
-        color: #fff !important;
-        border: none !important;
+    /* 6. ÉVOLUTIONS (ESPACÉES) */
+    .trend {
+        font-size: 16px !important;
+        font-weight: 900 !important;
+        display: block !important;
+        padding-right: 5px; /* Petit décalage du bord droit */
     }
 
-    /* 6. EN-TÊTES ÉLÉGANTS */
+    /* 7. EN-TÊTES */
     .ranking-table thead th {
-        font-size: 8.5px !important;
-        letter-spacing: 1px !important;
-        padding-bottom: 15px !important;
-        color: var(--violet) !important;
-        opacity: 0.7;
+        font-size: 8px !important;
+        padding-bottom: 10px !important;
+        color: var(--muted) !important;
+        text-transform: uppercase;
     }
 
-    /* Suppression des bordures verticales inutiles sur mobile */
+    /* Suppression des bordures verticales */
     .ranking-table th, .ranking-table td {
         border-left: none !important;
     }
@@ -801,6 +804,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
