@@ -449,47 +449,49 @@ tr.eliminated .rank {
 }
 
 @media (max-width: 768px) {
-    /* On garde le conteneur blanc, on réduit juste les marges internes */
+    /* 1. On réduit l'espace interne du tableau pour gagner de la place */
     .ranking-table-wrapper {
         padding: 15px;
-        border-radius: 20px;
     }
 
-    /* On réduit la taille des images de couple */
+    /* 2. C'est ici que la magie opère : on change l'alignement du couple */
+    .couple {
+        flex-direction: column; /* L'image au-dessus, le texte en-dessous */
+        align-items: center;    /* On centre le tout */
+        text-align: center;
+        gap: 8px;               /* Un petit espace entre l'image et le nom */
+    }
+
+    /* 3. On ajuste la taille du texte pour qu'il ne prenne pas trop de place */
+    .couple span {
+        font-size: 12px;
+        line-height: 1.2;
+        display: block;
+        max-width: 90px; /* On limite la largeur du texte pour forcer le retour à la ligne */
+    }
+
+    /* 4. On réduit un peu l'image pour gagner de la hauteur */
     .couple img {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         border-radius: 12px;
     }
 
-    /* On réduit les écarts entre les colonnes */
-    .couple { gap: 10px; }
-    
-    .ranking-table td, 
-    .ranking-table th {
-        padding: 12px 5px !important; /* Moins d'espace en haut/bas */
-    }
-
-    /* On réduit la taille de la police pour que ça rentre */
-    .rank { font-size: 18px; }
-    .couple span { font-size: 13px; }
-    
-    /* On ajuste les badges de score pour qu'ils soient moins larges */
-    .ranking-table td.votes span,
+    /* 5. On ajuste les scores pour qu'ils ne soient pas écrasés */
     .ranking-table td.total span {
-        min-width: 40px;
-        padding: 6px 10px;
-        font-size: 13px;
+        min-width: 50px;
+        padding: 8px 10px;
+        font-size: 14px;
     }
 
-    /* On retire les bordures de séparation à gauche pour gagner de la place */
-    .ranking-table th:nth-child(4),
-    .ranking-table td:nth-child(4) {
-        border-left: none;
+    /* 6. On réduit les marges des cellules pour que tout rentre */
+    .ranking-table td {
+        padding: 15px 5px !important;
     }
     
-    /* On réduit l'icône d'évolution */
-    .trend { font-size: 16px; }
+    .rank {
+        font-size: 18px !important;
+    }
 }
 </style>
   
@@ -757,6 +759,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
