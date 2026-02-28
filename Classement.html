@@ -448,68 +448,68 @@ tr.eliminated .rank {
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
-    /* On réduit les marges du conteneur principal */
+@media screen and (max-width: 768px) {
+    /* On force le conteneur à ne pas déborder */
     .ranking-table-wrapper {
-        padding: 12px;
-        border-radius: 20px;
+        padding: 10px !important;
+        overflow-x: hidden !important; /* Empêche le défilement horizontal du bloc */
     }
 
-    /* On force les cellules à ne pas créer de hauteur inutile */
+    .ranking-table {
+        width: 100% !important;
+        display: table !important; /* On s'assure que c'est bien un tableau */
+    }
+
+    /* On réduit drastiquement les paddings des cellules pour supprimer les blancs */
     .ranking-table td {
-        padding: 10px 4px !important; /* Réduit l'espace haut/bas pour éviter les blancs */
-        vertical-align: middle;
+        padding: 8px 2px !important; 
+        height: auto !important;
     }
 
-    /* Le bloc couple : l'image et le texte l'un sous l'autre sans trop d'écart */
-    .couple {
-        flex-direction: column;
-        gap: 4px; /* Espace très réduit entre image et texte */
-        align-items: center;
-        text-align: center;
-        min-width: 80px; /* Évite que la colonne ne soit trop écrasée */
+    /* Le changement de direction du couple */
+    .ranking-table td.couple {
+        display: flex !important;
+        flex-direction: column !important; /* Texte SOUS l'image */
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        border: none !important;
     }
 
     .couple img {
-        width: 48px; /* Taille optimisée pour mobile */
-        height: 48px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 45px !important; /* Image plus petite */
+        height: 45px !important;
+        margin: 0 !important;
     }
 
     .couple span {
-        font-size: 11px; /* Texte plus petit pour rester compact */
-        line-height: 1.1;
-        font-weight: 700;
-        display: block;
-        max-width: 85px;
+        font-size: 10px !important; /* Texte petit pour que ça tienne */
+        display: block !important;
+        text-align: center !important;
+        max-width: 80px !important;
+        white-space: normal !important; /* Permet le retour à la ligne du nom */
     }
 
-    /* Ajustement du rang pour qu'il soit bien centré face à l'image */
+    /* On réduit la taille des autres colonnes */
     .rank {
-        font-size: 18px !important;
-        text-align: center;
+        font-size: 16px !important;
+        width: 30px !important;
     }
 
-    /* Ajustement des badges de score pour qu'ils ne flottent pas */
     .ranking-table td.total span {
-        min-width: 45px;
-        padding: 6px 8px;
-        font-size: 13px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        min-width: 35px !important;
+        padding: 5px !important;
+        font-size: 12px !important;
     }
 
-    /* On cache l'évolution ou on la réduit au minimum pour gagner de la place */
     .trend {
         font-size: 14px !important;
     }
 
-    /* Supprime la bordure gauche qui crée un décalage visuel sur petit écran */
-    .ranking-table th:nth-child(4),
-    .ranking-table td:nth-child(4) {
-        border-left: none !important;
+    /* On réduit la taille des titres de colonnes */
+    .ranking-table thead th {
+        font-size: 9px !important;
+        padding-bottom: 10px !important;
     }
 }
 </style>
@@ -778,6 +778,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
