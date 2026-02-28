@@ -449,72 +449,90 @@ tr.eliminated .rank {
 }
 
 @media screen and (max-width: 768px) {
-    /* 1. On bloque la largeur du conteneur pour qu'il soit FIXE à 100% de l'écran */
+    /* 1. CONTENEUR GLASSMORPHISM */
     .ranking-table-wrapper {
-        padding: 8px !important; /* Marges minimales */
-        overflow: hidden !important; /* Interdiction de dépasser */
-        border-radius: 16px !important;
+        padding: 12px 8px !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(124, 77, 255, 0.1) !important;
+        box-shadow: 0 20px 50px rgba(124, 77, 255, 0.15) !important;
+        border-radius: 28px !important;
     }
 
     .ranking-table {
-        table-layout: fixed !important; /* FORCE les colonnes à respecter les largeurs */
+        table-layout: fixed !important;
         width: 100% !important;
+        border-spacing: 0 4px !important; /* Ajoute un micro-espace entre les lignes */
     }
 
-    /* 2. ON DÉFINIT DES LARGEURS DE COLONNES FIXES */
-    /* On donne peu de place au rang et au score pour laisser le max au couple */
-    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 30px !important; } /* # */
+    /* 2. LARGEURS DE COLONNES ÉQUILIBRÉES */
+    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 35px !important; } /* # */
     .ranking-table th:nth-child(2), .ranking-table td:nth-child(2) { width: auto !important; } /* Couple */
-    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 65px !important; } /* Total */
-    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 40px !important; } /* Evol */
+    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 70px !important; } /* Score */
+    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 45px !important; } /* Evol */
 
-    /* 3. OPTIMISATION DU BLOC COUPLE (Style Hors Classement) */
+    /* 3. LOOK COUPLE "INSIDE PREMIUM" */
     .couple {
         display: flex !important;
-        flex-direction: column !important; /* On empile image et texte verticalement */
+        flex-direction: column !important;
         align-items: center !important;
-        justify-content: center !important;
-        gap: 4px !important;
-        padding: 5px 0 !important;
+        gap: 6px !important;
+        padding: 8px 0 !important;
     }
 
     .couple img {
-        width: 42px !important; /* Taille fixe optimisée */
-        height: 42px !important;
-        border-radius: 10px !important;
-        margin: 0 !important;
+        width: 52px !important; /* Un peu plus grand pour le style */
+        height: 52px !important;
+        border-radius: 16px !important;
+        border: 2px solid #fff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
     }
 
     .couple span {
-        font-size: 10px !important; /* Texte petit mais lisible */
-        line-height: 1.1 !important;
-        text-align: center !important;
-        display: block !important;
-        width: 100% !important;
-        white-space: normal !important; /* Autorise le retour à la ligne */
-        word-break: break-word !important;
+        font-size: 10.5px !important;
+        font-weight: 800 !important; /* Plus gras pour le côté Premium */
+        letter-spacing: -0.2px;
+        color: var(--text);
+        text-transform: uppercase; /* Donne un look "Officiel" */
+        line-height: 1.1;
     }
 
-    /* 4. ALIGNEMENT ET SUPPRESSION DES BLANCS */
+    /* 4. CELLULES ÉPURÉES */
     .ranking-table td {
-        padding: 10px 2px !important;
-        vertical-align: middle !important;
-        border-bottom: 1px solid #eee !important;
+        padding: 12px 2px !important;
+        border-bottom: 1px solid rgba(238, 234, 255, 0.5) !important;
     }
 
-    /* 5. RÉDUCTION DES BADGES DE SCORE */
+    /* 5. BADGES DE SCORE "GLOSSY" */
     .ranking-table td.total span {
-        min-width: 35px !important;
-        padding: 5px 4px !important;
-        font-size: 12px !important;
-        display: inline-block !important;
+        min-width: 42px !important;
+        padding: 6px 0 !important;
+        font-size: 13px !important;
+        border-radius: 12px !important;
+        background: linear-gradient(180deg, #fff, #f6f4ff) !important;
+        box-shadow: 0 4px 12px rgba(124, 77, 255, 0.2) !important;
+        border: 1px solid var(--violet) !important;
     }
 
-    /* 6. RÉDUCTION DES TITRES */
+    /* Le numéro 1 garde son badge violet plein (Gold style) */
+    .ranking-table tbody tr:first-child td.total span {
+        background: linear-gradient(135deg, #7C4DFF, #5E35FF) !important;
+        color: #fff !important;
+        border: none !important;
+    }
+
+    /* 6. EN-TÊTES ÉLÉGANTS */
     .ranking-table thead th {
-        font-size: 9px !important;
-        padding-bottom: 8px !important;
-        text-align: center !important;
+        font-size: 8.5px !important;
+        letter-spacing: 1px !important;
+        padding-bottom: 15px !important;
+        color: var(--violet) !important;
+        opacity: 0.7;
+    }
+
+    /* Suppression des bordures verticales inutiles sur mobile */
+    .ranking-table th, .ranking-table td {
+        border-left: none !important;
     }
 }
 </style>
@@ -783,6 +801,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
