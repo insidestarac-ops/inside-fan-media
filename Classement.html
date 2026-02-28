@@ -449,48 +449,67 @@ tr.eliminated .rank {
 }
 
 @media (max-width: 768px) {
-    /* 1. On réduit l'espace interne du tableau pour gagner de la place */
+    /* On réduit les marges du conteneur principal */
     .ranking-table-wrapper {
-        padding: 15px;
+        padding: 12px;
+        border-radius: 20px;
     }
 
-    /* 2. C'est ici que la magie opère : on change l'alignement du couple */
-    .couple {
-        flex-direction: column; /* L'image au-dessus, le texte en-dessous */
-        align-items: center;    /* On centre le tout */
-        text-align: center;
-        gap: 8px;               /* Un petit espace entre l'image et le nom */
-    }
-
-    /* 3. On ajuste la taille du texte pour qu'il ne prenne pas trop de place */
-    .couple span {
-        font-size: 12px;
-        line-height: 1.2;
-        display: block;
-        max-width: 90px; /* On limite la largeur du texte pour forcer le retour à la ligne */
-    }
-
-    /* 4. On réduit un peu l'image pour gagner de la hauteur */
-    .couple img {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
-    }
-
-    /* 5. On ajuste les scores pour qu'ils ne soient pas écrasés */
-    .ranking-table td.total span {
-        min-width: 50px;
-        padding: 8px 10px;
-        font-size: 14px;
-    }
-
-    /* 6. On réduit les marges des cellules pour que tout rentre */
+    /* On force les cellules à ne pas créer de hauteur inutile */
     .ranking-table td {
-        padding: 15px 5px !important;
+        padding: 10px 4px !important; /* Réduit l'espace haut/bas pour éviter les blancs */
+        vertical-align: middle;
     }
-    
+
+    /* Le bloc couple : l'image et le texte l'un sous l'autre sans trop d'écart */
+    .couple {
+        flex-direction: column;
+        gap: 4px; /* Espace très réduit entre image et texte */
+        align-items: center;
+        text-align: center;
+        min-width: 80px; /* Évite que la colonne ne soit trop écrasée */
+    }
+
+    .couple img {
+        width: 48px; /* Taille optimisée pour mobile */
+        height: 48px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .couple span {
+        font-size: 11px; /* Texte plus petit pour rester compact */
+        line-height: 1.1;
+        font-weight: 700;
+        display: block;
+        max-width: 85px;
+    }
+
+    /* Ajustement du rang pour qu'il soit bien centré face à l'image */
     .rank {
         font-size: 18px !important;
+        text-align: center;
+    }
+
+    /* Ajustement des badges de score pour qu'ils ne flottent pas */
+    .ranking-table td.total span {
+        min-width: 45px;
+        padding: 6px 8px;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* On cache l'évolution ou on la réduit au minimum pour gagner de la place */
+    .trend {
+        font-size: 14px !important;
+    }
+
+    /* Supprime la bordure gauche qui crée un décalage visuel sur petit écran */
+    .ranking-table th:nth-child(4),
+    .ranking-table td:nth-child(4) {
+        border-left: none !important;
     }
 }
 </style>
@@ -759,6 +778,7 @@ tr.eliminated .rank {
   
 </body>
 </html>
+
 
 
 
