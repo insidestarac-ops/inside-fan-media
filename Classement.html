@@ -223,6 +223,9 @@ body{
   border-bottom:2px solid var(--violet-soft);
 }
 
+.ranking-table thead th:nth-child(2) { text-align: center; }
+.ranking-table thead th:nth-child(n+3) { text-align: center; }
+
 .ranking-table tbody tr{
   position:relative;
   transition: background .35s ease, transform .35s ease;
@@ -275,17 +278,6 @@ body{
 
 .ranking-table td.votes{text-align:center;}
 
-.ranking-table td.votes span{
-  display:inline-block;
-  min-width:78px;
-  padding:10px 18px;
-  border-radius:18px;
-  background:var(--violet-soft);
-  color:var(--violet);
-  font-weight:900;
-  font-size:14px;
-}
-
 .ranking-table td.total span{
   display:inline-block;
   min-width:85px;
@@ -317,6 +309,10 @@ body{
 
 .ranking-note{
   margin-top:24px;
+}
+
+.ranking-note p{
+  margin:12px 0;
   font-size:13px;
   color:var(--muted);
 }
@@ -338,6 +334,9 @@ tr.eliminated {
     .couple span { font-size: 9px !important; text-align: center !important; }
 }
 </style>
+
+<link rel="stylesheet" href="CSS-Mobile.css">
+
 </head>
 
 <body>
@@ -348,6 +347,13 @@ tr.eliminated {
     <img src="logo-inside-fan-media.png" alt="INSIDE FAN MEDIA">
     <span>INSIDE FAN MEDIA</span>
    </a>
+
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Accueil</a></li>
@@ -410,7 +416,7 @@ tr.eliminated {
               <span>Samuel Bambi & Ana</span>
             </td>
             <td class="votes total"><span>36</span></td>
-            <td class="trend up">▲</td>
+            <td class="trend up" style="text-align:center;">▲</td>
           </tr>
           <tr>
             <td class="rank">2</td>
@@ -419,7 +425,7 @@ tr.eliminated {
               <span>Juju Fitcats & Jordan</span>
             </td>
             <td class="votes total"><span>35</span></td>
-            <td class="trend up">▲</td>
+            <td class="trend up" style="text-align:center;">▲</td>
           </tr>
           <tr>
             <td class="rank">3</td>
@@ -428,7 +434,7 @@ tr.eliminated {
               <span>Emma & Dorian</span>
             </td>
             <td class="votes total"><span>30</span></td>
-            <td class="trend up">▲</td>
+            <td class="trend up" style="text-align:center;">▲</td>
           </tr>
           <tr>
             <td class="rank">-</td>
@@ -437,7 +443,7 @@ tr.eliminated {
               <span>Marcus & Marie</span>
             </td>
             <td class="votes total"><span>30</span></td>
-            <td class="trend down">▼</td>
+            <td class="trend down" style="text-align:center;">▼</td>
           </tr>
           <tr>
             <td class="rank">5</td>
@@ -446,7 +452,7 @@ tr.eliminated {
               <span>Lucie Bernardoni & Christophe</span>
             </td>
             <td class="votes total"><span>28</span></td>
-            <td class="trend down">▼</td>
+            <td class="trend down" style="text-align:center;">▼</td>
           </tr>
           <tr class="eliminated">
             <td class="rank"></td>
