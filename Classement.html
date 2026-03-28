@@ -89,13 +89,6 @@ body{
   color:var(--violet);
 }
 
-/* ===== DROPDOWN MENU FIX ===== */
-
-.has-dropdown{
-  position:relative;
-}
-
-/* Sous-menu */
 .has-dropdown{
   position:relative;
 }
@@ -105,14 +98,12 @@ body{
   top:100%;
   left:0;
   margin-top:12px;
-
   background:#fff;
   border-radius:16px;
   box-shadow:0 20px 40px rgba(124,77,255,.2);
   overflow:hidden;
   min-width:220px;
   z-index:50;
-
   opacity:0;
   visibility:hidden;
   transform:translateY(10px);
@@ -133,8 +124,6 @@ body{
   color:var(--violet);
 }
 
-
-/* Affichage menu (hover + accessibilité) */
 .has-dropdown:hover > .dropdown,
 .has-dropdown:focus-within > .dropdown{
   opacity:1;
@@ -142,7 +131,6 @@ body{
   transform:translateY(0);
 }
 
-/* Zone tampon invisible (évite la fermeture involontaire) */
 .has-dropdown::before{
   content:"";
   position:absolute;
@@ -151,7 +139,6 @@ body{
   width:100%;
   height:20px;
 }
-
 
 /* ===== HERO PAGE ===== */
 .page-hero{
@@ -178,7 +165,7 @@ body{
   margin-bottom:36px;
 }
 
-/* ===== FOOTER (IDENTIQUE ACCUEIL) ===== */
+/* ===== FOOTER ===== */
 .site-footer{
   background:#fff;
   border-top:1px solid #e4e0ff;
@@ -209,17 +196,7 @@ body{
   border-top:1px solid #eee;
 }
 
-.card-link{
-  display:block;
-  color:inherit;
-  text-decoration:none;
-  height:100%;
-}
-
-/* ==================================================
-   CLASSEMENT PREMIUM – INSIDE FAN MEDIA
-   ================================================== */
-
+/* ===== CLASSEMENT PREMIUM ===== */
 .ranking-table-wrapper{
   background:#fff;
   border-radius:32px;
@@ -230,14 +207,11 @@ body{
   overflow-x:auto;
 }
 
-/* TABLE */
 .ranking-table{
   width:100%;
   border-collapse:separate;
   border-spacing:0;
 }
-
-/* ================= HEAD ================= */
 
 .ranking-table thead th{
   font-size:12px;
@@ -249,18 +223,9 @@ body{
   border-bottom:2px solid var(--violet-soft);
 }
 
-.ranking-table thead th:nth-child(n+3):not(:last-child){
-  text-align:center;
-}
-
-/* ================= ROWS ================= */
-
 .ranking-table tbody tr{
   position:relative;
-  transition:
-    background .35s ease,
-    transform .35s ease,
-    box-shadow .35s ease;
+  transition: background .35s ease, transform .35s ease;
 }
 
 .ranking-table tbody tr:not(:last-child)::after{
@@ -274,22 +239,14 @@ body{
 }
 
 .ranking-table tbody tr:hover{
-  background:linear-gradient(
-    90deg,
-    rgba(124,77,255,.06),
-    transparent 70%
-  );
+  background:linear-gradient(90deg, rgba(124,77,255,.06), transparent 70%);
   transform:translateY(-2px);
 }
-
-/* ================= CELLS ================= */
 
 .ranking-table td{
   padding:22px 0;
   vertical-align:middle;
 }
-
-/* ================= RANK ================= */
 
 .rank{
   font-size:24px;
@@ -297,12 +254,9 @@ body{
   color:var(--violet);
 }
 
-/* TOP 3 COLORS */
 .ranking-table tbody tr:first-child .rank{color:#f1c40f}
 .ranking-table tbody tr:nth-child(2) .rank{color:#bdc3c7}
 .ranking-table tbody tr:nth-child(3) .rank{color:#cd7f32}
-
-/* ================= COUPLE ================= */
 
 .couple{
   display:flex;
@@ -319,13 +273,8 @@ body{
   box-shadow:0 12px 26px rgba(0,0,0,.18);
 }
 
-/* ================= SCORES ================= */
+.ranking-table td.votes{text-align:center;}
 
-.ranking-table td.votes{
-  text-align:center;
-}
-
-/* Base score pill */
 .ranking-table td.votes span{
   display:inline-block;
   min-width:78px;
@@ -335,27 +284,8 @@ body{
   color:var(--violet);
   font-weight:900;
   font-size:14px;
-  letter-spacing:.4px;
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
 }
 
-/* Hover micro interaction */
-.ranking-table tbody tr:hover td.votes span{
-  transform:translateY(-3px);
-  box-shadow:0 12px 26px rgba(0,0,0,.18);
-}
-  
-/* ================= BONUS (désactivé temporairement)
-.ranking-table td.bonus span{
-  background:linear-gradient(135deg,#7C4DFF,#5E35FF);
-  color:#fff;
-  box-shadow:0 10px 22px rgba(124,77,255,.45);
-}
-*/
-
-/* ================= TOTAL ================= */
 .ranking-table td.total span{
   display:inline-block;
   min-width:85px;
@@ -369,32 +299,11 @@ body{
   box-shadow:0 14px 30px rgba(124,77,255,.35);
 }
 
-/* ================= VISUAL GROUPING ================= */
-
-.ranking-table th:nth-child(3),
-.ranking-table td:nth-child(3){
-  padding-left:28px;
-}
-
-.ranking-table th:nth-child(4),
-.ranking-table td:nth-child(4),
-.ranking-table th:nth-child(5),
-.ranking-table td:nth-child(5){
-  border-left:1px solid #eee;
-}
-
-/* ================= WINNER LINE ================= */
-
-.ranking-table tbody tr:first-child{
-  background:linear-gradient(90deg, rgba(124,77,255,.12), transparent 65%);
-}
-
 .ranking-table tbody tr:first-child td.total span{
   background:linear-gradient(135deg,#7C4DFF,#5E35FF);
   color:#fff;
   border:none;
 }
-/* ================= TREND ================= */
 
 .trend{
   font-size:22px;
@@ -406,36 +315,10 @@ body{
 .trend.down{color:#e74c3c}
 .trend.stable{color:#aaa}
 
-/* ================= NOTE ================= */
-
 .ranking-note{
   margin-top:24px;
   font-size:13px;
   color:var(--muted);
-}
-  
-/* ===== LIVE STATE ===== */
-.live-badge{
-  display:inline-block;
-  background:#ff2d2d;
-  color:#fff;
-  font-weight:900;
-  padding:6px 14px;
-  border-radius:999px;
-  margin-bottom:16px;
-  animation:pulse 1.2s infinite;
-}
-
-@keyframes pulse{
-  0%{
-    box-shadow:0 0 0 0 rgba(255,45,45,.6);
-  }
-  70%{
-    box-shadow:0 0 0 14px rgba(255,45,45,0);
-  }
-  100%{
-    box-shadow:0 0 0 0 rgba(255,45,45,0);
-  }
 }
 
 tr.eliminated {
@@ -443,128 +326,31 @@ tr.eliminated {
   filter: grayscale(1);
 }
 
-tr.eliminated .rank {
-  color: #c00;
-  font-weight: bold;
-}
-
 @media screen and (max-width: 768px) {
-    /* 1. CONTENEUR ULTRA-FIXE */
-    .ranking-table-wrapper {
-        padding: 10px 6px !important;
-        background: #ffffff !important;
-        border-radius: 24px !important;
-        box-shadow: 0 15px 40px rgba(124, 77, 255, 0.12) !important;
-        overflow: hidden !important; 
-    }
-
-    .ranking-table {
-        table-layout: fixed !important; /* Maintien la structure rigide */
-        width: 100% !important;
-        border-collapse: collapse !important;
-    }
-
-    /* 2. REPARTITION DES COLONNES (Le secret du décalage) */
-    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 10% !important; } /* # Rang */
-    .ranking-table th:nth-child(2), .ranking-table td:nth-child(2) { width: 50% !important; } /* Couple */
-    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 22% !important; } /* Score */
-    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 18% !important; } /* Evol (plus de place) */
-
-    /* 3. STYLE DU COUPLE (FIXE & CENTRÉ) */
-    .couple {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 5px !important;
-        padding: 6px 0 !important;
-    }
-
-    .couple img {
-        width: 46px !important;
-        height: 46px !important;
-        border-radius: 14px !important;
-        border: 2px solid #fff;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
-    }
-
-    .couple span {
-        font-size: 9px !important; /* Taille ajustée pour le fixe */
-        font-weight: 800 !important;
-        text-transform: uppercase;
-        text-align: center !important;
-        line-height: 1.1;
-        color: var(--text);
-        max-width: 95% !important;
-    }
-
-    /* 4. ALIGNEMENT VERTICAL PARFAIT */
-    .ranking-table td {
-        padding: 12px 2px !important;
-        vertical-align: middle !important;
-        text-align: center !important; /* Centre tout le contenu des colonnes */
-    }
-
-    /* 5. BADGES DE SCORE FIXES */
-    .ranking-table td.total span {
-        display: inline-flex !important;
-        align-items: center;
-        justify-content: center;
-        min-width: 38px !important;
-        height: 32px !important;
-        font-size: 13px !important;
-        border-radius: 10px !important;
-        background: #fff !important;
-        border: 1.5px solid var(--violet) !important;
-    }
-
-    /* 6. ÉVOLUTIONS (ESPACÉES) */
-    .trend {
-        font-size: 16px !important;
-        font-weight: 900 !important;
-        display: block !important;
-        padding-right: 5px; /* Petit décalage du bord droit */
-    }
-
-    /* 7. EN-TÊTES */
-    .ranking-table thead th {
-        font-size: 8px !important;
-        padding-bottom: 10px !important;
-        color: var(--muted) !important;
-        text-transform: uppercase;
-    }
-
-    /* Suppression des bordures verticales */
-    .ranking-table th, .ranking-table td {
-        border-left: none !important;
-    }
+    .ranking-table-wrapper { padding: 10px 6px !important; }
+    .ranking-table { table-layout: fixed !important; width: 100% !important; }
+    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 10% !important; }
+    .ranking-table th:nth-child(2), .ranking-table td:nth-child(2) { width: 50% !important; }
+    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 22% !important; }
+    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 18% !important; }
+    .couple { flex-direction: column !important; align-items: center !important; gap: 5px !important; }
+    .couple img { width: 46px !important; height: 46px !important; }
+    .couple span { font-size: 9px !important; text-align: center !important; }
 }
 </style>
-  
-<link rel="stylesheet" href="CSS-Mobile.css">
-  
 </head>
 
 <body>
 
 <header class="site-header">
   <div class="header-inner">
-    <!-- Logo cliquable -->
    <a href="index.html" class="brand" style="text-decoration:none; color:inherit;">
     <img src="logo-inside-fan-media.png" alt="INSIDE FAN MEDIA">
     <span>INSIDE FAN MEDIA</span>
    </a>
-
-    <!-- Burger animé -->
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Accueil</a></li>
-
         <li class="has-dropdown">
           <a href="Inside-star-ac.html">Inside Star Ac</a>
           <div class="dropdown">
@@ -572,7 +358,6 @@ tr.eliminated .rank {
             <a href="Academie.html">Académie</a>
           </div>
         </li>
-
         <li class="has-dropdown">
           <a href="Inside-dals.html">Inside DALS</a>
           <div class="dropdown">
@@ -580,7 +365,6 @@ tr.eliminated .rank {
             <a href="Classement.html">Classement</a>
           </div>
         </li>
-
         <li><a href="Contact.html">Contact</a></li>
         <li><a href="A propos.html">À propos</a></li>
       </ul>
@@ -589,24 +373,18 @@ tr.eliminated .rank {
 </header>
 
 <main>
-
 <section class="page-hero">
   <div class="container">
     <h1>Classement</h1>
     <p>Retrouvez le classement officiel des couples de Danse avec les stars, tel qu’annoncé lors de l’émission.</p>
-<!--
-    <div id="live-wrapper">
-      <span class="live-badge">EN DIRECT</span>
-    </div>
--->
   </div>
 </section>
-  
+
 <section class="section">
   <div class="container">
     <h2 class="section-title">Classement officiel - Danse avec les stars (Prime 8)</h2>
 
-    <div style="margin-top: 30px; margin-bottom: 30px; padding: 25px; background: #fff; border-radius: 24px; border: 2px dashed var(--violet); display: flex; align-items: center; gap: 20px;">
+    <div style="margin-top: 30px; margin-bottom: 40px; padding: 25px; background: #fff; border-radius: 24px; border: 2px dashed var(--violet); display: flex; align-items: center; gap: 20px;">
         <img src="SF/Maghla & Adrien.png" alt="" style="width:60px; height:60px; border-radius:15px; filter: grayscale(0.6);">
         <div>
             <h4 style="margin: 0; color: var(--violet); font-weight: 800;">Hors Classement (Blessure)</h4>
@@ -616,152 +394,80 @@ tr.eliminated .rank {
     
     <div class="ranking-table-wrapper">
       <table class="ranking-table">
-      <thead>
-      <tbody>
-        <tr>
-          <th>N°</th>
-          <th>Couple</th>
-          <th style="text-align: center;">Total</th>
-          <th style="text-align: center;">Évolution</th>
-        </tr>
-      </thead>
-        
-        <tr>
-          <td class="rank">1</td>
-          <td class="couple">
-            <img src="SF/Samuel & Ana.png" alt="">
-            <span>Samuel Bambi & Ana</span>
-          </td>
-          <td class="votes total"><span>36</span></td>
-          <td class="trend up">▲</td>
-        </tr>
-
-        <tr>
-          <td class="rank">2</td>
-          <td class="couple">
-            <img src="SF/Jordan & Juju.png" alt="">
-            <span>Juju Fitcats & Jordan</span>
-          </td>
-          <td class="votes total"><span>35</span></td>
-          <td class="trend up">▲</td>
-        </tr>           
-
-        <tr>
-          <td class="rank">3</td>
-          <td class="couple">
-            <img src="SF/Emma & Dorian.png" alt="">
-            <span>Emma & Dorian</span>
-          </td>
-          <td class="votes total"><span>30</span></td>
-          <td class="trend up">▲</td>
-        </tr>             
-        
-        <tr>
-          <td class="rank">-</td>
-          <td class="couple">
-            <img src="SF/Marcus & Marie.png" alt="">
-            <span>Marcus & Marie</span>
-          </td>
-          <td class="votes total"><span>30</span></td>
-          <td class="trend down">▼</td>
-        </tr>
-        
-        <tr>
-          <td class="rank">5</td>
-          <td class="couple">
-            <img src="SF/Christophe & Lucie.png" alt="">
-            <span>Lucie Bernardoni & Christophe</span>
-          </td>
-          <td class="votes total"><span>28</span></td>
-          <td class="trend down">▼</td>
-        </tr>
-        
-<!--        
-        <tr>
-          <td class="rank">6</td>
-          <td class="couple">
-            <img src="SF/Maghla & Adrien.png" alt="">
-            <span>Maghla & Adrien</span>
-          </td>
-          <td class="votes total"><span>21</span></td>
-          <td class="trend stable">→</td>
-        </tr>
--->
-        <tr class="eliminated">
-          <td class="rank"></td>
-          <td class="couple">
-            <img src="SF/Julien & elsa.png" alt="">
-            <span>Julien Lieb & Elsa (Éliminé Prime 8)</span>
-          </td>
-          <td class=""><span></span></td>
-          <td class=""></td>
-        </tr>   
-        
-        <tr class="eliminated">
-          <td class="rank"></td>
-          <td class="couple">
-            <img src="SF/Laure & christian.png" alt="">
-            <span>Laure Manaudou & Christian (Éliminé Prime 7)</span>
-          </td>
-          <td class=""><span></span></td>
-          <td class=""></td>
-        </tr>   
-        
-        <tr class="eliminated">
-          <td class="rank"></td>
-          <td class="couple">
-            <img src="SF/Angélique & Yann.png" alt="">
-            <span>Angélique Angarni-Filopon & Yann-Alrick (Éliminé Prime 6)</span>
-          </td>
-          <td class=""><span></span></td>
-          <td class=""></td>
-        </tr>        
-      
-        <tr class="eliminated">
-          <td class="rank"></td>
-          <td class="couple">
-            <img src="SF/Ian & denitsa.png" alt="">
-            <span>Ian Ziering & Denitsa (Éliminé Prime 5)</span>
-          </td>
-          <td class=""><span></span></td>
-          <td class=""></td>
-        </tr>        
-      
-        <tr class="eliminated">
-          <td class="rank"></td>
-          <td class="couple">
-            <img src="SF/Stephane & calisson.png" alt="">
-            <span>Stéphane Bern & Calisson (Éliminé Prime 4)</span>
-          </td>
-          <td class=""><span></span></td>
-          <td class=""></td>
-        </tr>
-
-        <tr class="eliminated">
-          <td class="rank"></td>
-          <td class="couple">
-            <img src="SF/Phillipe & Kathia.png" alt="">
-            <span>Philippe Lellouche & Katrina (Éliminé Prime 3)</span>
-          </td>
-          <td class=""><span></span></td>
-          <td class=""></td>
-        </tr>
-    
-      </tbody>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Couple</th>
+            <th style="text-align: center;">Total</th>
+            <th style="text-align: center;">Évolution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td class="couple">
+              <img src="SF/Samuel & Ana.png" alt="">
+              <span>Samuel Bambi & Ana</span>
+            </td>
+            <td class="votes total"><span>36</span></td>
+            <td class="trend up">▲</td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td class="couple">
+              <img src="SF/Jordan & Juju.png" alt="">
+              <span>Juju Fitcats & Jordan</span>
+            </td>
+            <td class="votes total"><span>35</span></td>
+            <td class="trend up">▲</td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td class="couple">
+              <img src="SF/Emma & Dorian.png" alt="">
+              <span>Emma & Dorian</span>
+            </td>
+            <td class="votes total"><span>30</span></td>
+            <td class="trend up">▲</td>
+          </tr>
+          <tr>
+            <td class="rank">-</td>
+            <td class="couple">
+              <img src="SF/Marcus & Marie.png" alt="">
+              <span>Marcus & Marie</span>
+            </td>
+            <td class="votes total"><span>30</span></td>
+            <td class="trend down">▼</td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td class="couple">
+              <img src="SF/Christophe & Lucie.png" alt="">
+              <span>Lucie Bernardoni & Christophe</span>
+            </td>
+            <td class="votes total"><span>28</span></td>
+            <td class="trend down">▼</td>
+          </tr>
+          <tr class="eliminated">
+            <td class="rank"></td>
+            <td class="couple">
+              <img src="SF/Julien & elsa.png" alt="">
+              <span>Julien Lieb & Elsa (Éliminé Prime 8)</span>
+            </td>
+            <td class="votes"></td>
+            <td class="trend"></td>
+          </tr>
+        </tbody>
       </table>
     </div>
     
-    <p class="ranking-note">
-      <p class="ranking-note">
-      Notes des juges sur 40 – classement officiel tel qu’annoncé dans l’émission. </Br></Br>
-      Relais informatif par Inside Fan Media – site fan.
-    </p>
-    <p class="ranking-note">
-      Source : Danse avec les stars - ©TF1
-    </p>
+    <div class="ranking-note">
+      <p>Notes des juges sur 40 – classement officiel tel qu’annoncé dans l’émission.</p>
+      <p>Relais informatif par Inside Fan Media – site fan.</p>
+      <p>Source : Danse avec les stars - ©TF1</p>
+    </div>
   </div>
 </section>
-
 </main>
 
 <footer class="site-footer">
@@ -771,81 +477,27 @@ tr.eliminated .rank {
       <a href="A propos.html">À propos</a>
       <a href="Contact.html">Contact</a>
     </div>
-
     <div>
       <h4>Émissions</h4>
       <a href="Inside-star-ac.html">Star Academy</a>
       <a href="Inside-dals.html">Danse avec les stars</a>
     </div>
-
     <div>
       <h4>Légal</h4>
       <a href="Mentions Legales.html">Mentions légales</a>
       <a href="Conditions générales.html">Conditions générales</a>
-      <a href="Politique de Confidentialité.html">Politique de confidentialité</a>
     </div>
-
     <div>
-      <h4>Inside Fan Media</h4>
-      <a href="https://x.com/InsideDALS" target="_blank">Linktree</a>
-    </div>
-
-    <div>
-      <h4>Inside Star Academy</h4>
-      <a href="https://x.com/InsideStarAc" target="_blank">X (Twitter)</a>
-      <a href="https://www.tiktok.com/@insidestarac" target="_blank">TikTok</a>
-      <a href="https://discord.gg/Wa3NzCWzrg" target="_blank">Discord</a>
-    </div>
-
-    <div>
-      <h4>Inside DALS</h4>
-      <a href="https://x.com/InsideDALS" target="_blank">X (Twitter)</a>
-      <a href="https://www.tiktok.com/@insidedals" target="_blank">TikTok</a>
-      <a href="https://discord.gg/GmfSw6jJkZ" target="_blank">Discord</a>
+      <h4>Social</h4>
+      <a href="https://x.com/InsideDALS" target="_blank">Twitter DALS</a>
+      <a href="https://x.com/InsideStarAc" target="_blank">Twitter Star Ac</a>
     </div>
   </div>
-
   <div class="footer-bottom">
     © 2026 INSIDE FAN MEDIA — Site fan non officiel
   </div>
 </footer>
-  
+
 <script src="menu.js"></script>
-  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
