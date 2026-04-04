@@ -219,11 +219,18 @@ const headerContent = `
   #burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
   #burger span { display: block; width: 25px; height: 3px; background: var(--h-dark); border-radius: 3px; }
 
-  @media (max-width: 1100px) {
-      /* On cache les éléments desktop mais on ne bloque pas la nav entière */
-      .nav-container, .btn-contact { 
-        display: none !important; 
+  @media (max-width: 1200px) {
+      /* AU LIEU DE CACHER LE CONTAINER, ON CACHE SON APPARENCE PC */
+      .nav-container { 
+        background: none !important; 
+        box-shadow: none !important; 
+        border: none !important;
+        flex-grow: 0 !important; /* On l'empêche de prendre de la place */
+        display: block !important; /* ON LE LAISSE EXISTER POUR QUE LE MENU DEDANS SOIT VISIBLE */
       }
+
+      .btn-contact { display: none !important; }
+
       .site-header { 
         top: 0; 
         background: #fff; 
@@ -231,11 +238,13 @@ const headerContent = `
         height: 80px; 
         border-bottom: 1px solid #eee; 
       }
-      #burger { 
-        display: flex !important; /* On s'assure que le burger est là */
-      }
-      .brand span { 
-        font-size: 18px; 
+
+      #burger { display: flex !important; }
+      .brand span { font-size: 18px; }
+
+      /* On s'assure que le menu desktop ne s'affiche pas en plein milieu horizontalement */
+      .main-nav:not(.active) {
+        display: none; 
       }
     }
 </style>
@@ -276,7 +285,7 @@ const headerContent = `
 
     <a href="Contact.html" class="btn-contact">Contact</a>
 
-    <button id="burger" class="burger" aria-label="Menu">
+    <button id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
