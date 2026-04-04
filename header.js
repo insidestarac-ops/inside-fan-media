@@ -219,12 +219,25 @@ const headerContent = `
   #burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
   #burger span { display: block; width: 25px; height: 3px; background: var(--h-dark); border-radius: 3px; }
 
-  @media (max-width: 1200px) {
-    .nav-container, .btn-contact { display: none; }
-    .site-header { top: 0; background: #fff; padding: 0 20px; height: 80px; border-bottom: 1px solid #eee; }
-    #burger { display: flex; }
-    .brand span { font-size: 18px; }
-  }
+  @media (max-width: 1100px) {
+      /* On cache les éléments desktop mais on ne bloque pas la nav entière */
+      .nav-container, .btn-contact { 
+        display: none !important; 
+      }
+      .site-header { 
+        top: 0; 
+        background: #fff; 
+        padding: 0 20px; 
+        height: 80px; 
+        border-bottom: 1px solid #eee; 
+      }
+      #burger { 
+        display: flex !important; /* On s'assure que le burger est là */
+      }
+      .brand span { 
+        font-size: 18px; 
+      }
+    }
 </style>
 
 <header class="site-header">
