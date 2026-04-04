@@ -263,7 +263,7 @@ const headerContent = `
 
     <a href="Contact.html" class="btn-contact">Contact</a>
 
-    <button id="burger" aria-label="Menu">
+    <button id="burger" class="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
