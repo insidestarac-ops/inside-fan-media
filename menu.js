@@ -1,30 +1,35 @@
-// On utilise une fonction pour s'assurer que le header est bien là
 function initMenu() {
     const burger = document.getElementById('burger');
-    const nav = document.querySelector('.main-nav');
+    const panel = document.querySelector('.mobile-nav-panel');
+    const overlay = document.getElementById('mob-overlay');
 
-    if (burger && nav) {
-        // Événement clic sur le burger
-        burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            nav.classList.toggle('active');
-            // Active le flou du fond (défini dans ton CSS mobile)
-            document.body.classList.toggle('menu-open');
-        });
-
-        // Ferme le menu quand on clique sur un lien
-        document.querySelectorAll('.main-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                burger.classList.remove('active');
-                nav.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            });
-        });
-    } else {
-        // Si le header n'est pas encore là, on réessaie dans 100ms
+    if (!burger || !panel || !overlay) {
         setTimeout(initMenu, 100);
+        return;
     }
-}
 
-// Lancement de la détection
+    function toggleMenu() {
+        const isOpen = panel.classList.toggle('active');
+        burger.classList.toggle('open');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    }
+
+    burger.onclick = (e) => {
+        e.preventDefault();
+        toggleMenu();
+    };
+
+    overlay.onclick = () => {
+        if (panel.classList.contains('active')) toggleMenu();
+    };
+
+    // Fermeture automatique sur n'importe quel lien cliqué
+    const allLinks = document.querySelectorAll('.mobile-nav-panel a');
+    allLinks.forEach(link => {
+        link.onclick = () => {
+            if (panel.classList.contains('active')) toggleMenu();
+        };
+    });
+}
 initMenu();
