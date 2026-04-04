@@ -217,7 +217,46 @@ html, body {
   /* UI GLOBALE */
   .page-hero { padding: 50px 24px; text-align: center; }
   section { padding: 30px 20px; }
+
+   /* ===== 4. CORRECTIF TIMER (COUNTDOWN) ===== */
+  .countdown-card {
+    padding: 25px 15px !important; /* Moins de vide interne */
+    border-radius: 24px !important;
+  }
+
+  .countdown {
+    gap: 8px !important; /* Rapproche les blocs J, H, M, S */
+    justify-content: center;
+  }
+
+  .countdown div {
+    padding: 12px 5px !important; /* Réduit la taille des carrés */
+    min-width: 60px; /* Force une largeur minimale égale pour l'alignement */
+  }
+
+  .countdown span {
+    font-size: 24px !important; /* Chiffres plus petits pour tenir sur une ligne */
+    line-height: 1;
+  }
+
+  .countdown small {
+    font-size: 9px !important;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .countdown-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .countdown-simple .countdown-card {
+    min-width: 0 !important; /* Annule le min-width de 320px qui peut forcer le débordement */
+    width: 100%;
+  }
 }
 
 /* Masquage scrollbar */
 .ranking-table-wrapper::-webkit-scrollbar { display: none; }
+
+
