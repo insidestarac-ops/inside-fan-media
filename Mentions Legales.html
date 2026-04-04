@@ -34,127 +34,6 @@ body{
   padding:0 24px;
 }
 
-/* ===== HEADER ===== */
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(255,255,255,.85);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid #e4e0ff;
-}
-
-.header-inner{
-  max-width:1300px;
-  margin:auto;
-  padding:0 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:92px;
-}
-
-
-/* ===== BRAND ===== */
-.brand{
-  display:flex;
-  align-items:center;
-  gap:16px;
-}
-
-.brand img{height:64px}
-
-.brand span{
-  font-weight:900;
-  font-size:20px;
-  letter-spacing:.5px;
-  color:var(--violet);
-}
-
-/* ===== NAV ===== */
-.main-nav ul{
-  list-style:none;
-  display:flex;
-  gap:28px;
-  margin:0;
-  padding:0;
-}
-
-.main-nav a{
-  text-decoration:none;
-  color:var(--text);
-  font-weight:600;
-  font-size:14px;
-  transition:color .25s ease;
-}
-
-.main-nav li:hover > a{
-  color:var(--violet);
-}
-
-/* ===== DROPDOWN MENU FIX ===== */
-
-.has-dropdown{
-  position:relative;
-}
-
-/* Sous-menu */
-.has-dropdown{
-  position:relative;
-}
-
-.dropdown{
-  position:absolute;
-  top:100%;
-  left:0;
-  margin-top:12px;
-
-  background:#fff;
-  border-radius:16px;
-  box-shadow:0 20px 40px rgba(124,77,255,.2);
-  overflow:hidden;
-  min-width:220px;
-  z-index:50;
-
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:opacity .25s ease, transform .25s ease, visibility .25s;
-}
-
-.dropdown a{
-  padding:14px 18px;
-  display:block;
-  color:var(--text);
-  font-weight:600;
-  font-size:14px;
-  transition:background .25s ease, color .25s ease;
-}
-
-.dropdown a:hover{
-  background:var(--violet-soft);
-  color:var(--violet);
-}
-
-
-/* Affichage menu (hover + accessibilité) */
-.has-dropdown:hover > .dropdown,
-.has-dropdown:focus-within > .dropdown{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-
-/* Zone tampon invisible (évite la fermeture involontaire) */
-.has-dropdown::before{
-  content:"";
-  position:absolute;
-  top:100%;
-  left:0;
-  width:100%;
-  height:20px;
-}
-
 /* ===== HERO ===== */
 .page-hero{
   background:
@@ -280,47 +159,7 @@ body{
 
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
-    <!-- Logo cliquable -->
-   <a href="index.html" class="brand" style="text-decoration:none; color:inherit;">
-    <img src="logo-inside-fan-media.png" alt="INSIDE FAN MEDIA">
-    <span>INSIDE FAN MEDIA</span>
-   </a>
-
-    <!-- Burger animé -->
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-
-        <li class="has-dropdown">
-          <a href="Inside-star-ac.html">Inside Star Ac</a>
-          <div class="dropdown">
-            <a href="Nommes.html">Nommés</a>
-            <a href="Academie.html">Académie</a>
-          </div>
-        </li>
-
-        <li class="has-dropdown">
-          <a href="Inside-dals.html">Inside DALS</a>
-          <div class="dropdown">
-            <a href="Casting.html">Casting</a>
-            <a href="Classement.html">Classement</a>
-          </div>
-        </li>
-
-        <li><a href="Contact.html">Contact</a></li>
-        <li><a href="A propos.html">À propos</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<div id="header-placeholder"></div>
 
 <main>
   <section class="container section">
@@ -423,8 +262,9 @@ body{
 </main>
 
 <div id="footer-placeholder"></div>
-<script src="footer.js"> </script>  
 
+<script src="header.js"></script>
+<script src="footer.js"></script>
 <script src="menu.js"></script>
 
 </body>
