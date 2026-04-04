@@ -1,172 +1,281 @@
-/* ===================================================
-   MOBILE & TABLETTE — VERSION FINALE OPTIMISÉE 2026
-   Fichier : CSS-Mobile.css
-   =================================================== */
-
-/* --- 1. BASE & ANTI-OVERFLOW --- */
-html, body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* --- 2. RESPONSIVE (Max 1100px pour inclure tablettes) --- */
-@media (max-width: 1100px) {
-
-  /* --- HEADER & NAVIGATION --- */
-  .site-header {
-    top: 0 !important;
-    background: #ffffff !important;
-    height: 70px !important;
-    padding: 0 15px !important;
-    position: fixed !important;
-    border-bottom: 1px solid #eee !important;
-    display: flex !important;
-    align-items: center !important;
-    z-index: 10000 !important;
+@media (max-width: 1200px) {
+  
+  /* --- 1. SYSTÈME GLOBAL & OVERLAY --- */
+  body.menu-open { 
+    overflow: hidden !important; 
+  }
+  
+  body.menu-open main, 
+  body.menu-open footer { 
+    filter: blur(5px); 
+    pointer-events: none; 
+    transition: filter 0.3s ease;
   }
 
-  /* Cache le style pilule sans supprimer le menu */
-  .nav-container {
-    background: none !important;
-    box-shadow: none !important;
-    border: none !important;
-    display: block !important;
-    width: 0 !important;
-    height: 0 !important;
+  main {
+    padding-top: 80px !important;
   }
 
-  .btn-contact { display: none !important; }
+  /* --- 2. HEADER MOBILE --- */
+  .site-header { 
+    position: fixed !important; 
+    top: 0 !important; 
+    left: 0 !important; 
+    right: 0 !important; 
+    height: 70px !important; 
+    background: #fff !important; 
+    z-index: 1000 !important; 
+    display: flex !important; 
+    align-items: center !important; 
+    padding: 0 15px !important; 
+    border-bottom: 1px solid #eee !important; 
+  }
 
-  /* Le Burger Button */
+  .pc-nav-container, .btn-contact { 
+    display: none !important; 
+  }
+
+  .brand img { height: 35px !important; }
+  .brand span { font-size: 14px !important; }
+
+  /* --- 3. LE BURGER --- */
   #burger {
-    display: flex !important;
-    z-index: 10002 !important;
-    background: #f4f0ff !important;
-    padding: 8px !important;
-    border-radius: 10px !important;
-    border: none !important;
+    display: flex !important; 
+    flex-direction: column !important; 
+    justify-content: center !important; 
+    gap: 4px !important;
+    width: 44px !important; 
+    height: 44px !important; 
+    background: #fff !important; 
+    border: 2px solid #000 !important; 
+    border-radius: 12px !important;
+    z-index: 100005 !important; 
+    position: relative !important; 
+    cursor: pointer !important; 
+    align-items: center !important;
+    outline: none !important;
   }
+  #burger span { width: 22px !important; height: 2px !important; background: #000 !important; transition: 0.3s !important; }
+  #burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg) !important; }
+  #burger.open span:nth-child(2) { opacity: 0 !important; }
+  #burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg) !important; }
 
-  /* Le Menu Latéral */
-  .main-nav {
-    display: flex !important;
-    position: fixed !important;
-    top: 0 !important;
+  /* --- 4. PANNEAU NAVIGATION (DRAWER) --- */
+  .mobile-nav-panel {
+    position: fixed !important; 
+    top: 0 !important; 
     right: -100% !important; 
-    width: 85% !important;
-    max-width: 350px;
-    height: 100vh !important;
-    background: #ffffff !important;
-    z-index: 10001 !important; 
-    padding: 80px 25px 40px 25px !important;
-    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: -10px 0 40px rgba(0,0,0,0.15) !important;
-    overflow-y: auto !important;
-    border-radius: 0 !important;
-  }
-
-  .main-nav.active { right: 0 !important; }
-
-  .main-nav ul {
+    width: 88% !important; 
+    height: 100dvh !important;
+    background: #f8f9fc !important; 
+    z-index: 100002 !important; 
+    display: flex !important; 
     flex-direction: column !important;
-    gap: 10px !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+    box-shadow: -10px 0 30px rgba(0,0,0,0.08) !important;
+  }
+  .mobile-nav-panel.active { right: 0 !important; }
+
+  .mob-nav-header { 
+    height: 80px !important; 
+    background: linear-gradient(90deg, #7C4DFF, #9E7AFF) !important; 
+    flex-shrink: 0 !important; 
+    margin-bottom: 20px !important; 
   }
 
-  .main-nav li { width: 100% !important; height: auto !important; }
-
-  .main-nav a {
-    font-size: 19px !important;
-    font-weight: 800 !important;
-    color: #1a1a1a !important;
-    padding: 12px 0 !important;
-    border-bottom: 1px solid #f0f0f0 !important;
-    background: none !important;
-    -webkit-text-fill-color: #1a1a1a !important;
-    height: auto !important;
+  .mob-nav-content { 
+    padding: 0 15px !important; 
+    display: flex !important; 
+    flex-direction: column !important; 
+    gap: 10px !important; 
+    overflow-y: auto !important; 
+    flex-grow: 1 !important; 
   }
 
-  /* Dropdowns Mobile (Toujours visibles) */
-  .dropdown {
-    position: static !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 5px 0 10px 15px !important;
-    border-left: 2px solid var(--h-violet) !important;
+  /* --- 5. BOUTONS & SOUS-SECTIONS --- */
+  .mob-link-main, .mob-acc-trigger {
+    background: #ffffff !important; 
+    color: #1A1A1A !important; 
+    height: 60px !important; 
+    border-radius: 18px !important;
+    padding: 0 20px !important; 
+    font-weight: 800 !important; 
+    font-size: 15px !important; 
+    text-transform: uppercase !important;
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: space-between !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; 
+    text-decoration: none !important; 
+    border: none !important; 
+    width: 100% !important;
+  }
+
+  .mob-acc-content {
     display: flex !important;
     flex-direction: column !important;
-    gap: 5px !important;
+    gap: 8px !important;
+    padding: 5px 10px 10px 15px !important; 
   }
 
-  .dropdown a {
-    font-size: 15px !important;
+  .mob-acc-content a {
+    background: rgba(124, 77, 255, 0.05) !important; 
+    color: #7C4DFF !important; 
+    padding: 14px 18px !important; 
+    border-radius: 12px !important;
+    text-decoration: none !important; 
+    font-weight: 700 !important; 
+    font-size: 14px !important;
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important;
+    border: 1px solid rgba(124, 77, 255, 0.1) !important;
+  }
+
+  /* --- 6. FOOTER DU MENU --- */
+  .mob-nav-footer { 
+    padding: 25px 15px !important; 
+    background: #ffffff !important; 
+    border-top: 1px solid #eee !important; 
+    margin-top: auto !important; 
+  }
+  .btn-mob-contact {
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important;
+    background: #1A1A1A !important; 
+    color: #ffffff !important; 
+    height: 60px !important; 
+    border-radius: 30px !important;
+    text-decoration: none !important; 
+    font-weight: 900 !important; 
+    text-transform: uppercase !important; 
+  }
+
+  /* --- 7. OVERLAY --- */
+  #mob-overlay {
+    position: fixed !important; 
+    inset: 0 !important; 
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(5px) !important; 
+    z-index: 100000 !important; 
+    opacity: 0 !important; 
+    pointer-events: none !important; 
+    transition: 0.3s !important;
+  }
+  #mob-overlay.active { opacity: 1 !important; pointer-events: all !important; }
+
+  /* ===================================================
+     CORRECTION COMPTEUR (BASÉE SUR TON HTML RÉEL)
+     =================================================== */
+
+  /* Le bloc violet (.countdown-card dans ton HTML) */
+  .countdown-card {
+    background: linear-gradient(135deg, #7C4DFF, #5E35FF) !important;
+    border-radius: 35px !important;
+    padding: 30px 15px !important;
+    margin: 0 auto !important;
+    width: 92% !important; /* Pour que ça respire sur les bords du téléphone */
+    box-shadow: 0 15px 40px rgba(124, 77, 255, 0.3) !important;
+  }
+
+  /* Le titre du prime */
+  .countdown-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Le conteneur des 4 chiffres (.countdown dans ton HTML) */
+  .countdown {
+    display: flex !important;
+    gap: 8px !important; /* Espacement réduit pour mobile */
+    justify-content: center !important;
+  }
+
+  /* Les boîtes individuelles (.countdown div dans ton HTML) */
+  .countdown div {
+    flex: 1 !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 18px !important;
+    padding: 12px 5px !important; /* Hauteur réduite */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+    min-width: 0 !important; /* Évite que les boîtes explosent */
+  }
+
+  /* Le chiffre (span dans ton HTML) */
+  .countdown span {
+    font-size: 26px !important; /* Taille adaptée pour tenir sur une ligne */
+    font-weight: 900 !important;
+    line-height: 1 !important;
+  }
+
+  /* La lettre J, H, M, S (small dans ton HTML) */
+  .countdown small {
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    margin-top: 4px !important;
+    display: block !important;
+    opacity: 0.8 !important;
+  }
+
+  /* Infos de diffusion */
+  .countdown-meta {
+    margin-top: 20px !important;
+    font-size: 12px !important;
+  }
+
+  /* ===================================================
+     FINITIONS TYPO & CARTES (PIXEL PERFECT)
+     =================================================== */
+
+  /* Harmonisation des textes de cartes (News, etc.) */
+  .media-card-content h3 {
+    font-size: 16px !important;
+    line-height: 1.3 !important; /* Pour éviter que les lignes se touchent */
+    margin: 0 0 8px 0 !important;
+    font-weight: 800 !important;
+  }
+
+  .media-card-content span {
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
     font-weight: 600 !important;
-    color: #666 !important;
-    border: none !important;
-    padding: 6px 0 !important;
+    opacity: 0.8 !important;
   }
 
-  /* --- 3. ADAPTATION DES CARTES (GRID) --- */
-  /* Si tu as des grilles de cartes (Star Ac / DALS) */
-  .cards-grid, .grid-container {
-    grid-template-columns: 1fr !important; /* Une seule colonne sur mobile */
-    gap: 20px !important;
+  /* Ajustement des paragraphes pour la lecture */
+  p {
+    line-height: 1.6 !important; /* Donne de l'air au texte */
+    font-size: 14px !important;
+  }
+
+  /* Cartes Star Ac / DALS (Le texte sous le logo) */
+  .brand-card span {
+    font-size: 15px !important;
+    margin-top: 10px !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  /* Padding interne des cartes pour qu'elles ne soient pas trop massives */
+  .media-card-content {
     padding: 15px !important;
   }
 
-  .card {
-    width: 100% !important;
-    max-width: none !important;
+  /* Boutons de live (TF1 / Discord) */
+  .live-btn {
+    width: 100% !important; /* Un bouton par ligne sur mobile c'est plus propre */
+    padding: 12px !important;
+    font-size: 13px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
   }
 
-  /* --- 4. ADAPTATION DU TIMER --- */
-  .countdown-container, #timer {
-    transform: scale(0.85); /* On réduit la taille globale */
-    width: 100% !important;
+  .live-actions {
     gap: 10px !important;
-    margin: 20px auto !important;
+    padding: 0 10px !important;
   }
 
-  .timer-unit {
-    min-width: 60px !important; /* Moins large que sur PC */
-    padding: 10px !important;
-  }
-
-  .timer-unit span {
-    font-size: 24px !important; /* Chiffres plus petits */
-  }
-
-  .timer-label {
-    font-size: 10px !important;
-  }
-
-  /* --- 5. ADAPTATION DES TABLEAUX (CLASSEMENT) --- */
-  .ranking-table-wrapper {
-    overflow-x: auto !important; /* Permet de swiper le tableau */
-    margin: 0 -15px !important; /* Sort un peu des bords pour le look */
-    padding: 0 15px !important;
-  }
-
-  table {
-    min-width: 500px !important; /* Force le scroll horizontal si trop serré */
-  }
-
-  /* --- 6. FLOU DU FOND --- */
-  body.menu-open main, 
-  body.menu-open footer {
-    filter: blur(8px);
-    pointer-events: none;
-    user-select: none;
-  }
 }
-
-/* Scrollbar invisible pour les tableaux */
-.ranking-table-wrapper::-webkit-scrollbar { display: none; }
