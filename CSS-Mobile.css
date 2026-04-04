@@ -17,112 +17,100 @@ html, body {
 
 @media (max-width: 992px) {
 
-  /* 1. EFFET DE FLOU QUAND LE MENU EST OUVERT */
-  body.menu-open main, 
-  body.menu-open footer,
-  body.menu-open .page-hero {
-    filter: blur(12px);
-    pointer-events: none;
-    transition: filter 0.4s ease;
+  /* 1. FORCE LE HEADER À RESTER EN HAUT ET BLANC */
+  .site-header {
+    top: 0 !important;
+    background: #ffffff !important;
+    height: 80px !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    position: fixed !important; /* Pour être sûr qu'il ne disparaisse pas */
+    border-bottom: 1px solid #eee !important;
   }
 
-  /* 2. BURGER STYLE INSIDE (PLUS PROPRE) */
+  /* 2. CACHE LA BARRE BLANCHE PC MAIS PAS LE CONTENU */
+  .nav-container, .btn-contact {
+    display: none !important;
+  }
+
+  /* 3. LE BURGER (VISIBLE & SURÉLEVÉ) */
   .burger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    background: #f4f0ff; 
-    border: none;
-    border-radius: 14px; /* Carré arrondi style iOS */
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    cursor: pointer;
-    z-index: 2100;
+    display: flex !important;
+    z-index: 10001 !important; /* Au-dessus du menu */
+    background: #f4f0ff !important;
   }
 
-  .burger span {
-    width: 24px;
-    height: 3px;
-    background: #1a1a1a; 
-    border-radius: 4px;
-    transition: 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  }
-
-  /* 3. LE PANNEAU DE NAVIGATION MOBILE (DÉGRADÉ ICI) */
+  /* 4. LE MENU MOBILE (LA CLÉ EST ICI) */
   .main-nav {
     display: flex !important;
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 85%; 
-    height: 100vh;
-    /* DÉGRADÉ SIGNATURE DANS LE FOND DU MENU */
-    background: linear-gradient(135deg, #ffffff 60%, #f4f0ff 100%);
-    backdrop-filter: blur(25px); 
-    -webkit-backdrop-filter: blur(25px);
-    padding: 100px 40px 40px;
-    box-shadow: -20px 0 60px rgba(124, 77, 255, 0.15);
-    z-index: 3000;
-    transition: right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    flex-direction: column;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important; /* Caché par défaut */
+    width: 80% !important;
+    height: 100vh !important;
+    background: #ffffff !important;
+    z-index: 10000 !important; /* Devant le flou */
+    padding: 100px 30px !important;
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: -15px 0 50px rgba(0,0,0,0.1) !important;
+    overflow-y: auto !important;
   }
 
-  .main-nav.active { right: 0; }
+  /* QUAND ON CLIQUE : ON FAIT ENTRER LE MENU */
+  .main-nav.active {
+    right: 0 !important;
+  }
 
-  /* 4. LES LIENS AVEC DÉGRADÉ AU SURVOL */
+  /* 5. ADAPTATION DES LIENS POUR MOBILE */
+  .main-nav ul {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .main-nav li { width: 100% !important; }
+
   .main-nav a {
-    display: block;
-    font-size: 24px; /* Plus grand pour 2026 */
-    font-weight: 900;
-    color: #1a1a1a;
-    padding: 18px 0;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    border-bottom: 1px solid rgba(124, 77, 255, 0.1);
-    transition: 0.3s;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    color: #1a1a1a !important;
+    padding: 15px 0 !important;
+    height: auto !important;
+    border-bottom: 1px solid #f5f5f5 !important;
+    display: block !important;
   }
 
-  /* DÉGRADÉ SUR LE TEXTE MOBILE AU CLIC/SURVOL */
-  .main-nav a:active, .main-nav a:hover {
-    background: linear-gradient(90deg, #1a1a1a 0%, #7C4DFF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* 5. SOUS-MENUS (DROPDOWNS) MOBILE */
+  /* 6. LES SOUS-MENUS (DROPDOWNS) VISIBLES EN MOBILE */
   .dropdown {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 10px;
-    padding: 10px 0 20px 20px;
-    background: transparent;
-    border-left: 3px solid #7C4DFF; /* Trait violet pour marquer la section */
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding-left: 20px !important;
+    border-left: 3px solid #7C4DFF !important;
+    margin-top: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
   }
 
   .dropdown a {
-    font-size: 16px;
-    font-weight: 700;
-    color: #6E6E90;
-    border: none;
-    padding: 8px 0;
-    text-transform: none;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #666 !important;
+    border: none !important;
+    padding: 5px 0 !important;
+    text-transform: none !important;
   }
 
-  /* Animation d'entrée des items */
-  .main-nav ul li { opacity: 0; transform: translateX(30px); transition: 0.4s ease; }
-  .main-nav.active ul li { opacity: 1; transform: translateX(0); }
-  .main-nav.active ul li:nth-child(1) { transition-delay: 0.1s; }
-  .main-nav.active ul li:nth-child(2) { transition-delay: 0.2s; }
-  .main-nav.active ul li:nth-child(3) { transition-delay: 0.3s; }
-  .main-nav.active ul li:nth-child(4) { transition-delay: 0.4s; }
-
-  /* UI GLOBALE MOBILE */
-  .page-hero { padding: 60px 24px; text-align: center; }
-  .page-hero h1 { font-size: 36px; letter-spacing: -1px; }
+  /* 7. EFFET DE FLOU (DÉJÀ PRÉSENT DANS TON CODE) */
+  body.menu-open main {
+    filter: blur(12px);
+    pointer-events: none;
+  }
 }
 
 /* Masquage scrollbar */
