@@ -337,36 +337,6 @@ body{
 .media-card-content{padding:22px}
 .media-card span{font-size:13px;color:var(--muted)}
 
-/* ===== FOOTER (IDENTIQUE ACCUEIL) ===== */
-.site-footer{
-  background:#fff;
-  border-top:1px solid #e4e0ff;
-}
-.footer-grid{
-  max-width:1300px;
-  margin:0 auto;
-  padding:70px 24px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:5px;
-}
-.site-footer h4{
-  color:var(--violet);
-  margin-bottom:14px;
-}
-.site-footer a{
-  display:block;
-  text-decoration:none;
-  color:var(--muted);
-  margin-bottom:8px;
-}
-.footer-bottom{
-  text-align:center;
-  padding:18px;
-  font-size:13px;
-  color:#888;
-  border-top:1px solid #eee;
-}
 
 /* ===== LIVE STATE ===== */
 .live-badge{
@@ -605,52 +575,6 @@ body{
 
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <h4>INSIDE FAN MEDIA</h4>
-      <a href="A propos.html">À propos</a>
-      <a href="Contact.html">Contact</a>
-    </div>
-
-    <div>
-      <h4>Émissions</h4>
-      <a href="Inside-star-ac.html">Star Academy</a>
-      <a href="Inside-dals.html">Danse avec les stars</a>
-    </div>
-
-    <div>
-      <h4>Légal</h4>
-      <a href="Mentions Legales.html">Mentions légales</a>
-      <a href="Conditions générales.html">Conditions générales</a>
-      <a href="Politique de Confidentialité.html">Politique de confidentialité</a>
-    </div>
-
-    <div>
-      <h4>Inside Fan Media</h4>
-      <a href="https://linktr.ee/insidefanmedia" target="_blank">Linktree</a>
-    </div>
-
-    <div>
-      <h4>Inside Star Academy</h4>
-      <a href="https://x.com/insidestarac" target="_blank">X (Twitter)</a>
-      <a href="https://www.tiktok.com/@insidestarac" target="_blank">TikTok</a>
-      <a href="https://discord.gg/Wa3NzCWzrg" target="_blank">Discord</a>
-    </div>
-
-    <div>
-      <h4>Inside DALS</h4>
-      <a href="https://x.com/insidedals" target="_blank">X (Twitter)</a>
-      <a href="https://www.tiktok.com/@insidedals" target="_blank">TikTok</a>
-      <a href="https://discord.gg/GmfSw6jJkZ" target="_blank">Discord</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 INSIDE FAN MEDIA — Site fan non officiel
-  </div>
-</footer>
-
 <script>
 // LISTE DES PRIMES (TU MODIFIES ICI SEULEMENT)
 const primes = [
@@ -778,6 +702,9 @@ updateDALS();
 setInterval(updateDALS, 1000);
 </script>
 
+<div id="footer-placeholder"></div>
+<script src="footer.js">
+  
 <script src="menu.js"></script>
 
 </body>
