@@ -316,6 +316,21 @@
   .top2 .podium-step { height: 140px !important; }
   .top3 .podium-step { height: 110px !important; }
 
-
+  /* Ajustement du bouton finale sur mobile */
+  .finale-action {
+      margin: 20px 0 10px !important;
+  }
+  
+  .btn-finale {
+      width: 100% !important; /* Prend toute la largeur de la carte */
+      justify-content: center !important; /* Centre le texte et l'icône */
+      padding: 12px 20px !important;
+      font-size: 14px !important; /* Un peu plus petit pour mobile */
+  }
+  
+  .btn-finale svg {
+      width: 18px !important;
+      height: 18px !important;
+  }
   
 }
