@@ -271,6 +271,69 @@ body{
   min-width:320px;
   max-width:540px;
 }
+
+/* ===== STYLE DU BOUTON FINALE ===== */
+.finale-action {
+  margin: 25px 0 15px; /* Espace autour du bouton */
+  position: relative;
+  z-index: 5;
+}
+
+.btn-finale {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #f1c40f; /* Jaune Or */
+  color: #1c0299;      /* Texte bleu foncé pour le contraste */
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 25px rgba(241, 196, 15, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-finale svg {
+  transition: transform 0.3s ease;
+}
+
+/* Effets au survol */
+.btn-finale:hover {
+  transform: scale(1.05);
+  background: #ffffff; /* Devient blanc pur au survol */
+  box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+  color: #7C4DFF;      /* Texte passe au violet */
+}
+
+.btn-finale:hover svg {
+  transform: translateX(5px); /* La flèche bouge vers la droite */
+}
+
+/* Petit effet de brillance qui passe sur le bouton */
+.btn-finale {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-finale::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(30deg);
+  transition: none;
+}
+
+.btn-finale:hover::after {
+  left: 120%;
+  transition: all 0.6s ease;
+}
 </style>
 
 <link rel="stylesheet" href="CSS-Mobile.css">
@@ -325,9 +388,17 @@ body{
           <div><span id="s-dals">--</span><small>S</small></div>
         </div>
 
+        <div class="finale-action">
+          <a href="Classement.html" class="btn-finale">
+            Découvrir les finalistes
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>       
+
         <p class="countdown-meta">
           Dénouement Final · <strong>Vendredi</strong> · 21h10 · TF1
         </p>
+
       </div>
 
       <div id="live-wrapper-dals" style="display:none;">
