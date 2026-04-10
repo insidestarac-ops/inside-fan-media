@@ -32,7 +32,7 @@ body{
   padding:0 24px;
 }
 
-/* ===== HERO PAGE ===== */
+/* ===== HERO PAGE (INTACT) ===== */
 .page-hero{
   background:
     radial-gradient(circle at top left,#b39dff,transparent 55%),
@@ -50,154 +50,119 @@ body{
   opacity:.95;
 }
 
-/* ===== SECTIONS ===== */
+/* ===== SECTION PODIUM ===== */
 .section{padding:90px 0}
 .section-title{
-  font-size:30px;
-  margin-bottom:36px;
+  font-size:32px;
+  margin-bottom:60px;
+  text-align: center;
+  font-weight: 900;
+  color: var(--violet);
 }
 
-/* ===== CLASSEMENT PREMIUM ===== */
-.ranking-table-wrapper{
-  background:#fff;
-  border-radius:32px;
-  padding:40px;
-  box-shadow:
-    0 40px 90px rgba(124,77,255,.25),
-    inset 0 1px 0 rgba(255,255,255,.6);
-  overflow-x:auto;
+.podium-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 24px;
+  margin: 40px auto;
+  max-width: 1000px;
 }
 
-.ranking-table{
-  width:100%;
-  border-collapse:separate;
-  border-spacing:0;
+.podium-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ranking-table thead th{
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:1.2px;
-  color:var(--muted);
-  font-weight:900;
-  padding-bottom:24px;
-  border-bottom:2px solid var(--violet-soft);
+.podium-item.top2 { order: 1; }
+.podium-item.top1 { order: 2; }
+.podium-item.top3 { order: 3; }
+
+.podium-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 30px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border: 4px solid #fff;
+  transition: transform 0.3s ease;
 }
 
-.ranking-table thead th:nth-child(2) { text-align: center; }
-.ranking-table thead th:nth-child(n+3) { text-align: center; }
-
-.ranking-table tbody tr{
-  position:relative;
-  transition: background .35s ease, transform .35s ease;
+.podium-item:hover .podium-img {
+  transform: scale(1.05);
 }
 
-.ranking-table tbody tr:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:1px;
-  background:#eee;
+.podium-step {
+  width: 100%;
+  background: var(--card);
+  border-radius: 32px 32px 20px 20px;
+  padding: 30px 15px;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(124, 77, 255, 0.12);
+  border: 1px solid var(--violet-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ranking-table tbody tr:hover{
-  background:linear-gradient(90deg, rgba(124,77,255,.06), transparent 70%);
-  transform:translateY(-2px);
+.top1 .podium-step { height: 320px; border-top: 6px solid #f1c40f; }
+.top2 .podium-step { height: 240px; border-top: 6px solid #bdc3c7; }
+.top3 .podium-step { height: 180px; border-top: 6px solid #cd7f32; }
+
+.podium-name {
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 15px;
+  line-height: 1.2;
 }
 
-.ranking-table td{
-  padding:22px 0;
-  vertical-align:middle;
+.podium-number {
+  font-size: 48px;
+  font-weight: 900;
+  opacity: 0.2;
+  margin-top: auto;
 }
 
-.rank{
-  font-size:24px;
-  font-weight:900;
-  color:var(--violet);
+.top1 .podium-number { color: #f1c40f; opacity: 0.5; }
+
+.finalist-tag {
+  background: var(--violet-soft);
+  color: var(--violet);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-
-.ranking-table tbody tr:first-child .rank{color:#f1c40f}
-.ranking-table tbody tr:nth-child(2) .rank{color:#bdc3c7}
-.ranking-table tbody tr:nth-child(3) .rank{color:#cd7f32}
-
-.couple{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  font-weight:800;
-}
-
-.couple img{
-  width:66px;
-  height:66px;
-  border-radius:20px;
-  object-fit:cover;
-  box-shadow:0 12px 26px rgba(0,0,0,.18);
-}
-
-.ranking-table td.votes{text-align:center;}
-
-.ranking-table td.total span{
-  display:inline-block;
-  min-width:85px;
-  padding:12px 20px;
-  border-radius:20px;
-  background:linear-gradient(180deg,#ffffff,#f6f4ff);
-  border:2px solid var(--violet);
-  color:var(--violet);
-  font-size:16px;
-  font-weight:900;
-  box-shadow:0 14px 30px rgba(124,77,255,.35);
-}
-
-.ranking-table tbody tr:first-child td.total span{
-  background:linear-gradient(135deg,#7C4DFF,#5E35FF);
-  color:#fff;
-  border:none;
-}
-
-.trend{
-  font-size:22px;
-  font-weight:900;
-  text-align:center;
-}
-
-.trend.up{color:#2ecc71}
-.trend.down{color:#e74c3c}
-.trend.stable{color:#aaa}
 
 .ranking-note{
-  margin-top:24px;
+  margin-top:60px;
+  text-align: center;
 }
 
 .ranking-note p{
-  margin:12px 0;
-  font-size:13px;
+  margin:10px 0;
+  font-size:14px;
   color:var(--muted);
-}
-
-tr.eliminated {
-  opacity: 0.45;
-  filter: grayscale(1);
+  line-height: 1.6;
 }
 
 @media screen and (max-width: 768px) {
-    .ranking-table-wrapper { padding: 10px 6px !important; }
-    .ranking-table { table-layout: fixed !important; width: 100% !important; }
-    .ranking-table th:nth-child(1), .ranking-table td:nth-child(1) { width: 10% !important; }
-    .ranking-table th:nth-child(2), .ranking-table td:nth-child(2) { width: 50% !important; }
-    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { width: 22% !important; }
-    .ranking-table th:nth-child(4), .ranking-table td:nth-child(4) { width: 18% !important; }
-    .couple { flex-direction: column !important; align-items: center !important; gap: 5px !important; }
-    .couple img { width: 46px !important; height: 46px !important; }
-    .couple span { font-size: 9px !important; text-align: center !important; }
+    .podium-container { gap: 10px; padding: 0 10px; }
+    .podium-img { width: 80px; height: 80px; border-radius: 20px; }
+    .podium-name { font-size: 11px; }
+    .podium-step { padding: 15px 5px; }
+    .top1 .podium-step { height: 220px; }
+    .top2 .podium-step { height: 170px; }
+    .top3 .podium-step { height: 130px; }
+    .podium-number { font-size: 24px; }
 }
 </style>
-
-<link rel="stylesheet" href="CSS-Mobile.css">
-
 </head>
 
 <body>
@@ -214,66 +179,40 @@ tr.eliminated {
 
 <section class="section">
   <div class="container">
-    <h2 class="section-title">Classement officiel - Danse avec les stars (Prime 9)</h2>
-<!--    
-    <div style="margin-top: 30px; margin-bottom: 40px; padding: 25px; background: #fff; border-radius: 24px; border: 2px dashed var(--violet); display: flex; align-items: center; gap: 20px;">
-        <img src="SF/Christophe & Lucie.png" alt="" style="width:60px; height:60px; border-radius:15px; filter: grayscale(0.6);">
-        <div>
-            <h4 style="margin: 0; color: var(--violet); font-weight: 800;">Hors Classement (exclu)</h4>
-            <p style="margin: 5px 0 0; font-size: 14px; color: var(--muted);"><strong>Lucie Bernardoni & Christophe</strong> n'ont pas pu performer lors de ce prime pour cause inexactes. Nous ne savons pas 
-            si elle reviendra lors de cette saison.</p>
-        </div>
-    </div>
--->    
-    <div class="ranking-table-wrapper">
-      <table class="ranking-table">
-        <thead>
-          <tr>
-            <th>N°</th>
-            <th>Couple</th>
-            <th style="text-align: center;">Total</th>
-            <th style="text-align: center;">Évolution</th>
-          </tr>
-        </thead>
-        <tbody>
+    <h2 class="section-title">Les Finalistes de la Grande Finale</h2>
 
-          <tr>
-            <td class="rank">1</td>
-            <td class="couple">
-              <img src="SF/Jordan & Juju.png" alt="">
-              <span>Juju Fitcats & Jordan</span>
-            </td>
-            <td class="votes total"><span>38</span></td>
-            <td class="trend up" style="text-align:center;">▲</td>
-          </tr>
-          
-          <tr>
-            <td class="rank">2</td>
-            <td class="couple">
-              <img src="SF/Samuel & Ana.png" alt="">
-              <span>Samuel Bambi & Ana</span>
-            </td>
-            <td class="votes total"><span>35</span></td>
-            <td class="trend down" style="text-align:center;">▼</td>
-          </tr>
-             
-          <tr>
-            <td class="rank">3</td>
-            <td class="couple">
-              <img src="SF/Emma & Dorian.png" alt="">
-              <span>Emma & Dorian</span>
-            </td>
-            <td class="votes total"><span>34</span></td>
-            <td class="trend up" style="text-align:center;">▲</td>
-          </tr>
-         
-        </tbody>
-      </table>
+    <div class="podium-container">
+      <div class="podium-item top2">
+        <img src="SF/Samuel & Ana.png" alt="Samuel & Ana" class="podium-img">
+        <div class="podium-step">
+          <span class="finalist-tag">Finaliste</span>
+          <span class="podium-name">Samuel Bambi & Ana</span>
+          <span class="podium-number">2</span>
+        </div>
+      </div>
+
+      <div class="podium-item top1">
+        <img src="SF/Jordan & Juju.png" alt="Juju Fitcats & Jordan" class="podium-img">
+        <div class="podium-step">
+          <span class="finalist-tag" style="background:#f1c40f; color:#fff;">Favori</span>
+          <span class="podium-name">Juju Fitcats & Jordan</span>
+          <span class="podium-number">1</span>
+        </div>
+      </div>
+
+      <div class="podium-item top3">
+        <img src="SF/Emma & Dorian.png" alt="Emma & Dorian" class="podium-img">
+        <div class="podium-step">
+          <span class="finalist-tag">Finaliste</span>
+          <span class="podium-name">Emma & Dorian</span>
+          <span class="podium-number">3</span>
+        </div>
+      </div>
     </div>
     
     <div class="ranking-note">
-      <p>Notes des juges sur 40 – classement officiel tel qu’annoncé dans l’émission.</p>
-      <p>Relais informatif par Inside Fan Media – site fan.</p>
+      <p>Ce podium a été constitué en fonction du classement officiel lors du <strong>Prime 10 (Demi-finale)</strong>.<br>
+      Ces trois couples sont qualifiés pour le prime final de Vendredi 17 Avril 2026.</p>
       <p>Source : Danse avec les stars - ©TF1</p>
     </div>
   </div>
