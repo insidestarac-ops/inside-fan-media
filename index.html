@@ -77,6 +77,35 @@ body{
   overflow:hidden;
 }
 
+/* STYLE SPÉCIAL GRANDE FINALE */
+.countdown-card.finale-mode {
+  background: linear-gradient(135deg, #1C0299, #7C4DFF, #f1c40f);
+  background-size: 200% 200%;
+  animation: gold-shimmer 5s ease infinite;
+  border: 4px solid #f1c40f;
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.countdown-card.finale-mode::before {
+  content: "GRANDE FINALE";
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  background: #f1c40f;
+  color: #000;
+  font-weight: 900;
+  font-size: 10px;
+  padding: 5px 40px;
+  transform: rotate(45deg);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
 .countdown-card::after{
   content:"";
   position:absolute;
@@ -88,38 +117,55 @@ body{
 .countdown-card img{
   height:82px;
   margin-bottom:18px;
+  position: relative;
+  z-index: 1;
 }
 
 .countdown-card h3{
   margin:0 0 28px;
   font-size:22px;
   justify-content:center;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .countdown{
   display:flex;
   gap:16px;
+  position: relative;
+  z-index: 1;
 }
 
 .countdown div{
   flex:1;
-  background:rgba(255,255,255,.18);
+  background:rgba(255,255,255,0.18);
   border-radius:20px;
   padding:22px 10px;
   backdrop-filter:blur(6px);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);
-  transition:.3s;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.25);
+  transition:0.3s;
+}
+
+.finale-mode .countdown div {
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 0 1px #f1c40f;
 }
 
 .countdown div:hover{
   transform:translateY(-4px);
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,0.25);
 }
 
 .countdown span{
   display:block;
   font-size:38px;
   font-weight:900;
+}
+
+.finale-mode .countdown span {
+  color: #f1c40f;
 }
 
 .countdown small{
@@ -131,92 +177,44 @@ body{
 .countdown-meta{
   margin-top:26px;
   font-size:14px;
-  letter-spacing:.4px;
-  opacity:.9;
+  letter-spacing:0.4px;
+  opacity:0.9;
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== MARQUES ===== */
 .brands{padding:80px 0}
-
 .brands-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
-
 .brand-card{
   background:#fff;
   border-radius:26px;
   padding:40px;
   text-decoration:none;
-  box-shadow:0 20px 40px rgba(124,77,255,.18);
-  transition:.35s;
+  box-shadow:0 20px 40px rgba(124,77,255,0.18);
+  transition:0.35s;
   display:flex;
   align-items:center;
   justify-content:center;
 }
-
 .brand-card:hover{
   transform:translateY(-8px);
-  box-shadow:0 30px 70px rgba(124,77,255,.3);
+  box-shadow:0 30px 70px rgba(124,77,255,0.3);
 }
-
 .brand-card-inner{
   display:flex;
   flex-direction:column;
   align-items:center;
   text-align:center;
 }
-
-.brand-card img{
-  height:96px;
-  margin-bottom:18px;
-}
-
-.brand-card span{
-  font-weight:900;
-  font-size:18px;
-  color:var(--violet);
-}
-
+.brand-card img{ height:96px; margin-bottom:18px; }
+.brand-card span{ font-weight:900; font-size:18px; color:var(--violet); }
 .brand-card.starac{border-top:6px solid #EF7F00}
 .brand-card.dals{border-top:6px solid #1C0299}
-
-/* ===== ACTUS ===== */
-.section{padding:80px 0}
-
-.section-title{
-  font-size:28px;
-  margin-bottom:40px;
-}
-
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:32px;
-}
-
-.media-card{
-  background:#fff;
-  border-radius:26px;
-  overflow:hidden;
-  box-shadow:0 20px 50px rgba(124,77,255,.18);
-  transition:.35s;
-}
-
-.media-card:hover{
-  transform:translateY(-10px);
-}
-
-.media-card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
-
-.media-card-content{padding:22px}
-.media-card span{font-size:13px;color:var(--muted)}
-
 
 /* ===== LIVE STATE ===== */
 .live-badge{
@@ -231,7 +229,7 @@ body{
 }
 
 @keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(255,45,45,.6)}
+  0%{box-shadow:0 0 0 0 rgba(255,45,45,0.6)}
   70%{box-shadow:0 0 0 14px rgba(255,45,45,0)}
   100%{box-shadow:0 0 0 0 rgba(255,45,45,0)}
 }
@@ -250,7 +248,7 @@ body{
   font-weight:800;
   text-decoration:none;
   color:#fff;
-  transition:.3s;
+  transition:0.3s;
 }
 
 .live-btn.tf1{background:#000}
@@ -258,10 +256,9 @@ body{
 
 .live-btn:hover{
   transform:translateY(-3px);
-  opacity:.9;
+  opacity:0.9;
 }
 
-/* TEMPORAIRE – 2 COMPTEURS CÔTE À CÔTE */
 .countdown-simple{
   display:flex;
   gap:40px;
@@ -274,13 +271,6 @@ body{
   min-width:320px;
   max-width:540px;
 }
-
-.card-link{
-  text-decoration:none;
-  color:inherit;
-  display:block;
-}
-
 </style>
 
 <link rel="stylesheet" href="CSS-Mobile.css">
@@ -321,47 +311,12 @@ body{
 
 <section class="countdown-section">
   <div class="container countdown-simple">
-<!--
-    <!-- ===== STAR ACADEMY ===== 
-    <div class="countdown-card">
-      <img src="logo-star-ac.png">
-
-      <div id="countdown-wrapper">
-        <h3 id="prime-title">Prochain prime</h3>
-
-        <div class="countdown">
-          <div><span id="d">--</span><small>J</small></div>
-          <div><span id="h">--</span><small>H</small></div>
-          <div><span id="m">--</span><small>M</small></div>
-          <div><span id="s">--</span><small>S</small></div>
-        </div>
-
-        <p class="countdown-meta">
-          Diffusion · <strong>Samedi</strong> · 21h10 · TF1
-        </p>
-      </div>
-
-      <div id="live-wrapper" style="display:none;">
-        <span class="live-badge">EN DIRECT</span>
-        <h3 id="live-title">Prime en cours</h3>
-
-        <div class="live-actions">
-          <a href="https://www.tf1.fr/tf1/direct" target="_blank" class="live-btn tf1">
-            Regarder sur TF1+ le direct
-          </a>
-          <a href="https://discord.gg/Wa3NzCWzrg" target="_blank" class="live-btn discord">
-            Rejoindre le Discord
-          </a>
-        </div>
-      </div>
-    </div>
--->
-    <!-- ===== DALS ===== -->
-    <div class="countdown-card">
+    
+    <div class="countdown-card finale-mode">
       <img src="logo-dals.png">
 
       <div id="countdown-wrapper-dals">
-        <h3 id="prime-title-dals">Prochain prime</h3>
+        <h3 id="prime-title-dals">Grande Finale</h3>
 
         <div class="countdown">
           <div><span id="d-dals">--</span><small>J</small></div>
@@ -371,7 +326,7 @@ body{
         </div>
 
         <p class="countdown-meta">
-          Diffusion · <strong>Vendredi</strong> · 21h10 · TF1
+          Dénouement Final · <strong>Vendredi</strong> · 21h10 · TF1
         </p>
       </div>
 
@@ -381,7 +336,7 @@ body{
 
         <div class="live-actions">
           <a href="https://www.tf1.fr/tf1/direct" target="_blank" class="live-btn tf1">
-            Regarder sur TF1+ le direct
+            Regarder la finale sur TF1+
           </a>
           <a href="https://discord.gg/GmfSw6jJkZ" target="_blank" class="live-btn discord">
             Rejoindre le Discord
@@ -393,123 +348,24 @@ body{
   </div>
 </section>
 
-<!--
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">À la une</h2>
-
-  <div class="cards-grid">
-    <a href="Nommes.html" class="card-link">
-      <article class="media-card">
-        <img src="https://i.postimg.cc/RV2R4M9R/Sarah.jpg">
-        <div class="media-card-content">
-          <h3>Qui doit rester cette semaine ?</h3>
-          <span>Nommés • Star Academy</span>
-        </div>
-      </article>
-    </a>
-  </div>
-  </div>
-</section>
--->
-
 </main>
 
 <script>
-// LISTE DES PRIMES (TU MODIFIES ICI SEULEMENT)
-const primes = [
-  { date: '2026-01-10', title: 'Prime 13 – Les Défis des Profs' },
-  { date: '2026-01-17', title: 'Prime 14' },
-  { date: '2026-01-24', title: 'Prime 15 – Demi-Finale' },
-  { date: '2026-01-31', title: 'Prime 16 – Demi-Finale' },
-  { date: '2026-02-07', title: 'Prime 17 – Finale' },
-];
-
-const PRIME_DURATION_MIN = 150; // 2h30
-
-function getCurrentOrNextPrime() {
-  const now = new Date();
-
-  for (let prime of primes) {
-    const primeStart = new Date(prime.date + 'T21:10:00');
-    const primeEnd = new Date(primeStart.getTime() + PRIME_DURATION_MIN * 60000);
-
-    if (now >= primeStart && now <= primeEnd) {
-      return { state: 'live', prime, date: primeStart };
-    }
-
-    if (now < primeStart) {
-      return { state: 'countdown', prime, date: primeStart };
-    }
-  }
-
-  return null;
-}
-
-function updateDisplay() {
-  const data = getCurrentOrNextPrime();
-  if (!data) return;
-
-  if (data.state === 'live') {
-    document.getElementById('countdown-wrapper').style.display = 'none';
-    document.getElementById('live-wrapper').style.display = 'block';
-    document.getElementById('live-title').textContent = data.prime.title;
-    return;
-  }
-
-  // COUNTDOWN
-  document.getElementById('countdown-wrapper').style.display = 'block';
-  document.getElementById('live-wrapper').style.display = 'none';
-  document.getElementById('prime-title').textContent = data.prime.title;
-
-  const diff = data.date - new Date();
-  const totalSeconds = Math.floor(diff / 1000);
-
-  document.getElementById('d').textContent = Math.floor(totalSeconds / 86400);
-  document.getElementById('h').textContent = String(Math.floor(totalSeconds % 86400 / 3600)).padStart(2,'0');
-  document.getElementById('m').textContent = String(Math.floor(totalSeconds % 3600 / 60)).padStart(2,'0');
-  document.getElementById('s').textContent = String(Math.floor(totalSeconds % 60)).padStart(2,'0');
-}
-
-// LANCEMENT
-updateDisplay();
-setInterval(updateDisplay, 1000);
-</script>
-
-<script>
-// ===== COMPTEUR DALS =====
-
 // LISTE DES PRIMES DALS
 const primesDALS = [
-  { date: '2026-01-23', title: 'Prime 1 – Lancement' },
-  { date: '2026-01-30', title: 'Prime 2' },
-  { date: '2026-02-13', title: 'Prime 3' },
-  { date: '2026-02-20', title: 'Prime 4' },
-  { date: '2026-03-06', title: 'Prime 5' },
-  { date: '2026-03-13', title: 'Prime 6' },
-  { date: '2026-03-20', title: 'Prime 7' },
-  { date: '2026-03-27', title: 'Prime 8' },
-  { date: '2026-04-03', title: 'Prime 9' },
-  { date: '2026-04-10', title: 'Prime 10 - Demi-Finale Saison 15' },
-  { date: '2026-04-17', title: 'Prime 11 - Grande Finale Saison 15' },
+  { date: '2026-04-10', title: 'Demi-Finale' },
+  { date: '2026-04-17', title: 'La Grande Finale' },
 ];
 
-const DALS_DURATION_MIN = 150;
+const DALS_DURATION_MIN = 180; // Finale souvent plus longue
 
 function getCurrentOrNextPrimeDALS() {
   const now = new Date();
-
   for (let prime of primesDALS) {
     const start = new Date(prime.date + 'T21:10:00');
     const end = new Date(start.getTime() + DALS_DURATION_MIN * 60000);
-
-    if (now >= start && now <= end) {
-      return { state: 'live', prime, date: start };
-    }
-
-    if (now < start) {
-      return { state: 'countdown', prime, date: start };
-    }
+    if (now >= start && now <= end) return { state: 'live', prime, date: start };
+    if (now < start) return { state: 'countdown', prime, date: start };
   }
   return null;
 }
@@ -543,15 +399,9 @@ setInterval(updateDALS, 1000);
 </script>
 
 <div id="footer-placeholder"></div>
-
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="menu.js"></script>
 
 </body>
 </html>
-
-
-
-
-
