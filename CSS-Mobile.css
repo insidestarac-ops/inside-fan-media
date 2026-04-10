@@ -171,12 +171,23 @@
 
   /* Le bloc violet (.countdown-card dans ton HTML) */
   .countdown-card {
-    background: linear-gradient(135deg, #7C4DFF, #5E35FF) !important;
+    /* On enlève le !important ici pour permettre à .finale-mode de prendre le dessus */
+    background: linear-gradient(135deg, #7C4DFF, #5E35FF); 
     border-radius: 35px !important;
     padding: 30px 15px !important;
     margin: 0 auto !important;
-    width: 92% !important; /* Pour que ça respire sur les bords du téléphone */
+    width: 92% !important;
     box-shadow: 0 15px 40px rgba(124, 77, 255, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  /* On ajoute explicitement le style Finale pour le mobile dans ce fichier */
+  .countdown-card.finale-mode {
+    background: linear-gradient(135deg, #1C0299, #7C4DFF, #f1c40f) !important;
+    background-size: 200% 200% !important;
+    animation: gold-shimmer 5s ease infinite !important;
+    border: 3px solid #f1c40f !important;
   }
 
   /* Le titre du prime */
@@ -278,4 +289,33 @@
     padding: 0 10px !important;
   }
 
+/* --- AJUSTEMENT PODIUM DALS --- */
+  .podium-container { 
+    gap: 10px !important; 
+    padding: 0 5px !important; 
+    align-items: flex-end !important;
+  }
+  .podium-img { 
+    width: 70px !important; 
+    height: 70px !important; 
+    border-radius: 15px !important; 
+    margin-bottom: 10px !important;
+  }
+  .podium-step { 
+    padding: 15px 5px !important; 
+    border-radius: 20px 20px 10px 10px !important;
+  }
+  .podium-name { 
+    font-size: 10px !important; 
+    margin-bottom: 5px !important;
+  }
+  .podium-number { 
+    font-size: 20px !important; 
+  }
+  .top1 .podium-step { height: 180px !important; }
+  .top2 .podium-step { height: 140px !important; }
+  .top3 .podium-step { height: 110px !important; }
+
+
+  
 }
