@@ -1,0 +1,80 @@
+/* ===== CSS-Mobile.css — Inside Fan Media ===== */
+/* Compatible avec la page de maintenance intersaison */
+
+* { box-sizing: border-box; }
+
+body, html {
+  overflow-x: hidden;
+  background: #F7F6FF !important; /* Force le fond clair partout, annule tout header/footer sombre */
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 60px 0 50px !important;
+  }
+
+  .hero-logo {
+    width: 110px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hero h1 {
+    font-size: 34px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  /* BOUTON : auto au lieu de 100% pour éviter le texte sur 2 lignes */
+  .btn-tiktok {
+    width: auto !important;
+    max-width: calc(100% - 32px) !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+    padding: 14px 22px !important;
+    gap: 8px !important;
+  }
+
+  .winners-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .winner-card {
+    border-radius: 22px !important;
+  }
+
+  .card-image-zone {
+    height: 240px !important;
+  }
+
+  .card-content {
+    padding: 18px 20px 22px !important;
+  }
+
+  .winners-section {
+    padding: 52px 0 64px !important;
+  }
+
+  .footer-logos {
+    gap: 20px !important;
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .hero h1 {
+    font-size: 28px !important;
+  }
+
+  .card-image-zone {
+    height: 200px !important;
+  }
+
+  .btn-tiktok {
+    font-size: 12px !important;
+    padding: 13px 18px !important;
+  }
+
+}
