@@ -425,6 +425,23 @@ body {
   .card-content { padding: 18px 20px 22px; }
   .footer-logos { gap: 22px; }
 }
+
+/* Ajoute ça juste sous .btn-tiktok:hover {...} */
+.btn-wa {
+  background: #25D366;
+  color: #fff;
+}
+.btn-wa:hover {
+  background: #1EBE57;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 24px 55px rgba(37,211,102,0.3);
+}
+.cta-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 </style>
 
 <link rel="stylesheet" href="CSS-Mobile.css">
@@ -436,14 +453,37 @@ body {
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
-
       <img class="hero-logo fade-up" src="logo-inside-fan-media.png" alt="Inside Fan Media">
 
       <div class="maintenance-badge fade-up delay-1">
-        <span class="badge-dot"></span>
-        Site en maintenance
+        <!-- Petit point vert pour montrer que c'est actif -->
+        <span class="badge-dot" style="background:#25D366; box-shadow: 0 0 8px #25D366;"></span>
+        Ouverture imminente
       </div>
 
+      <h1 class="fade-up delay-2">Le QG ouvre<br>très bientôt.</h1>
+
+      <p class="fade-up delay-3">
+        Après des mois de préparation, le tout nouveau site Inside Fan Media arrive dans quelques jours. 
+        <strong>Rejoins notre chaîne WhatsApp dès maintenant</strong> pour être alerté(e) de l'ouverture en avant-première ! 🤫
+      </p>
+
+      <div class="cta-section cta-group fade-up delay-4">
+        <a href="TON_LIEN_WHATSAPP_ICI" target="_blank" rel="noopener" class="btn-tiktok btn-wa">
+          <!-- Icône WhatsApp -->
+          <svg class="tiktok-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.476-.15-.676.15-.2.301-.776.978-.951 1.178-.175.2-.351.226-.652.075-.3-.15-1.267-.467-2.414-1.488-.893-.795-1.496-1.777-1.671-2.078-.175-.3-.019-.462.131-.612.135-.135.301-.351.451-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-927-2.232-.244-.585-.493-.506-.676-.515-.175-.01-.376-.01-.577-.01-.2 0-.526.075-.802.376-.276.301-1.053 1.029-1.053 2.509 0 1.48 1.078 2.909 1.229 3.11.15.2 2.122 3.24 5.141 4.544.718.31 1.279.495 1.716.634.722.23 1.38.197 1.9.12.58-.087 1.78-.727 2.03-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.351z"/>
+          </svg>
+          Rejoindre le QG
+        </a>
+        <a href="https://www.tiktok.com/@insidefanmedia" target="_blank" rel="noopener" class="btn-tiktok">
+          <svg class="tiktok-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.78a4.85 4.85 0 01-1.01-.09z"/>
+          </svg>
+          Notre TikTok
+        </a>
+      </div>
+    </div>
       <h1 class="fade-up delay-2">Un nouveau chapitre<br>se prépare.</h1>
 
       <p class="fade-up delay-3">
