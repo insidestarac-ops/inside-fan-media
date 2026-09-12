@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Le QG Live – Inside Fan Media</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="description" content="Rejoignez le QG Live Inside Fan Media. Le tchat interactif de la communauté pour débriefer les primes.">
+  <link rel="canonical" href="https://insidefanmedia.fr/Live.html">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-inside-fan-media.png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    html, body { margin: 0; padding: 0; }
+    .site-footer { margin-top: 0 !important; }
+
+    .hero-live {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      background: url("assets/Ban Star Ac.png") center/cover no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+    
+    .hero-live::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(11, 7, 26, 0.98) 0%, rgba(26, 17, 53, 0.90) 100%);
+    }
+
+    .live-container {
+      position: relative; z-index: 2; width: 100%; max-width: 1000px; display: flex; flex-direction: column; align-items: center;
+    }
+    
+    .live-header { text-align: center; margin-bottom: 30px; }
+
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(124, 77, 255, 0.15); border: 1px solid rgba(124, 77, 255, 0.3); color: #D4C4FF;
+      padding: 8px 18px; border-radius: 50px; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px;
+    }
+    .live-badge .dot { width: 10px; height: 10px; background: #7C4DFF; border-radius: 50%; }
+
+    .live-header h1 { font-size: 42px; font-weight: 900; color: #fff; margin: 0; letter-spacing: -1px; }
+
+    .viewer-wrapper {
+      width: 100%; height: 680px;
+      background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-radius: 24px; padding: 10px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative; overflow: hidden;
+    }
+    
+    .viewer-wrapper::before {
+      content: ""; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(135deg, rgba(124, 77, 255, 0.4), transparent 30%, transparent 70%, rgba(239, 127, 0, 0.2)); border-radius: 26px; z-index: -1; opacity: 0.8;
+    }
+    
+    .viewer-wrapper iframe { width: 100%; height: 100%; border: none; border-radius: 16px; display: none; background-color: #fff; }
+
+    .overlay-screen {
+      position: absolute; inset: 10px; background: rgba(11, 7, 26, 0.95); border-radius: 16px; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px;
+    }
+    
+    #viewer-cookie-lock { display: none; z-index: 9; }
+    #viewer-cookie-lock p { color: #fff; font-size: 18px; line-height: 1.6; margin-bottom: 20px; max-width: 500px;}
+    #viewer-cookie-lock button { background: #7C4DFF; color: #fff; border: none; padding: 14px 28px; font-size: 16px; font-weight: 800; border-radius: 12px; cursor: pointer; transition: 0.3s;}
+    #viewer-cookie-lock button:hover { background: #5E35FF; transform: scale(1.05);}
+
+    @media (max-width: 768px) {
+      .hero-live { padding: 100px 15px 40px; }
+      .live-header h1 { font-size: 32px; }
+      .viewer-wrapper { padding: 5px; height: 600px; border-radius: 16px; }
+      .overlay-screen { inset: 5px; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="hero-live">
+      <div class="live-container">
+        
+        <div class="live-header">
+          <div class="live-badge">
+            <div class="dot"></div>
+            <span>Le QG Live</span>
+          </div>
+          <h1>Le Salon de la Communauté</h1>
+        </div>
+
+        <div class="viewer-wrapper">
+          <!-- LE VERROU RGPD -->
+          <div class="overlay-screen" id="viewer-cookie-lock">
+            <p>Pour rejoindre le tchat en direct et participer aux sondages, vous devez autoriser les cookies de notre partenaire officiel Viewer+.</p>
+            <button onclick="acceptCookiesAndLoad()">Autoriser et Revenir au Tchat</button>
+          </div>
+          
+          <!-- L'IFRAME OFFICIELLE -->
+          <iframe 
+            id="viewer-iframe"
+            data-src="https://viewerplus.plus/e#s=inside-fan-media&k=ifm77af19116bc9" 
+            style="width:100%;height:100%;border:0;">
+          </iframe>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="menu.js"></script>
+
+  <script>
+    function checkConsentAndLoad() {
+      const lock = document.getElementById('viewer-cookie-lock');
+      const iframe = document.getElementById('viewer-iframe');
+      
+      if (window.ifmHasConsent && window.ifmHasConsent()) {
+        lock.style.display = 'none';
+        iframe.style.display = 'block';
+        if (!iframe.src) {
+          iframe.src = iframe.getAttribute('data-src');
+        }
+      } else {
+        lock.style.display = 'flex';
+        iframe.style.display = 'none';
+        iframe.removeAttribute('src');
+      }
+    }
+
+    function acceptCookiesAndLoad() {
+      localStorage.setItem('ifm_cookie_consent', 'accepted');
+      document.getElementById('ifm-cookie-banner').style.display = 'none';
+      checkConsentAndLoad();
+    }
+
+    document.addEventListener('DOMContentLoaded', checkConsentAndLoad);
+    document.addEventListener('ifm-consent-updated', checkConsentAndLoad);
+  </script>
+</body>
+</html>

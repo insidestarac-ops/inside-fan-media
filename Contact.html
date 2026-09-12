@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Contact – Inside Fan Media</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO PREMIUM -->
+<meta name="description" content="Contactez la rédaction d'Inside Fan Media. Une question, une idée ou une proposition de partenariat ? Notre équipe est à votre écoute.">
+<meta name="keywords" content="Contact Inside Fan Media, Partenariat, Star Academy, DALS, Média indépendant">
+<link rel="canonical" href="https://insidefanmedia.fr/Contact.html">
+
+<!-- OPEN GRAPH (Réseaux Sociaux) -->
+<meta property="og:title" content="Contact – Inside Fan Media">
+<meta property="og:description" content="Une question, une idée, ou une envie de partenariat ? Écrivez-nous.">
+<meta property="og:url" content="https://insidefanmedia.fr/Contact.html">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-inside-fan-media.png">
+<link rel="stylesheet" href="style.css">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { 
+    background-color: #F8F9FA; 
+    margin: 0; 
+    font-family: 'Inter', sans-serif;
+    color: #13082B;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO GLOBAL (Dégradé d'origine) ===== */
+  .hero-page {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0B071A 0%, #2A1055 50%, #7C4DFF 100%);
+    padding: 120px 0 160px;
+    overflow: hidden;
+  }
+  .hero-page::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(124,77,255,0.4) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2; max-width: 900px; margin: auto; padding: 0 24px; color: #fff; text-align: center;
+  }
+  .hero-content h1 { font-size: 56px; font-weight: 900; margin-bottom: 20px; letter-spacing: -1.5px; text-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+  .hero-content p { font-size: 20px; max-width: 700px; margin: 0 auto; line-height: 1.6; color: rgba(255, 255, 255, 0.95); font-weight: 400; }
+
+  /* ===== DOCUMENT ÉDITORIAL (Solide et ancré, sans effet verre) ===== */
+  .document-section {
+    position: relative;
+    z-index: 10;
+    margin-top: -100px; 
+    padding-bottom: 100px;
+    max-width: 1050px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .document-wrapper {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 70px 80px;
+    box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05);
+    border: 1px solid rgba(11, 7, 26, 0.05);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+  }
+
+  /* Info (Gauche) */
+  .contact-info h2 { font-size: 32px; font-weight: 900; color: #13082B; letter-spacing: -0.5px; margin: 0 0 15px;}
+  .contact-info p.lead { font-size: 16px; color: #4A4A68; line-height: 1.7; margin-bottom: 40px;}
+  
+  /* Focus Instagram Propre */
+  .insta-block {
+    background: #F8F9FA;
+    border: 1px solid #EAEBEF;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+  }
+  
+  .insta-block h3 {
+    font-size: 17px; font-weight: 800; color: #13082B; margin: 0 0 10px; display: flex; align-items: center; gap: 10px;
+  }
+  .insta-block h3 svg {
+    width: 20px; height: 20px;
+    fill: none; stroke: #13082B; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  
+  .insta-block p { font-size: 14px; color: #6E6E90; line-height: 1.6; margin: 0 0 15px;}
+  .insta-link {
+    display: inline-block; font-size: 15px; font-weight: 800; color: #13082B; text-decoration: none; border-bottom: 2px solid #7C4DFF; padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+  }
+  .insta-link:hover { color: #7C4DFF; border-color: #13082B; }
+
+  /* Note Discrète */
+  .discreet-note {
+    font-size: 13px;
+    color: #9A9AA8;
+    line-height: 1.6;
+    font-style: italic;
+    border-left: 2px solid #EAEBEF;
+    padding-left: 15px;
+  }
+
+  /* Formulaire (Droite) */
+  .form-group { margin-bottom: 24px; }
+  label { display: block; font-size: 12px; font-weight: 800; margin-bottom: 8px; color: #6E6E90; text-transform: uppercase; letter-spacing: 0.5px;}
+  
+  /* Inputs Premium sans lueurs agressives */
+  input, textarea { 
+    width: 100%; 
+    padding: 16px 20px; 
+    border-radius: 12px; 
+    border: 1px solid #EAEBEF; 
+    background: #F8F9FA;
+    font-family: inherit; 
+    font-size: 16px; 
+    color: #13082B;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  input::placeholder, textarea::placeholder { color: #A0A0B5; font-weight: 400;}
+  
+  input:focus, textarea:focus { 
+    outline: none; 
+    background: #ffffff;
+    border-color: #7C4DFF; 
+  }
+  textarea { min-height: 160px; resize: vertical; }
+  
+  /* Bouton d'envoi ancré (pas de flottement) */
+  .submit-btn { 
+    width: 100%;
+    padding: 18px; 
+    border-radius: 12px; 
+    border: none; 
+    background: #13082B; 
+    color: #fff; 
+    font-weight: 800; 
+    font-size: 16px;
+    cursor: pointer; 
+    transition: background 0.2s ease; 
+  }
+  .submit-btn:hover { 
+    background: #7C4DFF; 
+  }
+  
+  /* Message de succès */
+  #form-success { display: none; text-align: center; padding: 40px 20px; grid-column: span 2;}
+  
+  .success-icon { 
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 64px; height: 64px; border-radius: 50%; background: #E8F5E9; color: #2E7D32;
+    margin: 0 auto 20px;
+  }
+  .success-icon svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;}
+  
+  #form-success h3 { font-size: 28px; font-weight: 900; color: #13082B; margin: 0 0 10px; letter-spacing: -0.5px;}
+  #form-success p { font-size: 16px; color: #6E6E90; line-height: 1.6;}
+
+  @media (max-width: 900px) {
+    .document-wrapper { grid-template-columns: 1fr; gap: 50px; padding: 50px 40px;}
+    .contact-info { border-bottom: 1px solid #EAEBEF; padding-bottom: 40px; }
+  }
+  @media (max-width: 768px) {
+    .hero-page { min-height: auto; padding: 120px 0 100px; }
+    .hero-content h1 { font-size: 42px; }
+    .document-wrapper { padding: 40px 25px; border-radius: 20px;}
+  }
+</style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<main>
+  
+  <section class="hero-page">
+    <div class="hero-content">
+      <h1>Contact</h1>
+      <p>Une question, une idée, ou une envie de partenariat ? Écrivez-nous.</p>
+    </div>
+  </section>
+
+  <section class="document-section">
+    <div class="document-wrapper">
+      
+      <!-- Infos (Gauche) -->
+      <div class="contact-info">
+        <h2>Laissez-nous un message</h2>
+        <p class="lead">La rédaction d'Inside Fan Media est à votre écoute. Remplissez le formulaire et nous vous répondrons généralement sous 48h.</p>
+        
+        <!-- Focus Instagram Propre et Fixe -->
+        <div class="insta-block">
+          <h3>
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            Le plus rapide : Instagram
+          </h3>
+          <p>Pour une réponse ultra-rapide, une question simple ou un signalement de bug technique, privilégiez un Message Privé (DM) sur notre compte Instagram.</p>
+          <a href="https://instagram.com/insidefanmedia" target="_blank" class="insta-link">@InsideFanMedia</a>
+        </div>
+
+        <!-- Note Discrète -->
+        <div class="discreet-note">
+          Note : Inside Fan Media est un pure-player indépendant. Nous ne gérons pas les castings. Tout message destiné aux chaînes de télévision, à la production ou aux candidats ne sera ni lu ni transmis.
+        </div>
+      </div>
+
+      <!-- Formulaire (Droite) -->
+      <div id="form-wrapper">
+        <form id="contact-form" action="https://formspree.io/f/xeeoyllv" method="POST">
+          <input type="hidden" name="_subject" value="📩 Nouveau message – Inside Fan Media">
+          <input type="text" name="_gotcha" style="display:none">
+        
+          <div class="form-group">
+            <label for="contact-nom">Nom ou Pseudo</label>
+            <input id="contact-nom" type="text" name="nom" placeholder="Ex: Thomas" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Adresse e-mail</label>
+            <input id="contact-email" type="email" name="email" placeholder="ex. : prenom@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Votre message</label>
+            <textarea id="contact-message" name="message" placeholder="Détaillez votre demande ici..." required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">Envoyer le message</button>
+        </form>
+      </div>
+      
+      <!-- Message de succès -->
+      <div id="form-success">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3>Message bien reçu</h3>
+        <p>Merci de nous avoir contactés. L'équipe a reçu votre demande et revient vers vous très vite.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+const form = document.getElementById('contact-form');
+const successMsg = document.getElementById('form-success');
+const formWrapper = document.getElementById('form-wrapper');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const formData = new FormData(form);
+  
+  fetch(form.action, {
+    method: form.method,
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if(response.ok){
+      formWrapper.style.display = "none";
+      document.querySelector('.contact-info').style.display = "none";
+      successMsg.style.display = "block";
+      form.reset();
+    } else {
+      alert("Mince, une erreur est survenue. Réessayez plus tard !");
+    }
+  })
+  .catch(() => {
+    alert("Impossible d'envoyer le message. Vérifiez votre connexion internet.");
+  });
+});
+</script>
+
+<div id="footer-placeholder"></div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>

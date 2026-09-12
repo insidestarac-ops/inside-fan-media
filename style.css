@@ -1,0 +1,285 @@
+/* =========================================
+   INSIDE FAN MEDIA - STYLE GLOBAL 2026 (PREMIUM)
+========================================= */
+
+/* LA RÈGLE VITALE QUI EMPÊCHE LE DÉBORDEMENT À DROITE */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/Inter-Variable.ttf') format('truetype');
+}
+
+:root {
+  --violet: #7C4DFF;
+  --violet-soft: #EDE7FF;
+  --bg: #F4F3FA;
+  --card: #FFFFFF;
+  --text: #1A1A24;
+  --muted: #6E6E90;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg) !important;
+  color: var(--text);
+  overflow-x: hidden; /* Sécurité supplémentaire */
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== BOUTONS GLOBAUX ===== */
+.btn {
+  padding: 16px 36px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #7C4DFF, #5E35FF);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(124,77,255,0.25);
+}
+
+/* ===== HEROS & SECTIONS ===== */
+.page-hero {
+  background: radial-gradient(circle at top left, #b39dff, transparent 55%), linear-gradient(135deg, #7C4DFF, #5E35FF);
+  color: #fff;
+  padding: 110px 0;
+}
+.page-hero h1 { font-size: 48px; margin: 0 0 12px; letter-spacing: -1px; }
+.page-hero p { max-width: 620px; font-size: 18px; opacity: .95; line-height: 1.6; }
+
+.section { padding: 90px 0; }
+.section h2, .section-title { font-size: 34px; margin-bottom: 36px; font-weight: 900; letter-spacing: -0.5px; }
+
+/* ===== BENTO & CARTES ===== */
+.card {
+  background: var(--card);
+  border-radius: 32px;
+  padding: 42px;
+  box-shadow: 0 20px 40px rgba(124,77,255,.08);
+  margin-bottom: 32px;
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: 0.4s ease;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.bento-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 36px;
+  padding: 40px;
+  box-shadow: 0 24px 48px rgba(124, 77, 255, 0.08);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.bento-large {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(135deg, #7C4DFF, #5E35FF);
+  color: #fff;
+  border: none;
+  box-shadow: 0 30px 60px rgba(124, 77, 255, 0.3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(124,77,255,0.4);
+  }
+  .bento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 32px 64px rgba(124, 77, 255, 0.18);
+    background: rgba(255, 255, 255, 0.95);
+  }
+  .bento-large:hover {
+    background: linear-gradient(135deg, #885BFF, #6842FF);
+    box-shadow: 0 40px 80px rgba(124, 77, 255, 0.4);
+  }
+}
+
+/* ===== ENCARTS SONDAGES VIEWER+ (Star Ac & DALS) ===== */
+.viewer-embed-box {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(124, 77, 255, 0.15);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(11, 7, 26, 0.03);
+  text-align: center;
+  position: relative;
+}
+
+.viewer-embed-box iframe {
+  width: 100%;
+  min-height: 400px; /* Laisse de la place pour les questions/réponses */
+  border: none;
+  border-radius: 12px;
+}
+
+.viewer-waiting {
+  padding: 30px 10px;
+}
+
+.viewer-waiting p {
+  color: #6E6E90;
+  font-size: 16px;
+  margin: 0 0 15px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ===== PAGES LÉGALES (partagé) ===== */
+.legal-page body,
+body.legal-doc { background-color: #F8F9FA; }
+.bg-blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.05; animation: float 20s infinite ease-in-out alternate; }
+.blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #7C4DFF; }
+.blob-2 { bottom: 10%; right: -5%; width: 400px; height: 400px; background: #D902EE; animation-delay: -5s; }
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 20px) scale(1.05); }
+  100% { transform: translate(-20px, -30px) scale(0.95); }
+}
+
+/* =======================================================
+   AÉRATION ORDINATEUR (Resserrement des vides excessifs)
+======================================================= */
+@media (min-width: 769px) {
+  .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement {
+    padding: 130px 24px 100px !important; 
+  }
+  .roster-section, .section { padding: 60px 0 !important; }
+  .roster-header { margin-bottom: 30px !important; }
+  .univers-intro { margin-top: 60px !important; margin-bottom: 30px !important; }
+  .quote-block { margin-bottom: 40px !important; padding-bottom: 30px !important; }
+}
+
+/* =======================================================
+   CORRECTIF MOBILE UNIFIÉ (Anti-Débordement et Alignement)
+======================================================= */
+@media (max-width: 768px) {
+  /* 1. Inclusion des héros (Sauf Live) */
+  .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement { 
+    min-height: auto !important; 
+    padding: 120px 20px 60px !important; 
+  }
+
+  /* 2. Réparation des chevauchements de sections */
+  .roster-section {
+    padding: 60px 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .home-grid-section, .document-section { 
+    padding-top: 20px !important; 
+    padding-bottom: 40px !important; 
+    margin-top: -40px !important; 
+  }
+
+  /* 3. Espacements des grilles et alignements */
+  .bento-grid, .roster-grid, .univers-human-grid { gap: 20px !important; }
+  .roster-header { margin-bottom: 30px !important; }
+
+  /* 4. Affinage des cartes (Padding unifié et propre, SANS width: 100% forcé) */
+  .hub-card, .card, .bento-card, .univers-card, .document-wrapper, .qg-chat-area, .promo-banner { 
+    padding: 30px 24px !important; 
+    border-radius: 20px !important; 
+  }
+  
+  .card-banner { 
+    height: 160px !important; 
+    margin-bottom: 20px !important;
+    margin-top: 0 !important; 
+    border-radius: 12px !important;
+  }
+
+  /* 5. FIX DE L'ACCUEIL : Compteur et Bannière Promo */
+  .promo-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .promo-left {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: center !important;
+  }
+  .promo-countdown-box { padding: 20px 10px !important; width: 100% !important; border-radius: 16px !important; }
+  .promo-timer { gap: 4px !important; justify-content: center !important; }
+  .promo-timer .time-group { width: auto !important; min-width: 32px !important; }
+  .promo-timer span.val { font-size: 24px !important; }
+
+  /* 6. Typographie et Teasers */
+  h1, .hero-content h1 { font-size: 32px !important; margin-bottom: 12px !important; letter-spacing: -0.5px !important; line-height: 1.1 !important; }
+  h2 { font-size: 22px !important; margin-bottom: 15px !important; }
+  h3 { font-size: 18px !important; }
+  p { font-size: 15px !important; line-height: 1.5 !important; }
+
+  .teaser-banner { padding: 30px 20px !important; font-size: 15px !important; margin-top: 20px !important; }
+
+  /* 7. Boutons et Logos */
+  .btn, .btn-primary, .card-btn, .btn-starac, .btn-dals, .btn-whatsapp, .btn-whatsapp-live { 
+    padding: 14px 20px !important; font-size: 14px !important; border-radius: 12px !important;
+  }
+  .card-btn svg, .btn-whatsapp svg, .btn-whatsapp-live svg { width: 18px !important; height: 18px !important; }
+  .univers-logo-hero { height: 60px !important; margin-bottom: 15px !important; }
+  .promo-logo-side { height: 75px !important; margin-bottom: 5px !important; }
+
+  /* 8. Menu Mobile (Tiroir) */
+  .mob-link-main, .mob-acc-trigger { font-size: 20px !important; padding: 12px 0 !important; }
+  .mob-acc-trigger::after { font-size: 22px !important; }
+  .mob-acc-content a { font-size: 15px !important; padding: 8px 0 !important; }
+  .btn-mob-contact { font-size: 15px !important; padding: 16px !important; border-radius: 12px !important;}
+  .mobile-nav-panel { padding: 25px 25px 30px !important; }
+
+  /* Enlève le bug d'animation sur le clic mobile */
+  .hub-card:active, .bento-card:active, .btn-primary:active, .card-btn:active { transform: scale(0.96); }
+  .card-sondage-large:active, .card-sondage-modern:active, .card-planning:active { transform: none; }
+}
