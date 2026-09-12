@@ -1,0 +1,22 @@
+<svg viewBox="0 0 135 34" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="viewer-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A0BFF" />
+      <stop offset="42%" stop-color="#0057FF" />
+      <stop offset="72%" stop-color="#00A6FF" />
+      <stop offset="100%" stop-color="#3BE6F0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Le carré avec le dégradé bleu -->
+  <rect width="34" height="34" rx="2" fill="url(#viewer-grad)" />
+  
+  <!-- L'icône blanche (Play + Plus) -->
+  <svg x="5" y="5" width="24" height="24" viewBox="0 0 24 24">
+    <path d="M5.8 7v10l6-5z" fill="#fff"/>
+    <path d="M16 8.4h1.5V11H20v1.5h-2.5V15H16v-2.5H13.5V11H16z" fill="#fff"/>
+  </svg>
+  
+  <!-- Le texte Viewer+ -->
+  <text x="44" y="25" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="900" fill="#13082B" letter-spacing="-0.5">Viewer+</text>
+</svg>
