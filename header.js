@@ -13,7 +13,7 @@ const headerContent = `
   }
 
   /* --- DESKTOP --- */
-  @media (min-width: 1025px) {
+  @media (min-width: 1151px) {
     .site-header { position: sticky; top: 20px; z-index: 9999; height: 90px; display: flex; align-items: center; padding: 0 40px; width: 100%; transition: all 0.3s ease; }
     .header-inner { max-width: 1450px; width: 100%; margin: 0 auto; display: flex; align-items: center; gap: 25px; justify-content: space-between;}
     
@@ -50,7 +50,7 @@ const headerContent = `
   }
 
   /* --- MOBILE : LE TIROIR FACON APP (BOTTOM SHEET) --- */
-  @media (max-width: 1024px) {
+  @media (max-width: 1150px) {
     .pc-nav-container, .btn-contact { display: none !important; }
     
     .site-header { position: fixed; top: 0; left: 0; right: 0; height: 75px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); z-index: 1000; display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid rgba(124,77,255,0.08); width: 100%; transition: background 0.3s;}
