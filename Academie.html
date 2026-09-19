@@ -62,10 +62,32 @@
   .roster-info span { font-size: 11px; font-weight: 800; color: rgba(255, 255, 255, 0.8); text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
   .roster-card:hover .roster-info span { color: #fff; }
 
-  /* ===== BANDEAUX TEASING ===== */
+  /* ===== BANDEAUX ET CARTES TEASING ===== */
+  /* Le bandeau large complet (uniquement pour les élèves car rien n'est révélé) */
   .teaser-banner { background: rgba(255, 255, 255, 0.6); border: 1px dashed rgba(19, 8, 43, 0.15); border-radius: 20px; padding: 40px; text-align: center; color: #6E6E90; font-size: 18px; font-weight: 700; width: 100%; letter-spacing: -0.5px; }
   .dark-mode .teaser-banner { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); }
   .teaser-banner span { display: block; font-size: 28px; margin-bottom: 10px; }
+
+  /* La carte vide DANS la grille (pour les profs/parrains) : Allongée et Fixe */
+  .teaser-card { 
+    grid-column: span 2; /* Elle s'allonge sur 2 colonnes pour faire un rectangle large */
+    border-radius: 24px; 
+    border: 2px dashed rgba(19, 8, 43, 0.15); 
+    background: rgba(255, 255, 255, 0.4); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    padding: 30px 40px; 
+    color: #6E6E90; 
+    font-size: 18px; 
+    font-weight: 700; 
+    line-height: 1.4; 
+    height: 100%; /* Prend automatiquement la hauteur de la carte d'à côté */
+    cursor: default; /* Pas de main qui clique, c'est fixe */
+  }
+  .teaser-card span { font-size: 36px; margin-bottom: 12px; }
 
   .vote-disclaimer { text-align: center; font-size: 12px; color: #9A9AA8; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(11,7,26,0.1); }
 
@@ -79,6 +101,9 @@
     .roster-info h3 { font-size: 16px; margin: 0 0 3px;}
     .roster-info span { font-size: 9px; letter-spacing: 0.5px;}
     .teaser-banner { padding: 30px 20px; font-size: 15px; }
+    /* Sur mobile, on la laisse allongée sur toute la largeur (les 2 petites colonnes) */
+    .teaser-card { font-size: 15px; padding: 20px; grid-column: span 2; }
+    .teaser-card span { font-size: 28px; margin-bottom: 8px; }
   }
 </style>
 </head>
@@ -106,7 +131,7 @@
       </div>
 
       <div class="roster-grid">
-        <!-- Mosimann (Seul confirmé) -->
+        <!-- Mosimann (Confirmé) -->
         <div class="roster-card">
           <img src="Profs/Directeur.jpg" alt="Mosimann" class="roster-img" loading="lazy">
           <div class="roster-info">
@@ -114,11 +139,12 @@
             <span>Directeur</span>
           </div>
         </div>
-      </div>
 
-      <div class="teaser-banner">
-        <span>🤫</span>
-        Le reste du corps professoral sera dévoilé très prochainement.
+        <!-- Carte Teaser Allongée et Fixe -->
+        <div class="teaser-card">
+          <span>🤫</span>
+          Le reste de l'équipe professorale sera dévoilé très bientôt.
+        </div>
       </div>
 
     </div>
@@ -132,15 +158,16 @@
         <h2>Les Académiciens</h2>
       </div>
 
+      <!-- Bandeau plein (car 0 carte) -->
       <div class="teaser-banner">
         <span>🔒</span>
-        Les portraits des élèves de la saison 14 sont précieusement gardés jusqu'à leur révélations officielles à partir du 10 octobre.
+        Les portraits des élèves de la saison 14 sont précieusement gardés jusqu'à leur révélation officielle à partir du 10 octobre.
       </div>
 
     </div>
   </section>
 
-  <!-- L'ÉQUIPE -->
+  <!-- L'ÉQUIPE & LES PARRAINS -->
   <section class="roster-section">
     <div class="roster-container">
       
@@ -148,9 +175,21 @@
         <h2>L'Équipe & Les Parrains</h2>
       </div>
 
-      <div class="teaser-banner">
-        <span>✨</span>
-        Animateurs, marraines, parrains... À découvrir très prochainement !
+      <div class="roster-grid">
+        <!-- Vianney (Confirmé) -->
+        <div class="roster-card">
+          <img src="Profs/vianney.jpg" alt="Vianney" class="roster-img" loading="lazy">
+          <div class="roster-info">
+            <h3>Vianney</h3>
+            <span>Parrain</span>
+          </div>
+        </div>
+
+        <!-- Carte Teaser Allongée et Fixe -->
+        <div class="teaser-card">
+          <span>✨</span>
+          Animateurs, marraines, co-parrains... À découvrir !
+        </div>
       </div>
 
     </div>
