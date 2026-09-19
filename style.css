@@ -186,11 +186,11 @@ body.legal-doc { background-color: #F8F9FA; }
 }
 
 /* =======================================================
-   AÉRATION ORDINATEUR (Resserrement des vides excessifs)
+   AÉRATION ORDINATEUR (AVEC SOURIS UNIQUEMENT)
 ======================================================= */
-@media (min-width: 769px) {
+@media (min-width: 1025px) and (pointer: fine) {
   .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement {
-    padding: 130px 24px 100px !important; 
+    padding: 160px 24px 100px !important; /* Laisse l'espace pour le header flottant */
   }
   .roster-section, .section { padding: 60px 0 !important; }
   .roster-header { margin-bottom: 30px !important; }
@@ -199,13 +199,13 @@ body.legal-doc { background-color: #F8F9FA; }
 }
 
 /* =======================================================
-   CORRECTIF MOBILE UNIFIÉ (Anti-Débordement et Alignement)
+   CORRECTIF MOBILE ET TABLETTES (IPADS, ÉCRANS TACTILES)
 ======================================================= */
-@media (max-width: 768px) {
-  /* 1. Inclusion des héros (Sauf Live) */
+@media (max-width: 1024px), (pointer: coarse) {
+  /* 1. Inclusion des héros (Sauf Live) - PADDING TOP AUGMENTÉ */
   .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement { 
     min-height: auto !important; 
-    padding: 120px 20px 60px !important; 
+    padding: 140px 20px 60px !important; /* <== 140px dégage parfaitement la barre de nav */
   }
 
   /* 2. Réparation des chevauchements de sections */
@@ -223,6 +223,9 @@ body.legal-doc { background-color: #F8F9FA; }
   /* 3. Espacements des grilles et alignements */
   .bento-grid, .roster-grid, .univers-human-grid { gap: 20px !important; }
   .roster-header { margin-bottom: 30px !important; }
+
+  /* Masquer le petit logo flottant qui fait doublon sur tablette/mobile */
+  .hero-content .univers-logo-hero { display: none !important; }
 
   /* 4. Affinage des cartes (Padding unifié et propre, SANS width: 100% forcé) */
   .hub-card, .card, .bento-card, .univers-card, .document-wrapper, .qg-chat-area, .promo-banner { 
