@@ -12,8 +12,8 @@ const headerContent = `
     100% { filter: drop-shadow(0 4px 10px rgba(124,77,255,0.15)); transform: scale(1); }
   }
 
-  /* --- DESKTOP PUR (UNIQUEMENT SUR ORDINATEUR AVEC SOURIS) --- */
-  @media (min-width: 1025px) and (pointer: fine) {
+  /* --- DESKTOP --- */
+  @media (min-width: 1025px) {
     .site-header { position: sticky; top: 20px; z-index: 9999; height: 90px; display: flex; align-items: center; padding: 0 40px; width: 100%; transition: all 0.3s ease; }
     .header-inner { max-width: 1450px; width: 100%; margin: 0 auto; display: flex; align-items: center; gap: 25px; justify-content: space-between;}
     
@@ -49,8 +49,8 @@ const headerContent = `
     #burger, #mob-overlay, .mobile-nav-panel { display: none !important; }
   }
 
-  /* --- MOBILES ET TOUTES LES TABLETTES / IPADS (ÉCRANS TACTILES OU <= 1024px) --- */
-  @media (max-width: 1024px) or (pointer: coarse) {
+  /* --- MOBILE : LE TIROIR FACON APP (BOTTOM SHEET) --- */
+  @media (max-width: 1024px) {
     .pc-nav-container, .btn-contact { display: none !important; }
     
     .site-header { position: fixed; top: 0; left: 0; right: 0; height: 75px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); z-index: 1000; display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid rgba(124,77,255,0.08); width: 100%; transition: background 0.3s;}
@@ -129,6 +129,7 @@ const headerContent = `
             <div class="dropdown">
               <a href="Nommes.html">Les Nommés</a>
               <a href="Academie.html">L'Académie</a>
+              <a href="Programme.html">Le Programme</a>
             </div>
           </li>
           <li class="has-dropdown">
@@ -162,6 +163,7 @@ const headerContent = `
         <a href="Inside-star-ac.html">Le Hub</a>
         <a href="Nommes.html">Les Nommés</a>
         <a href="Academie.html">L'Académie</a>
+        <a href="Programme.html">Le Programme</a>
       </div>
     </div>
 
@@ -183,4 +185,3 @@ const headerContent = `
 </nav>
 `;
 document.getElementById('header-placeholder').innerHTML = headerContent;
-
