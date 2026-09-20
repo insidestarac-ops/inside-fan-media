@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Programme du Prime – Inside Star Ac</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Découvrez prochainement la Setlist officielle du premier prime de la Star Academy.">
+<link rel="canonical" href="https://insidefanmedia.fr/Programme.html">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-star-ac.png">
+<link rel="stylesheet" href="style.css">
+
+<style>
+  /* ===== HERO ===== */
+  .hero-starac { position: relative; min-height: 55vh; display: flex; align-items: center; background: url("assets/Ban Star Ac.png") center/cover no-repeat; padding: 140px 0 100px; overflow: hidden; }
+  .hero-starac::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11, 7, 26, 0.92) 0%, rgba(11, 7, 26, 0.75) 100%); }
+  .hero-content { position: relative; z-index: 2; max-width: 900px; margin: auto; padding: 0 24px; color: #fff; text-align: center; }
+  .hero-content img.logo-univers { height: 90px; margin-bottom: 20px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5)); }
+  .hero-content h1 { font-size: 52px; font-weight: 900; margin-bottom: 10px; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;}
+  .hero-content p { font-size: 20px; margin: 0 auto; color: #EF7F00; font-weight: 800; letter-spacing: 1px;}
+
+  /* ===== SETLIST (Attente) ===== */
+  .setlist-section { padding: 60px 24px 100px; background: #F4F3FA; min-height: 40vh; }
+  .setlist-container { max-width: 850px; margin: 0 auto; }
+
+  /* Carte d'attente Premium */
+  .coming-soon-card { 
+    background: #FFFFFF; 
+    border-radius: 24px; padding: 50px 40px; 
+    text-align: center;
+    border: 1px dashed rgba(124, 77, 255, 0.3); 
+    box-shadow: 0 15px 35px rgba(11, 7, 26, 0.03);
+    margin: 40px auto; 
+  }
+  .coming-soon-card .icon { font-size: 48px; margin-bottom: 20px; display: inline-block; animation: float 3s ease-in-out infinite; }
+  .coming-soon-card h2 { font-size: 28px; font-weight: 900; color: #13082B; margin-bottom: 15px; letter-spacing: -0.5px; }
+  .coming-soon-card p { font-size: 17px; font-weight: 600; color: #6E6E90; line-height: 1.6; max-width: 500px; margin: 0 auto; }
+
+  @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+
+  @media (max-width: 768px) {
+    .hero-starac { padding: 130px 20px 80px; min-height: auto; }
+    .hero-content h1 { font-size: 36px; }
+    .hero-content p { font-size: 16px; }
+    .coming-soon-card { padding: 40px 20px; }
+    .coming-soon-card h2 { font-size: 22px; }
+  }
+</style>
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero-starac">
+    <div class="hero-content">
+      <img src="assets/logo-star-ac.png" alt="Logo Star Academy" class="logo-univers">
+      <h1>Le Grand Lancement</h1>
+      <p>📅 Samedi 10 Octobre à 21h10</p>
+    </div>
+  </section>
+
+  <!-- ZONE D'ATTENTE -->
+  <section class="setlist-section">
+    <div class="setlist-container">
+
+      <div class="coming-soon-card">
+        <span class="icon">🤫</span>
+        <h2>La Setlist est encore secrète...</h2>
+        <p>Qui chantera avec qui ? Les duos, les artistes invités et les défis solos seront dévoilés ici quelques jours avant le prime. Restez connectés !</p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>
