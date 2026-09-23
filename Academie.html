@@ -47,7 +47,22 @@
   /* ===== GRILLE ET CARTES ===== */
   .roster-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; position: relative; z-index: 2; margin-bottom: 30px;}
+  .roster-flex-center { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    max-width: 900px; /* Force le passage à la ligne après 3 cartes */
+    margin: 0 auto; 
+  }
   
+  .roster-flex-center .roster-card { 
+    /* 265.5px correspond à la taille exacte de tes cartes du haut sur grand écran */
+    flex: 1 1 220px; 
+    max-width: 265.5px; 
+    width: 100%;
+  }
+
   .roster-card { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 3/4; background: #13082B; box-shadow: 0 15px 35px rgba(11, 7, 26, 0.08); cursor: default; border: 1px solid rgba(255, 255, 255, 0.1); transition: box-shadow 0.3s ease, border-color 0.3s ease; }
   .roster-card::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 75%; background: linear-gradient(to top, rgba(11, 10, 16, 0.95) 0%, rgba(11, 10, 16, 0.5) 50%, transparent 100%); pointer-events: none; z-index: 1; transition: background 0.4s ease; }
   .roster-card:hover { box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15); border-color: rgba(239, 127, 0, 0.3); }
@@ -104,7 +119,14 @@
     /* Sur mobile, on la laisse allongée sur toute la largeur (les 2 petites colonnes) */
     .teaser-card { font-size: 15px; padding: 20px; grid-column: span 2; }
     .teaser-card span { font-size: 28px; margin-bottom: 8px; }
+    .roster-flex-center { gap: 15px; }
+    .roster-flex-center .roster-card { 
+      /* Sur mobile, on remet exactement 2 cartes par ligne comme pour les profs */
+      flex: 0 0 calc(50% - 7.5px); 
+      max-width: none;
+    }
   }
+
 </style>
 </head>
 
@@ -122,7 +144,7 @@
     </div>
   </section>
 
-  <!-- CORPS PROFESSORAL -->
+  <!-- CORPS PROFESSORAL (Fond Clair) -->
   <section class="roster-section">
     <div class="roster-container">
       
@@ -131,25 +153,18 @@
       </div>
 
       <div class="roster-grid">
-        <!-- Mosimann (Confirmé) -->
-        <div class="roster-card">
-          <img src="Profs/Directeur.jpg" alt="Mosimann" class="roster-img" loading="lazy">
-          <div class="roster-info">
-            <h3>Mosimann</h3>
-            <span>Directeur</span>
-          </div>
-        </div>
-
-        <!-- Carte Teaser Allongée et Fixe -->
-        <div class="teaser-card">
-          <span>🤫</span>
-          Le reste de l'équipe professorale sera dévoilé très bientôt.
-        </div>
+        <div class="roster-card"><img src="Profs/Mosimann.jpg" alt="Mosimann" class="roster-img" loading="lazy"><div class="roster-info"><h3>Mosimann</h3><span>Directeur</span></div></div>
+        <div class="roster-card"><img src="Profs/sofia.jpg" alt="Sofia Morgavi" class="roster-img" loading="lazy"><div class="roster-info"><h3>Sofia Morgavi</h3><span>Prof. de Chant</span></div></div>
+        <div class="roster-card"><img src="Profs/jonathan.jpg" alt="Jonathan Jenvrin" class="roster-img" loading="lazy"><div class="roster-info"><h3>Jonathan Jenvrin</h3><span>Prof. de Danse</span></div></div>
+        <div class="roster-card"><img src="Profs/Lydia.avif" alt="Lydia Bouchard" class="roster-img" loading="lazy"><div class="roster-info"><h3>Lydia Bouchard</h3><span>Expression Scénique</span></div></div>
+        <div class="roster-card"><img src="Profs/Papy.jpg" alt="Papy" class="roster-img" loading="lazy"><div class="roster-info"><h3>Papy</h3><span>Prof. de Théâtre</span></div></div>
+        <div class="roster-card"><img src="Profs/Ladji.heic" alt="Ladji Doucouré" class="roster-img" loading="lazy"><div class="roster-info"><h3>Ladji Doucouré</h3><span>Prof. de Sport</span></div></div>
+        <div class="roster-card"><img src="Profs/Philipinne.jpg" alt="Philippine Lavrey" class="roster-img" loading="lazy"><div class="roster-info"><h3>Philippine Lavrey</h3><span>Répétitrice</span></div></div>
+        <div class="roster-card"><img src="Profs/Fanny.webp" alt="Fanny Delaigue" class="roster-img" loading="lazy"><div class="roster-info"><h3>Fanny Delaigue</h3><span>Répétitrice</span></div></div>
       </div>
 
     </div>
   </section>
-
   <!-- ACADÉMICIENS -->
   <section class="roster-section dark-mode">
     <div class="roster-container">
@@ -167,7 +182,7 @@
     </div>
   </section>
 
-  <!-- L'ÉQUIPE & LES PARRAINS -->
+<!-- L'ÉQUIPE (Retour au Fond Clair) -->
   <section class="roster-section">
     <div class="roster-container">
       
@@ -175,22 +190,16 @@
         <h2>L'Équipe & Les Parrains</h2>
       </div>
 
-      <div class="roster-grid">
-        <!-- Vianney (Confirmé) -->
-        <div class="roster-card">
-          <img src="Profs/vianney.jpg" alt="Vianney" class="roster-img" loading="lazy">
-          <div class="roster-info">
-            <h3>Vianney</h3>
-            <span>Parrain</span>
-          </div>
-        </div>
-
-        <!-- Carte Teaser Allongée et Fixe -->
-        <div class="teaser-card">
-          <span>✨</span>
-          Animateurs, marraines, co-parrains... À découvrir !
-        </div>
+      <!-- On utilise la nouvelle classe Flexbox ici -->
+      <div class="roster-flex-center">
+        <div class="roster-card"><img src="Profs/nikos.jpg" alt="Nikos Aliagas" class="roster-img" loading="lazy"><div class="roster-info"><h3>Nikos Aliagas</h3><span>Présentateur</span></div></div>
+        <div class="roster-card"><img src="Profs/karima.jpg" alt="Karima Charni" class="roster-img" loading="lazy"><div class="roster-info"><h3>Karima Charni</h3><span>Présentatrice</span></div></div>
+        <div class="roster-card"><img src="Profs/vianney.jpg" alt="Vianney" class="roster-img" loading="lazy"><div class="roster-info"><h3>Vianney</h3><span>Parrain</span></div></div>
+        <div class="roster-card"><img src="Profs/Eva.jpg" alt="Eva" class="roster-img" loading="lazy"><div class="roster-info"><h3>Eva</h3><span>Grande Soeur</span></div></div>
+        <div class="roster-card"><img src="Profs/Adele.webp" alt="Adèle Castillon" class="roster-img" loading="lazy"><div class="roster-info"><h3>Adèle Castillon</h3><span>Grande Soeur</span></div></div>
       </div>
+
+      <p class="vote-disclaimer">© Crédit images : Sipa Press, TF1, Getty, Ellie Blondeau, Purepeople.</p>
 
     </div>
   </section>
