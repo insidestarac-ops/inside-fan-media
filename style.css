@@ -201,7 +201,7 @@ body.legal-doc { background-color: #F8F9FA; }
 /* =======================================================
    CORRECTIF MOBILE ET TABLETTES (IPADS, ÉCRANS TACTILES)
 ======================================================= */
-@media (max-width: 1366px), (pointer: coarse) {
+@media (max-width: 1366px), (hover: none), (pointer: coarse), screen and (max-device-width: 1366px) and (-webkit-touch-callout: none) {
   /* 1. Inclusion des héros (Sauf Live) - PADDING TOP AUGMENTÉ */
   .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement { 
     min-height: auto !important; 
