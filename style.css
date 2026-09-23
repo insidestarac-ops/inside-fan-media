@@ -188,7 +188,7 @@ body.legal-doc { background-color: #F8F9FA; }
 /* =======================================================
    AÉRATION ORDINATEUR (AVEC SOURIS UNIQUEMENT)
 ======================================================= */
-@media (min-width: 1025px) and (pointer: fine) {
+@media (min-width: 1367px) and (pointer: fine) {
   .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement {
     padding: 160px 24px 100px !important; /* Laisse l'espace pour le header flottant */
   }
@@ -201,7 +201,7 @@ body.legal-doc { background-color: #F8F9FA; }
 /* =======================================================
    CORRECTIF MOBILE ET TABLETTES (IPADS, ÉCRANS TACTILES)
 ======================================================= */
-@media (max-width: 1024px), (pointer: coarse) {
+@media (max-width: 1366px), (pointer: coarse) {
   /* 1. Inclusion des héros (Sauf Live) - PADDING TOP AUGMENTÉ */
   .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement { 
     min-height: auto !important; 
