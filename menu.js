@@ -1,3 +1,11 @@
+const isIpadOS = /Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1;
+
+if (isIpadOS) {
+  // Ajoute l'étiquette sur le body pour déclencher le CSS spécifique
+  document.body.classList.add('force-ipad-mode');
+  console.log("iPad détecté : mode tablette forcé");
+}
+
 function initMenu() {
     const burger = document.getElementById('burger');
     const panel = document.querySelector('.mobile-nav-panel');
