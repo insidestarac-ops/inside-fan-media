@@ -358,3 +358,97 @@ body.legal-doc { background-color: #F8F9FA; }
   .dakar-ticker-scroll { animation: dakar-scroll 12s linear infinite; } 
 }
 
+/* ===== HORAIRES TV (BANDE NOIRE PREMIUM - CORRIGÉE) ===== */
+.tv-schedule-container {
+  grid-column: 1 / -1; /* LA LIGNE MAGIQUE : prend toute la largeur */
+  width: 100%;
+  margin: 10px auto 40px auto;
+  background: linear-gradient(145deg, #13082B, #0B071A);
+  border: 1px solid rgba(124, 77, 255, 0.2);
+  border-radius: 24px;
+  padding: 30px 40px; /* Plus de padding horizontal pour l'étirer */
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15);
+}
+
+.tv-badges-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Sur ordinateur, ils tiendront tous sur 1 seule ligne ! */
+}
+
+/* On stylise l'alerte de lancement en orange sur le fond noir */
+.tv-launch-alert {
+  display: inline-block;
+  background: rgba(239, 127, 0, 0.15); 
+  color: #EF7F00;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  border: 1px solid rgba(239, 127, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.tv-launch-alert b {
+  font-weight: 900;
+  color: #ffffff; /* Le texte principal ressort en blanc */
+}
+
+/* Le style des badges de base (Gris foncé/Verre sur fond noir) */
+.tv-badge {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05); /* Transparence légère */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 12px 20px;
+  min-width: 120px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.tv-badge:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tv-day {
+  font-size: 11px;
+  font-weight: 900;
+  color: #EDE7FF;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.tv-time {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+/* On garde les couleurs pétantes pour Prime et Live */
+.badge-prime {
+  background: linear-gradient(135deg, #EF7F00, #E65C00);
+  border: none;
+  box-shadow: 0 8px 20px rgba(239, 127, 0, 0.2);
+}
+
+.badge-live {
+  background: linear-gradient(135deg, #7C4DFF, #5E35FF);
+  border: none;
+  box-shadow: 0 8px 20px rgba(124, 77, 255, 0.2);
+}
+
+.badge-prime .tv-day, .badge-live .tv-day { color: rgba(255, 255, 255, 0.8); }
+.badge-prime .tv-time, .badge-live .tv-time { color: #ffffff; }
+
+/* Ajustement Mobile */
+@media (max-width: 768px) {
+  .tv-schedule-container { padding: 25px 15px; margin: 30px auto; }
+  .tv-badges-row { gap: 10px; }
+  .tv-badge { min-width: 100px; padding: 10px 12px; }
+  .tv-time { font-size: 16px; }
+}
