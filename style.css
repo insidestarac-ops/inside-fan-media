@@ -286,3 +286,111 @@ body.legal-doc { background-color: #F8F9FA; }
   .hub-card:active, .bento-card:active, .btn-primary:active, .card-btn:active { transform: scale(0.96); }
   .card-sondage-large:active, .card-sondage-modern:active, .card-planning:active { transform: none; }
 }
+
+
+/* =======================================================
+   FORÇAGE DU MODE TABLETTE (POUR IPAD)
+======================================================= */
+/* On cible spécifiquement les éléments qui posent problème sur grand écran tactile */
+
+body.force-ipad-mode .hero-home, 
+body.force-ipad-mode .hero-starac, 
+body.force-ipad-mode .hero-dals { 
+  min-height: auto !important; 
+  padding: 140px 20px 60px !important; 
+}
+
+/* Réparation de la grille des profs et élèves pour iPad */
+body.force-ipad-mode .roster-grid {
+  grid-template-columns: repeat(2, 1fr) !important; /* Force 2 colonnes */
+  gap: 15px !important;
+}
+
+body.force-ipad-mode .roster-flex-center {
+  gap: 15px !important;
+  max-width: 100% !important;
+}
+
+body.force-ipad-mode .roster-flex-center .roster-card {
+  flex: 0 0 calc(50% - 7.5px) !important; /* Force 2 cartes par ligne au lieu de 3 */
+  max-width: none !important;
+}
+
+body.force-ipad-mode .card, 
+body.force-ipad-mode .hub-card, 
+body.force-ipad-mode .bento-card {
+  padding: 25px !important; /* Marges intérieures réduites pour aérer sur tablette */
+}
+
+
+/* ===== BANDEAU DÉFILANT PLEIN ÉCRAN (GLASSMORPHISM) ===== */
+.dakar-ticker {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  /* Un fond bleu nuit très sombre mais légèrement transparent pour l'effet premium */
+  background: rgba(11, 7, 26, 0.9); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff; /* Le texte redevient 100% lisible */
+  padding: 16px 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  margin-bottom: 40px;
+  border-top: 1px solid rgba(124, 77, 255, 0.4); /* Bordure violette */
+  border-bottom: 1px solid rgba(124, 77, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(11, 7, 26, 0.15);
+}
+
+.dakar-ticker-scroll {
+  display: flex;
+  white-space: nowrap;
+  animation: dakar-scroll 20s linear infinite;
+  cursor: default;
+}
+
+.dakar-ticker:hover .dakar-ticker-scroll {
+  animation-play-state: paused;
+}
+
+.dakar-ticker-text {
+  display: flex;
+  align-items: center;
+}
+
+.dakar-ticker-text span {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-right: 20px;
+}
+
+.dakar-ticker-text span b {
+  color: #EF7F00; /* L'orange Star Ac fait ressortir les mots importants */
+}
+
+.ticker-separator {
+  font-size: 16px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.2); /* Tirets très discrets pour aérer */
+  padding-right: 20px;
+}
+
+@keyframes dakar-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+/* Ajustements Mobile */
+@media (max-width: 768px) {
+  .dakar-ticker { padding: 12px 0; margin-bottom: 30px; }
+  .dakar-ticker-text span, .ticker-separator { font-size: 13px; }
+  .dakar-ticker-scroll { animation: dakar-scroll 12s linear infinite; } 
+}
+
