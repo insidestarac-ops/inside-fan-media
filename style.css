@@ -452,3 +452,31 @@ body.legal-doc { background-color: #F8F9FA; }
   .tv-badge { min-width: 100px; padding: 10px 12px; }
   .tv-time { font-size: 16px; }
 }
+
+/* =======================================================
+   ANIMATIONS ULTRA-PREMIUM (APPLE-STYLE REVEAL)
+======================================================= */
+/* 1. Caché au départ */
+.reveal-item {
+  opacity: 0;
+  will-change: transform, opacity, filter; /* Optimisation pour que la carte graphique prenne le relais */
+}
+
+/* 2. Classe ajoutée par le JS au scroll */
+.reveal-item.is-visible {
+  animation: ultraPremiumReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 3. L'animation Cinématographique : Translation (120px) + Zoom (0.9 à 1) + Flou (15px à 0) */
+@keyframes ultraPremiumReveal {
+  0% { 
+    opacity: 0; 
+    transform: translateY(120px) scale(0.9); 
+    filter: blur(15px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+    filter: blur(0);
+  }
+}
