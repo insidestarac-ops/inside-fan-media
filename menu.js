@@ -81,3 +81,48 @@ function initTabletDropdowns() {
 
 initMenu();
 initTabletDropdowns();
+
+/* =======================================================
+   SCROLL REVEAL (EFFET FLOU + CASCADE PREMIUM)
+======================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const elementsToAnimate = document.querySelectorAll('.hub-card, .planning-wrapper, .tv-schedule-container, .viewer-embed-box');
+
+  elementsToAnimate.forEach(el => el.classList.add('reveal-item'));
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    let delayCounter = 0; 
+
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Effet de cascade très marqué (150ms de délai entre chaque carte)
+        setTimeout(() => {
+          entry.target.classList.add('is-visible');
+          
+          // NETTOYAGE : 1.2 secondes plus tard (fin de l'animation), on enlève les classes
+          // pour que tes cartes retrouvent leurs effets :hover normaux !
+          setTimeout(() => {
+            entry.target.classList.remove('reveal-item', 'is-visible');
+            entry.target.style.opacity = '1';
+            entry.target.style.filter = 'none';
+            entry.target.style.transform = 'none';
+          }, 1200);
+
+        }, delayCounter * 150);
+        
+        delayCounter++; 
+        observer.unobserve(entry.target); 
+      }
+    });
+
+    // On remet le compteur à zéro presque instantanément 
+    // pour que la cascade recommence proprement au prochain coup de molette
+    setTimeout(() => { delayCounter = 0; }, 100);
+
+  }, {
+    threshold: 0.1, 
+    rootMargin: "0px 0px -10% 0px" // On déclenche un peu avant pour anticiper le mouvement
+  });
+
+  elementsToAnimate.forEach(el => observer.observe(el));
+});
