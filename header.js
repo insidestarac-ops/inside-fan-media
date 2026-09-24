@@ -185,9 +185,3 @@ const headerContent = `
 </nav>
 `;
 document.getElementById('header-placeholder').innerHTML = headerContent;
-
-
-const dbg = document.createElement('div');
-dbg.style.cssText = 'position:fixed;bottom:0;left:0;z-index:99999;background:#000;color:#0f0;padding:6px 10px;font:12px monospace';
-dbg.textContent = 'v3 | innerWidth=' + window.innerWidth + ' | mobile(<=1180): ' + window.matchMedia('(max-width:1180px)').matches;
-document.body.appendChild(dbg);
