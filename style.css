@@ -188,7 +188,7 @@ body.legal-doc { background-color: #F8F9FA; }
 /* =======================================================
    AÉRATION ORDINATEUR (AVEC SOURIS UNIQUEMENT)
 ======================================================= */
-@media (min-width: 1367px) and (pointer: fine) {
+@media (min-width: 1181px) {
   .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement {
     padding: 160px 24px 100px !important; /* Laisse l'espace pour le header flottant */
   }
@@ -201,7 +201,7 @@ body.legal-doc { background-color: #F8F9FA; }
 /* =======================================================
    CORRECTIF MOBILE ET TABLETTES (IPADS, ÉCRANS TACTILES)
 ======================================================= */
-@media (max-width: 1366px), (hover: none), (pointer: coarse), screen and (max-device-width: 1366px) and (-webkit-touch-callout: none) {
+@media (max-width: 1180px) {
   /* 1. Inclusion des héros (Sauf Live) - PADDING TOP AUGMENTÉ */
   .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement { 
     min-height: auto !important; 
@@ -286,42 +286,6 @@ body.legal-doc { background-color: #F8F9FA; }
   .hub-card:active, .bento-card:active, .btn-primary:active, .card-btn:active { transform: scale(0.96); }
   .card-sondage-large:active, .card-sondage-modern:active, .card-planning:active { transform: none; }
 }
-
-
-/* =======================================================
-   FORÇAGE DU MODE TABLETTE (POUR IPAD)
-======================================================= */
-/* On cible spécifiquement les éléments qui posent problème sur grand écran tactile */
-
-body.force-ipad-mode .hero-home, 
-body.force-ipad-mode .hero-starac, 
-body.force-ipad-mode .hero-dals { 
-  min-height: auto !important; 
-  padding: 140px 20px 60px !important; 
-}
-
-/* Réparation de la grille des profs et élèves pour iPad */
-body.force-ipad-mode .roster-grid {
-  grid-template-columns: repeat(2, 1fr) !important; /* Force 2 colonnes */
-  gap: 15px !important;
-}
-
-body.force-ipad-mode .roster-flex-center {
-  gap: 15px !important;
-  max-width: 100% !important;
-}
-
-body.force-ipad-mode .roster-flex-center .roster-card {
-  flex: 0 0 calc(50% - 7.5px) !important; /* Force 2 cartes par ligne au lieu de 3 */
-  max-width: none !important;
-}
-
-body.force-ipad-mode .card, 
-body.force-ipad-mode .hub-card, 
-body.force-ipad-mode .bento-card {
-  padding: 25px !important; /* Marges intérieures réduites pour aérer sur tablette */
-}
-
 
 /* ===== BANDEAU DÉFILANT PLEIN ÉCRAN (GLASSMORPHISM) ===== */
 .dakar-ticker {
