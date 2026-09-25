@@ -482,3 +482,16 @@ body.legal-doc { background-color: #F8F9FA; }
     filter: blur(0);
   }
 }
+
+/* =======================================================
+   FORCER LA BARRE DÉFILANTE (IGNORE "RÉDUIRE LES ANIMATIONS")
+======================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .dakar-ticker-scroll {
+    /* Le !important force le navigateur à annuler le blocage */
+    animation-duration: 20s !important;
+    -webkit-animation-duration: 20s !important;
+    animation-iteration-count: infinite !important;
+    -webkit-animation-iteration-count: infinite !important;
+  }
+}
