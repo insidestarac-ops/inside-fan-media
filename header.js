@@ -123,6 +123,7 @@ const headerContent = `
       <nav class="pc-nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
+          <li><a href="actu.html">L'Actu Live</a></li>
           <li><a href="Live.html">Le QG Live</a></li>
           <li class="has-dropdown">
             <a href="Inside-star-ac.html">Inside Star Ac</a>
@@ -155,6 +156,7 @@ const headerContent = `
 <nav class="mobile-nav-panel">
   <div class="mob-nav-content">
     <a href="index.html" class="mob-link-main">Accueil</a>
+    <a href="actu.html" class="mob-link-main" style="color: #FF4D4D;">L'Actu Live</a>
     <a href="Live.html" class="mob-link-main" style="color: #00A6FF;">Le QG Live</a>
     
     <div class="mob-accordion">
