@@ -31,7 +31,6 @@ function publierMessage() {
     return; 
   }
 
-  // Création de l'heure et de la date (Ex: 16:02 et 25/09)
   const dateObj = new Date();
   const heures = String(dateObj.getHours()).padStart(2, '0');
   const minutes = String(dateObj.getMinutes()).padStart(2, '0');
@@ -41,7 +40,7 @@ function publierMessage() {
 
   db.ref("direct/").push({
     heure: `${heures}:${minutes}`,
-    date: dateCourante, // Ajout du jour et du mois
+    date: dateCourante,
     titre: titre,
     texte: message,
     media: media,
@@ -49,7 +48,6 @@ function publierMessage() {
     timestamp: firebase.database.ServerValue.TIMESTAMP
   });
 
-  // Vider les champs après l'envoi
   document.getElementById("titleInput").value = "";
   document.getElementById("messageInput").value = "";
   document.getElementById("mediaInput").value = "";
@@ -59,12 +57,20 @@ function publierMessage() {
 
 
 /* =========================================================
-   3. OUTIL : DETECTER LES LIENS YOUTUBE
+   3. OUTILS : DÉTECTEURS DE RÉSEAUX SOCIAUX
 ========================================================= */
 function extractYouTubeID(url) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = url.match(regExp);
   return (match && match[2].length === 11) ? match[2] : null;
+}
+function extractTikTokID(url) {
+  const match = url.match(/video\/(\d+)/);
+  return match ? match[1] : null;
+}
+function extractInstaID(url) {
+  const match = url.match(/(p|reel)\/([a-zA-Z0-9_-]+)/);
+  return match ? match[2] : null;
 }
 
 
@@ -91,10 +97,8 @@ if (liveFeed) {
     const article = document.createElement("div");
     article.className = "actu-card"; 
     
-    // Si la date existe (pour les nouveaux messages), on l'affiche au-dessus de l'heure
     const dateAffichage = data.date ? `<span style="font-size: 11px; color: #888; display: block; margin-bottom: 2px;">${data.date}</span>` : '';
 
-    // Structure de base
     let htmlContent = `
       <div class="timeline-dot"></div>
       <div class="actu-time">
@@ -104,33 +108,75 @@ if (liveFeed) {
       <div class="actu-content">
     `;
 
-    // Si on a mis un Titre
+    // Titre
     if (data.titre && data.titre.trim() !== "") {
       htmlContent += `<h3 class="actu-post-title">${data.titre}</h3>`;
     }
 
-    // Le message (avec la conversion des sauts de ligne "Entrée" en balises HTML <br>)
+    // Message
     if (data.texte && data.texte.trim() !== "") {
       const texteFormate = data.texte.replace(/\n/g, '<br>');
       htmlContent += `<p>${texteFormate}</p>`;
     }
 
-    // Gestion du Média (YouTube, Vidéo MP4 ou Image)
+    // ==========================================
+    // 4.3. GESTION UNIVERSELLE DES MÉDIAS
+    // ==========================================
     if (data.media && data.media.trim() !== "") {
-      const ytID = extractYouTubeID(data.media);
-      if (ytID) {
+      const url = data.media.trim();
+      const lowerUrl = url.toLowerCase();
+
+      if (lowerUrl.includes("youtu")) {
+        // --- YOUTUBE ---
+        const ytID = extractYouTubeID(url);
+        if (ytID) {
+          htmlContent += `<div class="actu-video-container"><iframe src="https://www.youtube.com/embed/${ytID}" frameborder="0" allowfullscreen></iframe></div>`;
+        }
+      } 
+      else if (lowerUrl.includes("x.com/") || lowerUrl.includes("twitter.com/")) {
+        // --- TWITTER / X ---
+        const tweetUrl = url.replace("x.com", "twitter.com");
         htmlContent += `
-          <div class="actu-video-container">
-            <iframe src="https://www.youtube.com/embed/${ytID}" frameborder="0" allowfullscreen></iframe>
+          <div style="margin-top: 15px; display: flex; justify-content: center;">
+            <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
+              <a href="${tweetUrl}"></a>
+            </blockquote>
           </div>`;
-      } else if (data.media.toLowerCase().endsWith(".mp4")) {
-        htmlContent += `<video controls class="actu-media-video" src="${data.media}"></video>`;
-      } else {
-        htmlContent += `<img src="${data.media}" alt="Illustration" class="actu-image">`;
+      } 
+      else if (lowerUrl.includes("tiktok.com/")) {
+        // --- TIKTOK ---
+        const tkId = extractTikTokID(url);
+        if (tkId) {
+          htmlContent += `<div style="margin-top: 15px;"><iframe src="https://www.tiktok.com/embed/v2/${tkId}" style="width: 100%; height: 600px; border: none; border-radius: 12px;" allowfullscreen></iframe></div>`;
+        }
+      }
+      else if (lowerUrl.includes("instagram.com/")) {
+        // --- INSTAGRAM ---
+        const igId = extractInstaID(url);
+        if (igId) {
+          htmlContent += `<div style="margin-top: 15px;"><iframe src="https://www.instagram.com/p/${igId}/embed" width="100%" height="450" frameborder="0" scrolling="no" style="border-radius: 12px; border: 1px solid rgba(124, 77, 255, 0.1);"></iframe></div>`;
+        }
+      }
+      else if (lowerUrl.includes("tf1.fr") || lowerUrl.includes("tf1+")) {
+        // --- TF1+ ---
+        htmlContent += `
+          <div style="margin-top: 15px; background: linear-gradient(135deg, #0036FF, #001B80); border-radius: 12px; padding: 25px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0, 54, 255, 0.2);">
+            <a href="${url}" target="_blank" style="color: white; text-decoration: none; font-weight: 900; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+              ▶️ Voir la vidéo sur TF1+
+            </a>
+          </div>`;
+      }
+      else if (lowerUrl.endsWith(".mp4")) {
+        // --- VIDÉO MP4 ---
+        htmlContent += `<video controls class="actu-media-video" src="${url}"></video>`;
+      } 
+      else {
+        // --- IMAGE ---
+        htmlContent += `<img src="${url}" alt="Illustration" class="actu-image">`;
       }
     }
 
-    // Gestion du Bouton Lien
+    // Bouton Lien Externe
     if (data.lien && data.lien.trim() !== "") {
       htmlContent += `<a href="${data.lien}" target="_blank" class="actu-btn-link">🔗 Découvrir</a>`;
     }
@@ -138,7 +184,11 @@ if (liveFeed) {
     htmlContent += `</div>`;
     article.innerHTML = htmlContent;
     
-    // Ajoute la nouvelle actualité tout en haut du fil
     liveFeed.prepend(article);
+
+    // Initialisation du widget Twitter au moment de l'injection
+    if (window.twttr) {
+      setTimeout(() => { window.twttr.widgets.load(); }, 100);
+    }
   });
 }
