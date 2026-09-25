@@ -31,12 +31,17 @@ function publierMessage() {
     return; 
   }
 
-  const date = new Date();
-  const heures = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
+  // Création de l'heure et de la date (Ex: 16:02 et 25/09)
+  const dateObj = new Date();
+  const heures = String(dateObj.getHours()).padStart(2, '0');
+  const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+  const jour = String(dateObj.getDate()).padStart(2, '0');
+  const mois = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const dateCourante = `${jour}/${mois}`;
 
   db.ref("direct/").push({
     heure: `${heures}:${minutes}`,
+    date: dateCourante, // Ajout du jour et du mois
     titre: titre,
     texte: message,
     media: media,
@@ -70,13 +75,13 @@ const liveFeed = document.getElementById("live-feed");
 const emptyState = document.getElementById("empty-state");
 const dateElement = document.getElementById("date-du-jour");
 
-// 4.1. Affichage automatique de la date
+// 4.1. Affichage automatique de la date complète en haut de la page
 if (dateElement) {
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   dateElement.innerText = new Date().toLocaleDateString('fr-FR', options);
 }
 
-// 4.2. Écoute et affichage des messages
+// 4.2. Écoute et affichage des messages en temps réel
 if (liveFeed) {
   db.ref("direct/").orderByChild("timestamp").on("child_added", function(snapshot) {
     const data = snapshot.val();
@@ -86,26 +91,31 @@ if (liveFeed) {
     const article = document.createElement("div");
     article.className = "actu-card"; 
     
+    // Si la date existe (pour les nouveaux messages), on l'affiche au-dessus de l'heure
+    const dateAffichage = data.date ? `<span style="font-size: 11px; color: #888; display: block; margin-bottom: 2px;">${data.date}</span>` : '';
+
     // Structure de base
     let htmlContent = `
       <div class="timeline-dot"></div>
-      <div class="actu-time">${data.heure}</div>
+      <div class="actu-time">
+        ${dateAffichage}
+        ${data.heure}
+      </div>
       <div class="actu-content">
     `;
 
-    // Si on a mis un Titre (Nouveau)
+    // Si on a mis un Titre
     if (data.titre && data.titre.trim() !== "") {
       htmlContent += `<h3 class="actu-post-title">${data.titre}</h3>`;
     }
-    
 
-    // Le message
+    // Le message (avec la conversion des sauts de ligne "Entrée" en balises HTML <br>)
     if (data.texte && data.texte.trim() !== "") {
-    const texteFormate = data.texte.replace(/\n/g, '<br>');
-    htmlContent += `<p>${texteFormate}</p>`;
+      const texteFormate = data.texte.replace(/\n/g, '<br>');
+      htmlContent += `<p>${texteFormate}</p>`;
     }
 
-    // Gestion du Média
+    // Gestion du Média (YouTube, Vidéo MP4 ou Image)
     if (data.media && data.media.trim() !== "") {
       const ytID = extractYouTubeID(data.media);
       if (ytID) {
@@ -128,6 +138,7 @@ if (liveFeed) {
     htmlContent += `</div>`;
     article.innerHTML = htmlContent;
     
+    // Ajoute la nouvelle actualité tout en haut du fil
     liveFeed.prepend(article);
   });
 }
