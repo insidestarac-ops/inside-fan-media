@@ -143,6 +143,46 @@
     .card-banner { height: 180px; }
     .hub-card { padding: 25px; }
   }
+
+  /* =========================================
+     FOCUS ENCART STAR AC : SPÉCIAL IPAD / TABLETTE
+     (S'applique uniquement entre 769px et 1180px)
+  ========================================= */
+  @media (max-width: 1180px) and (min-width: 769px) {
+    /* 1. On donne plus d'air à tout l'encart */
+    .promo-banner { 
+      flex-direction: column; 
+      text-align: center; 
+      padding: 50px; 
+    }
+    
+    /* 2. On grossit le bloc central (Logo + Titre) */
+    .promo-left { 
+      flex-direction: column; 
+      text-align: center; 
+      gap: 20px; 
+      margin-bottom: 35px; 
+    }
+    .promo-logo-side { height: 140px; } /* Logo plus gros */
+    .promo-text h2 { font-size: 42px; margin-bottom: 15px; } /* Titre "RETOUR..." plus gros */
+    .promo-text .promo-details { font-size: 20px; }
+    .promo-tag { font-size: 16px; padding: 8px 20px; margin-bottom: 15px; }
+    
+    /* 3. Le fameux compteur dans la barre noire */
+    .promo-countdown-box { 
+      width: 100%; 
+      padding: 40px 20px; 
+      border-radius: 28px; 
+      box-sizing: border-box;
+    }
+    .promo-timer { 
+      justify-content: space-evenly; /* Répartit les chiffres sur toute la largeur */
+      width: 100%;
+    }
+    .promo-timer span.val { font-size: 65px; } /* Chiffres énormes ! */
+    .promo-timer span.lbl { font-size: 20px; margin-left: 6px; }
+    .promo-timer .sep { font-size: 50px; margin: 0 10px; }
+  }
 </style>
 </head>
 
