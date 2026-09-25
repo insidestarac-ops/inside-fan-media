@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Régie IFM - Premium</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #13082B; color: white; padding: 20px; margin: 0; }
+    .container { max-width: 500px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+    h1 { text-align: center; color: #EF7F00; font-size: 24px; margin-top: 0; text-transform: uppercase;}
+    label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 14px; color: #aaa;}
+    
+    /* Style de la barre d'outils */
+    .toolbar { display: flex; gap: 10px; margin-bottom: 10px; }
+    .toolbar button { 
+      background: #333; color: white; border: 1px solid #555; 
+      padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 16px;
+      width: auto; font-weight: normal; text-transform: none;
+    }
+    .toolbar button:hover { background: #555; }
+    
+    textarea, input[type="text"] { width: 100%; background: #fff; color: #111; border: none; border-radius: 12px; padding: 15px; font-size: 16px; margin-bottom: 20px; box-sizing: border-box; font-family: inherit; }
+    textarea { height: 120px; }
+    .btn-publish { width: 100%; background: #E60000; color: white; border: none; border-radius: 12px; padding: 18px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
+    .btn-publish:active { transform: scale(0.98); }
+    .hint { font-size: 11px; color: #888; margin-top: -15px; margin-bottom: 20px; display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎙️ Régie Direct</h1>
+    
+    <label>Titre de l'info :</label>
+    <input type="text" id="titleInput" placeholder="Ex: Évaluations surprise !">
+    
+    <label>Message détaillé :</label>
+    <!-- La petite barre d'outils -->
+    <div class="toolbar">
+      <button type="button" onclick="formatText('b')" style="font-weight: bold;">Gras</button>
+      <button type="button" onclick="formatText('i')" style="font-style: italic;">Italique</button>
+    </div>
+    <textarea id="messageInput" placeholder="Tape ton message ici..."></textarea>
+    
+    <label>Média (Image, Vidéo ou YouTube) :</label>
+    <input type="text" id="mediaInput" placeholder="https://...">
+    <span class="hint">Colle une URL d'image, un lien YouTube, ou un lien .mp4</span>
+    
+    <label>Bouton / Lien externe (Optionnel) :</label>
+    <input type="text" id="linkInput" placeholder="https://...">
+    <span class="hint">Pour ajouter un bouton sous le texte</span>
+    
+    <button class="btn-publish" onclick="publierMessage()">Publier le Flash Info</button>
+  </div>
+
+  <script>
+    // Fonction magique pour ajouter le Gras ou l'Italique
+    function formatText(tag) {
+      const textarea = document.getElementById('messageInput');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selectedText = textarea.value.substring(start, end);
+      const beforeText = textarea.value.substring(0, start);
+      const afterText = textarea.value.substring(end, textarea.value.length);
+      
+      textarea.value = beforeText + `<${tag}>` + selectedText + `</${tag}>` + afterText;
+      textarea.focus();
+    }
+  </script>
+  <script src="live.js?v=11"></script>
+
+</body>
+</html>

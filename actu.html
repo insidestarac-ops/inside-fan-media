@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fil d'Actualité en Direct – Inside Star Ac</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Suivez l'actualité de la Star Academy en direct minute par minute.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-star-ac.png">
+
+<link rel="stylesheet" href="style.css?v=8">
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+
+<main>
+  <section class="hero-starac">
+    <div class="hero-content">
+      <img src="assets/logo-star-ac.png" alt="Logo Star Academy" class="logo-univers">
+      <br>
+      <!-- Le NOUVEAU badge premium -->
+      <div class="live-badge-premium">
+        <span class="live-dot"></span> EN DIRECT
+      </div>
+      <h1>Le Fil d'Actu</h1>
+    </div>
+  </section>
+
+  <section class="actu-section">
+    <div class="actu-container">
+
+      <div class="presse-header">
+        <div class="presse-title-left">
+          <img src="assets/logo-star-ac.png" alt="Logo IFM" class="presse-logo">
+          <div>
+            <h2 class="category-title" style="margin: 0; border: none; padding: 0;">Direct du Château</h2>
+            <div class="presse-date" id="date-du-jour">Chargement de la date...</div>
+          </div>
+        </div>
+        <div class="auto-update-text"><span></span> Mise à jour auto</div>
+      </div>
+
+      <div id="live-feed">
+        <div class="empty-state" id="empty-state">
+          En attente des premières informations...
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="menu.js"></script>
+
+<script src="live.js?v=8"></script>
+
+</body>
+</html>s
