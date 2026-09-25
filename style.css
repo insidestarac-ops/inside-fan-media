@@ -318,8 +318,10 @@ body.legal-doc { background-color: #F8F9FA; }
   cursor: default;
 }
 
-.dakar-ticker:hover .dakar-ticker-scroll {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .dakar-ticker:hover .dakar-ticker-scroll {
+    animation-play-state: paused;
+  }
 }
 
 .dakar-ticker-text {
