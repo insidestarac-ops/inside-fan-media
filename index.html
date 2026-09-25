@@ -97,18 +97,43 @@
   .live-info h3 { display: flex; align-items: center; justify-content: center; gap: 12px; }
   @keyframes pulseLive { 0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(255, 71, 87, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); } }
 
+  /* =========================================
+     ADAPTATION TABLETTE / IPAD
+  ========================================= */
   @media (max-width: 1024px) {
-    .promo-banner { flex-direction: column; text-align: center; }
-    .promo-left { flex-direction: column; text-align: center; gap: 20px; }
+    .promo-banner { flex-direction: column; text-align: center; padding: 40px; }
+    .promo-left { flex-direction: column; text-align: center; gap: 15px; margin-bottom: 25px; }
     .promo-banner::before { width: 100%; height: 6px; left: 0; right: 0; bottom: auto; }
+    
+    /* Le compteur XXL façon "Plateau TV" */
+    .promo-countdown-box { width: 100%; box-sizing: border-box; padding: 30px 20px; border-radius: 24px; }
+    .promo-timer { justify-content: space-evenly; width: 100%; }
+    .promo-timer .time-group { width: auto; justify-content: center; }
+    .promo-timer span.val { font-size: 58px; } /* Chiffres géants */
+    .promo-timer span.lbl { font-size: 18px; margin-left: 6px; }
+    .promo-timer .sep { font-size: 40px; }
   }
-  @media (max-width: 900px) { .bento-grid { grid-template-columns: 1fr; gap: 30px; } }
+
+  @media (max-width: 900px) { 
+    .bento-grid { grid-template-columns: 1fr; gap: 30px; } 
+  }
+
+  /* =========================================
+     ADAPTATION MOBILE
+  ========================================= */
   @media (max-width: 768px) {
     .hero-home { min-height: 60vh; padding: 120px 0 100px; }
     .hero-content h1 { font-size: 40px; }
     .home-grid-section { margin-top: -60px; }
     .promo-banner { padding: 30px 20px; }
+    
+    /* Retour à un compteur compact pour les petits écrans */
+    .promo-countdown-box { padding: 20px 10px; border-radius: 20px; }
+    .promo-timer { justify-content: center; gap: 2px; }
     .promo-timer span.val { font-size: 32px; }
+    .promo-timer span.lbl { font-size: 12px; margin-left: 2px; }
+    .promo-timer .sep { font-size: 24px; margin: 0 4px; }
+    
     .btn-whatsapp-giant { font-size: 15px; padding: 15px 25px; width: 100%; justify-content: center; }
     
     .poll-highlight-section { padding: 25px 15px; border-radius: 24px; }
