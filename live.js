@@ -16,9 +16,8 @@ const db = firebase.database();
 
 
 /* =========================================================
-   NOUVEAU : AUTO-CHARGEUR DE MOTEURS SOCIAUX
+   AUTO-CHARGEUR DE MOTEURS SOCIAUX
 ========================================================= */
-// Force le navigateur à charger les moteurs de Twitter et TikTok
 function injecterMoteursSociaux() {
   if (!document.getElementById("twitter-wjs")) {
     const scriptTw = document.createElement("script");
@@ -32,7 +31,7 @@ injecterMoteursSociaux();
 
 
 /* =========================================================
-   2. LE MODE "RÉGIE" (Envoi de l'information)
+   2. LE MODE "RÉGIE" (Envoi de l'information avec Programmation)
 ========================================================= */
 function publierMessage() {
   const titre = document.getElementById("titleInput").value;
@@ -40,31 +39,58 @@ function publierMessage() {
   const media = document.getElementById("mediaInput").value;
   const lien = document.getElementById("linkInput").value;
   
+  // Récupération des nouveautés de la régie
+  const tagEl = document.getElementById("tagInput");
+  const dateEl = document.getElementById("dateInput");
+  const tag = tagEl ? tagEl.value : "";
+  const dateProg = dateEl ? dateEl.value : "";
+  
   if (message.trim() === "" && titre.trim() === "") { 
     alert("Impossible d'envoyer un message vide !"); return; 
   }
 
-  const dateObj = new Date();
-  const heures = String(dateObj.getHours()).padStart(2, '0');
-  const minutes = String(dateObj.getMinutes()).padStart(2, '0');
-  const jour = String(dateObj.getDate()).padStart(2, '0');
-  const mois = String(dateObj.getMonth() + 1).padStart(2, '0');
+  let postTimestamp;
+  let heureAffichee;
+  let dateAffichee;
+
+  // Si on a programmé une date dans le futur
+  if (dateProg) {
+    const parsedDate = new Date(dateProg);
+    postTimestamp = parsedDate.getTime();
+    heureAffichee = String(parsedDate.getHours()).padStart(2, '0') + ":" + String(parsedDate.getMinutes()).padStart(2, '0');
+    dateAffichee = String(parsedDate.getDate()).padStart(2, '0') + "/" + String(parsedDate.getMonth() + 1).padStart(2, '0');
+  } else {
+    // Sinon, on publie maintenant
+    const dateObj = new Date();
+    postTimestamp = dateObj.getTime();
+    heureAffichee = String(dateObj.getHours()).padStart(2, '0') + ":" + String(dateObj.getMinutes()).padStart(2, '0');
+    dateAffichee = String(dateObj.getDate()).padStart(2, '0') + "/" + String(dateObj.getMonth() + 1).padStart(2, '0');
+  }
 
   db.ref("direct/").push({
-    heure: `${heures}:${minutes}`,
-    date: `${jour}/${mois}`,
+    heure: heureAffichee,
+    date: dateAffichee,
     titre: titre,
     texte: message,
     media: media,
     lien: lien,
-    timestamp: firebase.database.ServerValue.TIMESTAMP
+    tag: tag, // On enregistre le tag
+    timestamp: postTimestamp // On utilise notre propre calcul de temps pour la programmation
   });
 
+  // On vide les champs après l'envoi
   document.getElementById("titleInput").value = "";
   document.getElementById("messageInput").value = "";
   document.getElementById("mediaInput").value = "";
   document.getElementById("linkInput").value = "";
-  alert("✅ Flash info envoyé avec succès !");
+  if(dateEl) dateEl.value = "";
+  if(tagEl) tagEl.value = "";
+  
+  if (dateProg) {
+    alert(`⏳ Flash info programmé avec succès pour le ${dateAffichee} à ${heureAffichee} !`);
+  } else {
+    alert("✅ Flash info envoyé en direct !");
+  }
 }
 
 
@@ -86,7 +112,7 @@ function extractInstaID(url) {
 
 
 /* =========================================================
-   4. LE MODE "PUBLIC" (Affichage sur actu.html)
+   4. LE MODE "PUBLIC" (Affichage Dynamique et Programmation)
 ========================================================= */
 const liveFeed = document.getElementById("live-feed");
 const emptyState = document.getElementById("empty-state");
@@ -97,78 +123,104 @@ if (dateElement) {
   dateElement.innerText = new Date().toLocaleDateString('fr-FR', options);
 }
 
+// Fonction séparée pour créer la carte HTML (plus propre)
+function afficherArticleHTML(data) {
+  if (emptyState) emptyState.style.display = "none";
+
+  const article = document.createElement("div");
+  article.className = "actu-card"; 
+  
+  const dateAffichage = data.date ? `<span style="font-size: 11px; color: #888; display: block; margin-bottom: 2px;">${data.date}</span>` : '';
+  
+  // Couleurs des tags
+  let tagHtml = "";
+  if (data.tag) {
+    let bgColor = "#7C4DFF"; // Par défaut (ex: Eval)
+    if (data.tag === "Alerte") bgColor = "#FF4757"; // Rouge
+    if (data.tag === "Gossip") bgColor = "#25D366"; // Vert
+    if (data.tag === "Prime") bgColor = "#EF7F00"; // Orange
+    tagHtml = `<span style="background: ${bgColor}; color: #fff; font-size: 10px; font-weight: 900; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; display: inline-block; letter-spacing: 0.5px;">${data.tag}</span><br>`;
+  }
+
+  let htmlContent = `
+    <div class="timeline-dot"></div>
+    <div class="actu-time">${dateAffichage}${data.heure}</div>
+    <div class="actu-content">
+      ${tagHtml}
+  `;
+
+  if (data.titre && data.titre.trim() !== "") htmlContent += `<h3 class="actu-post-title">${data.titre}</h3>`;
+  if (data.texte && data.texte.trim() !== "") htmlContent += `<p>${data.texte.replace(/\n/g, '<br>')}</p>`;
+
+  // --- GESTION DES MÉDIAS ---
+  if (data.media && data.media.trim() !== "") {
+    const url = data.media.trim();
+    const lowerUrl = url.toLowerCase();
+
+    if (lowerUrl.includes("youtu")) {
+      const ytID = extractYouTubeID(url);
+      if (ytID) htmlContent += `<div class="actu-video-container"><iframe src="https://www.youtube.com/embed/${ytID}" frameborder="0" allowfullscreen></iframe></div>`;
+    } 
+    else if (lowerUrl.includes("x.com/") || lowerUrl.includes("twitter.com/")) {
+      let cleanUrl = url.replace("x.com", "twitter.com").split('/video')[0].split('/photo')[0];
+      htmlContent += `
+        <div style="margin-top: 15px; width: 100%; overflow: hidden; border-radius: 12px;">
+          <blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><a href="${cleanUrl}"></a></blockquote>
+        </div>`;
+    } 
+    else if (lowerUrl.includes("tiktok.com/")) {
+      const tkId = extractTikTokID(url);
+      if (tkId) htmlContent += `<div style="margin-top: 15px;"><iframe src="https://www.tiktok.com/embed/v2/${tkId}" style="width: 100%; height: 600px; border: none; border-radius: 12px;" allowfullscreen></iframe></div>`;
+    }
+    else if (lowerUrl.includes("instagram.com/")) {
+      const igId = extractInstaID(url);
+      if (igId) htmlContent += `<div style="margin-top: 15px;"><iframe src="https://www.instagram.com/p/${igId}/embed" width="100%" height="450" frameborder="0" scrolling="no" style="border-radius: 12px;"></iframe></div>`;
+    }
+    else if (lowerUrl.includes("tf1.fr") || lowerUrl.includes("tf1+")) {
+      htmlContent += `<div style="margin-top: 15px; background: linear-gradient(135deg, #0036FF, #001B80); border-radius: 12px; padding: 25px 20px; text-align: center;"><a href="${url}" target="_blank" style="color: white; text-decoration: none; font-weight: 900; font-size: 16px;">▶️ Voir la vidéo exclusive sur TF1+</a></div>`;
+    }
+    else if (lowerUrl.endsWith(".mp4")) {
+      htmlContent += `<video controls class="actu-media-video" src="${url}"></video>`;
+    } 
+    else {
+      htmlContent += `<img src="${url}" alt="Illustration" class="actu-image">`;
+    }
+  }
+
+  if (data.lien && data.lien.trim() !== "") {
+    htmlContent += `<a href="${data.lien}" target="_blank" class="actu-btn-link">🔗 Découvrir</a>`;
+  }
+
+  htmlContent += `</div>`;
+  article.innerHTML = htmlContent;
+  
+  // On place l'article tout en haut
+  liveFeed.prepend(article);
+
+  // Recharge Twitter si besoin
+  setTimeout(() => {
+    if (window.twttr && window.twttr.widgets) { window.twttr.widgets.load(article); }
+  }, 500);
+}
+
+
 if (liveFeed) {
   db.ref("direct/").orderByChild("timestamp").on("child_added", function(snapshot) {
     const data = snapshot.val();
-    if (emptyState) emptyState.style.display = "none";
-
-    const article = document.createElement("div");
-    article.className = "actu-card"; 
+    const now = Date.now();
+    const postTime = data.timestamp || now;
     
-    const dateAffichage = data.date ? `<span style="font-size: 11px; color: #888; display: block; margin-bottom: 2px;">${data.date}</span>` : '';
+    const delai = postTime - now;
 
-    let htmlContent = `
-      <div class="timeline-dot"></div>
-      <div class="actu-time">${dateAffichage}${data.heure}</div>
-      <div class="actu-content">
-    `;
-
-    if (data.titre && data.titre.trim() !== "") htmlContent += `<h3 class="actu-post-title">${data.titre}</h3>`;
-    if (data.texte && data.texte.trim() !== "") htmlContent += `<p>${data.texte.replace(/\n/g, '<br>')}</p>`;
-
-    // --- GESTION DES MÉDIAS ---
-    if (data.media && data.media.trim() !== "") {
-      const url = data.media.trim();
-      const lowerUrl = url.toLowerCase();
-
-      if (lowerUrl.includes("youtu")) {
-        const ytID = extractYouTubeID(url);
-        if (ytID) htmlContent += `<div class="actu-video-container"><iframe src="https://www.youtube.com/embed/${ytID}" frameborder="0" allowfullscreen></iframe></div>`;
-      } 
-      else if (lowerUrl.includes("x.com/") || lowerUrl.includes("twitter.com/")) {
-        // LE CORRECTIF EST ICI : On force "twitter.com" et on coupe "/video/1" ou "/photo/1"
-        let cleanUrl = url.replace("x.com", "twitter.com").split('/video')[0].split('/photo')[0];
-        
-        htmlContent += `
-          <div style="margin-top: 15px; width: 100%; overflow: hidden; border-radius: 12px;">
-            <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
-              <a href="${cleanUrl}"></a>
-            </blockquote>
-          </div>`;
-      } 
-      else if (lowerUrl.includes("tiktok.com/")) {
-        const tkId = extractTikTokID(url);
-        if (tkId) htmlContent += `<div style="margin-top: 15px;"><iframe src="https://www.tiktok.com/embed/v2/${tkId}" style="width: 100%; height: 600px; border: none; border-radius: 12px;" allowfullscreen></iframe></div>`;
-      }
-      else if (lowerUrl.includes("instagram.com/")) {
-        const igId = extractInstaID(url);
-        if (igId) htmlContent += `<div style="margin-top: 15px;"><iframe src="https://www.instagram.com/p/${igId}/embed" width="100%" height="450" frameborder="0" scrolling="no" style="border-radius: 12px;"></iframe></div>`;
-      }
-      else if (lowerUrl.includes("tf1.fr") || lowerUrl.includes("tf1+")) {
-        htmlContent += `<div style="margin-top: 15px; background: linear-gradient(135deg, #0036FF, #001B80); border-radius: 12px; padding: 25px 20px; text-align: center;"><a href="${url}" target="_blank" style="color: white; text-decoration: none; font-weight: 900; font-size: 16px;">▶️ Voir la vidéo exclusive sur TF1+</a></div>`;
-      }
-      else if (lowerUrl.endsWith(".mp4")) {
-        htmlContent += `<video controls class="actu-media-video" src="${url}"></video>`;
-      } 
-      else {
-        htmlContent += `<img src="${url}" alt="Illustration" class="actu-image">`;
-      }
+    // MAGIE DE LA PROGRAMMATION : 
+    // Si l'heure du post est dans le futur, on met un retardateur !
+    if (delai > 0) {
+      setTimeout(() => {
+        afficherArticleHTML(data);
+      }, delai);
+    } else {
+      // Sinon, on l'affiche tout de suite
+      afficherArticleHTML(data);
     }
-
-    if (data.lien && data.lien.trim() !== "") {
-      htmlContent += `<a href="${data.lien}" target="_blank" class="actu-btn-link">🔗 Découvrir</a>`;
-    }
-
-    htmlContent += `</div>`;
-    article.innerHTML = htmlContent;
-    
-    liveFeed.prepend(article);
-
-    // On force Twitter à analyser la carte qu'on vient d'ajouter
-    setTimeout(() => {
-      if (window.twttr && window.twttr.widgets) {
-        window.twttr.widgets.load(article);
-      }
-    }, 500);
   });
 }
