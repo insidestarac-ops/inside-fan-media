@@ -3,81 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Régie IFM - Accès Sécurisé</title>
+  <title>Régie IFM - Cockpit Live</title>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #13082B; color: white; padding: 20px; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #050214; color: white; padding: 20px; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     
-    /* Le conteneur principal */
-    .container { max-width: 500px; width: 100%; background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; }
-    h1 { text-align: center; color: #EF7F00; font-size: 24px; margin-top: 0; text-transform: uppercase;}
+    /* Écran de connexion (Inchangé) */
+    #login-screen { max-width: 400px; width: 100%; background: #13082B; padding: 30px; border-radius: 20px; border: 1px solid rgba(124, 77, 255, 0.3); text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+    #login-screen h1 { color: #EF7F00; font-size: 24px; margin-top: 0; }
+    #login-screen p { color: #aaa; margin-bottom: 25px; font-size: 14px; }
+    #login-screen input { width: 100%; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; font-size: 16px; margin-bottom: 20px; box-sizing: border-box; text-align: center; }
+    .btn-login { width: 100%; background: #7C4DFF; color: white; border: none; border-radius: 12px; padding: 15px; font-size: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
+    .btn-login:hover { background: #5E35FF; }
     
-    /* Écran de connexion */
-    #login-screen { display: block; text-align: center; }
-    #login-screen p { color: #aaa; margin-bottom: 25px; }
+    /* LA NOUVELLE RÉGIE COCKPIT */
+    #regie-content { display: none; width: 100%; max-width: 700px; }
+    .regie-cockpit { background: #0B071A; border: 1px solid #2A1055; border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
     
-    /* La régie cachée */
-    #regie-content { display: none; }
+    .regie-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .regie-header h2 { margin: 0; font-size: 22px; display: flex; align-items: center; gap: 10px; color: #fff; }
+    .regie-header h2::before { content: ""; display: block; width: 12px; height: 12px; background: #FF4757; border-radius: 50%; box-shadow: 0 0 10px #FF4757; animation: pulseLive 2s infinite; }
+    @keyframes pulseLive { 0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.6); } 70% { box-shadow: 0 0 0 6px rgba(255, 71, 87, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); } }
+
+    /* Lignes d'options (Tags, Date) */
+    .regie-row { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+    .regie-input-group { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+    .regie-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.5px; }
     
-    label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 14px; color: #aaa; text-align: left; }
-    .toolbar { display: flex; gap: 10px; margin-bottom: 10px; }
-    .toolbar button { background: #333; color: white; border: 1px solid #555; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 16px; width: auto; font-weight: normal; text-transform: none; }
-    .toolbar button:hover { background: #555; }
+    .regie-input { background: #13082B; color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 12px 15px; border-radius: 12px; outline: none; font-size: 14px; font-family: inherit; width: 100%; box-sizing: border-box; transition: 0.2s; }
+    .regie-input:focus { border-color: #7C4DFF; background: #1C0B3B; }
     
-    textarea, input[type="text"], input[type="password"] { width: 100%; background: #fff; color: #111; border: none; border-radius: 12px; padding: 15px; font-size: 16px; margin-bottom: 20px; box-sizing: border-box; font-family: inherit; }
-    textarea { height: 120px; }
+    /* Éditeur de texte */
+    .regie-editor { background: #13082B; border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; overflow: hidden; margin-bottom: 20px; transition: border-color 0.3s; }
+    .regie-editor:focus-within { border-color: #7C4DFF; }
     
-    .btn-publish { width: 100%; background: #E60000; color: white; border: none; border-radius: 12px; padding: 18px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
+    .regie-toolbar { background: rgba(0,0,0,0.3); padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; flex-wrap: wrap; }
+    .tool-btn { background: transparent; border: none; color: rgba(255,255,255,0.8); cursor: pointer; padding: 6px 10px; border-radius: 8px; transition: 0.2s; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+    .tool-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    
+    .regie-textarea { width: 100%; min-height: 120px; background: transparent; border: none; color: #fff; padding: 15px; font-size: 15px; resize: vertical; outline: none; font-family: inherit; box-sizing: border-box; line-height: 1.5; }
+    
+    /* Bouton final */
+    .btn-publish { width: 100%; background: linear-gradient(135deg, #EF7F00, #E65C00); color: white; border: none; border-radius: 14px; padding: 18px; font-size: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(239, 127, 0, 0.3); margin-top: 10px; }
+    .btn-publish:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(239, 127, 0, 0.4); }
     .btn-publish:active { transform: scale(0.98); }
-    .btn-login { width: 100%; background: #7C4DFF; color: white; border: none; border-radius: 12px; padding: 15px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
     
-    .hint { font-size: 11px; color: #888; margin-top: -15px; margin-bottom: 20px; display: block; text-align: left; }
+    .hint { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; display: block; }
   </style>
 </head>
 <body>
 
   <!-- ÉCRAN 1 : LE VERROUILLAGE -->
-  <div class="container" id="login-screen">
-    <h1>🔒 Accès Restreint</h1>
-    <p>Veuillez entrer le code de la régie.</p>
+  <div id="login-screen">
+    <h1>🔒 Accès Cockpit</h1>
+    <p>Authentification requise pour la régie directe.</p>
     <input type="password" id="passInput" placeholder="Mot de passe...">
     <button class="btn-login" onclick="verifierMotDePasse()">Déverrouiller</button>
   </div>
 
-  <!-- ÉCRAN 2 : LA VRAIE RÉGIE (Cachée par défaut) -->
-  <div class="container" id="regie-content">
-    <h1>🎙️ Régie Direct</h1>
-    
-    <label>Titre de l'info :</label>
-    <input type="text" id="titleInput" placeholder="Ex: Évaluations surprise !">
-    
-    <label>Message détaillé :</label>
-    <div class="toolbar">
-      <button type="button" onclick="formatText('b')" style="font-weight: bold;">Gras</button>
-      <button type="button" onclick="formatText('i')" style="font-style: italic;">Italique</button>
+  <!-- ÉCRAN 2 : LA NOUVELLE RÉGIE COCKPIT -->
+  <div id="regie-content">
+    <div class="regie-cockpit">
+      <div class="regie-header">
+        <h2>Régie Studio</h2>
+        <span style="font-size: 12px; background: rgba(255,255,255,0.1); color: #25D366; font-weight: 800; padding: 6px 12px; border-radius: 8px;">En Ligne</span>
+      </div>
+      
+      <!-- Ligne 1 : Titre et Tag -->
+      <div class="regie-row">
+        <div class="regie-input-group" style="flex: 2;">
+          <label class="regie-label">Titre de l'info</label>
+          <input type="text" id="titleInput" class="regie-input" placeholder="Ex: Surprise lors du Prime !">
+        </div>
+        <div class="regie-input-group" style="flex: 1;">
+          <label class="regie-label">Tag (Catégorie)</label>
+          <!-- Tu pourras lier la valeur de ce select dans live.js plus tard si tu veux ajouter des couleurs aux tags -->
+          <select id="tagInput" class="regie-input">
+            <option value="">📌 Classique</option>
+            <option value="Alerte">🚨 Alerte Info</option>
+            <option value="Gossip">🐍 Gossip</option>
+            <option value="Prime">📺 Prime</option>
+            <option value="Eval">📝 Évaluation</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Ligne 2 : Média et Lien Externe -->
+      <div class="regie-row">
+        <div class="regie-input-group">
+          <label class="regie-label">Média (Image/Vidéo)</label>
+          <input type="text" id="mediaInput" class="regie-input" placeholder="Colle un lien (JPG, MP4, YouTube...)">
+        </div>
+        <div class="regie-input-group">
+          <label class="regie-label">Bouton Externe</label>
+          <input type="text" id="linkInput" class="regie-input" placeholder="Lien vers un article (Optionnel)">
+        </div>
+      </div>
+      
+      <!-- Zone de Texte Riche -->
+      <label class="regie-label" style="display:block; margin-bottom: 8px;">Contenu du message</label>
+      <div class="regie-editor">
+        <div class="regie-toolbar">
+          <button type="button" class="tool-btn" onclick="formatText('b')" style="font-weight: 900;">B</button>
+          <button type="button" class="tool-btn" onclick="formatText('i')" style="font-style: italic; font-family: serif;">I</button>
+          <div style="width: 1px; background: rgba(255,255,255,0.2); margin: 0 4px;"></div>
+          <!-- Outils d'insertion rapide -->
+          <button type="button" class="tool-btn" onclick="insertText('🚨 ')">🚨</button>
+          <button type="button" class="tool-btn" onclick="insertText('📺 ')">📺</button>
+          <button type="button" class="tool-btn" onclick="insertText('🔥 ')">🔥</button>
+          <button type="button" class="tool-btn" onclick="insertText('⚠️ ')">⚠️</button>
+        </div>
+        <textarea id="messageInput" class="regie-textarea" placeholder="Que se passe-t-il actuellement ?"></textarea>
+      </div>
+      
+      <!-- Outil Programmation (Visuel pour l'instant, nécessite adaptation du live.js plus tard) -->
+      <div class="regie-row" style="margin-bottom: 25px;">
+        <div class="regie-input-group">
+          <label class="regie-label">🕒 Programmation (Optionnel)</label>
+          <input type="datetime-local" id="dateInput" class="regie-input">
+          <span class="hint">Laissez vide pour publier instantanément.</span>
+        </div>
+      </div>
+      
+      <button class="btn-publish" onclick="publierMessage()">🚀 Publier dans le Fil d'Actu</button>
     </div>
-    <textarea id="messageInput" placeholder="Tape ton message ici..."></textarea>
-    
-    <label>Média (Image, Vidéo ou YouTube) :</label>
-    <input type="text" id="mediaInput" placeholder="https://...">
-    <span class="hint">Colle une URL d'image, un lien YouTube, ou un lien .mp4</span>
-    
-    <label>Bouton / Lien externe (Optionnel) :</label>
-    <input type="text" id="linkInput" placeholder="https://...">
-    <span class="hint">Pour ajouter un bouton sous le texte</span>
-    
-    <button class="btn-publish" onclick="publierMessage()">Publier le Flash Info</button>
   </div>
 
   <script>
-    // Le système de mot de passe
+    // 1. Système de Mot de Passe
     function verifierMotDePasse() {
       const mdpSaisi = document.getElementById('passInput').value;
-      const mdpSecret = "Ryan.2006"; // <-- MODIFIE TON MOT DE PASSE ICI
+      const mdpSecret = "Ryan.2006"; // <-- TON MOT DE PASSE
       
       if (mdpSaisi === mdpSecret) {
-        // Cacher l'écran de connexion et afficher la régie
         document.getElementById('login-screen').style.display = "none";
         document.getElementById('regie-content').style.display = "block";
       } else {
@@ -86,12 +145,11 @@
       }
     }
 
-    // Autoriser la touche "Entrée" pour valider le mot de passe
     document.getElementById('passInput').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') { verifierMotDePasse(); }
     });
 
-    // La barre d'outils
+    // 2. Formatage du texte (Gras, Italique)
     function formatText(tag) {
       const textarea = document.getElementById('messageInput');
       const start = textarea.selectionStart;
@@ -103,8 +161,20 @@
       textarea.value = beforeText + `<${tag}>` + selectedText + `</${tag}>` + afterText;
       textarea.focus();
     }
+
+    // 3. Insertion rapide d'Emojis
+    function insertText(text) {
+      const textarea = document.getElementById('messageInput');
+      const start = textarea.selectionStart;
+      const beforeText = textarea.value.substring(0, start);
+      const afterText = textarea.value.substring(start, textarea.value.length);
+      
+      textarea.value = beforeText + text + afterText;
+      textarea.focus();
+    }
   </script>
 
+  <!-- Ton script de publication vers Firebase -->
   <script src="live.js?v=20"></script>
 
 </body>
