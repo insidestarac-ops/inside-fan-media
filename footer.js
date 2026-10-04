@@ -47,7 +47,7 @@ const footerContent = `
 </style>
 
 <footer class="site-footer">
-  <img src="assets/logo-inside-fan-media.png" class="footer-bg-logo" alt="Inside Fan Media Background">
+  <img src="assets/logo-inside-fan-media.png" class="footer-bg-logo" alt="Inside Fan Media">
 
   <div class="footer-grid">
     <div class="footer-col">
@@ -65,11 +65,20 @@ const footerContent = `
       <a href="Inside-dals.html">Danse avec les stars</a>
     </div>
 
-    <!-- Nouvelle Colonne Partenaire Officiel -->
+    <!-- Colonne Partenaires -->
     <div class="footer-col">
-      <h4>Partenaire Officiel</h4>
-      <!-- Le logo de Viewer+ (avec lien vers leur site si besoin) -->
-      <img src="assets/viewer.png" alt="Viewer+" class="partner-logo">
+      <h4>Partenaires</h4>
+      
+      <!-- Viewer+ (Image d'origine, rendue cliquable) -->
+      <a href="https://viewerplus.plus" target="_blank" style="display: inline-block; margin-bottom: 15px;">
+        <img src="assets/viewer.png" alt="Viewer+" class="partner-logo" style="margin-top: 0;">
+      </a>
+      
+      <!-- Carnet Star Ac (Texte discret et élégant) -->
+      <a href="https://carnet-starac.shoplit.io/" target="_blank" style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #6E6E90; text-decoration: none;">
+        <span style="font-size: 16px;">📓</span> Les Carnets Star Ac 
+        <span style="background: rgba(124, 77, 255, 0.1); color: #7C4DFF; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 900; margin-left: 2px;">-15%</span>
+      </a>
     </div>
 
     <div class="footer-col">
