@@ -104,6 +104,102 @@
     .hero-content .logo-univers { display: none !important; }
     .planning-wrapper h2 { font-size: 24px; }
   }
+
+
+  /* =========================================
+     PARTENAIRE CARNET STAR AC
+  ========================================= */
+.card-carnet-sa {
+  grid-column: 1 / -1;
+  background: #0B071A; /* Fond sombre cohérent avec la page */
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  text-decoration: none;
+  border: 1px solid rgba(239, 127, 0, 0.2);
+  box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05);
+  /* Plus de transform ici, la carte est fixe */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  position: relative;
+}
+/* La belle barre orange en haut de la carte */
+.card-carnet-sa::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, #EF7F00, #E65C00);
+}
+/* Au survol : plus de soulèvement, juste une lumière sur la bordure et l'ombre */
+.card-carnet-sa:hover {
+  border-color: rgba(239, 127, 0, 0.4);
+  box-shadow: 0 20px 50px rgba(239, 127, 0, 0.15);
+}
+.ccsa-img {
+  width: 40%;
+  background: url('assets/carnet.png') center/cover no-repeat;
+  min-height: 250px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.ccsa-content {
+  width: 60%;
+  padding: 35px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ccsa-content h3 { color: #fff; font-size: 26px; margin: 0 0 10px; text-transform: uppercase; letter-spacing: -0.5px; }
+.ccsa-content p { color: rgba(255,255,255,0.8); font-size: 15px; margin: 0 0 20px; line-height: 1.5; }
+
+.ccsa-tag {
+  background: rgba(239, 127, 0, 0.15);
+  color: #EF7F00;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+.ccsa-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.ccsa-btn {
+  background: linear-gradient(135deg, #EF7F00, #E65C00);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 14px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(239, 127, 0, 0.3);
+}
+/* C'est uniquement la petite flèche qui s'anime vers la droite */
+.ccsa-btn svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
+.card-carnet-sa:hover .ccsa-btn svg { transform: translateX(4px); }
+
+.ccsa-code {
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  background: rgba(0,0,0,0.3);
+  border: 1px dashed rgba(255,255,255,0.3);
+  padding: 12px 18px;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .card-carnet-sa { flex-direction: column; }
+  .ccsa-img { width: 100%; height: 200px; min-height: 200px; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .ccsa-content { width: 100%; padding: 25px; }
+}
 </style>
 </head>
 
@@ -146,6 +242,23 @@
         <h3>L'Académie</h3>
         <p>Découvrez les portraits des élèves de la saison 14, le corps professoral et retracez leur évolution au château.</p>
         <span class="card-btn">Découvrir la promotion <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+
+      <!-- Carte Partenaire : Le Carnet -->
+      <a href="https://carnet-starac.shoplit.io/" target="_blank" class="card-carnet-sa">
+        <div class="ccsa-img"></div>
+        <div class="ccsa-content">
+          <span class="ccsa-tag">Partenaire Officiel</span>
+          <h3>Les Carnets Star Ac 2026</h3>
+          <p>Prises de notes lors des primes, suivis des évaluations, pronostics des nominations, activités... Équipez-vous pour vivre la saison à 100%.</p>
+          <div class="ccsa-actions">
+            <span class="ccsa-btn">
+              Commander (-15%) 
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+            <span class="ccsa-code">🎁 Code : INSIDE15</span>
+          </div>
+        </div>
       </a>
 
       <!-- LE PLANNING EN IMAGE (Avant le Programme) -->
