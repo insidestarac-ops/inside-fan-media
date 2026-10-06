@@ -224,3 +224,82 @@ if (liveFeed) {
     }
   });
 }
+
+
+/* =========================================================
+   5. UPLOAD DIRECT DES MÉDIAS (FIREBASE STORAGE)
+========================================================= */
+const storage = firebase.storage();
+const fileUpload = document.getElementById('fileUpload');
+const uploadPreviewContainer = document.getElementById('uploadPreviewContainer');
+const uploadImgPreview = document.getElementById('uploadImgPreview');
+const uploadVidPreview = document.getElementById('uploadVidPreview');
+const uploadProgress = document.getElementById('uploadProgress');
+const confirmUploadBtn = document.getElementById('confirmUploadBtn');
+const mediaInput = document.getElementById('mediaInput');
+
+let selectedMediaFile = null;
+
+if (fileUpload) {
+  // Quand tu sélectionnes une image dans ta galerie
+  fileUpload.addEventListener('change', function(e) {
+    selectedMediaFile = e.target.files[0];
+    if (!selectedMediaFile) return;
+
+    // Création d'une URL locale pour la prévisualisation instantanée
+    const fileUrl = URL.createObjectURL(selectedMediaFile);
+    uploadPreviewContainer.style.display = 'block';
+    confirmUploadBtn.style.display = 'block';
+    uploadProgress.textContent = "";
+
+    // Afficher l'image ou la vidéo selon le type
+    if (selectedMediaFile.type.startsWith('image/')) {
+      uploadImgPreview.src = fileUrl;
+      uploadImgPreview.style.display = 'block';
+      uploadVidPreview.style.display = 'none';
+    } else {
+      uploadVidPreview.src = fileUrl;
+      uploadVidPreview.style.display = 'block';
+      uploadImgPreview.style.display = 'none';
+    }
+  });
+
+  // Quand tu cliques sur "Héberger ce fichier"
+  confirmUploadBtn.addEventListener('click', function() {
+    if (!selectedMediaFile) return;
+
+    confirmUploadBtn.disabled = true;
+    confirmUploadBtn.textContent = "⏳ Envoi en cours...";
+    uploadProgress.style.color = "#fff";
+
+    // On prépare l'envoi sur Firebase Storage (dans un dossier 'medias')
+    const fileName = Date.now() + "_" + selectedMediaFile.name;
+    const storageRef = storage.ref('medias/' + fileName);
+    const uploadTask = storageRef.put(selectedMediaFile);
+
+    // Suivi de la progression
+    uploadTask.on('state_changed', 
+      function(snapshot) {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        uploadProgress.textContent = 'Transfert : ' + Math.round(progress) + '%';
+      }, 
+      function(error) {
+        console.error("Erreur d'upload:", error);
+        alert("Erreur lors de la mise en ligne.");
+        confirmUploadBtn.disabled = false;
+        confirmUploadBtn.textContent = "☁️ Réessayer";
+      }, 
+      function() {
+        // SUCCÈS ! On récupère le lien officiel public
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          mediaInput.value = downloadURL; // On injecte le lien dans ta case !
+          uploadProgress.textContent = "✅ Média prêt ! Tu peux rédiger et publier.";
+          uploadProgress.style.color = "#25D366"; // Vert succès
+          confirmUploadBtn.style.display = "none";
+          confirmUploadBtn.disabled = false;
+          confirmUploadBtn.textContent = "☁️ Héberger ce fichier";
+        });
+      }
+    );
+  });
+}
