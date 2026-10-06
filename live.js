@@ -300,81 +300,84 @@ if (fileUpload) {
 }
 
 /* =========================================================
-   6. GESTION DE LA BANDE DÉFILANTE (RÉGIE + ACCUEIL)
+   6. GESTION DE LA BANDE DÉFILANTE (SANS LIMITE + SCROLL INFINI)
 ========================================================= */
 const tickerCurrentDisplay = document.getElementById("tickerCurrentDisplay");
-const tickerInput1 = document.getElementById("tickerInput1");
-const tickerInput2 = document.getElementById("tickerInput2");
+const tickerInput = document.getElementById("tickerInput");
 
-// A. ÉCOUTER CE QUI EST EN LIGNE EN TEMPS RÉEL
+// A. ÉCOUTER CE QUI EST EN LIGNE
 db.ref("settings/ticker").on("value", function(snapshot) {
     const data = snapshot.val();
     
-    // 1. Mise à jour de l'affichage dans la RÉGIE
+    // 1. RÉGIE
     if (tickerCurrentDisplay) {
-        if (data && (data.message1 || data.message2)) {
-            // Afficher le texte actuel
-            let text = data.message1 || "";
-            if (data.message2) text += " | " + data.message2;
-            tickerCurrentDisplay.textContent = text;
-            tickerCurrentDisplay.style.color = "#25D366"; // Vert = en ligne
+        if (data && data.messages && data.messages.trim() !== "") {
+            tickerCurrentDisplay.innerHTML = data.messages.replace(/\n/g, " <br> ");
+            tickerCurrentDisplay.style.color = "#25D366";
             
-            // Pré-remplir les cases pour modifier facilement (seulement si on ne tape pas dedans)
-            if (document.activeElement !== tickerInput1 && document.activeElement !== tickerInput2) {
-                if(tickerInput1) tickerInput1.value = data.message1 || "";
-                if(tickerInput2) tickerInput2.value = data.message2 || "";
+            if (document.activeElement !== tickerInput && tickerInput) {
+                tickerInput.value = data.messages;
             }
         } else {
             tickerCurrentDisplay.textContent = "Aucun message en ligne (Bande masquée).";
-            tickerCurrentDisplay.style.color = "#FF4757"; // Rouge = hors ligne
-            if(tickerInput1) tickerInput1.value = "";
-            if(tickerInput2) tickerInput2.value = "";
+            tickerCurrentDisplay.style.color = "#FF4757";
+            if(tickerInput) tickerInput.value = "";
         }
     }
 
-    // 2. Mise à jour automatique de la page d'ACCUEIL (index.html)
+    // 2. ACCUEIL
     const tickerScroll = document.querySelector('.dakar-ticker-scroll');
     const tickerContainer = document.querySelector('.dakar-ticker');
     
     if (tickerScroll && tickerContainer) {
-        if (data && (data.message1 || data.message2)) {
-            const htmlMsg1 = data.message1 ? `<span>${data.message1}</span> <span class="ticker-separator">--</span>` : "";
-            const htmlMsg2 = data.message2 ? `<span>${data.message2}</span> <span class="ticker-separator">--</span>` : "";
-            const blocComplet = `<div class="dakar-ticker-text">${htmlMsg1} ${htmlMsg2}</div>`;
+        if (data && data.messages && data.messages.trim() !== "") {
+            // On sépare le texte ligne par ligne
+            const lignes = data.messages.split('\n').filter(line => line.trim() !== "");
+            let htmlContenu = "";
             
-            // On l'injecte en double pour l'effet "infini"
+            lignes.forEach(ligne => {
+                htmlContenu += `<span>${ligne}</span> <span class="ticker-separator" style="margin: 0 15px;">--</span> `;
+            });
+
+            // On injecte 2 fois le bloc exact pour que l'animation translateX(-50%) soit invisible à la fin
+            const blocComplet = `<div class="dakar-ticker-text">${htmlContenu}</div>`;
             tickerScroll.innerHTML = blocComplet + blocComplet;
-            tickerContainer.style.display = "block"; // On affiche la bande
+            tickerContainer.style.display = "block";
+
+            // CALCUL DE VITESSE INTELLIGENT
+            // Plus il y a de lettres, plus on donne de temps à l'animation (0.15s par caractère)
+            const duree = Math.max(15, data.messages.length * 0.15); 
+            tickerScroll.style.animation = `scrollInfini ${duree}s linear infinite`;
+
         } else {
-            tickerContainer.style.display = "none"; // On cache complètement la bande si vide
+            tickerContainer.style.display = "none";
         }
     }
 });
 
-// B. FONCTION POUR PUBLIER/MODIFIER
+// B. PUBLIER
 function mettreAJourTicker() {
-    const msg1 = document.getElementById("tickerInput1").value;
-    const msg2 = document.getElementById("tickerInput2").value;
+    if (!tickerInput) return;
+    const msg = tickerInput.value;
 
-    if (msg1.trim() === "" && msg2.trim() === "") {
-        alert("❌ Impossible d'envoyer du vide. Cliquez plutôt sur 'Cacher' !");
+    if (msg.trim() === "") {
+        alert("❌ Impossible d'envoyer du vide. Cliquez sur 'Cacher' !");
         return;
     }
 
     db.ref("settings/ticker").set({
-        message1: msg1,
-        message2: msg2,
+        messages: msg,
         timestamp: Date.now()
     }).then(() => {
-        alert("✅ Bande défilante mise à jour en direct !");
+        alert("✅ Bande défilante mise à jour !");
     });
 }
 
-// C. FONCTION POUR SUPPRIMER (CACHER)
+// C. CACHER
 function supprimerTicker() {
     if(confirm("Voulez-vous vraiment masquer la bande défilante de l'accueil ?")) {
         db.ref("settings/ticker").remove().then(() => {
-            alert("🗑️ Bande défilante masquée avec succès !");
+            alert("🗑️ Bande défilante masquée !");
         });
     }
 }
