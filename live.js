@@ -225,9 +225,8 @@ if (liveFeed) {
   });
 }
 
-
 /* =========================================================
-   5. UPLOAD DIRECT DES MÉDIAS (FIREBASE STORAGE)
+   5. UPLOAD DIRECT DES MÉDIAS (FIREBASE STORAGE AUTOMATIQUE)
 ========================================================= */
 const storage = firebase.storage();
 const fileUpload = document.getElementById('fileUpload');
@@ -235,7 +234,6 @@ const uploadPreviewContainer = document.getElementById('uploadPreviewContainer')
 const uploadImgPreview = document.getElementById('uploadImgPreview');
 const uploadVidPreview = document.getElementById('uploadVidPreview');
 const uploadProgress = document.getElementById('uploadProgress');
-const confirmUploadBtn = document.getElementById('confirmUploadBtn');
 const mediaInput = document.getElementById('mediaInput');
 
 let selectedMediaFile = null;
@@ -248,91 +246,55 @@ if (fileUpload) {
 
     // 1. Prévisualisation immédiate
     const fileUrl = URL.createObjectURL(selectedMediaFile);
-    uploadPreviewContainer.style.display = 'block';
-    
-    // On cache le bouton manuel puisqu'on automatise
-    if(confirmUploadBtn) confirmUploadBtn.style.display = 'none'; 
+    if (uploadPreviewContainer) uploadPreviewContainer.style.display = 'block';
 
     if (selectedMediaFile.type.startsWith('image/')) {
-      uploadImgPreview.src = fileUrl;
-      uploadImgPreview.style.display = 'block';
-      uploadVidPreview.style.display = 'none';
+      if(uploadImgPreview) { uploadImgPreview.src = fileUrl; uploadImgPreview.style.display = 'block'; }
+      if(uploadVidPreview) uploadVidPreview.style.display = 'none';
     } else {
-      uploadVidPreview.src = fileUrl;
-      uploadVidPreview.style.display = 'block';
-      uploadImgPreview.style.display = 'none';
+      if(uploadVidPreview) { uploadVidPreview.src = fileUrl; uploadVidPreview.style.display = 'block'; }
+      if(uploadImgPreview) uploadImgPreview.style.display = 'none';
     }
 
     // 2. Upload automatique en arrière-plan
-    uploadProgress.textContent = "⏳ Envoi en arrière-plan...";
-    uploadProgress.style.color = "#fff";
+    if (uploadProgress) {
+        uploadProgress.textContent = "⏳ Envoi en cours...";
+        uploadProgress.style.color = "#fff";
+    }
     
-    // On bloque temporairement le bouton Publier global le temps du chargement
+    // On bloque temporairement le bouton Publier pour ne pas publier à vide
     const btnPublish = document.querySelector('.btn-publish');
     if(btnPublish) btnPublish.disabled = true;
 
-    const fileName = Date.now() + "_" + selectedMediaFile.name;
+    // On nettoie le nom du fichier (évite les bugs avec les espaces/accents)
+    const cleanFileName = selectedMediaFile.name.replace(/[^a-zA-Z0-9.]/g, "_");
+    const fileName = Date.now() + "_" + cleanFileName;
     const storageRef = storage.ref('medias/' + fileName);
+    
     const uploadTask = storageRef.put(selectedMediaFile);
 
     uploadTask.on('state_changed', 
       function(snapshot) {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        uploadProgress.textContent = 'Transfert automatique : ' + Math.round(progress) + '%';
+        if (uploadProgress) uploadProgress.textContent = 'Transfert : ' + Math.round(progress) + '%';
       }, 
       function(error) {
-        console.error("Erreur d'upload:", error);
-        uploadProgress.textContent = "❌ Échec de l'envoi. Réessaie.";
-        uploadProgress.style.color = "#FF4757";
-        if(btnPublish) btnPublish.disabled = false;
+        console.error("Erreur d'upload Firebase:", error);
+        if (uploadProgress) {
+            uploadProgress.textContent = "❌ Échec de l'envoi. Regarde la console.";
+            uploadProgress.style.color = "#FF4757";
+        }
+        if (btnPublish) btnPublish.disabled = false;
       }, 
       function() {
-        // 3. Succès : on remplit le champ et on débloque la publication
+        // 3. Succès : on remplit le champ caché et on débloque
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          mediaInput.value = downloadURL;
-          uploadProgress.textContent = "✅ Média chargé et prêt à être publié !";
-          uploadProgress.style.color = "#25D366";
-          if(btnPublish) btnPublish.disabled = false;
-        });
-      }
-    );
-  });
-}
-
-  // Quand tu cliques sur "Héberger ce fichier"
-  confirmUploadBtn.addEventListener('click', function() {
-    if (!selectedMediaFile) return;
-
-    confirmUploadBtn.disabled = true;
-    confirmUploadBtn.textContent = "⏳ Envoi en cours...";
-    uploadProgress.style.color = "#fff";
-
-    // On prépare l'envoi sur Firebase Storage (dans un dossier 'medias')
-    const fileName = Date.now() + "_" + selectedMediaFile.name;
-    const storageRef = storage.ref('medias/' + fileName);
-    const uploadTask = storageRef.put(selectedMediaFile);
-
-    // Suivi de la progression
-    uploadTask.on('state_changed', 
-      function(snapshot) {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        uploadProgress.textContent = 'Transfert : ' + Math.round(progress) + '%';
-      }, 
-      function(error) {
-        console.error("Erreur d'upload:", error);
-        alert("Erreur lors de la mise en ligne.");
-        confirmUploadBtn.disabled = false;
-        confirmUploadBtn.textContent = "☁️ Réessayer";
-      }, 
-      function() {
-        // SUCCÈS ! On récupère le lien officiel public
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          mediaInput.value = downloadURL; // On injecte le lien dans ta case !
-          uploadProgress.textContent = "✅ Média prêt ! Tu peux rédiger et publier.";
-          uploadProgress.style.color = "#25D366"; // Vert succès
-          confirmUploadBtn.style.display = "none";
-          confirmUploadBtn.disabled = false;
-          confirmUploadBtn.textContent = "☁️ Héberger ce fichier";
+          if (mediaInput) mediaInput.value = downloadURL;
+          if (uploadProgress) {
+              uploadProgress.textContent = "✅ Image chargée et prête !";
+              uploadProgress.style.color = "#25D366";
+          }
+          if (btnPublish) btnPublish.disabled = false;
         });
       }
     );
