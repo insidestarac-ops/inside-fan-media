@@ -21,10 +21,39 @@
 <link rel="stylesheet" href="style.css?v=1">
 
 <style>
-  /* FIX : BOUCLE INFINIE PARFAITE DE LA BANDE DÉFILANTE */
-  .dakar-ticker { overflow: hidden; width: 100%; display: flex; align-items: center; }
-  .dakar-ticker-scroll { display: flex; width: max-content; }
-  .dakar-ticker-text { display: flex; align-items: center; white-space: nowrap; }
+  /* FIX : BANDE DÉFILANTE PLEIN ÉCRAN ET BOUCLE INFINIE */
+  .dakar-ticker {
+      width: 100vw !important; /* Force la largeur totale de l'écran */
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw !important; /* Casse les limites du conteneur central */
+      margin-right: -50vw !important;
+      background: #13082B !important; /* Le fond reste FIXE ici */
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+  }
+
+  .dakar-ticker-scroll {
+      display: flex;
+      width: max-content;
+      background: transparent !important; /* Empêche le fond de bouger */
+  }
+
+  .dakar-ticker-text {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      color: #fff;
+      font-size: 15px;
+      padding-right: 20px;
+      background: transparent !important; /* Empêche le fond de bouger */
+  }
+
   @keyframes scrollInfini { 
     0% { transform: translateX(0); } 
     100% { transform: translateX(-50%); } 
