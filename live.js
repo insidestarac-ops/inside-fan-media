@@ -226,9 +226,10 @@ if (liveFeed) {
 }
 
 /* =========================================================
-   5. UPLOAD DIRECT DES MÉDIAS (FIREBASE STORAGE AUTOMATIQUE)
+   5. UPLOAD DIRECT DES MÉDIAS (IMGBB - 100% GRATUIT)
 ========================================================= */
-const storage = firebase.storage();
+const IMGBB_API_KEY = "c0dc37036ae1706a4820e4f9e9d271f4"; // <-- COLLE TA CLÉ ICI
+
 const fileUpload = document.getElementById('fileUpload');
 const uploadPreviewContainer = document.getElementById('uploadPreviewContainer');
 const uploadImgPreview = document.getElementById('uploadImgPreview');
@@ -236,15 +237,12 @@ const uploadVidPreview = document.getElementById('uploadVidPreview');
 const uploadProgress = document.getElementById('uploadProgress');
 const mediaInput = document.getElementById('mediaInput');
 
-let selectedMediaFile = null;
-
 if (fileUpload) {
-  // L'upload se lance automatiquement dès le choix du fichier
-  fileUpload.addEventListener('change', function(e) {
-    selectedMediaFile = e.target.files[0];
+  fileUpload.addEventListener('change', async function(e) {
+    const selectedMediaFile = e.target.files[0];
     if (!selectedMediaFile) return;
 
-    // 1. Prévisualisation immédiate
+    // 1. Prévisualisation immédiate locale
     const fileUrl = URL.createObjectURL(selectedMediaFile);
     if (uploadPreviewContainer) uploadPreviewContainer.style.display = 'block';
 
@@ -252,51 +250,50 @@ if (fileUpload) {
       if(uploadImgPreview) { uploadImgPreview.src = fileUrl; uploadImgPreview.style.display = 'block'; }
       if(uploadVidPreview) uploadVidPreview.style.display = 'none';
     } else {
-      if(uploadVidPreview) { uploadVidPreview.src = fileUrl; uploadVidPreview.style.display = 'block'; }
-      if(uploadImgPreview) uploadImgPreview.style.display = 'none';
+      alert("⚠️ L'hébergement automatique est réservé aux images. Pour une vidéo, colle directement un lien YouTube, X ou TikTok dans la case.");
+      return;
     }
 
-    // 2. Upload automatique en arrière-plan
+    // 2. Préparation de l'envoi
     if (uploadProgress) {
-        uploadProgress.textContent = "⏳ Envoi en cours...";
+        uploadProgress.textContent = "⏳ Hébergement en cours...";
         uploadProgress.style.color = "#fff";
     }
     
-    // On bloque temporairement le bouton Publier pour ne pas publier à vide
+    // On bloque temporairement le bouton Publier
     const btnPublish = document.querySelector('.btn-publish');
     if(btnPublish) btnPublish.disabled = true;
 
-    // On nettoie le nom du fichier (évite les bugs avec les espaces/accents)
-    const cleanFileName = selectedMediaFile.name.replace(/[^a-zA-Z0-9.]/g, "_");
-    const fileName = Date.now() + "_" + cleanFileName;
-    const storageRef = storage.ref('medias/' + fileName);
-    
-    const uploadTask = storageRef.put(selectedMediaFile);
+    // 3. Envoi silencieux à ImgBB
+    const formData = new FormData();
+    formData.append("image", selectedMediaFile);
 
-    uploadTask.on('state_changed', 
-      function(snapshot) {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        if (uploadProgress) uploadProgress.textContent = 'Transfert : ' + Math.round(progress) + '%';
-      }, 
-      function(error) {
-        console.error("Erreur d'upload Firebase:", error);
+    try {
+        const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+
+        if (data.success) {
+            // Succès : on insère le lien officiel public
+            if (mediaInput) mediaInput.value = data.data.url;
+            if (uploadProgress) {
+                uploadProgress.textContent = "✅ Image chargée et prête !";
+                uploadProgress.style.color = "#25D366";
+            }
+        } else {
+            throw new Error("Erreur ImgBB");
+        }
+    } catch (error) {
+        console.error("Erreur d'upload:", error);
         if (uploadProgress) {
-            uploadProgress.textContent = "❌ Échec de l'envoi. Regarde la console.";
+            uploadProgress.textContent = "❌ Échec de l'envoi. Vérifie ta connexion.";
             uploadProgress.style.color = "#FF4757";
         }
+    } finally {
         if (btnPublish) btnPublish.disabled = false;
-      }, 
-      function() {
-        // 3. Succès : on remplit le champ caché et on débloque
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          if (mediaInput) mediaInput.value = downloadURL;
-          if (uploadProgress) {
-              uploadProgress.textContent = "✅ Image chargée et prête !";
-              uploadProgress.style.color = "#25D366";
-          }
-          if (btnPublish) btnPublish.disabled = false;
-        });
-      }
-    );
+    }
   });
 }
