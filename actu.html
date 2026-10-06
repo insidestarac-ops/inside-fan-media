@@ -9,6 +9,21 @@
 
 <link rel="stylesheet" href="style.css?v=8">
 
+<!-- FORCER L'AFFICHAGE INTÉGRAL DE TOUS LES MÉDIAS (ANTI-COUPURE PC & MOBILE) -->
+<style>
+  .actu-content img, 
+  .actu-content video,
+  .actu-media-video {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 70vh !important;
+      object-fit: contain !important;
+      border-radius: 12px;
+      margin-top: 15px;
+      background-color: transparent;
+  }
+</style>
+
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </head>
@@ -59,7 +74,8 @@
 <script src="footer.js"></script>
 <script src="menu.js"></script>
 
-<script src="live.js?v=27"></script>
+<!-- Version mise à jour pour vider le cache -->
+<script src="live.js?v=30"></script>
 
 </body>
 </html>
