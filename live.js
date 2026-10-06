@@ -241,18 +241,18 @@ const mediaInput = document.getElementById('mediaInput');
 let selectedMediaFile = null;
 
 if (fileUpload) {
-  // Quand tu sélectionnes une image dans ta galerie
+  // L'upload se lance automatiquement dès le choix du fichier
   fileUpload.addEventListener('change', function(e) {
     selectedMediaFile = e.target.files[0];
     if (!selectedMediaFile) return;
 
-    // Création d'une URL locale pour la prévisualisation instantanée
+    // 1. Prévisualisation immédiate
     const fileUrl = URL.createObjectURL(selectedMediaFile);
     uploadPreviewContainer.style.display = 'block';
-    confirmUploadBtn.style.display = 'block';
-    uploadProgress.textContent = "";
+    
+    // On cache le bouton manuel puisqu'on automatise
+    if(confirmUploadBtn) confirmUploadBtn.style.display = 'none'; 
 
-    // Afficher l'image ou la vidéo selon le type
     if (selectedMediaFile.type.startsWith('image/')) {
       uploadImgPreview.src = fileUrl;
       uploadImgPreview.style.display = 'block';
@@ -262,7 +262,42 @@ if (fileUpload) {
       uploadVidPreview.style.display = 'block';
       uploadImgPreview.style.display = 'none';
     }
+
+    // 2. Upload automatique en arrière-plan
+    uploadProgress.textContent = "⏳ Envoi en arrière-plan...";
+    uploadProgress.style.color = "#fff";
+    
+    // On bloque temporairement le bouton Publier global le temps du chargement
+    const btnPublish = document.querySelector('.btn-publish');
+    if(btnPublish) btnPublish.disabled = true;
+
+    const fileName = Date.now() + "_" + selectedMediaFile.name;
+    const storageRef = storage.ref('medias/' + fileName);
+    const uploadTask = storageRef.put(selectedMediaFile);
+
+    uploadTask.on('state_changed', 
+      function(snapshot) {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        uploadProgress.textContent = 'Transfert automatique : ' + Math.round(progress) + '%';
+      }, 
+      function(error) {
+        console.error("Erreur d'upload:", error);
+        uploadProgress.textContent = "❌ Échec de l'envoi. Réessaie.";
+        uploadProgress.style.color = "#FF4757";
+        if(btnPublish) btnPublish.disabled = false;
+      }, 
+      function() {
+        // 3. Succès : on remplit le champ et on débloque la publication
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          mediaInput.value = downloadURL;
+          uploadProgress.textContent = "✅ Média chargé et prêt à être publié !";
+          uploadProgress.style.color = "#25D366";
+          if(btnPublish) btnPublish.disabled = false;
+        });
+      }
+    );
   });
+}
 
   // Quand tu cliques sur "Héberger ce fichier"
   confirmUploadBtn.addEventListener('click', function() {
