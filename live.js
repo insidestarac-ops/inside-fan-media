@@ -183,8 +183,9 @@ function afficherArticleHTML(data) {
       htmlContent += `<video controls class="actu-media-video" src="${url}"></video>`;
     } 
     else {
-      htmlContent += `<img src="${url}" alt="Illustration" class="actu-image">`;
+      htmlContent += `<img src="${url}" alt="Illustration" class="actu-image" style="width: auto; max-width: 100%; height: auto; max-height: 65vh; display: block; margin: 15px auto 0; border-radius: 12px; object-fit: contain;">`;
     }
+     
   }
 
   if (data.lien && data.lien.trim() !== "") {
