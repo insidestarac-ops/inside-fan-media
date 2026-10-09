@@ -70,26 +70,105 @@
   .home-grid-section { position: relative; z-index: 10; margin-top: -120px; padding-bottom: 90px; max-width: 1100px; }
 
   /* --- BANDEAU PROMO --- */
-  .promo-banner { background: linear-gradient(to right, #ffffff 0%, #fffaf3 100%); border-radius: 28px; padding: 35px 40px; box-shadow: 0 20px 50px rgba(239, 127, 0, 0.12); border: 1px solid rgba(239, 127, 0, 0.15); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+  .promo-banner { background: linear-gradient(to right, #ffffff 0%, #fffaf3 100%); border-radius: 28px; padding: 35px 40px; box-shadow: 0 20px 50px rgba(239, 127, 0, 0.12); border: 1px solid rgba(239, 127, 0, 0.15); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 30px; transition: all 0.3s ease; }
   .promo-banner::before { content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 8px; background: linear-gradient(180deg, #EF7F00, #f1c40f); }
   .promo-left { display: flex; align-items: center; gap: 30px; text-align: left; }
   .promo-logo-side { height: 110px; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1)); }
-  .promo-tag { display: inline-block; background: #EF7F00; color: #fff; font-size: 12px; font-weight: 900; text-transform: uppercase; padding: 6px 14px; border-radius: 50px; margin-bottom: 10px; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(239, 127, 0, 0.25); }
+  .promo-tag { display: inline-block; background: #EF7F00; color: #fff; font-size: 12px; font-weight: 900; text-transform: uppercase; padding: 6px 14px; border-radius: 50px; margin-bottom: 10px; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(239, 127, 0, 0.25); transition: background 0.3s ease; }
   .promo-text h2 { font-size: 30px; font-weight: 900; color: #13082B; margin: 0 0 8px; letter-spacing: -1px; text-transform: uppercase; line-height: 1.1; }
   .promo-text .promo-details { font-size: 16px; color: #6E6E90; font-weight: 600; margin: 0; line-height: 1.5; }
   .promo-text .promo-channel { color: #13082B; font-weight: 900; }
 
   /* --- COMPTEUR --- */
-  .promo-countdown-box { background: #0B071A; border-radius: 20px; padding: 20px 30px; border: 1px solid rgba(239, 127, 0, 0.2); box-shadow: 0 15px 30px rgba(11, 7, 26, 0.15); flex-shrink: 0; }
+  .promo-countdown-box { background: #0B071A; border-radius: 20px; padding: 20px 30px; border: 1px solid rgba(239, 127, 0, 0.2); box-shadow: 0 15px 30px rgba(11, 7, 26, 0.15); flex-shrink: 0; min-width: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .promo-timer { display: flex; justify-content: center; align-items: baseline; gap: 8px; }
   .promo-timer .time-group { display: inline-flex; align-items: baseline; justify-content: flex-end; width: 65px; }
   .promo-timer span.val { font-size: 38px; font-weight: 900; color: #EF7F00; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(239, 127, 0, 0.2); font-variant-numeric: tabular-nums; }
   .promo-timer span.lbl { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.6); margin-left: 3px; text-transform: lowercase; }
   .promo-timer .sep { color: rgba(255, 255, 255, 0.15); font-size: 24px; font-weight: 400; margin: 0 2px; }
 
+  /* ====================================================
+     CSS SPÉCIFIQUE POUR LE NOUVEAU DESIGN DIRECT
+  ==================================================== */
+  .banner-live-prime {
+    background: linear-gradient(135deg, #1A0D00 0%, #3B1C0A 50%, #1A0D00 100%) !important;
+    border: none !important;
+    box-shadow: 0 20px 50px rgba(230, 161, 0, 0.3) !important;
+    padding: 0 !important;
+  }
+  .banner-live-prime::before {
+    background: linear-gradient(180deg, #FFD700, #E6A100) !important;
+  }
+
+  .banner-live-quoti {
+    background: linear-gradient(135deg, #13082B 0%, #2A1055 100%) !important;
+    border: none !important;
+    box-shadow: 0 20px 50px rgba(124, 77, 255, 0.3) !important;
+    padding: 0 !important;
+  }
+  .banner-live-quoti::before {
+    background: linear-gradient(180deg, #00A6FF, #D902EE, #FF4757) !important;
+  }
+
+  .live-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px;
+  }
+  .live-logo-zone {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .live-content-zone {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  .live-title {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 900;
+    margin: 0 0 25px 0;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+  .live-btn {
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-weight: 900;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
+  }
+  .live-btn:hover { transform: translateY(-3px); }
+
+  @keyframes pulseBtn {
+    0% { box-shadow: 0 0 0 0 rgba(0, 54, 255, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 54, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 54, 255, 0); }
+  }
+  @keyframes pulseBtnPurple {
+    0% { box-shadow: 0 0 0 0 rgba(124, 77, 255, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(124, 77, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(124, 77, 255, 0); }
+  }
+
   /* --- GROS BOUTON WHATSAPP --- */
   .whatsapp-promo-container { text-align: center; margin: 0 0 40px 0; }
-  .btn-whatsapp-giant { background: #25D366; color: #fff; padding: 20px 45px; font-size: 20px; font-weight: 900; text-transform: uppercase; text-decoration: none; border-radius: 50px; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .btn-whatsapp-giant { background: #25D366; color: #fff; padding: 20px 45px; font-size: 20px; font-weight: 900; text-transform: uppercase; text-decoration: none !important; line-height: normal; border-radius: 50px; display: inline-flex; justify-content: center; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .btn-whatsapp-giant:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6); }
 
   /* --- SONDAGE DÉDIÉ (MISE EN AVANT) --- */
@@ -142,13 +221,16 @@
     .promo-left { flex-direction: column; text-align: center; gap: 15px; margin-bottom: 25px; }
     .promo-banner::before { width: 100%; height: 6px; left: 0; right: 0; bottom: auto; }
     
-    /* Le compteur XXL façon "Plateau TV" */
     .promo-countdown-box { width: 100%; box-sizing: border-box; padding: 30px 20px; border-radius: 24px; }
     .promo-timer { justify-content: space-evenly; width: 100%; }
     .promo-timer .time-group { width: auto; justify-content: center; }
     .promo-timer span.val { font-size: 58px; } /* Chiffres géants */
     .promo-timer span.lbl { font-size: 18px; margin-left: 6px; }
     .promo-timer .sep { font-size: 40px; }
+
+    .live-layout { flex-direction: column; gap: 25px; padding: 30px 20px; }
+    .live-logo-zone { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 25px; }
+    .live-content-zone { width: 100%; }
   }
 
   @media (max-width: 900px) { 
@@ -165,7 +247,7 @@
     .promo-banner { padding: 30px 20px; }
     
     /* Retour à un compteur compact pour les petits écrans */
-    .promo-countdown-box { padding: 20px 10px; border-radius: 20px; }
+    .promo-countdown-box { padding: 20px 10px; border-radius: 20px; min-width: 100%; }
     .promo-timer { justify-content: center; gap: 2px; }
     .promo-timer span.val { font-size: 32px; }
     .promo-timer span.lbl { font-size: 12px; margin-left: 2px; }
@@ -179,6 +261,9 @@
 
     .card-banner { height: 180px; }
     .hub-card { padding: 25px; }
+
+    .live-title { font-size: 30px; }
+    .live-btn { width: 100%; justify-content: center; padding: 14px 20px; }
   }
 
 /* =========================================
@@ -188,18 +273,15 @@
     display: flex;
     width: 100%;
     margin-top: 40px;
-    /* On reprend tes couleurs et réglages exacts de la maquette */
     background: linear-gradient(90deg, #7C4DFF 0%, #D902EE 100%);
     border-radius: 24px;
     overflow: hidden;
     text-decoration: none;
     box-shadow: 0 15px 40px rgba(217, 2, 238, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* On enlève l'animation de transform pour que ça reste 100% fixe */
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
   }
   
-  /* Plus AUCUN soulèvement (translateY) ici. Juste une légère brillance de la bordure. */
   .carnet-banner-static:hover {
     box-shadow: 0 20px 50px rgba(217, 2, 238, 0.3);
     border-color: rgba(255, 255, 255, 0.4);
@@ -266,14 +348,12 @@
     transition: box-shadow 0.3s ease;
   }
   
-  /* C'est uniquement le SVG de la flèche qui bouge */
   .cb-btn svg {
     width: 18px; 
     height: 18px;
     transition: transform 0.3s ease;
   }
 
-  /* Quand on survole l'encart entier, la flèche glisse à droite */
   .carnet-banner-static:hover .cb-btn svg {
     transform: translateX(4px);
   }
@@ -312,17 +392,20 @@
 
   <section id="hub" class="home-grid-section container">
     
-    <div class="promo-banner">
+    <!-- LE GRAND CONTENEUR GLOBAL QUE LE SCRIPT VA REMPLACER -->
+    <div class="promo-banner" id="promo-banner-container">
       <div class="promo-left">
         <img src="assets/logo-star-ac.png" alt="Inside Star Ac" class="promo-logo-side">
         <div class="promo-text">
-          <span class="promo-tag">Saison 14</span>
-          <h2>RETOUR DE LA<br>STAR AC</h2>
-          <p class="promo-details">Le <span class="promo-channel">Samedi 10 Octobre à 21h10</span><br>en direct sur <span class="promo-channel">TF1</span></p>
+          <span class="promo-tag" id="promo-tag">Saison 14</span>
+          <h2 id="promo-title">RETOUR DE LA<br>STAR AC</h2>
+          <p class="promo-details" id="promo-desc"><span class="promo-channel" id="prime-date-text">...</span><br>en direct sur <span class="promo-channel">TF1</span></p>
+          <!-- Petit encart "Prochaine Quotidienne" géré par JS -->
+          <div id="quoti-alert" style="margin-top:12px; padding:8px 14px; background:rgba(124, 77, 255, 0.08); border-radius:10px; border:1px solid rgba(124, 77, 255, 0.2); font-size:13px; font-weight:700; color:#13082B; display:none; align-items:center; gap:6px; width:fit-content;"></div>
         </div>
       </div>
       <div class="promo-countdown-box" id="countdown-wrapper" aria-hidden="true">
-        <div class="promo-timer">
+        <div class="promo-timer" id="timer-box">
           <div class="time-group"><span id="d-new" class="val">--</span><span class="lbl">j</span></div><div class="sep">:</div>
           <div class="time-group"><span id="h-new" class="val">--</span><span class="lbl">h</span></div><div class="sep">:</div>
           <div class="time-group"><span id="m-new" class="val">--</span><span class="lbl">min</span></div><div class="sep">:</div>
@@ -333,24 +416,22 @@
 
     <!-- BOUTON FIL D'ACTU EN DIRECT -->
     <div class="whatsapp-promo-container">
-      <a href="actu.html" class="btn-whatsapp-giant" style="background: #13082B; color: #fff; box-shadow: 0 10px 25px rgba(19, 8, 43, 0.3);">
+      <a href="actu.html" class="btn-whatsapp-giant" style="background: #13082B; color: #fff; box-shadow: 0 10px 25px rgba(19, 8, 43, 0.3); text-decoration: none !important; line-height: normal; display: inline-flex; justify-content: center; align-items: center;">
         <span style="font-size: 24px; margin-right: 10px;">⚡️</span>
         Suivre l'Actu en Direct
       </a>
       <p style="font-weight: 700; color: #13082B; margin-top: 15px; font-size: 16px;">Ne manquez aucune alerte depuis le château !</p>
     </div>
 
-        <!-- BANDEAU DÉFILANT PLEIN ÉCRAN (GLASSMORPHISM PREMIUM) -->
+    <!-- BANDEAU DÉFILANT PLEIN ÉCRAN -->
     <div class="dakar-ticker">
       <div class="dakar-ticker-scroll">
-        <!-- BLOC 1 -->
         <div class="dakar-ticker-text">
           <span>🚨 <b>NOUVEAU</b> : DÉCOUVREZ LE CASTING COMPLET DES PROFESSEURS DANS L'ONGLET ACADÉMIE !</span>
           <span class="ticker-separator">--</span>
           <span>⚡️ SONDAGE : La question de la semaine est en ligne !</span>
           <span class="ticker-separator">--</span>
         </div>
-        <!-- BLOC 2 (Copie exacte pour la boucle) -->
         <div class="dakar-ticker-text">
           <span>🚨 <b>NOUVEAU</b> : DÉCOUVREZ LE CASTING COMPLET DES PROFESSEURS DANS L'ONGLET ACADÉMIE !</span>
           <span class="ticker-separator">--</span>
@@ -360,7 +441,7 @@
       </div>
     </div>
 
-    <!-- ENCART SONDAGE DÉDIÉ ET BIEN MIS EN AVANT -->
+    <!-- ENCART SONDAGE DÉDIÉ -->
     <div class="poll-highlight-section">
       <div class="poll-header">
         <span class="live-badge">En cours</span>
@@ -376,10 +457,8 @@
       </div>
     </div>
 
-    <!-- GRILLE GLOBALE (Seulement les 3 grosses cartes) -->
+    <!-- GRILLE GLOBALE -->
     <div class="bento-grid">
-      
-      <!-- Ligne 1 - Colonne 1 -->
       <a href="Inside-star-ac.html" class="hub-card card-starac">
         <div class="card-banner"><img src="assets/Ban Star Ac.png" alt="Bannière Star Academy"></div>
         <h3>Inside Star Ac</h3>
@@ -387,7 +466,6 @@
         <span class="card-btn">Entrer au château <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </a>
 
-      <!-- Ligne 1 - Colonne 2 -->
       <a href="Inside-dals.html" class="hub-card card-dals">
         <div class="card-banner"><img src="assets/banniere.png" alt="Bannière Danse avec les Stars"></div>
         <h3>Inside DALS</h3>
@@ -395,7 +473,6 @@
         <span class="card-btn">Rejoindre le parquet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </a>
 
-      <!-- Ligne 2 - Le Live (Prend toute la largeur) -->
       <a href="Live.html" class="hub-card card-live">
         <div class="live-info">
           <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px;">
@@ -409,7 +486,7 @@
       </a>
     </div>
 
-    <!-- ENCART PARTENAIRE CARNET (HORS GRILLE, AVEC ANIMATIONS) -->
+    <!-- ENCART PARTENAIRE CARNET -->
     <a href="https://carnet-starac.shoplit.io/" target="_blank" class="carnet-banner-static">
       <div class="cb-left"></div>
       <div class="cb-right">
@@ -438,24 +515,219 @@
 <script src="live.js?v=30"></script>
 
 <script>
-  const newPrimeDate = new Date('2026-10-10T21:10:00+02:00').getTime();
-  function updateNewCountdown() {
-    const now = new Date().getTime();
-    const diff = newPrimeDate - now;
-    if (diff > 0) {
-      const t = Math.floor(diff / 1000);
-      document.getElementById('d-new').textContent = Math.floor(t / 86400);
-      document.getElementById('h-new').textContent = String(Math.floor(t % 86400 / 3600)).padStart(2,'0');
-      document.getElementById('m-new').textContent = String(Math.floor(t % 3600 / 60)).padStart(2,'0');
-      document.getElementById('s-new').textContent = String(Math.floor(t % 60)).padStart(2,'0');
-    } else {
-      document.getElementById('countdown-wrapper').innerHTML = "<div style='text-align:center; font-size:24px; font-weight:900; color:#EF7F00; padding:5px 0;'>LE PRIME EST EN DIRECT ! 🔥</div>";
+  // ==========================================
+  // 📅 CALENDRIER OFFICIEL DES PRIMES
+  // ==========================================
+  const DUREE_PRIME = 170; // 2h50
+  const listePrimes = [
+    { dateStr: "2026-10-10T21:10:00+02:00", tag: "Saison 14", titre: "PRIME 1<br>LANCEMENT SAISON 14" },
+    { dateStr: "2026-10-17T21:10:00+02:00", tag: "Éval surprises", titre: "" },
+    { dateStr: "2026-10-24T21:10:00+02:00", tag: "Halloween", titre: "" }
+  ];
+
+  // ==========================================
+  // 🕒 GRILLE DES QUOTIDIENNES 
+  // ==========================================
+  const DUREE_QUOTIDIENNE = 60; // 1h
+  const DATE_PREMIERE_QUOTIDIENNE = new Date("2026-10-12T00:00:00+02:00").getTime();
+
+  const quotidiennes = [
+    { day: 1, h: 17, m: 30, duration: DUREE_QUOTIDIENNE },
+    { day: 2, h: 17, m: 30, duration: DUREE_QUOTIDIENNE },
+    { day: 3, h: 17, m: 30, duration: DUREE_QUOTIDIENNE },
+    { day: 4, h: 17, m: 30, duration: DUREE_QUOTIDIENNE },
+    { day: 5, h: 17, m: 30, duration: DUREE_QUOTIDIENNE },
+    { day: 6, h: 17, m: 10, duration: DUREE_QUOTIDIENNE }, 
+    { day: 0, h: 16, m: 5,  duration: DUREE_QUOTIDIENNE }  
+  ];
+
+  function getNextPrime() {
+    const nowMs = new Date().getTime();
+    for (let p of listePrimes) {
+      let startTime = new Date(p.dateStr).getTime();
+      let endTime = startTime + (DUREE_PRIME * 60 * 1000);
+      if (endTime > nowMs) return { start: startTime, end: endTime, tag: p.tag, titre: p.titre };
+    }
+    return null;
+  }
+
+  function isQuotidienneLive() {
+    const now = new Date();
+    const nowMs = now.getTime();
+    if (nowMs < DATE_PREMIERE_QUOTIDIENNE) return false;
+
+    let events = quotidiennes.filter(e => e.day === now.getDay());
+    for (let evt of events) {
+      let startTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), evt.h, evt.m, 0).getTime();
+      let endTime = startTime + (evt.duration * 60 * 1000);
+      if (nowMs >= startTime && nowMs < endTime) return true; 
+    }
+    return false;
+  }
+
+  function getNextQuotidienne() {
+    const now = new Date();
+    const nowMs = now.getTime();
+    let candidates = [];
+    for (let i = 0; i <= 7; i++) {
+      let d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+      let events = quotidiennes.filter(e => e.day === d.getDay());
+      for (let evt of events) {
+        let evtDate = new Date(d.getFullYear(), d.getMonth(), d.getDate(), evt.h, evt.m, 0);
+        if (evtDate.getTime() < DATE_PREMIERE_QUOTIDIENNE) continue;
+        let endTime = evtDate.getTime() + (evt.duration * 60 * 1000);
+        if (endTime > nowMs) candidates.push({ start: evtDate.getTime(), end: endTime, day: d.getDay(), h: evt.h, m: evt.m });
+      }
+    }
+    candidates.sort((a, b) => a.start - b.start);
+    return candidates[0];
+  }
+
+  // ==========================================
+  // LE MOTEUR DE CHANGEMENT DE BANNIÈRE
+  // ==========================================
+  let currentState = "";
+  let memoryPrimeStart = 0;
+
+  function updateCountdown() {
+    const nowMs = new Date().getTime();
+    const nextPrime = getNextPrime();
+    const isQuotiLive = isQuotidienneLive();
+    const nextQuoti = getNextQuotidienne();
+    const joursStr = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+
+    if (!nextPrime) return;
+
+    const bannerContainer = document.getElementById('promo-banner-container');
+    let primeDiff = nextPrime.start - nowMs;
+    let isPrimeLive = (primeDiff <= 0 && nextPrime.end > nowMs);
+
+    let newState = "OFF";
+    if (isPrimeLive) newState = "PRIME_LIVE";
+    else if (isQuotiLive) newState = "QUOTI_LIVE";
+
+    if (currentState !== newState || memoryPrimeStart !== nextPrime.start) {
+      memoryPrimeStart = nextPrime.start;
+      currentState = newState;
+
+      // 1. PRIME EN DIRECT !
+      if (newState === "PRIME_LIVE") {
+        bannerContainer.className = "promo-banner banner-live-prime";
+        
+        let titreHorizontal = nextPrime.titre.replace('<br>', ' <span style="color:#FFD700; margin:0 10px;">•</span> ');
+        
+        bannerContainer.innerHTML = `
+          <div class="live-layout">
+            <div class="live-logo-zone">
+              <img src="assets/logo-star-ac.png" alt="Inside Star Ac" style="max-height: 100px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));">
+            </div>
+            <div class="live-content-zone">
+              <div style="background: rgba(255, 71, 87, 0.15); border: 1px solid rgba(255, 71, 87, 0.5); color: #FF4757; font-size: 13px; font-weight: 900; text-transform: uppercase; padding: 6px 20px; border-radius: 50px; margin-bottom: 20px; letter-spacing: 1.5px; display: flex; align-items: center; gap: 8px;">
+                <span style="display: block; width: 10px; height: 10px; background: #FF4757; border-radius: 50%; box-shadow: 0 0 10px #FF4757; animation: pulseLive 1.5s infinite;"></span>
+                EN DIRECT
+              </div>
+              <h2 class="live-title">${titreHorizontal}</h2>
+              <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap; width: 100%;">
+                <a href="https://www.tf1.fr/tf1/direct" target="_blank" class="live-btn" style="background: linear-gradient(135deg, #0036FF, #001B80); color:white; animation: pulseBtn 2s infinite;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                  TF1 Direct
+                  <span style="opacity: 0.6; margin-left: 5px;">❯</span>
+                </a>
+                <a href="Live.html" class="live-btn" style="background: linear-gradient(135deg, #7C4DFF, #5E35FF); color:white; animation: pulseBtnPurple 2s infinite; animation-delay: 1s;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  QG Live
+                  <span style="opacity: 0.6; margin-left: 5px;">❯</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      } 
+      // 2. QUOTIDIENNE EN DIRECT !
+      else if (newState === "QUOTI_LIVE") {
+        bannerContainer.className = "promo-banner banner-live-quoti";
+        bannerContainer.innerHTML = `
+          <div class="live-layout">
+            <div class="live-logo-zone">
+              <img src="assets/logo-star-ac.png" alt="Inside Star Ac" style="max-height: 100px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));">
+            </div>
+            <div class="live-content-zone">
+              <div style="background: rgba(255, 71, 87, 0.15); border: 1px solid rgba(255, 71, 87, 0.5); color: #FF4757; font-size: 13px; font-weight: 900; text-transform: uppercase; padding: 6px 20px; border-radius: 50px; margin-bottom: 20px; letter-spacing: 1.5px; display: flex; align-items: center; gap: 8px;">
+                <span style="display: block; width: 10px; height: 10px; background: #FF4757; border-radius: 50%; box-shadow: 0 0 10px #FF4757; animation: pulseLive 1.5s infinite;"></span>
+                EN DIRECT
+              </div>
+              <h2 class="live-title">LA QUOTIDIENNE</h2>
+              <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap; width: 100%;">
+                <a href="https://www.tf1.fr/tf1/direct" target="_blank" class="live-btn" style="background: linear-gradient(135deg, #0036FF, #001B80); color:white; animation: pulseBtn 2s infinite;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                  Regarder sur TF1
+                  <span style="opacity: 0.6; margin-left: 5px;">❯</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      } 
+      // 3. AFFICHAGE NORMAL (OFF)
+      else {
+        bannerContainer.className = "promo-banner";
+        let d = new Date(nextPrime.start);
+        let quotiHtml = "";
+        
+        if (nextQuoti) {
+           let dayName = (nextQuoti.start - nowMs < 86400000 && new Date(nextQuoti.start).getDay() === new Date().getDay()) ? "Aujourd'hui" : joursStr[nextQuoti.day];
+           let timeStr = `${nextQuoti.h}h${String(nextQuoti.m).padStart(2,'0')}`;
+           quotiHtml = `
+             <div style="margin-top:12px; padding:8px 14px; background:rgba(124, 77, 255, 0.08); border-radius:10px; border:1px solid rgba(124, 77, 255, 0.2); font-size:13px; font-weight:700; color:#13082B; display:inline-flex; align-items:center; gap:8px; width:max-content; white-space:nowrap;">
+               <span style="font-size:15px;">📺</span>
+               <span>Prochaine Quotidienne : <b>${dayName} à ${timeStr}</b></span>
+             </div>
+           `;
+        }
+
+        bannerContainer.innerHTML = `
+          <div class="promo-left">
+            <img src="assets/logo-star-ac.png" alt="Inside Star Ac" class="promo-logo-side">
+            <div class="promo-text">
+              <span class="promo-tag">${nextPrime.tag}</span>
+              <h2>${nextPrime.titre}</h2>
+              <p class="promo-details">Le <span class="promo-channel">${joursStr[d.getDay()]} à ${d.getHours()}h${String(d.getMinutes()).padStart(2,'0')}</span><br>en direct sur <span class="promo-channel">TF1</span></p>
+              ${quotiHtml}
+            </div>
+          </div>
+          <div class="promo-countdown-box">
+            <div class="promo-timer" id="timer-box">
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // ACTUALISATION DES CHIFFRES (MODE NORMAL)
+    if (currentState === "OFF") {
+      const timerBox = document.getElementById('timer-box');
+      if (timerBox && primeDiff > 0) {
+        const d = Math.floor(primeDiff / (1000 * 60 * 60 * 24));
+        const h = String(Math.floor((primeDiff / (1000 * 60 * 60)) % 24)).padStart(2,'0');
+        const m = String(Math.floor((primeDiff / 1000 / 60) % 60)).padStart(2,'0');
+        const s = String(Math.floor((primeDiff / 1000) % 60)).padStart(2,'0');
+        
+        timerBox.innerHTML = `
+          <div class="time-group"><span class="val">${d}</span><span class="lbl">j</span></div><div class="sep">:</div>
+          <div class="time-group"><span class="val">${h}</span><span class="lbl">h</span></div><div class="sep">:</div>
+          <div class="time-group"><span class="val">${m}</span><span class="lbl">min</span></div><div class="sep">:</div>
+          <div class="time-group"><span class="val">${s}</span><span class="lbl">s</span></div>
+        `;
+      }
     }
   }
-  updateNewCountdown();
-  setInterval(updateNewCountdown, 1000);
 
-  // Gestion du chargement conditionnel du sondage selon les cookies
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ==========================================
+  // SONDAGE ET ANIMATIONS CARNET
+  // ==========================================
   function loadHomePoll() {
     const iframe = document.getElementById('home-poll-iframe');
     const lock = document.getElementById('home-poll-lock');
@@ -471,18 +743,14 @@
   document.addEventListener('DOMContentLoaded', loadHomePoll);
   document.addEventListener('ifm-consent-updated', loadHomePoll);
 
-  // Animation d'apparition au scroll exclusive pour la bannière Carnet
   document.addEventListener("DOMContentLoaded", () => {
     const carnetBanner = document.querySelector('.carnet-banner-static');
     if (carnetBanner && window.IntersectionObserver) {
-      carnetBanner.classList.add('reveal-item'); // La cache initialement
+      carnetBanner.classList.add('reveal-item');
       const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-          entries[0].target.classList.add('is-visible'); // Déclenche l'apparition
-          // Nettoyage après l'animation (1.2s) pour activer le hover !
-          setTimeout(() => {
-            entries[0].target.classList.remove('reveal-item', 'is-visible');
-          }, 1200);
+          entries[0].target.classList.add('is-visible'); 
+          setTimeout(() => { entries[0].target.classList.remove('reveal-item', 'is-visible'); }, 1200);
           observer.disconnect();
         }
       }, { threshold: 0.1, rootMargin: "0px 0px -10% 0px" });
