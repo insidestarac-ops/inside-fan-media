@@ -520,9 +520,9 @@
   // ==========================================
   const DUREE_PRIME = 170; // 2h50
   const listePrimes = [
-    { dateStr: "2026-10-10T21:10:00+02:00", tag: "Saison 14", titre: "PRIME 1<br>LANCEMENT SAISON 14" },
-    { dateStr: "2026-10-17T21:10:00+02:00", tag: "Éval surprises", titre: "" },
-    { dateStr: "2026-10-24T21:10:00+02:00", tag: "Halloween", titre: "" }
+    { dateStr: "2026-10-10T21:10:00+02:00", tag: "Saison 14", titre: "PRIME 1 - LANCEMENT SAISON 14" },
+    { dateStr: "2026-10-17T21:10:00+02:00", tag: "Éval surprises", titre: "PRIME 2" },
+    { dateStr: "2026-10-24T21:10:00+02:00", tag: "Halloween", titre: "PRIME 3" }
   ];
 
   // ==========================================
@@ -691,7 +691,7 @@
             <div class="promo-text">
               <span class="promo-tag">${nextPrime.tag}</span>
               <h2>${nextPrime.titre}</h2>
-              <p class="promo-details">Le <span class="promo-channel">${joursStr[d.getDay()]} à ${d.getHours()}h${String(d.getMinutes()).padStart(2,'0')}</span><br>en direct sur <span class="promo-channel">TF1</span></p>
+              <p class="promo-details"><span class="promo-channel">${joursStr[d.getDay()]} à ${d.getHours()}h${String(d.getMinutes()).padStart(2,'0')}</span><br>en direct sur <span class="promo-channel">TF1</span></p>
               ${quotiHtml}
             </div>
           </div>
