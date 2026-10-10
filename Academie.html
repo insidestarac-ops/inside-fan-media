@@ -54,6 +54,8 @@
   .roster-card::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 75%; background: linear-gradient(to top, rgba(11, 10, 16, 0.95) 0%, rgba(11, 10, 16, 0.5) 50%, transparent 100%); pointer-events: none; z-index: 1; transition: background 0.4s ease; }
   .roster-card:hover { box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15); border-color: rgba(239, 127, 0, 0.3); }
   .roster-card:hover::after { background: linear-gradient(to top, rgba(239, 127, 0, 0.9) 0%, rgba(239, 127, 0, 0.4) 50%, transparent 100%); }
+  a.roster-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
+  a.roster-card:focus-visible { outline: 3px solid #EF7F00; outline-offset: 3px; }
   
   .roster-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.4s ease; display: block; }
   .roster-card:hover .roster-img { opacity: 1; }
@@ -120,14 +122,14 @@
       </div>
 
       <div class="roster-grid">
-        <div class="roster-card"><img src="Profs/Mosimann.jpg" alt="Mosimann" class="roster-img" loading="lazy"><div class="roster-info"><h3>Mosimann</h3><span>Directeur</span></div></div>
-        <div class="roster-card"><img src="Profs/Sofia.jpg" alt="Sofia Morgavi" class="roster-img" loading="lazy"><div class="roster-info"><h3>Sofia Morgavi</h3><span>Prof. de Chant</span></div></div>
-        <div class="roster-card"><img src="Profs/Jonathan.jpg" alt="Jonathan Jenvrin" class="roster-img" loading="lazy"><div class="roster-info"><h3>Jonathan Jenvrin</h3><span>Prof. de Danse</span></div></div>
-        <div class="roster-card"><img src="Profs/Lydia.jpg" alt="Lydia Bouchard" class="roster-img" loading="lazy"><div class="roster-info"><h3>Lydia Bouchard</h3><span>Expression Scénique</span></div></div>
-        <div class="roster-card"><img src="Profs/Papy.jpg" alt="Papy" class="roster-img" loading="lazy"><div class="roster-info"><h3>Papy</h3><span>Prof. de Théâtre</span></div></div>
-        <div class="roster-card"><img src="Profs/Ladji.jpg" alt="Ladji Doucouré" class="roster-img" loading="lazy"><div class="roster-info"><h3>Ladji Doucouré</h3><span>Prof. de Sport</span></div></div>
-        <div class="roster-card"><img src="Profs/Philipinne.jpg" alt="Philippine Lavrey" class="roster-img" loading="lazy"><div class="roster-info"><h3>Philippine Lavrey</h3><span>Répétitrice</span></div></div>
-        <div class="roster-card"><img src="Profs/Fanny.webp" alt="Fanny Delaigue" class="roster-img" loading="lazy"><div class="roster-info"><h3>Fanny Delaigue</h3><span>Répétitrice</span></div></div>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/mosimann-49406593" target="_blank" rel="noopener"><img src="Profs/Mosimann.jpg" alt="Mosimann" class="roster-img" loading="lazy"><div class="roster-info"><h3>Mosimann</h3><span>Directeur</span></div></a>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/sofia-morgavi-23681884" target="_blank" rel="noopener"><img src="Profs/Sofia.jpg" alt="Sofia Morgavi" class="roster-img" loading="lazy"><div class="roster-info"><h3>Sofia Morgavi</h3><span>Prof. de Chant</span></div></a>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/jonathan-jenvrin-14830050" target="_blank" rel="noopener"><img src="Profs/Jonathan.jpg" alt="Jonathan Jenvrin" class="roster-img" loading="lazy"><div class="roster-info"><h3>Jonathan Jenvrin</h3><span>Prof. de Danse</span></div></a>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/lydia-bouchard-64448271" target="_blank" rel="noopener"><img src="Profs/Lydia.jpg" alt="Lydia Bouchard" class="roster-img" loading="lazy"><div class="roster-info"><h3>Lydia Bouchard</h3><span>Expression Scénique</span></div></a>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/alain-degois-58050428" target="_blank" rel="noopener"><img src="Profs/Papy.jpg" alt="Papy" class="roster-img" loading="lazy"><div class="roster-info"><h3>Papy</h3><span>Prof. de Théâtre</span></div></a>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/ladji-doucoure-71497070" target="_blank" rel="noopener"><img src="Profs/Ladji.jpg" alt="Ladji Doucouré" class="roster-img" loading="lazy"><div class="roster-info"><h3>Ladji Doucouré</h3><span>Prof. de Sport</span></div></a>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/philippine-lavrey-14640707" target="_blank" rel="noopener"><img src="Profs/Philipinne.jpg" alt="Philippine Lavrey" class="roster-img" loading="lazy"><div class="roster-info"><h3>Philippine Lavrey</h3><span>Répétitrice</span></div></a>
+        <a class="roster-card" href="https://www.tf1.fr/dossier/fanny-delaigue-25469561" target="_blank" rel="noopener"><img src="Profs/Fanny.webp" alt="Fanny Delaigue" class="roster-img" loading="lazy"><div class="roster-info"><h3>Fanny Delaigue</h3><span>Répétitrice</span></div></a>
       </div>
 
     </div>
@@ -140,26 +142,25 @@
       <h2>Les Académiciens</h2>
     </div>
 
-    <div class="roster-grid">
-      <div class="roster-card"><img src="Eleves/Amel.jpg" alt="Amel" class="roster-img" loading="lazy"><div class="roster-info"><h3>Amel</h3><span>Académicienne</span><p class="roster-meta">22 ans · Vitry-sur-Seine</p></div></div>
-      <div class="roster-card"><img src="Eleves/Antoine.jpg" alt="Antoine" class="roster-img" loading="lazy"><div class="roster-info"><h3>Antoine</h3><span>Académicien</span><p class="roster-meta">18 ans · Lyon</p></div></div>
-      <div class="roster-card"><img src="Eleves/Brieuc.jpg" alt="Brieuc" class="roster-img" loading="lazy"><div class="roster-info"><h3>Brieuc</h3><span>Académicien</span><p class="roster-meta">18 ans · Belgique</p></div></div>
-      <div class="roster-card"><img src="Eleves/Cameron.jpg" alt="Cameron" class="roster-img" loading="lazy"><div class="roster-info"><h3>Cameron</h3><span>Académicien</span><p class="roster-meta">26 ans · Cerin</p></div></div>
-      <div class="roster-card"><img src="Eleves/Elija.jpg" alt="Elija" class="roster-img" loading="lazy"><div class="roster-info"><h3>Elija</h3><span>Académicienne</span><p class="roster-meta">23 ans · Besançon</p></div></div>
-      <div class="roster-card"><img src="Eleves/Felix.jpg" alt="Felix" class="roster-img" loading="lazy"><div class="roster-info"><h3>Félix</h3><span>Académicien</span><p class="roster-meta">18 ans · Canada</p></div></div>
-      <div class="roster-card"><img src="Eleves/Isabella.jpg" alt="Isabella" class="roster-img" loading="lazy"><div class="roster-info"><h3>Isabella</h3><span>Académicienne</span><p class="roster-meta">20 ans · Ris-Orangis</p></div></div>
-      <div class="roster-card"><img src="Eleves/Khalil.jpg" alt="Khalil" class="roster-img" loading="lazy"><div class="roster-info"><h3>Khalil</h3><span>Académicien</span><p class="roster-meta">24 ans · Paris</p></div></div>
-      <div class="roster-card"><img src="Eleves/Kylian.jpg" alt="Kylian" class="roster-img" loading="lazy"><div class="roster-info"><h3>Kylian</h3><span>Académicien</span><p class="roster-meta">21 ans · Bordeaux</p></div></div>
-      <div class="roster-card"><img src="Eleves/Leelo.jpg" alt="Leelo" class="roster-img" loading="lazy"><div class="roster-info"><h3>Leelo</h3><span>Académicienne</span><p class="roster-meta">24 ans · Saint-Aignan</p></div></div>
-      <div class="roster-card"><img src="Eleves/Maud.webp" alt="Maud" class="roster-img" loading="lazy"><div class="roster-info"><h3>Maud</h3><span>Académicienne</span><p class="roster-meta">20 ans · Sérent</p></div></div>
-      <div class="roster-card"><img src="Eleves/Melina.jpg" alt="Mélina" class="roster-img" loading="lazy"><div class="roster-info"><h3>Mélina</h3><span>Académicienne</span><p class="roster-meta">22 ans · Florac</p></div></div>
-      <div class="roster-card"><img src="Eleves/Morgan.jpg" alt="Morgan" class="roster-img" loading="lazy"><div class="roster-info"><h3>Morgan</h3><span>Académicien</span><p class="roster-meta">19 ans · Figanières</p></div></div>
-      <div class="roster-card"><img src="Eleves/Noemie.jpg" alt="Noémie" class="roster-img" loading="lazy"><div class="roster-info"><h3>Noémie</h3><span>Académicienne</span><p class="roster-meta">23 ans · Saint-Justin</p></div></div>
-      <div class="roster-card"><img src="Eleves/Tracy.jpg" alt="Tracy" class="roster-img" loading="lazy"><div class="roster-info"><h3>Tracy</h3><span>Académicienne</span><p class="roster-meta">23 ans · Paris</p></div></div>
-      <div class="roster-card"><img src="Eleves/Ydriss.jpg" alt="Ydriss" class="roster-img" loading="lazy"><div class="roster-info"><h3>Ydriss</h3><span>Académicien</span><p class="roster-meta">19 ans · Baie-Mahault</p></div></div>
-      <div class="roster-card"><img src="Eleves/Zoe.jpg" alt="Zoé" class="roster-img" loading="lazy"><div class="roster-info"><h3>Zoé</h3><span>Académicienne</span><p class="roster-meta">19 ans · Rueil-Malmaison</p></div></div>
+    <div class="roster-grid"
+      <a class="roster-card" href="https://www.tf1.fr/dossier/amel-star-academy-2026-30781168" target="_blank" rel="noopener"><img src="Eleves/Amel.jpg" alt="Amel" class="roster-img" loading="lazy"><div class="roster-info"><h3>Amel</h3><span>Académicienne</span><p class="roster-meta">22 ans · Vitry-sur-Seine</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/antoine-star-academy-2026-02929471" target="_blank" rel="noopener"><img src="Eleves/Antoine.jpg" alt="Antoine" class="roster-img" loading="lazy"><div class="roster-info"><h3>Antoine</h3><span>Académicien</span><p class="roster-meta">18 ans · Lyon</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/brieuc-star-academy-2026-72402619" target="_blank" rel="noopener"><img src="Eleves/Brieuc.jpg" alt="Brieuc" class="roster-img" loading="lazy"><div class="roster-info"><h3>Brieuc</h3><span>Académicien</span><p class="roster-meta">18 ans · Belgique</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/cameron-star-academy-2026-17129215" target="_blank" rel="noopener"><img src="Eleves/Cameron.jpg" alt="Cameron" class="roster-img" loading="lazy"><div class="roster-info"><h3>Cameron</h3><span>Académicien</span><p class="roster-meta">26 ans · Cerin</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/elija-star-academy-2026-38364324" target="_blank" rel="noopener"><img src="Eleves/Elija.jpg" alt="Elija" class="roster-img" loading="lazy"><div class="roster-info"><h3>Elija</h3><span>Académicienne</span><p class="roster-meta">23 ans · Besançon</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/felix-star-academy-2026-54569929" target="_blank" rel="noopener"><img src="Eleves/Felix.jpg" alt="Félix" class="roster-img" loading="lazy"><div class="roster-info"><h3>Félix</h3><span>Académicien</span><p class="roster-meta">18 ans · Canada</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/isabella-star-academy-2026-87867344" target="_blank" rel="noopener"><img src="Eleves/Isabella.jpg" alt="Isabella" class="roster-img" loading="lazy"><div class="roster-info"><h3>Isabella</h3><span>Académicienne</span><p class="roster-meta">20 ans · Ris-Orangis</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/khalil-star-academy-2026-90105466" target="_blank" rel="noopener"><img src="Eleves/Khalil.jpg" alt="Khalil" class="roster-img" loading="lazy"><div class="roster-info"><h3>Khalil</h3><span>Académicien</span><p class="roster-meta">24 ans · Paris</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/kylian-star-academy-2026-26602218" target="_blank" rel="noopener"><img src="Eleves/Kylian.jpg" alt="Kylian" class="roster-img" loading="lazy"><div class="roster-info"><h3>Kylian</h3><span>Académicien</span><p class="roster-meta">21 ans · Bordeaux</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/leeloo-star-academy-2026-40122199" target="_blank" rel="noopener"><img src="Eleves/Leelo.jpg" alt="Leelo" class="roster-img" loading="lazy"><div class="roster-info"><h3>Leelo</h3><span>Académicienne</span><p class="roster-meta">24 ans · Saint-Aignan</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/maud-star-academy-2026-21591832" target="_blank" rel="noopener"><img src="Eleves/Maud.webp" alt="Maud" class="roster-img" loading="lazy"><div class="roster-info"><h3>Maud</h3><span>Académicienne</span><p class="roster-meta">20 ans · Sérent</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/melina-star-academy-2026-37646314" target="_blank" rel="noopener"><img src="Eleves/Melina.jpg" alt="Mélina" class="roster-img" loading="lazy"><div class="roster-info"><h3>Mélina</h3><span>Académicienne</span><p class="roster-meta">22 ans · Florac</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/morgan-star-academy-2026-29024870" target="_blank" rel="noopener"><img src="Eleves/Morgan.jpg" alt="Morgan" class="roster-img" loading="lazy"><div class="roster-info"><h3>Morgan</h3><span>Académicien</span><p class="roster-meta">19 ans · Figanières</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/noemie-star-academy-2026-45450544" target="_blank" rel="noopener"><img src="Eleves/Noemie.jpg" alt="Noémie" class="roster-img" loading="lazy"><div class="roster-info"><h3>Noémie</h3><span>Académicienne</span><p class="roster-meta">23 ans · Saint-Justin</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/tracy-star-academy-2026-62850511" target="_blank" rel="noopener"><img src="Eleves/Tracy.jpg" alt="Tracy" class="roster-img" loading="lazy"><div class="roster-info"><h3>Tracy</h3><span>Académicienne</span><p class="roster-meta">23 ans · Paris</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/ydriss-star-academy-2026-85173931" target="_blank" rel="noopener"><img src="Eleves/Ydriss.jpg" alt="Ydriss" class="roster-img" loading="lazy"><div class="roster-info"><h3>Ydriss</h3><span>Académicien</span><p class="roster-meta">19 ans · Baie-Mahault</p></div></a>
+      <a class="roster-card" href="https://www.tf1.fr/dossier/zoe-star-academy-2026-77567446" target="_blank" rel="noopener"><img src="Eleves/Zoe.jpg" alt="Zoé" class="roster-img" loading="lazy"><div class="roster-info"><h3>Zoé</h3><span>Académicienne</span><p class="roster-meta">19 ans · Rueil-Malmaison</p></div></a>
     </div>
-
   </div>
 </section>
 
