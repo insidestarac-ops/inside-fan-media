@@ -2,600 +2,227 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Inside Star Ac | Inside Fan Media</title>
+<title>Académie – Inside Star Ac</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Découvrez l'univers Star Academy sur Inside Fan Media. Retrouvez les nommés, les sondages, l'Académie et le planning de la semaine en direct avec les fans.">
-<meta name="keywords" content="Star Academy, TF1, Dammarie-les-Lys, Nommés, Sondages, Évaluations, Prime, Élèves, Inside Fan Media">
-<meta name="author" content="Inside Fan Media">
-<link rel="canonical" href="https://insidefanmedia.fr/Inside-star-ac.html">
+<meta name="description" content="Découvrez les élèves de la saison 14, le directeur Mosimann, le corps professoral et les parrains de la Star Academy.">
+<meta name="keywords" content="Star Academy 2026, Élèves Star Ac, Professeurs Star Academy, Mosimann, Dammarie-les-Lys">
+<link rel="canonical" href="https://insidefanmedia.fr/Academie.html">
 
-<meta property="og:title" content="Inside Star Ac – Le Portail Star Academy">
-<meta property="og:description" content="Retrouvez les nominations, les votes et les évaluations de la saison en direct avec la communauté.">
+<meta property="og:title" content="La Promotion 2026 – Inside Star Ac">
+<meta property="og:description" content="Découvrez les académiciens et le corps professoral de la nouvelle saison dirigée par Mosimann.">
 <meta property="og:image" content="assets/Ban Star Ac.png">
-<meta property="og:url" content="https://insidefanmedia.fr/Inside-star-ac.html">
+<meta property="og:url" content="https://insidefanmedia.fr/Academie.html">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-star-ac.png">
 <link rel="stylesheet" href="style.css">
 
 <style>
-  /* ===== HERO IMMERSIF STAR AC ===== */
-  .hero-starac { position: relative; min-height: 85vh; display: flex; align-items: center; background: url("assets/Ban Star Ac.png") center/cover no-repeat; padding: 160px 0 160px; overflow: hidden; }
-  .hero-starac::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11, 7, 26, 0.92) 0%, rgba(11, 7, 26, 0.75) 100%); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* ===== HERO IMMERSIF ===== */
+  .hero-academie { position: relative; padding: 140px 0 160px; display: flex; align-items: center; background: url("assets/Ban Star Ac.png") center/cover no-repeat; overflow: hidden; }
+  .hero-academie::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11, 7, 26, 0.92) 0%, rgba(11, 7, 26, 0.75) 100%); }
   .hero-content { position: relative; z-index: 2; max-width: 900px; margin: auto; padding: 0 24px; color: #fff; text-align: center; }
-  .hero-content img.logo-univers { height: 100px; margin-bottom: 25px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5)); }
-  .hero-content h1 { font-size: 56px; font-weight: 900; margin-bottom: 20px; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.4); }
-  .hero-content p { font-size: 20px; max-width: 700px; margin: 0 auto 40px; line-height: 1.6; color: rgba(255, 255, 255, 0.95); }
-  .hero-actions { display: flex; justify-content: center; }
+  .univers-logo-hero { height: 90px; margin-bottom: 25px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5)); }
+  .hero-content h1 { font-size: 52px; font-weight: 900; margin-bottom: 15px; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+  .hero-content p { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; color: rgba(255, 255, 255, 0.95); }
 
-  .btn-starac { background: linear-gradient(135deg, #EF7F00, #E65C00); color: #fff; box-shadow: 0 10px 20px rgba(239, 127, 0, 0.3); padding: 18px 40px; border-radius: 14px; font-weight: 800; font-size: 16px; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-  .btn-starac:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(239, 127, 0, 0.4); color: #fff; }
+  /* ===== SECTIONS ===== */
+  .roster-section { padding: 90px 0; background: #F9F9FB; }
+  .roster-header { display: flex; align-items: center; gap: 20px; margin-bottom: 50px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 24px; }
+  .roster-header h2 { font-size: 34px; font-weight: 900; margin: 0; color: #13082B; letter-spacing: -0.5px; }
+  .roster-header::after { content: ""; flex-grow: 1; height: 3px; background: linear-gradient(90deg, #EF7F00, transparent); border-radius: 3px; }
 
-  /* ===== SECTION BENTO GRID ===== */
-  .home-grid-section { position: relative; z-index: 10; margin-top: -120px; padding-bottom: 90px; max-width: 1100px; }
-  .bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  /* --- MODE SOMBRE STAR AC --- */
+  .roster-section.dark-mode { background: #0B0A10; color: #fff; position: relative; overflow: hidden; }
+  .roster-section.dark-mode::before { content: ""; position: absolute; top: -200px; left: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(239, 127, 0, 0.08) 0%, transparent 70%); pointer-events: none; }
+  .roster-section.dark-mode .roster-header h2 { color: #fff; }
+  .roster-section.dark-mode .roster-header::after { background: linear-gradient(90deg, #EF7F00, #7C4DFF, transparent); }
 
-  .hub-card { background: #fff; border-radius: 32px; padding: 35px; text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-  .hub-card h3 { margin: 0 0 10px; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;}
-  .hub-card p { font-size: 15px; line-height: 1.6; margin: 0 0 25px; flex-grow: 1; }
-  
-  .card-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; font-weight: 900; font-size: 14px; text-transform: uppercase; color: #fff; margin-top: auto; width: fit-content; background: linear-gradient(135deg, #EF7F00, #E65C00); box-shadow: 0 8px 20px rgba(239, 127, 0, 0.3); transition: box-shadow 0.3s ease; }
-  .card-btn svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
-  .hub-card:hover .card-btn { box-shadow: 0 12px 25px rgba(239, 127, 0, 0.4); }
-  .hub-card:hover .card-btn svg { transform: translateX(4px); }
-
-  .card-banner { width: 100%; height: 180px; border-radius: 16px; overflow: hidden; margin-bottom: 25px; background: #0B071A; position: relative; }
-  .card-banner img { width: 100%; height: 100%; object-fit: cover; opacity: 0.95; }
-  .photo-credit { position: absolute; right: 8px; bottom: 15px; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 9px; color: rgba(255, 255, 255, 0.7); letter-spacing: 0.5px; text-transform: uppercase; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); pointer-events: none; z-index: 5; }
-
-  /* --- CARTES 1 & 2 --- */
-  .card-nommes { border: 1px solid rgba(239, 127, 0, 0.15); border-top: 6px solid #EF7F00; box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05); }
-  .card-nommes h3 { color: #13082B; }
-  .card-nommes p { color: #6E6E90; }
-  .card-nommes:hover { border-color: rgba(239, 127, 0, 0.3); transform: translateY(-2px); }
-
-  .card-academie { border: 1px solid rgba(230, 161, 0, 0.15); border-top: 6px solid #E6A100; box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05); }
-  .card-academie h3 { color: #13082B; }
-  .card-academie p { color: #6E6E90; }
-  .card-academie:hover { border-color: rgba(230, 161, 0, 0.3); transform: translateY(-2px); }
-
-  /* --- LE PLANNING --- */
-  .planning-wrapper { grid-column: 1 / -1; margin: 40px 0 20px 0; text-align: center; }
-  .planning-wrapper h2 { font-size: 30px; font-weight: 900; color: #13082B; margin-bottom: 40px; letter-spacing: -0.5px; text-transform: uppercase;}
-  .planning-board { background: #fff; padding: 15px; border-radius: 4px; box-shadow: 0 20px 40px rgba(11, 7, 26, 0.1); transform: rotate(-1.5deg); position: relative; max-width: 800px; margin: 0 auto; transition: transform 0.3s ease; }
-  .planning-board:hover { transform: rotate(0deg) scale(1.02); }
-  .planning-pin { font-size: 35px; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); text-shadow: 0 5px 10px rgba(0,0,0,0.2); z-index: 10; }
-
-  /* --- CARTE 3 : LE PROGRAMME DU PRIME --- */
-  .card-programme { 
-    grid-column: 1 / -1; 
-    border: 1px solid rgba(124, 77, 255, 0.15);
-    box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05);
+  /* ===== GRILLE ET CARTES ===== */
+  .roster-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; position: relative; z-index: 2; margin-bottom: 30px;}
+  .roster-flex-center { 
     display: flex; 
-    flex-direction: row; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    max-width: 900px; /* Force le passage à la ligne après 3 cartes */
+    margin: 0 auto; 
+  }
+  
+  .roster-flex-center .roster-card { 
+    /* 265.5px correspond à la taille exacte de tes cartes du haut sur grand écran */
+    flex: 1 1 220px; 
+    max-width: 265.5px; 
+    width: 100%;
+  }
+
+  .roster-card { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 3/4; background: #13082B; box-shadow: 0 15px 35px rgba(11, 7, 26, 0.08); cursor: default; border: 1px solid rgba(255, 255, 255, 0.1); transition: box-shadow 0.3s ease, border-color 0.3s ease; }
+  .roster-card::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 75%; background: linear-gradient(to top, rgba(11, 10, 16, 0.95) 0%, rgba(11, 10, 16, 0.5) 50%, transparent 100%); pointer-events: none; z-index: 1; transition: background 0.4s ease; }
+  .roster-card:hover { box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15); border-color: rgba(239, 127, 0, 0.3); }
+  .roster-card:hover::after { background: linear-gradient(to top, rgba(239, 127, 0, 0.9) 0%, rgba(239, 127, 0, 0.4) 50%, transparent 100%); }
+  
+  .roster-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.4s ease; display: block; }
+  .roster-card:hover .roster-img { opacity: 1; }
+
+  .roster-info { position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 2; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 18px 12px; color: #fff; text-align: center; transition: background 0.3s ease, border-color 0.3s ease; }
+  .roster-card:hover .roster-info { background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.3); }
+  .roster-info h3 { margin: 0 0 5px; font-size: 20px; font-weight: 900; letter-spacing: -0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+  .roster-info span { font-size: 11px; font-weight: 800; color: rgba(255, 255, 255, 0.8); text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
+  .roster-card:hover .roster-info span { color: #fff; }
+
+  /* ===== BANDEAUX ET CARTES TEASING ===== */
+  /* Le bandeau large complet (uniquement pour les élèves car rien n'est révélé) */
+  .teaser-banner { background: rgba(255, 255, 255, 0.6); border: 1px dashed rgba(19, 8, 43, 0.15); border-radius: 20px; padding: 40px; text-align: center; color: #6E6E90; font-size: 18px; font-weight: 700; width: 100%; letter-spacing: -0.5px; }
+  .dark-mode .teaser-banner { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); }
+  .teaser-banner span { display: block; font-size: 28px; margin-bottom: 10px; }
+
+  /* La carte vide DANS la grille (pour les profs/parrains) : Allongée et Fixe */
+  .teaser-card { 
+    grid-column: span 2; /* Elle s'allonge sur 2 colonnes pour faire un rectangle large */
+    border-radius: 24px; 
+    border: 2px dashed rgba(19, 8, 43, 0.15); 
+    background: rgba(255, 255, 255, 0.4); 
+    display: flex; 
+    flex-direction: column; 
     align-items: center; 
-    gap: 40px; 
-    position: relative;
+    justify-content: center; 
+    text-align: center; 
+    padding: 30px 40px; 
+    color: #6E6E90; 
+    font-size: 18px; 
+    font-weight: 700; 
+    line-height: 1.4; 
+    height: 100%; /* Prend automatiquement la hauteur de la carte d'à côté */
+    cursor: default; /* Pas de main qui clique, c'est fixe */
   }
-  .card-programme::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, #7C4DFF 0%, #EF7F00 50%, #E6A100 100%);
-  }
-  .card-programme:hover { border-color: rgba(124, 77, 255, 0.3); transform: translateY(-2px); }
-  .card-programme h3 { color: #13082B; display: flex; align-items: center; gap: 10px; }
-  .card-programme p { color: #6E6E90; }
-  .card-programme .card-btn { background: linear-gradient(135deg, #7C4DFF, #5E35FF); box-shadow: 0 8px 20px rgba(124, 77, 255, 0.3); }
+  .teaser-card span { font-size: 36px; margin-bottom: 12px; }
 
-  @media (max-width: 900px) {
-    .bento-grid { grid-template-columns: 1fr; gap: 30px; }
-    .card-programme { flex-direction: column; align-items: flex-start; gap: 20px; padding: 35px; }
-  }
+  .vote-disclaimer { text-align: center; font-size: 12px; color: #9A9AA8; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(11,7,26,0.1); }
+
   @media (max-width: 768px) {
-    .hero-starac { padding: 140px 20px 80px; min-height: auto; }
+    .hero-academie { padding: 120px 0 100px; }
     .hero-content h1 { font-size: 38px; }
-    .home-grid-section { margin-top: -40px; }
-    .hero-content .logo-univers { display: none !important; }
-    .planning-wrapper h2 { font-size: 24px; }
+    .roster-section { padding: 60px 0; }
+    .roster-header h2 { font-size: 26px; }
+    .roster-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    .roster-info { padding: 12px; bottom: 10px; left: 10px; right: 10px; border-radius: 12px;}
+    .roster-info h3 { font-size: 16px; margin: 0 0 3px;}
+    .roster-info span { font-size: 9px; letter-spacing: 0.5px;}
+    .teaser-banner { padding: 30px 20px; font-size: 15px; }
+    /* Sur mobile, on la laisse allongée sur toute la largeur (les 2 petites colonnes) */
+    .teaser-card { font-size: 15px; padding: 20px; grid-column: span 2; }
+    .teaser-card span { font-size: 28px; margin-bottom: 8px; }
+    .roster-flex-center { gap: 15px; }
+    .roster-flex-center .roster-card { 
+      /* Sur mobile, on remet exactement 2 cartes par ligne comme pour les profs */
+      flex: 0 0 calc(50% - 7.5px); 
+      max-width: none;
+    }
   }
 
-  /* =========================================
-     PARTENAIRE CARNET STAR AC
-  ========================================= */
-.card-carnet-sa {
-  grid-column: 1 / -1;
-  background: #0B071A; 
-  border-radius: 32px;
-  overflow: hidden;
-  display: flex;
-  text-decoration: none;
-  border: 1px solid rgba(239, 127, 0, 0.2);
-  box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 20px;
-  position: relative;
-}
-.card-carnet-sa::before {
-  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-  background: linear-gradient(90deg, #EF7F00, #E65C00);
-}
-.card-carnet-sa:hover {
-  border-color: rgba(239, 127, 0, 0.4);
-  box-shadow: 0 20px 50px rgba(239, 127, 0, 0.15);
-}
-.ccsa-img {
-  width: 40%;
-  background: url('assets/Carnet.png') center/cover no-repeat;
-  min-height: 250px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-.ccsa-content {
-  width: 60%;
-  padding: 35px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.ccsa-content h3 { color: #fff; font-size: 26px; margin: 0 0 10px; text-transform: uppercase; letter-spacing: -0.5px; }
-.ccsa-content p { color: rgba(255,255,255,0.8); font-size: 15px; margin: 0 0 20px; line-height: 1.5; }
-
-.ccsa-tag {
-  background: rgba(239, 127, 0, 0.15);
-  color: #EF7F00;
-  font-size: 11px;
-  font-weight: 900;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 50px;
-  margin-bottom: 15px;
-  display: inline-block;
-  letter-spacing: 0.5px;
-  width: fit-content;
-}
-.ccsa-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.ccsa-btn {
-  background: linear-gradient(135deg, #EF7F00, #E65C00);
-  color: #fff;
-  padding: 14px 24px;
-  border-radius: 12px;
-  font-weight: 900;
-  font-size: 14px;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 8px 20px rgba(239, 127, 0, 0.3);
-}
-.ccsa-btn svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
-.card-carnet-sa:hover .ccsa-btn svg { transform: translateX(4px); }
-
-.ccsa-code {
-  color: #fff;
-  font-weight: 900;
-  font-size: 14px;
-  background: rgba(0,0,0,0.3);
-  border: 1px dashed rgba(255,255,255,0.3);
-  padding: 12px 18px;
-  border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-  .card-carnet-sa { flex-direction: column; }
-  .ccsa-img { width: 100%; height: 200px; min-height: 200px; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-  .ccsa-content { width: 100%; padding: 25px; }
-}
 </style>
 </head>
 
 <body>
 
 <div id="header-placeholder"></div>
-  
+
 <main>
-  <section class="hero-starac">
+  <!-- HERO -->
+  <section class="hero-academie">
     <div class="hero-content">
-      <img src="assets/logo-star-ac.png" alt="Logo Star Academy" class="logo-univers">
-      <h1>L'univers Star Academy</h1>
-      <p>Retrouvez le planning de chaque semaine, les nominations, et l'académie de cette saison 14.</p>
-      <div class="hero-actions">
-        <a href="actu.html" class="btn-starac">Suivre le Fil d'Actu en direct</a>
-      </div>
+      <img src="assets/logo-star-ac.png" alt="Star Academy" class="univers-logo-hero">
+      <h1>Académie 2026</h1>
+      <p>Découvrez le directeur, les professeurs et les nouveaux académiciens.</p>
     </div>
   </section>
 
-  <section id="hub" class="home-grid-section container">
-    <div class="bento-grid">
+  <!-- CORPS PROFESSORAL (Fond Clair) -->
+  <section class="roster-section">
+    <div class="roster-container">
       
-      <!-- Carte 1 : Les Nommés -->
-      <a href="Nommes.html" class="hub-card card-nommes">
-        <div class="card-banner">
-          <img src="assets/Nommes.jpg" alt="Les nommés Star Academy">
-          <span class="photo-credit">© vl-media.fr</span>
-        </div>
-        <h3>Les Nommés</h3>
-        <p>Consultez les nominations de la semaine, votez pour vos favoris et analysez les tendances d'élimination en direct.</p>
-        <span class="card-btn">Voir les Nommés <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </a>
-
-      <!-- Carte 2 : L'Académie -->
-      <a href="Academie.html" class="hub-card card-academie">
-        <div class="card-banner">
-          <img src="assets/chateau.png" alt="Le Château de Dammarie-les-Lys">
-          <span class="photo-credit">© meuble-info.fr</span>
-        </div>
-        <h3>L'Académie</h3>
-        <p>Découvrez les portraits des élèves de la saison 14, le corps professoral et retracez leur évolution au château.</p>
-        <span class="card-btn">Découvrir la promotion <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </a>
-
-      <!-- Carte Partenaire : Le Carnet -->
-      <a href="https://carnet-starac.shoplit.io/" target="_blank" class="card-carnet-sa">
-        <div class="ccsa-img"></div>
-        <div class="ccsa-content">
-          <span class="ccsa-tag">Partenaire Officiel</span>
-          <h3>Les Carnets Star Ac 2026</h3>
-          <p>Prises de notes lors des primes, suivis des évaluations, pronostics des nominations, activités... Équipez-vous pour vivre la saison à 100%.</p>
-          <div class="ccsa-actions">
-            <span class="ccsa-btn">
-              Commander (-15%) 
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </span>
-            <span class="ccsa-code">🎁 Code : INSIDE15</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- LE PLANNING INTERACTIF CONNECTÉ -->
-      <div class="planning-wrapper">
-      <div class="planning-board-interactive">
-        <div class="planning-entete-integre">
-
-            <div class="planning-identite">
-                <img
-                    src="assets/logo-star-ac.png"
-                    alt="Inside Star Ac"
-                    class="planning-logo-entete"
-                >
-
-                <span class="planning-marque">
-                    INSIDE STAR AC
-                </span>
-            </div>
-
-            <h2>
-                Planning de la semaine
-                <span id="planning-numero">01</span>
-            </h2>
-
-            <p class="planning-dates" id="planning-dates">
-                Du lundi 12 au dimanche 18 octobre 2026
-            </p>
-
-        </div>
-          <!-- SEULE LA GRILLE DÉFILE SUR MOBILE -->
-          <div class="planning-scroll-mobile">
-
-              <div class="planning-mur" id="planning-mur-public">
-                  <!-- TON LOGO ACTUEL -->
-                  <img
-                      src="assets/logo-star-ac.png"
-                      alt="Inside Star Ac"
-                      class="logo-sur-papier"
-            >
-
-            <!-- ICI TU GARDES TOUTE TA GRILLE -->
-            <div class="planning-grid">
-
-                <!-- LES ONGLETS (JOURS) -->
-                <div class="header-vide"></div>
-                <div class="header-jour">Lundi</div>
-                <div class="header-jour">Mardi</div>
-                <div class="header-jour col-mercredi">Mercredi</div>
-                <div class="header-jour">Jeudi</div>
-                <div class="header-jour">Vendredi</div>
-                <div class="header-jour">Samedi</div>
-                <div class="header-jour">Dimanche</div>
-
-                <!-- TOUTES LES CASES SONT MAINTENANT VIDES. FIREBASE S'OCCUPE DU RESTE ! -->
-
-                <!-- LIGNE 7H (07h30) -->
-                <div class="col-heure col-heure-first">
-                   <span class="heure-demi">07h30</span>
-                </div>
-                <div class="case-grille" id="lundi-7"></div>
-                <div class="case-grille" id="mardi-7"></div>
-                <div class="case-grille col-mercredi" id="mercredi-7"></div>
-                <div class="case-grille" id="jeudi-7"></div>
-                <div class="case-grille" id="vendredi-7"></div>
-                <div class="case-grille showtime-col" id="samedi-7"></div>
-                <div class="case-grille" id="dimanche-7"></div>
-
-                <!-- LIGNE 8H -->
-                <div class="col-heure"><span class="heure-pleine">8H</span><span class="heure-demi">08h30</span></div>
-                <div class="case-grille" id="lundi-8"></div> 
-                <div class="case-grille" id="mardi-8"></div> 
-                <div class="case-grille col-mercredi" id="mercredi-8"></div>
-                <div class="case-grille" id="jeudi-8"></div>
-                <div class="case-grille" id="vendredi-8"></div>
-                <div class="case-grille showtime-col" id="samedi-8"></div>
-                <div class="case-grille" id="dimanche-8"></div>
-
-                <!-- LIGNE 9H -->
-                <div class="col-heure"><span class="heure-pleine">9H</span><span class="heure-demi">09h30</span></div>
-                <div class="case-grille" id="lundi-9"></div>
-                <div class="case-grille" id="mardi-9"></div>
-                <div class="case-grille col-mercredi" id="mercredi-9"></div>
-                <div class="case-grille" id="jeudi-9"></div>
-                <div class="case-grille" id="vendredi-9"></div>
-                <div class="case-grille showtime-col" id="samedi-9"></div>
-                <div class="case-grille" id="dimanche-9"></div>
-
-                <!-- LIGNE 10H -->
-                <div class="col-heure"><span class="heure-pleine">10H</span><span class="heure-demi">10h30</span></div>
-                <div class="case-grille" id="lundi-10"></div>
-                <div class="case-grille" id="mardi-10"></div>
-                <div class="case-grille col-mercredi" id="mercredi-10"></div>
-                <div class="case-grille" id="jeudi-10"></div>
-                <div class="case-grille" id="vendredi-10"></div>
-                <div class="case-grille showtime-col" id="samedi-10"></div>
-                <div class="case-grille" id="dimanche-10"></div>
-
-                <!-- LIGNE 11H -->
-                <div class="col-heure"><span class="heure-pleine">11H</span><span class="heure-demi">11h30</span></div>
-                <div class="case-grille" id="lundi-11"></div>
-                <div class="case-grille" id="mardi-11"></div>
-                <div class="case-grille col-mercredi" id="mercredi-11"></div>
-                <div class="case-grille" id="jeudi-11"></div>
-                <div class="case-grille" id="vendredi-11"></div>
-                <div class="case-grille showtime-col" id="samedi-11"></div>
-                <div class="case-grille" id="dimanche-11"></div>
-
-                <!-- LIGNE 12H -->
-                <div class="col-heure"><span class="heure-pleine">12H</span><span class="heure-demi">12h30</span></div>
-                <div class="case-grille" id="lundi-12"></div>
-                <div class="case-grille" id="mardi-12"></div>
-                <div class="case-grille col-mercredi" id="mercredi-12"></div>
-                <div class="case-grille" id="jeudi-12"></div>
-                <div class="case-grille" id="vendredi-12"></div>
-                <div class="case-grille showtime-col" id="samedi-12"></div>
-                <div class="case-grille" id="dimanche-12"></div>
-
-                <!-- LIGNE 13H -->
-                <div class="col-heure"><span class="heure-pleine">13H</span><span class="heure-demi">13h30</span></div>
-                <div class="case-grille" id="lundi-13"></div>
-                <div class="case-grille" id="mardi-13"></div>
-                <div class="case-grille col-mercredi" id="mercredi-13"></div>
-                <div class="case-grille" id="jeudi-13"></div>
-                <div class="case-grille" id="vendredi-13"></div>
-                <div class="case-grille showtime-col" id="samedi-13"></div>
-                <div class="case-grille" id="dimanche-13"></div>
-
-                <!-- LIGNE 14H -->
-                <div class="col-heure"><span class="heure-pleine">14H</span><span class="heure-demi">14h30</span></div>
-                <div class="case-grille" id="lundi-14"></div>
-                <div class="case-grille" id="mardi-14"></div>
-                <div class="case-grille col-mercredi" id="mercredi-14"></div>
-                <div class="case-grille" id="jeudi-14"></div>
-                <div class="case-grille" id="vendredi-14"></div>
-                <div class="case-grille showtime-col" id="samedi-14"></div>
-                <div class="case-grille" id="dimanche-14"></div>
-
-                <!-- LIGNE 15H -->
-                <div class="col-heure"><span class="heure-pleine">15H</span><span class="heure-demi">15h30</span></div>
-                <div class="case-grille" id="lundi-15"></div>
-                <div class="case-grille" id="mardi-15"></div>
-                <div class="case-grille col-mercredi" id="mercredi-15"></div>
-                <div class="case-grille" id="jeudi-15"></div>
-                <div class="case-grille" id="vendredi-15"></div>
-                <div class="case-grille showtime-col" id="samedi-15"></div>
-                <div class="case-grille" id="dimanche-15"></div>
-
-                <!-- LIGNE 16H -->
-                <div class="col-heure"><span class="heure-pleine">16H</span><span class="heure-demi">16h30</span></div>
-                <div class="case-grille" id="lundi-16"></div>
-                <div class="case-grille" id="mardi-16"></div>
-                <div class="case-grille col-mercredi" id="mercredi-16"></div>
-                <div class="case-grille" id="jeudi-16"></div>
-                <div class="case-grille" id="vendredi-16"></div>
-                <div class="case-grille showtime-col" id="samedi-16"></div>
-                <div class="case-grille" id="dimanche-16"></div>
-
-                <!-- LIGNE 17H -->
-                <div class="col-heure"><span class="heure-pleine">17H</span><span class="heure-demi">17h30</span></div>
-                <div class="case-grille" id="lundi-17"></div>
-                <div class="case-grille" id="mardi-17"></div>
-                <div class="case-grille col-mercredi" id="mercredi-17"></div>
-                <div class="case-grille" id="jeudi-17"></div>
-                <div class="case-grille" id="vendredi-17"></div>
-                <div class="case-grille showtime-col" id="samedi-17"></div>
-                <div class="case-grille" id="dimanche-17"></div>
-
-                <!-- LIGNE 18H -->
-                <div class="col-heure"><span class="heure-pleine">18H</span><span class="heure-demi">18h30</span></div>
-                <div class="case-grille" id="lundi-18"></div>
-                <div class="case-grille" id="mardi-18"></div>
-                <div class="case-grille col-mercredi" id="mercredi-18"></div>
-                <div class="case-grille" id="jeudi-18"></div>
-                <div class="case-grille" id="vendredi-18"></div>
-                <div class="case-grille showtime-col" id="samedi-18"></div>
-                <div class="case-grille" id="dimanche-18"></div>
-
-                <!-- LIGNE 19H -->
-                <div class="col-heure"><span class="heure-pleine">19H</span><span class="heure-demi">19h30</span></div>
-                <div class="case-grille" id="lundi-19"></div>
-                <div class="case-grille" id="mardi-19"></div>
-                <div class="case-grille col-mercredi" id="mercredi-19"></div>
-                <div class="case-grille" id="jeudi-19"></div>
-                <div class="case-grille" id="vendredi-19"></div>
-                <div class="case-grille showtime-col" id="samedi-19"></div>
-                <div class="case-grille" id="dimanche-19"></div>
-
-                <!-- LIGNE 20H -->
-                <div class="col-heure"><span class="heure-pleine">20H</span><span class="heure-demi">20h30</span></div>
-                <div class="case-grille" id="lundi-20"></div>
-                <div class="case-grille" id="mardi-20"></div>
-                <div class="case-grille col-mercredi" id="mercredi-20"></div>
-                <div class="case-grille" id="jeudi-20"></div>
-                <div class="case-grille" id="vendredi-20"></div>
-                <div class="case-grille showtime-col" id="samedi-20"></div>
-                <div class="case-grille" id="dimanche-20"></div>
-
-                <!-- LIGNE 21H -->
-                <div class="col-heure"><span class="heure-pleine">21H</span><span class="heure-demi">21h30</span></div>
-                <div class="case-grille" id="lundi-21"></div>
-                <div class="case-grille" id="mardi-21"></div>
-                <div class="case-grille col-mercredi" id="mercredi-21"></div>
-                <div class="case-grille" id="jeudi-21"></div>
-                <div class="case-grille" id="vendredi-21"></div>
-                <div class="case-grille showtime-col" id="samedi-21"></div>
-                <div class="case-grille" id="dimanche-21"></div>
-
-                <!-- LIGNE 22H -->
-                <div class="col-heure"><span class="heure-pleine">22H</span><span class="heure-demi">22h30</span></div>
-                <div class="case-grille" id="lundi-22"></div>
-                <div class="case-grille" id="mardi-22"></div>
-                <div class="case-grille col-mercredi" id="mercredi-22"></div>
-                <div class="case-grille" id="jeudi-22"></div>
-                <div class="case-grille" id="vendredi-22"></div>
-                <div class="case-grille showtime-col" id="samedi-22"></div>
-                <div class="case-grille" id="dimanche-22"></div>
-
-                <!-- LIGNE 23H (Finit à minuit) -->
-                <div class="col-heure" style="border-bottom: none;">
-                   <span class="heure-pleine">23H</span>
-                   <span class="heure-demi">23h30</span>
-                </div>
-                <div class="case-grille" id="lundi-23"></div>
-                <div class="case-grille" id="mardi-23"></div>
-                <div class="case-grille col-mercredi" id="mercredi-23"></div>
-                <div class="case-grille" id="jeudi-23"></div>
-                <div class="case-grille" id="vendredi-23"></div>
-                <div class="case-grille showtime-col" id="samedi-23"></div>
-                <div class="case-grille" id="dimanche-23"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- HORAIRES TV DÉTAILLÉS -->
-      <!-- HORAIRES TV DÉTAILLÉS -->
-      <div class="tv-schedule-container">
-        
-        <h3 style="color: #ffffff; font-size: 20px; font-weight: 900; margin-top: 0; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase;">
-          📺 Les Quotidiennes & Le Prime
-        </h3>
-        <p style="color: #EDE7FF; font-size: 13px; font-weight: 600; margin-top: 0; margin-bottom: 25px; opacity: 0.7;">
-          Suivez le résumé de la journée au château chaque soir sur TF1.
-        </p>
-        
-        <div class="tv-badges-row">
-          <div class="tv-badge">
-            <span class="tv-day">LUN - VEN</span>
-            <span class="tv-time">17H30</span>
-          </div>
-          <div class="tv-badge">
-            <span class="tv-day">SAMEDI</span>
-            <span class="tv-time">17H15</span>
-          </div>
-          <div class="tv-badge">
-            <span class="tv-day">DIMANCHE</span>
-            <span class="tv-time">16H05</span>
-          </div>
-          <div class="tv-badge badge-prime">
-            <span class="tv-day">PRIME</span>
-            <span class="tv-time">21H10</span>
-          </div>
-          <div class="tv-badge badge-live">
-            <span class="tv-day">LIVE TF1+</span>
-            <span class="tv-time">24H/24</span>
-          </div>
-        </div>
+      <div class="roster-header">
+        <h2>La Direction & Les Profs</h2>
       </div>
 
-      <!-- Carte 3 : Le Programme du Prime (Avec le vrai dégradé) -->
-      <a href="Programme.html" class="hub-card card-programme">
-        <div>
-          <h3>📺 Programme du Prime</h3>
-          <p>Qui chante avec qui au prime ? Découvrez la liste des duos avec les artistes invités, les défis solos et la chanson collégiale de la semaine.</p>
-          <span class="card-btn">Voir la Setlist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
+      <div class="roster-grid">
+        <div class="roster-card"><img src="Profs/Mosimann.jpg" alt="Mosimann" class="roster-img" loading="lazy"><div class="roster-info"><h3>Mosimann</h3><span>Directeur</span></div></div>
+        <div class="roster-card"><img src="Profs/Sofia.jpg" alt="Sofia Morgavi" class="roster-img" loading="lazy"><div class="roster-info"><h3>Sofia Morgavi</h3><span>Prof. de Chant</span></div></div>
+        <div class="roster-card"><img src="Profs/Jonathan.jpg" alt="Jonathan Jenvrin" class="roster-img" loading="lazy"><div class="roster-info"><h3>Jonathan Jenvrin</h3><span>Prof. de Danse</span></div></div>
+        <div class="roster-card"><img src="Profs/Lydia.jpg" alt="Lydia Bouchard" class="roster-img" loading="lazy"><div class="roster-info"><h3>Lydia Bouchard</h3><span>Expression Scénique</span></div></div>
+        <div class="roster-card"><img src="Profs/Papy.jpg" alt="Papy" class="roster-img" loading="lazy"><div class="roster-info"><h3>Papy</h3><span>Prof. de Théâtre</span></div></div>
+        <div class="roster-card"><img src="Profs/Ladji.heic" alt="Ladji Doucouré" class="roster-img" loading="lazy"><div class="roster-info"><h3>Ladji Doucouré</h3><span>Prof. de Sport</span></div></div>
+        <div class="roster-card"><img src="Profs/Philipinne.jpg" alt="Philippine Lavrey" class="roster-img" loading="lazy"><div class="roster-info"><h3>Philippine Lavrey</h3><span>Répétitrice</span></div></div>
+        <div class="roster-card"><img src="Profs/Fanny.webp" alt="Fanny Delaigue" class="roster-img" loading="lazy"><div class="roster-info"><h3>Fanny Delaigue</h3><span>Répétitrice</span></div></div>
+      </div>
 
     </div>
   </section>
+  
+  <section class="roster-section dark-mode">
+  <div class="roster-container">
+    
+    <div class="roster-header">
+      <h2>Les Académiciens</h2>
+    </div>
+
+    <div class="roster-grid">
+      <div class="roster-card"><img src="Eleves/" alt="Amel.jpg" class="roster-img" loading="lazy"><div class="roster-info"><h3>Amel</h3><span>Académicienne</span><p class="roster-meta">22 ans · Vitry-sur-Seine</p></div></div>
+      <div class="roster-card"><img src="Eleves/Antoine.jpg" alt="Antoine" class="roster-img" loading="lazy"><div class="roster-info"><h3>Antoine</h3><span>Académicien</span><p class="roster-meta">18 ans · Lyon</p></div></div>
+      <div class="roster-card"><img src="Eleves/Brieuc.jpg" alt="Brieuc" class="roster-img" loading="lazy"><div class="roster-info"><h3>Brieuc</h3><span>Académicien</span><p class="roster-meta">18 ans · Belgique</p></div></div>
+      <div class="roster-card"><img src="Eleves/Cameron.jpg" alt="Cameron" class="roster-img" loading="lazy"><div class="roster-info"><h3>Cameron</h3><span>Académicien</span><p class="roster-meta">26 ans · Cerin</p></div></div>
+      <div class="roster-card"><img src="Eleves/Elija.heic" alt="Elija" class="roster-img" loading="lazy"><div class="roster-info"><h3>Elija</h3><span>Académicienne</span><p class="roster-meta">23 ans · Besançon</p></div></div>
+      <div class="roster-card"><img src="Eleves/Felix.jpg" alt="Félix" class="roster-img" loading="lazy"><div class="roster-info"><h3>Félix</h3><span>Académicien</span><p class="roster-meta">18 ans · Canada</p></div></div>
+      <div class="roster-card"><img src="Eleves/Isabella.heic" alt="Isabella" class="roster-img" loading="lazy"><div class="roster-info"><h3>Isabella</h3><span>Académicienne</span><p class="roster-meta">20 ans · Ris-Orangis</p></div></div>
+      <div class="roster-card"><img src="Eleves/Khalil.jpg" alt="Khali" class="roster-img" loading="lazy"><div class="roster-info"><h3>Khalil</h3><span>Académicien</span><p class="roster-meta">24 ans · Paris</p></div></div>
+      <div class="roster-card"><img src="Eleves/Kylian.jpg" alt="Kylian" class="roster-img" loading="lazy"><div class="roster-info"><h3>Kylian</h3><span>Académicien</span><p class="roster-meta">21 ans · Bordeaux</p></div></div>
+      <div class="roster-card"><img src="Eleves/Leelo.jpg" alt="Leelo" class="roster-img" loading="lazy"><div class="roster-info"><h3>Leelo</h3><span>Académicienne</span><p class="roster-meta">24 ans · Saint-Aignan</p></div></div>
+      <div class="roster-card"><img src="Eleves/Maud.webp" alt="Maud" class="roster-img" loading="lazy"><div class="roster-info"><h3>Maud</h3><span>Académicienne</span><p class="roster-meta">20 ans · Sérent</p></div></div>
+      <div class="roster-card"><img src="Eleves/Melina.jpg" alt="Mélina" class="roster-img" loading="lazy"><div class="roster-info"><h3>Mélina</h3><span>Académicienne</span><p class="roster-meta">22 ans · Florac</p></div></div>
+      <div class="roster-card"><img src="Eleves/Morgan.jpg" alt="Morgan" class="roster-img" loading="lazy"><div class="roster-info"><h3>Morgan</h3><span>Académicien</span><p class="roster-meta">19 ans · Figanières</p></div></div>
+      <div class="roster-card"><img src="Eleves/Noemie.jpg" alt="Noémie" class="roster-img" loading="lazy"><div class="roster-info"><h3>Noémie</h3><span>Académicienne</span><p class="roster-meta">23 ans · Saint-Justin</p></div></div>
+      <div class="roster-card"><img src="Eleves/Tracy.jpg" alt="Tracy" class="roster-img" loading="lazy"><div class="roster-info"><h3>Tracy</h3><span>Académicienne</span><p class="roster-meta">23 ans · Paris</p></div></div>
+      <div class="roster-card"><img src="Eleves/Ydriss.jpg" alt="Ydriss" class="roster-img" loading="lazy"><div class="roster-info"><h3>Ydriss</h3><span>Académicien</span><p class="roster-meta">19 ans · Baie-Mahault</p></div></div>
+      <div class="roster-card"><img src="Eleves/Zoe.jpg" alt="Zoé" class="roster-img" loading="lazy"><div class="roster-info"><h3>Zoé</h3><span>Académicienne</span><p class="roster-meta">19 ans · Rueil-Malmaison</p></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- L'ÉQUIPE (Retour au Fond Clair) -->
+  <section class="roster-section">
+    <div class="roster-container">
+      
+      <div class="roster-header">
+        <h2>L'Équipe & Les Parrains</h2>
+      </div>
+
+      <!-- On utilise la nouvelle classe Flexbox ici -->
+      <div class="roster-flex-center">
+        <div class="roster-card"><img src="Profs/Nikos.jpg" alt="Nikos Aliagas" class="roster-img" loading="lazy"><div class="roster-info"><h3>Nikos Aliagas</h3><span>Présentateur</span></div></div>
+        <div class="roster-card"><img src="Profs/Karima.jpg" alt="Karima Charni" class="roster-img" loading="lazy"><div class="roster-info"><h3>Karima Charni</h3><span>Présentatrice</span></div></div>
+        <div class="roster-card"><img src="Profs/vianney.jpg" alt="Vianney" class="roster-img" loading="lazy"><div class="roster-info"><h3>Vianney</h3><span>Parrain</span></div></div>
+        <div class="roster-card"><img src="Profs/Eva.jpg" alt="Eva" class="roster-img" loading="lazy"><div class="roster-info"><h3>Eva</h3><span>Grande Soeur</span></div></div>
+        <div class="roster-card"><img src="Profs/Adele.webp" alt="Adèle Castillon" class="roster-img" loading="lazy"><div class="roster-info"><h3>Adèle Castillon</h3><span>Grande Soeur</span></div></div>
+      </div>
+
+      <p class="vote-disclaimer">© Crédit images : Sipa Press, TF1, Getty, Ellie Blondeau, Purepeople.</p>
+
+    </div>
+  </section>
+
 </main>
 
 <div id="footer-placeholder"></div>
-
-<!-- CONNEXION DU PLANNING À FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-  
-<script>
-  const firebaseConfigPlanning = {
-    apiKey: "AIzaSyAgmhwesxB9uDwXc-JrsyAXFsggkirpczY",
-    authDomain: "inside-fan-media.firebaseapp.com",
-    databaseURL: "https://inside-fan-media-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "inside-fan-media"
-  };
-  if (!firebase.apps.length) { firebase.initializeApp(firebaseConfigPlanning); }
-  const databasePlanning = firebase.database();
-
-  // Écoute les changements depuis la base de données
-  databasePlanning.ref("planning/infosSemaine").on("value", snap => {
-      const m = snap.val(); if (!m) return;
-      document.getElementById("planning-numero").textContent = m.numero;
-      document.getElementById("planning-dates").textContent  = m.dates;
-  });
-  databasePlanning.ref("planning/semaine1").on("value", function(snapshot) {
-    // 1. On efface toutes les étiquettes existantes
-    document.querySelectorAll('.case-grille .etiquette').forEach(e => e.remove());
-    
-    // 2. On récupère les données de la régie
-    const data = snapshot.val();
-    if (!data) return;
-
-    // 3. On replace chaque étiquette dans la bonne case
-    for (const idCase in data) {
-      const caseCible = document.getElementById(idCase);
-      if (caseCible) {
-        const coursDeCetteCase = data[idCase];
-        for (const keyId in coursDeCetteCase) {
-          const cours = coursDeCetteCase[keyId];
-          caseCible.innerHTML += `<div class="etiquette ${cours.type} ${cours.depart} ${cours.duree}">${cours.texte}</div>`;
-        }
-      }
-    }
-  });
-  
-</script>
-
-<script>
-  // Bloquer le clic droit
-  document.addEventListener('contextmenu', event => event.preventDefault());
-  
-  // Bloquer les raccourcis de copie (Ctrl+C, Ctrl+U pour voir le code source)
-  document.onkeydown = function(e) {
-    if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 123)) {
-      return false;
-    }
-  };
-</script>
-
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="menu.js"></script>
-
-
 </body>
 </html>
