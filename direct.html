@@ -7,11 +7,9 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #050214; color: white; padding: 20px; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #050214; color: white; padding: 20px; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     
-    /* Écran de connexion (Inchangé) */
     #login-screen { max-width: 400px; width: 100%; background: #13082B; padding: 30px; border-radius: 20px; border: 1px solid rgba(124, 77, 255, 0.3); text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
     #login-screen h1 { color: #EF7F00; font-size: 24px; margin-top: 0; }
     #login-screen p { color: #aaa; margin-bottom: 25px; font-size: 14px; }
@@ -19,16 +17,14 @@
     .btn-login { width: 100%; background: #7C4DFF; color: white; border: none; border-radius: 12px; padding: 15px; font-size: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
     .btn-login:hover { background: #5E35FF; }
     
-    /* LA NOUVELLE RÉGIE COCKPIT */
     #regie-content { display: none; width: 100%; max-width: 700px; }
-    .regie-cockpit { background: #0B071A; border: 1px solid #2A1055; border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .regie-cockpit { background: #0B071A; border: 1px solid #2A1055; border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin-bottom: 30px;}
     
     .regie-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .regie-header h2 { margin: 0; font-size: 22px; display: flex; align-items: center; gap: 10px; color: #fff; }
     .regie-header h2::before { content: ""; display: block; width: 12px; height: 12px; background: #FF4757; border-radius: 50%; box-shadow: 0 0 10px #FF4757; animation: pulseLive 2s infinite; }
     @keyframes pulseLive { 0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.6); } 70% { box-shadow: 0 0 0 6px rgba(255, 71, 87, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); } }
 
-    /* Lignes d'options (Tags, Date) */
     .regie-row { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
     .regie-input-group { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px; }
     .regie-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.5px; }
@@ -36,44 +32,34 @@
     .regie-input { background: #13082B; color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 12px 15px; border-radius: 12px; outline: none; font-size: 14px; font-family: inherit; width: 100%; box-sizing: border-box; transition: 0.2s; }
     .regie-input:focus { border-color: #7C4DFF; background: #1C0B3B; }
     
-    /* Éditeur de texte */
     .regie-editor { background: #13082B; border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; overflow: hidden; margin-bottom: 20px; transition: border-color 0.3s; }
-    .regie-editor:focus-within { border-color: #7C4DFF; }
-    
     .regie-toolbar { background: rgba(0,0,0,0.3); padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; flex-wrap: wrap; }
-    .tool-btn { background: transparent; border: none; color: rgba(255,255,255,0.8); cursor: pointer; padding: 6px 10px; border-radius: 8px; transition: 0.2s; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+    .tool-btn { background: transparent; border: none; color: rgba(255,255,255,0.8); cursor: pointer; padding: 6px 10px; border-radius: 8px; transition: 0.2s; font-size: 14px; font-weight: 700; }
     .tool-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .regie-textarea { width: 100%; min-height: 120px; background: transparent; border: none; color: #fff; padding: 15px; font-size: 15px; resize: vertical; outline: none; box-sizing: border-box; }
     
-    .regie-textarea { width: 100%; min-height: 120px; background: transparent; border: none; color: #fff; padding: 15px; font-size: 15px; resize: vertical; outline: none; font-family: inherit; box-sizing: border-box; line-height: 1.5; }
-    
-    /* Bouton final */
-    .btn-publish { width: 100%; background: linear-gradient(135deg, #EF7F00, #E65C00); color: white; border: none; border-radius: 14px; padding: 18px; font-size: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(239, 127, 0, 0.3); margin-top: 10px; }
+    .btn-publish { width: 100%; background: linear-gradient(135deg, #EF7F00, #E65C00); color: white; border: none; border-radius: 14px; padding: 18px; font-size: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(239, 127, 0, 0.3); }
     .btn-publish:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(239, 127, 0, 0.4); }
-    .btn-publish:active { transform: scale(0.98); }
-    
     .hint { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; display: block; }
   </style>
 </head>
 <body>
 
-  <!-- ÉCRAN 1 : LE VERROUILLAGE -->
   <div id="login-screen">
     <h1>🔒 Accès Cockpit</h1>
-    <p>Connexion réservée à la régie.</p>
-    <input type="email" id="emailInput" placeholder="Adresse e-mail" autocomplete="username">
-    <input type="password" id="passInput" placeholder="Mot de passe..." autocomplete="current-password">
+    <input type="email" id="emailInput" placeholder="Adresse e-mail">
+    <input type="password" id="passInput" placeholder="Mot de passe...">
     <button class="btn-login" onclick="connexionRegie()">Se connecter</button>
   </div>
 
-  <!-- ÉCRAN 2 : LA NOUVELLE RÉGIE COCKPIT -->
   <div id="regie-content">
+    
+    <!-- ENCART 1 : ACTUS -->
     <div class="regie-cockpit">
       <div class="regie-header">
-        <h2>Régie Studio</h2>
-        <span style="font-size: 12px; background: rgba(255,255,255,0.1); color: #25D366; font-weight: 800; padding: 6px 12px; border-radius: 8px;">En Ligne</span>
+        <h2>Régie Studio (Fil d'Actu)</h2>
       </div>
-      
-      <!-- Ligne 1 : Titre et Tag -->
+
       <div class="regie-row">
         <div class="regie-input-group" style="flex: 2;">
           <label class="regie-label">Titre de l'info</label>
@@ -81,7 +67,6 @@
         </div>
         <div class="regie-input-group" style="flex: 1;">
           <label class="regie-label">Tag (Catégorie)</label>
-          <!-- Tu pourras lier la valeur de ce select dans live.js plus tard si tu veux ajouter des couleurs aux tags -->
           <select id="tagInput" class="regie-input">
             <option value="">📌 Classique</option>
             <option value="Alerte">🚨 Alerte Info</option>
@@ -92,149 +77,207 @@
         </div>
       </div>
       
-      <!-- Ligne 2 : Média et Lien Externe -->
       <div class="regie-row">
-        
-        <!-- NOUVELLE ZONE MÉDIA (Avec Upload) -->
         <div class="regie-input-group">
           <label class="regie-label">Média (Image/Vidéo)</label>
           <div style="display: flex; gap: 10px;">
-            <!-- Champ classique -->
             <input type="text" id="mediaInput" class="regie-input" placeholder="Lien (URL) ou upload..." style="flex: 1;">
-            
-            <!-- Bouton Parcourir -->
-            <label for="fileUpload" style="background: rgba(255,255,255,0.1); color: #fff; padding: 12px 15px; border-radius: 12px; cursor: pointer; font-weight: bold; border: 1px solid rgba(255,255,255,0.15); transition: 0.2s; white-space: nowrap;">
-               📁 Parcourir
-            </label>
+            <label for="fileUpload" style="background: rgba(255,255,255,0.1); padding: 12px 15px; border-radius: 12px; cursor: pointer; font-weight: bold; border: 1px solid rgba(255,255,255,0.15);">📁</label>
             <input type="file" id="fileUpload" accept="image/*,video/mp4" style="display: none;">
           </div>
-
-          <!-- Zone de prévisualisation -->
-          <div id="uploadPreviewContainer" style="display: none; background: rgba(0,0,0,0.2); padding: 10px; margin-top: 10px; border-radius: 12px; border: 1px dashed rgba(124, 77, 255, 0.5); text-align: center;">
-             <img id="uploadImgPreview" style="max-width: 100%; max-height: 150px; border-radius: 8px; display: none; margin: 0 auto;">
-             <video id="uploadVidPreview" controls style="max-width: 100%; max-height: 150px; border-radius: 8px; display: none; margin: 0 auto;"></video>
-             
-             <div id="uploadProgress" style="font-size: 12px; color: #fff; font-weight: bold; margin-top: 10px;"></div>
-             
-             <button id="confirmUploadBtn" type="button" style="background: #7C4DFF; color: white; border: none; padding: 8px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px;">
-               ☁️ Héberger ce fichier
-             </button>
-          </div>
+          <div id="uploadProgress" style="font-size: 12px; color: #fff; font-weight: bold; margin-top: 10px;"></div>
         </div>
-
-        <!-- ZONE BOUTON EXTERNE (Inchangée) -->
         <div class="regie-input-group">
           <label class="regie-label">Bouton Externe</label>
           <input type="text" id="linkInput" class="regie-input" placeholder="Lien vers un article (Optionnel)">
         </div>
-        
       </div>
-      <!-- Zone de Texte Riche -->
+
       <label class="regie-label" style="display:block; margin-bottom: 8px;">Contenu du message</label>
       <div class="regie-editor">
         <div class="regie-toolbar">
-          <button type="button" class="tool-btn" onclick="formatText('b')" style="font-weight: 900;">B</button>
-          <button type="button" class="tool-btn" onclick="formatText('i')" style="font-style: italic; font-family: serif;">I</button>
-          <div style="width: 1px; background: rgba(255,255,255,0.2); margin: 0 4px;"></div>
-          <!-- Outils d'insertion rapide -->
+          <button type="button" class="tool-btn" onclick="formatText('b')">B</button>
+          <button type="button" class="tool-btn" onclick="formatText('i')">I</button>
           <button type="button" class="tool-btn" onclick="insertText('🚨 ')">🚨</button>
           <button type="button" class="tool-btn" onclick="insertText('📺 ')">📺</button>
           <button type="button" class="tool-btn" onclick="insertText('🔥 ')">🔥</button>
-          <button type="button" class="tool-btn" onclick="insertText('⚠️ ')">⚠️</button>
         </div>
         <textarea id="messageInput" class="regie-textarea" placeholder="Que se passe-t-il actuellement ?"></textarea>
       </div>
       
-      <!-- Outil Programmation (Visuel pour l'instant, nécessite adaptation du live.js plus tard) -->
       <div class="regie-row" style="margin-bottom: 25px;">
         <div class="regie-input-group">
           <label class="regie-label">🕒 Programmation (Optionnel)</label>
           <input type="datetime-local" id="dateInput" class="regie-input">
-          <span class="hint">Laissez vide pour publier instantanément.</span>
         </div>
       </div>
       
-      <!-- FIN DU PREMIER ENCART (Ton code actuel) -->
       <button class="btn-publish" onclick="publierMessage()">🚀 Publier dans le Fil d'Actu</button>
     </div>
 
-    <!-- =============== NOUVEL ENCART : BANDE DÉFILANTE =============== -->
-    <div class="regie-cockpit" style="margin-top: 30px; border-color: #00A6FF;">
+    <!-- ENCART 2 : TICKER -->
+    <div class="regie-cockpit" style="border-color: #00A6FF;">
       <div class="regie-header">
         <h2 style="color: #00A6FF;">Bande Défilante (Accueil)</h2>
-        <span style="font-size: 12px; background: rgba(0, 166, 255, 0.1); color: #00A6FF; font-weight: 800; padding: 6px 12px; border-radius: 8px;">En direct</span>
       </div>
-      
-      <!-- Zone pour VOIR ce qui est en ligne -->
-      <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px dashed rgba(255,255,255,0.2);">
-        <span style="font-size: 11px; color: #888; text-transform: uppercase; font-weight: bold;">Actuellement en ligne :</span>
-        <p id="tickerCurrentDisplay" style="margin: 8px 0 0; font-size: 14px; font-weight: bold; color: #fff;">Recherche en cours...</p>
+      <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+        <span style="font-size: 11px; color: #888;">Actuellement en ligne :</span>
+        <p id="tickerCurrentDisplay" style="margin: 8px 0 0; font-size: 14px; font-weight: bold; color: #fff;">Recherche...</p>
       </div>
-
-      <!-- Zone pour MODIFIER -->
       <div class="regie-input-group" style="margin-bottom: 20px;">
         <label class="regie-label">Vos Messages (1 info par ligne)</label>
-        <textarea id="tickerInput" class="regie-textarea" style="min-height: 100px;" placeholder="🚨 Info 1...&#10;⚡️ Info 2..."></textarea>
-        <span class="hint" style="color:#00A6FF;">💡 Appuyez sur "Entrée" pour ajouter une nouvelle info. Aucune limite !</span>
+        <textarea id="tickerInput" class="regie-textarea" style="min-height: 100px;"></textarea>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-publish" onclick="mettreAJourTicker()" style="background: linear-gradient(135deg, #00A6FF, #0055FF); flex: 2;">🔄 Modifier</button>
+        <button class="btn-publish" onclick="supprimerTicker()" style="background: #FF4757; flex: 1;">🗑️ Cacher</button>
+      </div>
+    </div>
+    
+    <!-- ENCART 3 : PLANNING -->
+    <div class="regie-cockpit" style="border-color: #9D3650;">
+      <div class="regie-header">
+        <h2 style="color: #9D3650;">📅 Planning de la Semaine</h2>
       </div>
 
-      <div style="display: flex; gap: 10px;">
-        <button class="btn-publish" onclick="mettreAJourTicker()" style="background: linear-gradient(135deg, #00A6FF, #0055FF); flex: 2; margin-top: 0;">🔄 Publier / Modifier</button>
-        <button class="btn-publish" onclick="supprimerTicker()" style="background: #FF4757; flex: 1; margin-top: 0;">🗑️ Cacher</button>
+      <div class="regie-row" style="background: rgba(157, 54, 80, 0.1); padding: 15px; border-radius: 12px; border: 1px dashed #9D3650; margin-bottom: 20px;">
+        <div class="regie-input-group" style="flex: 0 0 140px;">
+          <label class="regie-label" style="color: #9D3650;">N° Semaine</label>
+          <input type="number" id="planNumero" class="regie-input" min="1" max="20" placeholder="01">
+        </div>
+        <div class="regie-input-group">
+          <label class="regie-label" style="color: #9D3650;">Dates affichées</label>
+          <input type="text" id="planDates" class="regie-input" placeholder="Du lundi au dimanche...">
+        </div>
+        <div class="regie-input-group" style="flex: 0 0 160px; justify-content: flex-end;">
+          <button class="btn-publish" onclick="enregistrerMetaPlanning()" style="background:#9D3650; margin-top:0; padding:12px;">💾 Valider l'en-tête</button>
+        </div>
+      </div>
+
+      <div class="regie-row">
+        <div class="regie-input-group">
+          <label class="regie-label">Jour</label>
+          <select id="planJour" class="regie-input">
+            <option value="lundi">Lundi</option>
+            <option value="mardi">Mardi</option>
+            <option value="mercredi">Mercredi</option>
+            <option value="jeudi">Jeudi</option>
+            <option value="vendredi">Vendredi</option>
+            <option value="samedi">Samedi</option>
+            <option value="dimanche">Dimanche</option>
+          </select>
+        </div>
+        <div class="regie-input-group">
+          <label class="regie-label">Heure de la case</label>
+          <select id="planHeure" class="regie-input">
+            <option value="7">07h00</option>
+            <option value="8">08h00</option>
+            <option value="9">09h00</option>
+            <option value="10">10h00</option>
+            <option value="11">11h00</option>
+            <option value="12">12h00</option>
+            <option value="13">13h00</option>
+            <option value="14">14h00</option>
+            <option value="15">15h00</option>
+            <option value="16">16h00</option>
+            <option value="17">17h00</option>
+            <option value="18">18h00</option>
+            <option value="19">19h00</option>
+            <option value="20">20h00</option>
+            <option value="21">21h00</option>
+            <option value="22">22h00</option>
+            <option value="23">23h00</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="regie-row">
+        <div class="regie-input-group">
+          <label class="regie-label">Départ</label>
+          <select id="planDepart" class="regie-input">
+            <option value="start-00">Pile (ex: 10h00)</option>
+            <option value="start-15">À :15 (ex: 10h15)</option>
+            <option value="start-30">À :30 (ex: 10h30)</option>
+            <option value="start-45">À :45 (ex: 10h45)</option>
+          </select>
+        </div>
+        <div class="regie-input-group">
+          <label class="regie-label">Durée</label>
+          <select id="planDuree" class="regie-input">
+            <option value="h-0-5">30 Minutes (ex: Réveil)</option>
+            <option value="h-1" selected>1 Heure</option>
+            <option value="h-1-5">1h30</option>
+            <option value="h-2">2 Heures</option>
+            <option value="h-2-5">2h30</option>
+            <option value="h-2-75">2h45</option>
+            <option value="h-3">3 Heures</option>
+            <option value="h-3-5">3h30</option>
+            <option value="h-4">4 Heures</option>
+            <option value="h-4-5">4 Heures 30</option>
+            <option value="h-journee">Toute la journée</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="regie-row">
+        <div class="regie-input-group" style="flex: 1;">
+          <label class="regie-label">Étiquette</label>
+          <select id="planType" class="regie-input" style="font-weight: bold; font-size: 15px;">
+            <optgroup label="Repas & Quotidien">
+              <option value="tag-reveil">🟢 Réveil</option>
+              <option value="tag-dejeuner">🟢 Déjeuner</option>
+              <option value="tag-diner">🟢 Dîner</option>
+            </optgroup>
+            <optgroup label="Cours Principaux">
+              <option value="tag-chant">🍷 Chant</option>
+              <option value="tag-danse">💚 Danse</option>
+              <option value="tag-theatre">🎭 Théâtre</option>
+              <option value="tag-expression">🗣️ Expression Scénique</option>
+              <option value="tag-sport">🏋️ Sport</option>
+              <option value="tag-evaluations">📝 Évaluations</option>
+              <option value="tag-repetitions">🔁 Répétitions</option>
+            </optgroup>
+            <optgroup label="Spéciaux">
+              <option value="tag-masterclass">💜 Masterclass</option>
+              <option value="tag-tonalite">🎵 Prise de Tonalité</option>
+              <option value="tag-debrief">📺 Débrief</option>
+              <option value="tag-surprise">🔴 Surprise</option>
+              <option value="tag-showtime">✨ Show Time</option>
+            </optgroup>
+            <optgroup label="Cours Particuliers">
+              <option value="tag-cp-chant">👤 Cours Particulier de Chant</option>
+              <option value="tag-cp-danse">👤 Cours Particulier de Danse</option>
+              <option value="tag-cp-expression">👤 Cours Particulier d'Expression</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+        <button class="btn-publish" onclick="ajouterCoursPlanning()" style="background: linear-gradient(135deg, #9D3650, #73343A); flex: 2; margin-top: 0;">➕ Ajouter</button>
+        <button class="btn-publish" onclick="chargerSemaineType()" style="background: linear-gradient(135deg, #5E8037, #3E5A22); flex: 2; margin-top: 0;">📋 Semaine type</button>
+        <button class="btn-publish" onclick="supprimerCasePlanning()" style="background: #D96E14; flex: 1.5; margin-top: 0;">✖️ Vider la case</button>
+        <button class="btn-publish" onclick="viderPlanning()" style="background: #FF4757; flex: 1; margin-top: 0;">🗑️ TOUT vider</button>
       </div>
     </div>
   </div> 
 
   <script>
-    // 1. Connexion sécurisée Firebase
     function connexionRegie() {
       const email = document.getElementById('emailInput').value.trim();
       const mdp = document.getElementById('passInput').value;
-      firebase.auth().signInWithEmailAndPassword(email, mdp)
-        .catch(() => {
-          alert("❌ E-mail ou mot de passe incorrect !");
-          document.getElementById('passInput').value = "";
-        });
+      firebase.auth().signInWithEmailAndPassword(email, mdp).catch(() => {
+        alert("❌ E-mail ou mot de passe incorrect !"); document.getElementById('passInput').value = "";
+      });
     }
-    
-    document.getElementById('passInput').addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') { connexionRegie(); }
-    });
-    
-    // 2. Formatage du texte (Gras, Italique)
-    function formatText(tag) {
-      const textarea = document.getElementById('messageInput');
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const selectedText = textarea.value.substring(start, end);
-      const beforeText = textarea.value.substring(0, start);
-      const afterText = textarea.value.substring(end, textarea.value.length);
-      
-      textarea.value = beforeText + `<${tag}>` + selectedText + `</${tag}>` + afterText;
-      textarea.focus();
-    }
-
-    // 3. Insertion rapide d'Emojis
-    function insertText(text) {
-      const textarea = document.getElementById('messageInput');
-      const start = textarea.selectionStart;
-      const beforeText = textarea.value.substring(0, start);
-      const afterText = textarea.value.substring(start, textarea.value.length);
-      
-      textarea.value = beforeText + text + afterText;
-      textarea.focus();
-    }
+    document.getElementById('passInput').addEventListener('keypress', e => { if(e.key==='Enter') connexionRegie(); });
   </script>
-
-  <!-- Ton script de publication vers Firebase -->
-  <script src="live.js?v=30"></script>
-
+  <script src="live.js"></script>
   <script>
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(user => {
       document.getElementById('login-screen').style.display = user ? "none" : "block";
       document.getElementById('regie-content').style.display = user ? "block" : "none";
     });
   </script>
-
 </body>
 </html>
