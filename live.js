@@ -381,3 +381,159 @@ function supprimerTicker() {
         });
     }
 }
+
+/* =========================================================
+   7. GESTION DU PLANNING (RÉGIE -> FIREBASE)
+========================================================= */
+
+// Ajouter un cours sur la grille (Version Intégrale TV)
+// Le vrai Cerveau (Clone TV)
+// Génère le HTML intérieur d'une étiquette selon son type
+function texteEtiquette(type, duree) {
+    switch (type) {
+        case "tag-expression":    return "<div class='tag-expression-wrapper'><div class='exp-top'>EXPRESSION</div><div class='exp-bot'>SCÉNIQUE</div></div>";
+        case "tag-repetitions":   return "RÉPÉTITIONS";
+        case "tag-evaluations": {
+            const bloc = "<span class='ev-star'>✦</span><span>ÉVALUATIONS</span><span class='ev-star'>✦</span>";
+            return ["h-3","h-3-5","h-4","h-4-5","h-journee"].includes(duree) ? bloc + bloc : bloc;
+        }
+        case "tag-debrief":       return "DÉBRIEF<br>DU<br>PRIME";
+        case "tag-showtime":      return "<span class='st-star'>✦</span><span class='cursive'>show time</span><span class='st-star'>✦</span>";
+        case "tag-masterclass":   return "MASTERCLASS<br>DU DIRECTEUR";
+        case "tag-tonalite":      return "PRISE DE<br>TONALITÉ";
+        case "tag-cp-chant":      return "COURS PARTICULIER<br>DE CHANT";
+        case "tag-cp-danse":      return "COURS PARTICULIER<br>DE DANSE";
+        case "tag-cp-expression": return "COURS PARTICULIER<br>D'EXPRESSION SCÉNIQUE";
+        case "tag-theatre":       return "THÉÂTRE";
+        case "tag-danse":         return "DANSE";
+        case "tag-chant":         return "CHANT";
+        case "tag-sport":         return "SPORT";
+        case "tag-surprise":      return "SURPRISE !";
+        case "tag-reveil":        return "réveil";
+        case "tag-dejeuner":      return "déjeuner";
+        case "tag-diner":         return "dîner";
+        default:                  return type.replace("tag-", "").toUpperCase();
+    }
+}
+
+function ajouterCoursPlanning() {
+    const jour   = document.getElementById("planJour").value;
+    const heure  = document.getElementById("planHeure").value;
+    const depart = document.getElementById("planDepart").value;
+    const duree  = document.getElementById("planDuree").value;
+    const type   = document.getElementById("planType").value;
+
+    db.ref("planning/semaine1/" + jour + "-" + heure).push({
+        depart, duree, type, texte: texteEtiquette(type, duree)
+    }).then(() => alert("✅ Étiquette ajoutée !"))
+      .catch(err => alert("❌ Erreur : " + err));
+}
+
+// --- SEMAINE TYPE (relevée sur le vrai mur de l'Académie) ---
+const SEMAINE_TYPE = [
+    // Lundi
+    ["lundi",7,"start-30","h-0-5","tag-reveil"], ["lundi",9,"start-00","h-2-5","tag-repetitions"],
+    ["lundi",11,"start-30","h-0-5","tag-dejeuner"], ["lundi",13,"start-00","h-1-5","tag-chant"],
+    ["lundi",15,"start-00","h-2","tag-danse"], ["lundi",18,"start-00","h-2-5","tag-repetitions"],
+    ["lundi",21,"start-00","h-0-5","tag-diner"],
+    // Mardi
+    ["mardi",7,"start-30","h-0-5","tag-reveil"], ["mardi",8,"start-30","h-2-5","tag-evaluations"],
+    ["mardi",11,"start-00","h-2-5","tag-evaluations"], ["mardi",14,"start-00","h-0-5","tag-dejeuner"],
+    ["mardi",15,"start-00","h-0-5","tag-cp-chant"], ["mardi",16,"start-00","h-0-5","tag-cp-danse"],
+    ["mardi",17,"start-00","h-0-5","tag-cp-expression"], ["mardi",18,"start-00","h-2-5","tag-tonalite"],
+    ["mardi",21,"start-00","h-0-5","tag-diner"],
+    // Mercredi
+    ["mercredi",7,"start-30","h-0-5","tag-reveil"], ["mercredi",9,"start-30","h-1-5","tag-expression"],
+    ["mercredi",12,"start-00","h-0-5","tag-sport"], ["mercredi",13,"start-00","h-0-5","tag-dejeuner"],
+    ["mercredi",16,"start-00","h-4","tag-repetitions"], ["mercredi",21,"start-00","h-0-5","tag-diner"],
+    ["mercredi",22,"start-00","h-0-5","tag-surprise"],
+    // Jeudi
+    ["jeudi",7,"start-30","h-0-5","tag-reveil"], ["jeudi",9,"start-00","h-1-5","tag-theatre"],
+    ["jeudi",11,"start-00","h-0-5","tag-dejeuner"], ["jeudi",13,"start-00","h-0-5","tag-surprise"],
+    ["jeudi",14,"start-30","h-1","tag-masterclass"], ["jeudi",16,"start-00","h-4","tag-repetitions"],
+    ["jeudi",21,"start-00","h-0-5","tag-diner"],
+    // Vendredi
+    ["vendredi",7,"start-30","h-0-5","tag-reveil"], ["vendredi",9,"start-00","h-1","tag-sport"],
+    ["vendredi",11,"start-30","h-0-5","tag-dejeuner"], ["vendredi",13,"start-30","h-1-5","tag-expression"],
+    ["vendredi",21,"start-00","h-0-5","tag-diner"],
+    // Samedi
+    ["samedi",7,"start-00","h-journee","tag-showtime"],
+    // Dimanche
+    ["dimanche",7,"start-30","h-0-5","tag-reveil"], ["dimanche",13,"start-30","h-3","tag-debrief"]
+];
+
+function chargerSemaineType() {
+    if (!confirm("Remplacer le planning en ligne par la semaine type (35 étiquettes) ?")) return;
+    const data = {};
+    SEMAINE_TYPE.forEach(([jour, heure, depart, duree, type]) => {
+        const id = jour + "-" + heure;
+        data[id] = data[id] || {};
+        data[id][db.ref().push().key] = { depart, duree, type, texte: texteEtiquette(type, duree) };
+    });
+    db.ref("planning/semaine1").set(data)
+      .then(() => alert("✅ Semaine type chargée ! Ajuste les exceptions et c'est publié."));
+}
+
+// Supprime UNE étiquette (pas toute la case)
+function supprimerEtiquette(idCase, keyId) {
+    if (!confirm("Supprimer cette étiquette ?")) return;
+    db.ref("planning/semaine1/" + idCase + "/" + keyId).remove();
+}
+
+
+function viderPlanning() {
+    if(confirm("⚠️ DANGER : Es-tu sûr de vouloir effacer TOUTES les étiquettes de la semaine ?")) {
+        db.ref("planning/semaine1").remove().then(() => {
+            alert("🗑️ Planning totalement vidé ! Il est prêt pour une nouvelle semaine.");
+        });
+    }
+}
+
+// Supprimer UNE SEULE case du planning
+function supprimerCasePlanning() {
+    const jour = document.getElementById("planJour").value;
+    const heure = document.getElementById("planHeure").value;
+    const idCase = jour + "-" + heure;
+
+    if(confirm(`Voulez-vous vraiment effacer ce qu'il y a le ${jour} à la ligne ${heure}H ?`)) {
+        db.ref("planning/semaine1/" + idCase).remove().then(() => {
+            alert(`🗑️ Case ${jour} à ${heure}H vidée avec succès !`);
+        }).catch((error) => {
+            alert("❌ Erreur : " + error);
+        });
+    }
+}
+
+/* =========================================================
+   8. INTERCONNEXION EN-TÊTE PLANNING (SEMAINE & DATES)
+========================================================= */
+
+// Rattaché au bouton "Enregistrer" de ta régie direct.html
+function enregistrerMetaPlanning() {
+  const numSemaine = document.getElementById("planNumero").value.trim();
+  const datesSemaine = document.getElementById("planDates").value.trim();
+
+  if (numSemaine === "" || datesSemaine === "") {
+    alert("❌ Erreur : Le numéro de semaine et les dates ne peuvent pas être vides !");
+    return;
+  }
+
+  // Envoi propre sur le nœud Firebase global du planning
+  db.ref("planning/infosSemaine").set({
+    numero: numSemaine,
+    dates: datesSemaine
+  }).then(() => {
+    alert("✅ En-tête mis à jour ! Semaine " + numSemaine + " synchronisée.");
+  }).catch((error) => {
+    alert("❌ Erreur Firebase : " + error);
+  });
+}
+
+// Synchronise automatiquement les champs de ta régie quand tu arrives sur la page
+db.ref("planning/infosSemaine").on("value", function(snapshot) {
+  const data = snapshot.val();
+  if (data) {
+    if (document.getElementById("planNumero")) document.getElementById("planNumero").value = data.numero;
+    if (document.getElementById("planDates")) document.getElementById("planDates").value = data.dates;
+  }
+});
