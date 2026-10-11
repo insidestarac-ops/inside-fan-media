@@ -1,584 +1,1903 @@
-/* =========================================
-   INSIDE FAN MEDIA - STYLE GLOBAL 2026 (PREMIUM)
-========================================= */
+/* =========================================================
+   INSIDE FAN MEDIA — STYLES 2026
+   Version optimisée : sélecteurs conservés, correctifs regroupés
+   ========================================================= */
 
-/* LA RÈGLE VITALE QUI EMPÊCHE LE DÉBORDEMENT À DROITE */
+
+/* ==================================================================
+   01 — FONDATIONS
+   Boîte CSS, police, couleurs globales, conteneur et accessibilité.
+   ================================================================== */
 *, *::before, *::after {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('assets/fonts/Inter-Variable.ttf') format('truetype');
+/* Charge la police Inter depuis le dossier assets/fonts. Le chemin doit rester valide. */
+@font-face  {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("assets/fonts/Inter-Variable.ttf") format("truetype");
 }
 
+/* Variables de couleurs réutilisables avec var(--nom). Modifier ici change plusieurs composants. */
 :root {
-  --violet: #7C4DFF;
-  --violet-soft: #EDE7FF;
-  --bg: #F4F3FA;
-  --card: #FFFFFF;
-  --text: #1A1A24;
-  --muted: #6E6E90;
+    --violet: #7C4DFF;
+    --violet-soft: #EDE7FF;
+    --bg: #F4F3FA;
+    --card: #FFFFFF;
+    --text: #1A1A24;
+    --muted: #6E6E90;
 }
 
+/* Réglages de base : police, fond, couleur du texte et prévention du débordement horizontal. */
 html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: var(--bg) !important;
-  color: var(--text);
-  overflow-x: hidden; /* Sécurité supplémentaire */
-  -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background: var(--bg) !important;
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* Largeur maximale commune et marges latérales pour le contenu. */
 .container {
-  max-width: 1300px;
-  margin: auto;
-  padding: 0 24px;
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 24px;
 }
 
+/* Respect des préférences de réduction des animations. Un autre bloc plus bas garde le bandeau actif. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
-/* ===== BOUTONS GLOBAUX ===== */
+
+/* ==================================================================
+   02 — BOUTONS ET COMPOSANTS GÉNÉRAUX
+   Boutons, introductions de pages, sections, cartes et grille bento.
+   ================================================================== */
 .btn {
-  padding: 16px 36px;
-  border-radius: 999px;
-  font-weight: 800;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    padding: 16px 36px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
+
+/* Dégradé et ombre du bouton principal. */
 .btn-primary {
-  background: linear-gradient(135deg, #7C4DFF, #5E35FF);
-  color: #fff;
-  box-shadow: 0 10px 20px rgba(124,77,255,0.25);
+    background: linear-gradient(135deg, #7C4DFF, #5E35FF);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(124, 77, 255, 0.25);
 }
 
-/* ===== HEROS & SECTIONS ===== */
+/* Bannière d’introduction générique; les règles suivantes stylisent son titre et son texte. */
 .page-hero {
-  background: radial-gradient(circle at top left, #b39dff, transparent 55%), linear-gradient(135deg, #7C4DFF, #5E35FF);
-  color: #fff;
-  padding: 110px 0;
+    background: radial-gradient(circle at top left, #b39dff, transparent 55%), linear-gradient(135deg, #7C4DFF, #5E35FF);
+    color: #fff;
+    padding: 110px 0;
 }
-.page-hero h1 { font-size: 48px; margin: 0 0 12px; letter-spacing: -1px; }
-.page-hero p { max-width: 620px; font-size: 18px; opacity: .95; line-height: 1.6; }
 
-.section { padding: 90px 0; }
-.section h2, .section-title { font-size: 34px; margin-bottom: 36px; font-weight: 900; letter-spacing: -0.5px; }
+.page-hero h1 {
+    font-size: 48px;
+    margin: 0 0 12px;
+    letter-spacing: -1px;
+}
 
-/* ===== BENTO & CARTES ===== */
+.page-hero p {
+    max-width: 620px;
+    font-size: 18px;
+    opacity: .95;
+    line-height: 1.6;
+}
+
+/* Espacement vertical générique des sections de page. */
+.section {
+    padding: 90px 0;
+}
+
+.section h2, .section-title {
+    font-size: 34px;
+    margin-bottom: 36px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+/* Carte standard blanche : fond, coins, ombre et bordure. */
 .card {
-  background: var(--card);
-  border-radius: 32px;
-  padding: 42px;
-  box-shadow: 0 20px 40px rgba(124,77,255,.08);
-  margin-bottom: 32px;
-  border: 1px solid rgba(255,255,255,0.5);
-  transition: 0.4s ease;
+    background: var(--card);
+    border-radius: 32px;
+    padding: 42px;
+    box-shadow: 0 20px 40px rgba(124, 77, 255, .08);
+    margin-bottom: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 0.4s ease;
 }
 
+/* Grille de deux colonnes; les cartes larges peuvent occuper plusieurs cases. */
 .bento-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
 }
 
+/* Aspect translucide des cartes bento et comportements de centrage. */
 .bento-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 36px;
-  padding: 40px;
-  box-shadow: 0 24px 48px rgba(124, 77, 255, 0.08);
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 36px;
+    padding: 40px;
+    box-shadow: 0 24px 48px rgba(124, 77, 255, 0.08);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease;
 }
 
+/* Carte bento accentuée, occupant deux colonnes et deux lignes. */
 .bento-large {
-  grid-column: span 2;
-  grid-row: span 2;
-  background: linear-gradient(135deg, #7C4DFF, #5E35FF);
-  color: #fff;
-  border: none;
-  box-shadow: 0 30px 60px rgba(124, 77, 255, 0.3);
+    grid-column: span 2;
+    grid-row: span 2;
+    background: linear-gradient(135deg, #7C4DFF, #5E35FF);
+    color: #fff;
+    border: none;
+    box-shadow: 0 30px 60px rgba(124, 77, 255, 0.3);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .btn-primary:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(124,77,255,0.4);
-  }
-  .bento-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 32px 64px rgba(124, 77, 255, 0.18);
-    background: rgba(255, 255, 255, 0.95);
-  }
-  .bento-large:hover {
-    background: linear-gradient(135deg, #885BFF, #6842FF);
-    box-shadow: 0 40px 80px rgba(124, 77, 255, 0.4);
-  }
+    .btn-primary:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(124, 77, 255, 0.4);
+    }
+
+    .bento-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 32px 64px rgba(124, 77, 255, 0.18);
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .bento-large:hover {
+        background: linear-gradient(135deg, #885BFF, #6842FF);
+        box-shadow: 0 40px 80px rgba(124, 77, 255, 0.4);
+    }
 }
 
-/* ===== ENCARTS SONDAGES VIEWER+ (Star Ac & DALS) ===== */
+
+/* ==================================================================
+   03 — SONDAGES VIEWER+
+   Encarts et intégration iframe des sondages.
+   ================================================================== */
+/* Composant du sondage intégré. */
 .viewer-embed-box {
-  width: 100%;
-  background: #FFFFFF;
-  border: 1px solid rgba(124, 77, 255, 0.15);
-  border-radius: 20px;
-  padding: 24px;
-  margin-top: 20px;
-  box-shadow: 0 10px 30px rgba(11, 7, 26, 0.03);
-  text-align: center;
-  position: relative;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(124, 77, 255, 0.15);
+    border-radius: 20px;
+    padding: 24px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(11, 7, 26, 0.03);
+    text-align: center;
+    position: relative;
 }
 
+/* L’iframe affiche le questionnaire externe, sans bordure, sur toute la largeur. */
 .viewer-embed-box iframe {
-  width: 100%;
-  min-height: 400px; /* Laisse de la place pour les questions/réponses */
-  border: none;
-  border-radius: 12px;
+    width: 100%;
+    min-height: 400px;
+    border: none;
+    border-radius: 12px;
 }
 
+/* Composant du sondage intégré. */
 .viewer-waiting {
-  padding: 30px 10px;
+    padding: 30px 10px;
 }
 
+/* Composant du sondage intégré. */
 .viewer-waiting p {
-  color: #6E6E90;
-  font-size: 16px;
-  margin: 0 0 15px;
-  font-weight: 500;
-  line-height: 1.5;
+    color: #6E6E90;
+    font-size: 16px;
+    margin: 0 0 15px;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
-/* ===== PAGES LÉGALES (partagé) ===== */
-.legal-page body,
-body.legal-doc { background-color: #F8F9FA; }
-.bg-blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.05; animation: float 20s infinite ease-in-out alternate; }
-.blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #7C4DFF; }
-.blob-2 { bottom: 10%; right: -5%; width: 400px; height: 400px; background: #D902EE; animation-delay: -5s; }
+
+/* ==================================================================
+   04 — PAGES LÉGALES ET DÉCORS
+   Fond de lecture et blobs décoratifs animés.
+   ================================================================== */
+.legal-page body, body.legal-doc {
+    background-color: #F8F9FA;
+}
+
+/* Calque de décor fixe. pointer-events:none empêche de bloquer les clics. */
+.bg-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Rond flou animé : effet décoratif à faible opacité. */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.05;
+    animation: float 20s infinite ease-in-out alternate;
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: #7C4DFF;
+}
+
+.blob-2 {
+    bottom: 10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: #D902EE;
+    animation-delay: -5s;
+}
+
+/* Animation des blobs : déplacements et changement d’échelle. */
 @keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, 20px) scale(1.05); }
-  100% { transform: translate(-20px, -30px) scale(0.95); }
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(30px, 20px) scale(1.05);
+    }
+
+    100% {
+        transform: translate(-20px, -30px) scale(0.95);
+    }
 }
 
-/* =======================================================
-   AÉRATION ORDINATEUR (AVEC SOURIS UNIQUEMENT)
-======================================================= */
+
+/* ==================================================================
+   05 — ADAPTATIONS DES ÉCRANS
+   Réglages pour ordinateur, tablettes et smartphones; les @media limitent leur portée.
+   ================================================================== */
 @media (min-width: 1181px) {
-  .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement {
-    padding: 160px 24px 100px !important; /* Laisse l'espace pour le header flottant */
-  }
-  .roster-section, .section { padding: 60px 0 !important; }
-  .roster-header { margin-bottom: 30px !important; }
-  .univers-intro { margin-top: 60px !important; margin-bottom: 30px !important; }
-  .quote-block { margin-bottom: 40px !important; padding-bottom: 30px !important; }
+    .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement {
+        padding: 160px 24px 100px !important;
+    }
+
+    .roster-section, .section {
+        padding: 60px 0 !important;
+    }
+
+    .roster-header {
+        margin-bottom: 30px !important;
+    }
+
+    .univers-intro {
+        margin-top: 60px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .quote-block {
+        margin-bottom: 40px !important;
+        padding-bottom: 30px !important;
+    }
 }
 
-/* =======================================================
-   CORRECTIF MOBILE ET TABLETTES (IPADS, ÉCRANS TACTILES)
-======================================================= */
+/* Tous les ajustements de tablette/mobile jusqu’à 1180 px; !important surmonte certains styles de bureau. */
 @media (max-width: 1180px) {
-  /* 1. Inclusion des héros (Sauf Live) - PADDING TOP AUGMENTÉ */
-  .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement { 
-    min-height: auto !important; 
-    padding: 140px 20px 60px !important; /* <== 140px dégage parfaitement la barre de nav */
-  }
+    .hero-home, .hero-starac, .hero-dals, .hero-page, .hero-academie, .hero-casting, .hero-classement {
+        min-height: auto !important;
+        padding: 140px 20px 60px !important;
+    }
 
-  /* 2. Réparation des chevauchements de sections */
-  .roster-section {
-    padding: 60px 0 !important;
-    margin-top: 0 !important;
-  }
-  
-  .home-grid-section, .document-section { 
-    padding-top: 20px !important; 
-    padding-bottom: 40px !important; 
-    margin-top: -40px !important; 
-  }
+    .roster-section {
+        padding: 60px 0 !important;
+        margin-top: 0 !important;
+    }
 
-  /* 3. Espacements des grilles et alignements */
-  .bento-grid, .roster-grid, .univers-human-grid { gap: 20px !important; }
-  .roster-header { margin-bottom: 30px !important; }
+    .home-grid-section, .document-section {
+        padding-top: 20px !important;
+        padding-bottom: 40px !important;
+        margin-top: -40px !important;
+    }
 
-  /* Masquer le petit logo flottant qui fait doublon sur tablette/mobile */
-  .hero-content .univers-logo-hero { display: none !important; }
+    .bento-grid, .roster-grid, .univers-human-grid {
+        gap: 20px !important;
+    }
 
-  /* 4. Affinage des cartes (Padding unifié et propre, SANS width: 100% forcé) */
-  .hub-card, .card, .bento-card, .univers-card, .document-wrapper, .qg-chat-area, .promo-banner { 
-    padding: 30px 24px !important; 
-    border-radius: 20px !important; 
-  }
-  
-  .card-banner { 
-    height: 160px !important; 
-    margin-bottom: 20px !important;
-    margin-top: 0 !important; 
-    border-radius: 12px !important;
-  }
+    .roster-header {
+        margin-bottom: 30px !important;
+    }
 
-  /* 5. FIX DE L'ACCUEIL : Compteur et Bannière Promo */
-  .promo-banner {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-  .promo-left {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    align-items: center !important;
-  }
-  .promo-countdown-box { padding: 20px 10px !important; width: 100% !important; border-radius: 16px !important; }
-  .promo-timer { gap: 4px !important; justify-content: center !important; }
-  .promo-timer .time-group { width: auto !important; min-width: 32px !important; }
-  .promo-timer span.val { font-size: 24px !important; }
+    .hero-content .univers-logo-hero {
+        display: none !important;
+    }
 
-  /* 6. Typographie et Teasers */
-  h1, .hero-content h1 { font-size: 32px !important; margin-bottom: 12px !important; letter-spacing: -0.5px !important; line-height: 1.1 !important; }
-  h2 { font-size: 22px !important; margin-bottom: 15px !important; }
-  h3 { font-size: 18px !important; }
-  p { font-size: 15px !important; line-height: 1.5 !important; }
+    .hub-card, .card, .bento-card, .univers-card, .document-wrapper, .qg-chat-area, .promo-banner {
+        padding: 30px 24px !important;
+        border-radius: 20px !important;
+    }
 
-  .teaser-banner { padding: 30px 20px !important; font-size: 15px !important; margin-top: 20px !important; }
+    .card-banner {
+        height: 160px !important;
+        margin-bottom: 20px !important;
+        margin-top: 0 !important;
+        border-radius: 12px !important;
+    }
 
-  /* 7. Boutons et Logos */
-  .btn, .btn-primary, .card-btn, .btn-starac, .btn-dals, .btn-whatsapp, .btn-whatsapp-live { 
-    padding: 14px 20px !important; font-size: 14px !important; border-radius: 12px !important;
-  }
-  .card-btn svg, .btn-whatsapp svg, .btn-whatsapp-live svg { width: 18px !important; height: 18px !important; }
-  .univers-logo-hero { height: 60px !important; margin-bottom: 15px !important; }
-  .promo-logo-side { height: 75px !important; margin-bottom: 5px !important; }
+    .promo-banner {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
 
-  /* 8. Menu Mobile (Tiroir) */
-  .mob-link-main, .mob-acc-trigger { font-size: 20px !important; padding: 12px 0 !important; }
-  .mob-acc-trigger::after { font-size: 22px !important; }
-  .mob-acc-content a { font-size: 15px !important; padding: 8px 0 !important; }
-  .btn-mob-contact { font-size: 15px !important; padding: 16px !important; border-radius: 12px !important;}
-  .mobile-nav-panel { padding: 25px 25px 30px !important; }
+    .promo-left {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: center !important;
+    }
 
-  /* Enlève le bug d'animation sur le clic mobile */
-  .hub-card:active, .bento-card:active, .btn-primary:active, .card-btn:active { transform: scale(0.96); }
-  .card-sondage-large:active, .card-sondage-modern:active, .card-planning:active { transform: none; }
+    .promo-countdown-box {
+        padding: 20px 10px !important;
+        width: 100% !important;
+        border-radius: 16px !important;
+    }
+
+    .promo-timer {
+        gap: 4px !important;
+        justify-content: center !important;
+    }
+
+    .promo-timer .time-group {
+        width: auto !important;
+        min-width: 32px !important;
+    }
+
+    .promo-timer span.val {
+        font-size: 24px !important;
+    }
+
+    h1, .hero-content h1 {
+        font-size: 32px !important;
+        margin-bottom: 12px !important;
+        letter-spacing: -0.5px !important;
+        line-height: 1.1 !important;
+    }
+
+    h2 {
+        font-size: 22px !important;
+        margin-bottom: 15px !important;
+    }
+
+    h3 {
+        font-size: 18px !important;
+    }
+
+    p {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+    }
+
+    .teaser-banner {
+        padding: 30px 20px !important;
+        font-size: 15px !important;
+        margin-top: 20px !important;
+    }
+
+    .btn, .btn-primary, .card-btn, .btn-starac, .btn-dals, .btn-whatsapp, .btn-whatsapp-live {
+        padding: 14px 20px !important;
+        font-size: 14px !important;
+        border-radius: 12px !important;
+    }
+
+    .card-btn svg, .btn-whatsapp svg, .btn-whatsapp-live svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .univers-logo-hero {
+        height: 60px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .promo-logo-side {
+        height: 75px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .mob-link-main, .mob-acc-trigger {
+        font-size: 20px !important;
+        padding: 12px 0 !important;
+    }
+
+    .mob-acc-trigger::after {
+        font-size: 22px !important;
+    }
+
+    .mob-acc-content a {
+        font-size: 15px !important;
+        padding: 8px 0 !important;
+    }
+
+    .btn-mob-contact {
+        font-size: 15px !important;
+        padding: 16px !important;
+        border-radius: 12px !important;
+    }
+
+    .mobile-nav-panel {
+        padding: 25px 25px 30px !important;
+    }
+
+    .hub-card:active, .bento-card:active, .btn-primary:active, .card-btn:active {
+        transform: scale(0.96);
+    }
+
+    .card-sondage-large:active, .card-sondage-modern:active, .card-planning:active {
+        transform: none;
+    }
 }
 
-/* ===== BANDEAU DÉFILANT PLEIN ÉCRAN (GLASSMORPHISM) ===== */
+
+/* ==================================================================
+   06 — BANDEAU DÉFILANT
+   Bande pleine largeur, mouvement horizontal, pauses au survol et ajustement mobile.
+   ================================================================== */
+/* Élément du bandeau défilant. */
 .dakar-ticker {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  /* Un fond bleu nuit très sombre mais légèrement transparent pour l'effet premium */
-  background: rgba(11, 7, 26, 0.9); 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #ffffff; /* Le texte redevient 100% lisible */
-  padding: 16px 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  z-index: 20;
-  margin-bottom: 40px;
-  border-top: 1px solid rgba(124, 77, 255, 0.4); /* Bordure violette */
-  border-bottom: 1px solid rgba(124, 77, 255, 0.4);
-  box-shadow: 0 10px 30px rgba(11, 7, 26, 0.15);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: rgba(11, 7, 26, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #ffffff;
+    padding: 16px 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 20;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(124, 77, 255, 0.4);
+    border-bottom: 1px solid rgba(124, 77, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(11, 7, 26, 0.15);
 }
 
+/* Le contenu est dupliqué visuellement pour défiler de manière continue. */
 .dakar-ticker-scroll {
-  display: flex;
-  white-space: nowrap;
-  animation: dakar-scroll 20s linear infinite;
-  cursor: default;
+    display: flex;
+    white-space: nowrap;
+    animation: dakar-scroll 20s linear infinite;
+    cursor: default;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .dakar-ticker:hover .dakar-ticker-scroll {
-    animation-play-state: paused;
-  }
+    .dakar-ticker:hover .dakar-ticker-scroll {
+        animation-play-state: paused;
+    }
 }
 
+/* Élément du bandeau défilant. */
 .dakar-ticker-text {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
+/* Élément du bandeau défilant. */
 .dakar-ticker-text span {
-  font-size: 16px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding-right: 20px;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-right: 20px;
 }
 
+/* Élément du bandeau défilant. */
 .dakar-ticker-text span b {
-  color: #EF7F00; /* L'orange Star Ac fait ressortir les mots importants */
+    color: #EF7F00;
 }
 
 .ticker-separator {
-  font-size: 16px;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.2); /* Tirets très discrets pour aérer */
-  padding-right: 20px;
+    font-size: 16px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.2);
+    padding-right: 20px;
 }
 
+/* Déplace la bande de 0 à -50 % de sa largeur pour le défilement. */
 @keyframes dakar-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } 
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
-/* Ajustements Mobile */
 @media (max-width: 768px) {
-  .dakar-ticker { padding: 12px 0; margin-bottom: 30px; }
-  .dakar-ticker-text span, .ticker-separator { font-size: 13px; }
-  .dakar-ticker-scroll { animation: dakar-scroll 12s linear infinite; } 
+    .dakar-ticker {
+        padding: 12px 0;
+        margin-bottom: 30px;
+    }
+
+    .dakar-ticker-text span, .ticker-separator {
+        font-size: 13px;
+    }
+
+    .dakar-ticker-scroll {
+        animation: dakar-scroll 12s linear infinite;
+    }
 }
 
-/* ===== HORAIRES TV (BANDE NOIRE PREMIUM - CORRIGÉE) ===== */
+
+/* ==================================================================
+   07 — HORAIRES TV
+   Encart sombre et badges des émissions (dont Prime et Live).
+   ================================================================== */
+/* Boîte qui occupe toutes les colonnes de sa grille parente. */
 .tv-schedule-container {
-  grid-column: 1 / -1; /* LA LIGNE MAGIQUE : prend toute la largeur */
-  width: 100%;
-  margin: 10px auto 40px auto;
-  background: linear-gradient(145deg, #13082B, #0B071A);
-  border: 1px solid rgba(124, 77, 255, 0.2);
-  border-radius: 24px;
-  padding: 30px 40px; /* Plus de padding horizontal pour l'étirer */
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15);
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 10px auto 40px auto;
+    background: linear-gradient(145deg, #13082B, #0B071A);
+    border: 1px solid rgba(124, 77, 255, 0.2);
+    border-radius: 24px;
+    padding: 30px 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15);
 }
 
+/* Aligne les badges et autorise leur passage à la ligne. */
 .tv-badges-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap; /* Sur ordinateur, ils tiendront tous sur 1 seule ligne ! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-/* On stylise l'alerte de lancement en orange sur le fond noir */
+/* Élément de la grille des horaires TV. */
 .tv-launch-alert {
-  display: inline-block;
-  background: rgba(239, 127, 0, 0.15); 
-  color: #EF7F00;
-  padding: 8px 24px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  border: 1px solid rgba(239, 127, 0, 0.3);
-  letter-spacing: 0.5px;
+    display: inline-block;
+    background: rgba(239, 127, 0, 0.15);
+    color: #EF7F00;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    border: 1px solid rgba(239, 127, 0, 0.3);
+    letter-spacing: 0.5px;
 }
 
+/* Élément de la grille des horaires TV. */
 .tv-launch-alert b {
-  font-weight: 900;
-  color: #ffffff; /* Le texte principal ressort en blanc */
+    font-weight: 900;
+    color: #ffffff;
 }
 
-/* Le style des badges de base (Gris foncé/Verre sur fond noir) */
+/* Élément de la grille des horaires TV. */
 .tv-badge {
-  display: flex;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.05); /* Transparence légère */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 12px 20px;
-  min-width: 120px;
-  transition: transform 0.2s ease, background 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 12px 20px;
+    min-width: 120px;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
+/* Élément de la grille des horaires TV. */
 .tv-badge:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
 }
 
+/* Élément de la grille des horaires TV. */
 .tv-day {
-  font-size: 11px;
-  font-weight: 900;
-  color: #EDE7FF;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 900;
+    color: #EDE7FF;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
 }
 
+/* Élément de la grille des horaires TV. */
 .tv-time {
-  font-size: 20px;
-  font-weight: 900;
-  color: #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffffff;
 }
 
-/* On garde les couleurs pétantes pour Prime et Live */
+/* Style spécifique du badge Prime (orange). */
 .badge-prime {
-  background: linear-gradient(135deg, #EF7F00, #E65C00);
-  border: none;
-  box-shadow: 0 8px 20px rgba(239, 127, 0, 0.2);
+    background: linear-gradient(135deg, #EF7F00, #E65C00);
+    border: none;
+    box-shadow: 0 8px 20px rgba(239, 127, 0, 0.2);
 }
 
+/* Style spécifique du badge Live (violet). */
 .badge-live {
-  background: linear-gradient(135deg, #7C4DFF, #5E35FF);
-  border: none;
-  box-shadow: 0 8px 20px rgba(124, 77, 255, 0.2);
+    background: linear-gradient(135deg, #7C4DFF, #5E35FF);
+    border: none;
+    box-shadow: 0 8px 20px rgba(124, 77, 255, 0.2);
 }
 
-.badge-prime .tv-day, .badge-live .tv-day { color: rgba(255, 255, 255, 0.8); }
-.badge-prime .tv-time, .badge-live .tv-time { color: #ffffff; }
+.badge-prime .tv-day, .badge-live .tv-day {
+    color: rgba(255, 255, 255, 0.8);
+}
 
-/* Ajustement Mobile */
+.badge-prime .tv-time, .badge-live .tv-time {
+    color: #ffffff;
+}
+
 @media (max-width: 768px) {
-  .tv-schedule-container { padding: 25px 15px; margin: 30px auto; }
-  .tv-badges-row { gap: 10px; }
-  .tv-badge { min-width: 100px; padding: 10px 12px; }
-  .tv-time { font-size: 16px; }
+    .tv-schedule-container {
+        padding: 25px 15px;
+        margin: 30px auto;
+    }
+
+    .tv-badges-row {
+        gap: 10px;
+    }
+
+    .tv-badge {
+        min-width: 100px;
+        padding: 10px 12px;
+    }
+
+    .tv-time {
+        font-size: 16px;
+    }
 }
 
-/* =======================================================
-   ANIMATIONS ULTRA-PREMIUM (APPLE-STYLE REVEAL)
-======================================================= */
-/* 1. Caché au départ */
+
+/* ==================================================================
+   08 — ANIMATIONS D’APPARITION
+   Classes activées par JavaScript au défilement, avec exception accessibilité pour le bandeau.
+   ================================================================== */
 .reveal-item {
-  opacity: 0;
-  will-change: transform, opacity, filter; /* Optimisation pour que la carte graphique prenne le relais */
+    opacity: 0;
+    will-change: transform, opacity, filter;
 }
 
-/* 2. Classe ajoutée par le JS au scroll */
+/* Lorsque JavaScript ajoute is-visible, déclenche l’animation d’apparition. */
 .reveal-item.is-visible {
-  animation: ultraPremiumReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: ultraPremiumReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* 3. L'animation Cinématographique : Translation (120px) + Zoom (0.9 à 1) + Flou (15px à 0) */
+/* Animation : arrivée depuis le bas, zoom discret et disparition du flou. */
 @keyframes ultraPremiumReveal {
-  0% { 
-    opacity: 0; 
-    transform: translateY(120px) scale(0.9); 
-    filter: blur(15px);
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateY(0) scale(1); 
-    filter: blur(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(120px) scale(0.9);
+        filter: blur(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
 }
 
-/* =======================================================
-   FORCER LA BARRE DÉFILANTE (IGNORE "RÉDUIRE LES ANIMATIONS")
-======================================================= */
+/* Respect des préférences de réduction des animations. Un autre bloc plus bas garde le bandeau actif. */
 @media (prefers-reduced-motion: reduce) {
-  .dakar-ticker-scroll {
-    /* Le !important force le navigateur à annuler le blocage */
-    animation-duration: 20s !important;
-    -webkit-animation-duration: 20s !important;
-    animation-iteration-count: infinite !important;
-    -webkit-animation-iteration-count: infinite !important;
-  }
+    .dakar-ticker-scroll {
+        animation-duration: 20s !important;
+        -webkit-animation-duration: 20s !important;
+        animation-iteration-count: infinite !important;
+        -webkit-animation-iteration-count: infinite !important;
+    }
 }
 
 
-/* NOUVEAUTÉS LIVE BLOG : VIDÉOS ET BOUTONS */
+/* ==================================================================
+   09 — STAR ACADEMY / LIVE BLOG
+   Bannière, en-tête presse, fil d’actualité, médias, boutons et adaptations mobiles.
+   ================================================================== */
+/* Élément de la bannière Star Academy. */
+.hero-starac {
+    position: relative;
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    background: url("assets/Ban Star Ac.png") center/cover no-repeat;
+    padding: 140px 0 80px;
+    overflow: hidden;
+}
 
-/* =======================================================
-   LIVE BLOG - FIL D'ACTUALITÉ EN DIRECT (STYLE TIMELINE)
-======================================================= */
+/* Voile sombre superposé à la photo pour garantir la lisibilité des textes. */
+.hero-starac::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(11, 7, 26, 0.92) 0%, rgba(11, 7, 26, 0.75) 100%);
+}
 
-/* ===== HERO BANNIERE & BADGE PREMIUM ===== */
-.hero-starac { position: relative; min-height: 45vh; display: flex; align-items: center; background: url("assets/Ban\ Star\ Ac.png") center/cover no-repeat; padding: 140px 0 80px; overflow: hidden; }
-.hero-starac::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11, 7, 26, 0.92) 0%, rgba(11, 7, 26, 0.75) 100%); }
-.hero-content { position: relative; z-index: 2; max-width: 900px; margin: auto; padding: 0 24px; color: #fff; text-align: center; }
-.hero-content img.logo-univers { height: 90px; margin-bottom: 20px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5)); }
-.hero-content h1 { font-size: 52px; font-weight: 900; margin-bottom: 10px; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;}
+/* Élément de la bannière Star Academy. */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: auto;
+    padding: 0 24px;
+    color: #fff;
+    text-align: center;
+}
 
-.live-badge-premium { display: inline-flex; align-items: center; gap: 8px; background: rgba(230, 0, 0, 0.15); border: 1px solid rgba(230, 0, 0, 0.3); color: #FF4D4D; font-size: 13px; font-weight: 900; padding: 6px 14px; border-radius: 8px; letter-spacing: 1.5px; margin-bottom: 15px; text-transform: uppercase; }
-.live-dot { width: 8px; height: 8px; background: #FF4D4D; border-radius: 50%; box-shadow: 0 0 8px rgba(255, 77, 77, 0.8); animation: pulse-red 2s infinite; }
+/* Élément de la bannière Star Academy. */
+.hero-content img.logo-univers {
+    height: 90px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+}
 
-/* ===== SECTION ACTU & EN-TÊTE PRESSE ===== */
-.actu-section { padding: 60px 24px 100px; background: #F4F3FA; min-height: 50vh; }
-.actu-container { max-width: 850px; margin: 0 auto; }
+/* Élément de la bannière Star Academy. */
+.hero-content h1 {
+    font-size: 52px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+}
 
-.presse-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(124, 77, 255, 0.15); padding-bottom: 15px; margin-bottom: 35px; }
-.presse-title-left { display: flex; align-items: center; gap: 15px; }
-.presse-logo { width: 45px; height: 45px; object-fit: contain; border-radius: 8px; background: #fff; padding: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-.presse-date { font-size: 14px; color: #6E6E90; font-weight: 700; margin-top: 4px; text-transform: capitalize; letter-spacing: 0.5px; }
+.live-badge-premium {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(230, 0, 0, 0.15);
+    border: 1px solid rgba(230, 0, 0, 0.3);
+    color: #FF4D4D;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 14px;
+    border-radius: 8px;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
 
-.category-title { font-size: 22px; font-weight: 900; color: #13082B; text-transform: uppercase; letter-spacing: -0.5px; }
-.auto-update-text { font-size: 12px; color: #6E6E90; font-weight: 700; display: flex; align-items: center; gap: 6px; }
-.auto-update-text span { display: block; width: 8px; height: 8px; background: #22C55E; border-radius: 50%; animation: pulse-green 2s infinite; }
+/* Petit point rouge animé symbolisant le direct. */
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: #FF4D4D;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.8);
+    animation: pulse-red 2s infinite;
+}
 
-/* ===== LA TIMELINE (Ligne verticale grise) ===== */
-#live-feed { position: relative; padding-left: 90px; }
-#live-feed::before { content: ""; position: absolute; top: 0; bottom: 0; left: 65px; width: 2px; background: #E5E7EB; }
+/* Composant du fil d’actualité. */
+.actu-section {
+    padding: 60px 24px 100px;
+    background: #F4F3FA;
+    min-height: 50vh;
+}
 
-/* ===== LES CARTES D'ACTUALITÉ ===== */
-.actu-card { position: relative; background: #FFFFFF; border-radius: 16px; padding: 20px 25px; border: 1px solid rgba(124, 77, 255, 0.08); box-shadow: 0 4px 15px rgba(11, 7, 26, 0.03); margin-bottom: 25px; animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+/* Composant du fil d’actualité. */
+.actu-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
 
-/* Le petit point rouge sur la ligne */
-.timeline-dot { position: absolute; left: -29px; top: 25px; width: 10px; height: 10px; background: #E60000; border-radius: 50%; box-shadow: 0 0 0 5px #F4F3FA; }
+/* Barre de titre de la rubrique avec séparation et informations secondaires. */
+.presse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(124, 77, 255, 0.15);
+    padding-bottom: 15px;
+    margin-bottom: 35px;
+}
 
-/* L'heure à gauche de la ligne */
-.actu-time { position: absolute; left: -90px; top: 20px; font-size: 18px; font-weight: 900; color: #13082B; letter-spacing: -0.5px; width: 50px; text-align: right; }
+/* Élément d’en-tête du fil d’actualité. */
+.presse-title-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-.actu-post-title { font-size: 19px; font-weight: 900; color: #13082B; margin: 0 0 8px 0; letter-spacing: -0.5px; line-height: 1.3; }
-.actu-content p { font-size: 16px; font-weight: 500; color: #333; line-height: 1.5; margin: 0; }
-.empty-state { text-align: center; padding: 50px 20px; color: #6E6E90; font-weight: 700; font-size: 16px; margin-left: -90px; }
+/* Élément d’en-tête du fil d’actualité. */
+.presse-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #fff;
+    padding: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
 
-/* ===== GESTION DES MÉDIAS ===== */
-.actu-image { width: 100%; border-radius: 12px; margin-top: 15px; object-fit: cover; max-height: 450px; border: 1px solid rgba(124, 77, 255, 0.08); }
-.actu-video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 15px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.actu-video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-.actu-media-video { width: 100%; border-radius: 12px; margin-top: 15px; outline: none; }
+/* Élément d’en-tête du fil d’actualité. */
+.presse-date {
+    font-size: 14px;
+    color: #6E6E90;
+    font-weight: 700;
+    margin-top: 4px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
 
-.actu-btn-link { display: inline-block; margin-top: 15px; background: #F4F3FA; color: #7C4DFF; padding: 10px 20px; border-radius: 10px; font-weight: 900; text-decoration: none; font-size: 13px; text-transform: uppercase; transition: all 0.3s ease; border: 1px solid rgba(124, 77, 255, 0.1); }
-.actu-btn-link:hover { background: #7C4DFF; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(124, 77, 255, 0.3); }
+.category-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #13082B;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
 
-/* ===== ANIMATIONS ===== */
-@keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(230, 0, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(230, 0, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(230, 0, 0, 0); } }
-@keyframes pulse-green { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+.auto-update-text {
+    font-size: 12px;
+    color: #6E6E90;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
 
-/* ===== MOBILE ===== */
+.auto-update-text span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    animation: pulse-green 2s infinite;
+}
+
+/* Réserve un espace à gauche pour les horaires et la ligne verticale. */
+#live-feed {
+    position: relative;
+    padding-left: 90px;
+}
+
+/* Trace la ligne verticale de la chronologie. */
+#live-feed::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 65px;
+    width: 2px;
+    background: #E5E7EB;
+}
+
+/* Carte d’information dans la chronologie. */
+.actu-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 20px 25px;
+    border: 1px solid rgba(124, 77, 255, 0.08);
+    box-shadow: 0 4px 15px rgba(11, 7, 26, 0.03);
+    margin-bottom: 25px;
+    animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Point rouge placé sur la ligne de la chronologie. */
+.timeline-dot {
+    position: absolute;
+    left: -29px;
+    top: 25px;
+    width: 10px;
+    height: 10px;
+    background: #E60000;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #F4F3FA;
+}
+
+/* Heure d’une publication, affichée à gauche de sa carte. */
+.actu-time {
+    position: absolute;
+    left: -90px;
+    top: 20px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #13082B;
+    letter-spacing: -0.5px;
+    width: 50px;
+    text-align: right;
+}
+
+/* Composant du fil d’actualité. */
+.actu-post-title {
+    font-size: 19px;
+    font-weight: 900;
+    color: #13082B;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+}
+
+/* Composant du fil d’actualité. */
+.actu-content p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: #6E6E90;
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: -90px;
+}
+
+/* Composant du fil d’actualité. */
+.actu-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+    object-fit: cover;
+    max-height: 450px;
+    border: 1px solid rgba(124, 77, 255, 0.08);
+}
+
+/* Conteneur vidéo au ratio 16:9 obtenu avec padding-bottom:56.25%. */
+.actu-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-top: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Composant du fil d’actualité. */
+.actu-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Composant du fil d’actualité. */
+.actu-media-video {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+    outline: none;
+}
+
+/* Bouton de lien associé aux publications. */
+.actu-btn-link {
+    display: inline-block;
+    margin-top: 15px;
+    background: #F4F3FA;
+    color: #7C4DFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 900;
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(124, 77, 255, 0.1);
+}
+
+/* Composant du fil d’actualité. */
+.actu-btn-link:hover {
+    background: #7C4DFF;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(124, 77, 255, 0.3);
+}
+
+/* Fait glisser une nouvelle publication du haut vers sa place. */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Halo pulsant rouge du badge direct. */
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(230, 0, 0, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(230, 0, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(230, 0, 0, 0);
+    }
+}
+
+/* Clignotement doux de l’indicateur de mise à jour. */
+@keyframes pulse-green {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 @media (max-width: 768px) {
-  .hero-starac { padding: 110px 15px 50px; min-height: auto; }
-  .hero-content h1 { font-size: 32px; }
-  
-  .presse-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 25px; }
-  .category-title { font-size: 19px; }
-  
-  /* 1. On augmente l'espace total à gauche (75px au lieu de 55px) pour que l'heure respire */
-  #live-feed { padding-left: 75px; }
-  
-  /* 2. On place la ligne grise à 55px (ce qui laisse 20px de marge avec la carte) */
-  #live-feed::before { left: 55px; }
-  
-  /* 3. On centre le point rouge exactement sur la ligne grise */
-  .timeline-dot { left: -24px; top: 16px; width: 10px; height: 10px; box-shadow: 0 0 0 4px #F4F3FA; }
-  
-  /* 4. On donne une largeur fixe à l'heure pour qu'elle ne touche JAMAIS la ligne */
-  .actu-time { left: -75px; top: 12px; font-size: 14px; width: 45px; text-align: right; }
-  
-  .actu-card { padding: 15px; border-radius: 12px; margin-bottom: 20px; }
-  .actu-post-title { font-size: 16px; margin-bottom: 6px; }
-  .actu-content p { font-size: 14px; }
-  .empty-state { margin-left: -75px; }
+    .hero-starac {
+        padding: 110px 15px 50px;
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .presse-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .category-title {
+        font-size: 19px;
+    }
+
+    #live-feed {
+        padding-left: 75px;
+    }
+
+    #live-feed::before {
+        left: 55px;
+    }
+
+    .timeline-dot {
+        left: -24px;
+        top: 16px;
+        width: 10px;
+        height: 10px;
+        box-shadow: 0 0 0 4px #F4F3FA;
+    }
+
+    .actu-time {
+        left: -75px;
+        top: 12px;
+        font-size: 14px;
+        width: 45px;
+        text-align: right;
+    }
+
+    .actu-card {
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .actu-post-title {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .actu-content p {
+        font-size: 14px;
+    }
+
+    .empty-state {
+        margin-left: -75px;
+    }
+}
+
+
+/* ==================================================================
+   10 — PLANNING INTERACTIF
+   Le mur beige : dimensions, grille des jours/heures, étiquettes aimantées et styles d’activités.
+   ================================================================== */
+/* Élément du planning. */
+.planning-header-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Élément du planning. */
+.planning-header-title h2 {
+    font-size: 24px;
+    font-weight: 900;
+    color: #13082B;
+    letter-spacing: -0.5px;
+    background: #fff;
+    padding: 12px 30px;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Permet de faire défiler le planning horizontalement sur un petit écran. */
+.planning-scroll-mobile {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: none;
+}
+
+/* Élément du planning. */
+.planning-scroll-mobile::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cadre extérieur qui centre le planning et limite sa largeur. */
+.planning-board-interactive {
+    background: transparent;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    transform: none;
+}
+
+/* Fond beige, bordure et débordement masqué : support visuel du tableau. */
+.planning-mur {
+    min-width: 1100px;
+    background: #F3E0C9;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(11, 7, 26, 0.1);
+    position: relative;
+    border: 2px solid #D5B49A;
+    border-top: none;
+    overflow: hidden;
+}
+
+/* Filigrane répété derrière les étiquettes. pointer-events:none laisse passer les clics. */
+.planning-mur::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("assets/FILIFM.png");
+    background-size: 350px;
+    background-repeat: repeat;
+    opacity: 0.90;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Logo doré épinglé dans le coin inférieur droit du mur. */
+.logo-sur-papier {
+    position: absolute;
+    bottom: 15px;
+    right: 5px;
+    width: 160px;
+    z-index: 3;
+    opacity: 0.95;
+    pointer-events: none;
+    box-shadow: none;
+    border: none;
+}
+
+/* Grille CSS : 55 px pour les heures + 7 jours; 40 px d’en-tête + 17 lignes de 40 px. */
+.planning-grid {
+    display: grid;
+    grid-template-columns: 55px repeat(7, 1fr);
+    grid-template-rows: 40px repeat(17, 40px);
+    position: relative;
+    z-index: 2;
+}
+
+/* En-têtes colorés LUNDI à DIMANCHE. */
+.header-jour {
+    background: #9D3650;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
+    padding-top: 12px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 18px 18px 0 0;
+    margin: 8px 3px 0 3px;
+}
+
+/* Case vide au croisement en-têtes/horaires. */
+.header-vide {
+    background: transparent;
+    border-bottom: 2px solid #9D3650;
+}
+
+/* Séparateur vertical plus épais après le mercredi. */
+.col-mercredi {
+    border-right: 3px solid #9D3650 !important;
+}
+
+/* Colonne des heures : séparation verticale seulement; les lignes horizontales ont été retirées. */
+.col-heure {
+    color: #9D3650;
+    font-weight: 900;
+    border-bottom: 1px solid #D5B49A;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2px 0;
+    position: relative;
+    border-bottom: none !important;
+    border-right: 1px solid #D5B49A;
+}
+
+/* IMPORTANT : texte calé au sommet de chaque case et remonté de 50 % de sa propre hauteur, en face de l’étoile. */
+.heure-pleine {
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 900;
+    z-index: 6;
+}
+
+/* Demi-heure orange : centrage horizontal/vertical au milieu du créneau. */
+.heure-demi {
+    color: #D96E14;
+    font-size: 9px;
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Étoile bordeaux correspondant à une heure pleine. */
+.col-heure::before {
+    content: "✦";
+    position: absolute;
+    right: -6px;
+    top: -7px;
+    color: #9D3650;
+    font-size: 14px;
+    background: #F3E0C9;
+    line-height: 1;
+    z-index: 5;
+}
+
+/* Losange orange correspondant à une demi-heure. */
+.col-heure::after {
+    content: "♦";
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #D96E14;
+    font-size: 10px;
+    background: #F3E0C9;
+    line-height: 1;
+    z-index: 5;
+}
+
+/* Masque la première étoile pour ne pas la dupliquer au départ. */
+.col-heure-first::before {
+    display: none !important;
+}
+
+/* Case de jour/heure; bordures verticales et horizontales à droite du repère des heures. */
+.case-grille {
+    position: relative;
+    border-right: 1px solid #D5B49A;
+    border-bottom: 1px solid #D5B49A;
+    padding: 0;
+}
+
+/* Trait horizontal central marquant la demi-heure dans chaque case de journée. */
+.case-grille::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #E1C5AF;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* ==================================================================
+   11 — MOTEUR DES ÉTIQUETTES
+   Positions absolues, heures de départ et durées. ATTENTION : une modification peut décaler tout le planning.
+   ================================================================== */
+/* Style commun : position absolute à l’intérieur d’une case, largeur et texte centré. */
+.etiquette {
+    position: absolute;
+    left: 4%;
+    width: 92%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 12px;
+    z-index: 10;
+    letter-spacing: 0.5px;
+    box-shadow: 2px 3px 2px rgba(11, 7, 26, 0.12); 
+}
+
+/* Départ à l’heure pile : top de 2 px pour ne pas coller la ligne. */
+.start-00 {
+    top: 2px;
+}
+
+/* Départ à +15 minutes : 25 % de la hauteur de la case. */
+.start-15 {
+    top: calc(25% + 2px);
+}
+
+/* Départ à +30 minutes : milieu de la case. */
+.start-30 {
+    top: calc(50% + 2px);
+}
+
+/* Départ à +45 minutes : 75 % de la case. */
+.start-45 {
+    top: calc(75% + 2px);
+}
+
+/* ===== DURÉES DES ÉTIQUETTES ===== */
+.etiquette.h-0-5     { height: calc(50% - 2px); }
+.etiquette.h-1       { height: calc(100% - 2px); }
+.etiquette.h-1-5     { height: calc(150% - 2px); }
+.etiquette.h-2       { height: calc(200% - 2px); }
+.etiquette.h-2-5     { height: calc(250% - 2px); }
+.etiquette.h-2-75    { height: calc(275% - 2px); }
+.etiquette.h-3       { height: calc(300% - 2px); }
+.etiquette.h-3-5     { height: calc(350% - 2px); }
+.etiquette.h-4       { height: calc(400% - 2px); }
+.etiquette.h-journee { height: calc(1700% - 2px); }
+
+
+/* ==================================================================
+   12 — FORMES DES ACTIVITÉS
+   Chaque tag définit la couleur et la silhouette d’une activité. Les durées restent indépendantes.
+   ================================================================== */
+/* Routines en vert sauge, largeur accrue et texte en minuscules. */
+.etiquette.tag-reveil, .etiquette.tag-dejeuner, .etiquette.tag-diner {
+    background: #959E7C !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    text-transform: lowercase !important;
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    width: 94% !important;
+    left: 3% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
+    border: none !important;
+}
+
+/* Étiquette transparente contenant deux cartons superposés. */
+.etiquette.tag-expression {
+    background: transparent !important;
+    box-shadow: none !important;
+    left: 0;
+    width: 100%;
+    display: block !important;
+    container-type: size;
+}
+
+.tag-expression-wrapper {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+/* Carton supérieur incliné du clap expression scénique. */
+.exp-top {
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    left: 2%;
+    width: 90%;
+    height: 44%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #8E3A3C;
+    color: #F3E3D0;
+    border: 1.5px solid rgba(243, 227, 208, 0.45);
+    font-weight: 900;
+    font-size: 17px !important;
+    line-height: 1;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    transform: rotate(-3deg);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Carton inférieur du clap expression scénique. */
+.exp-bot {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 3%;
+    width: 94%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #6F2B33;
+    color: #F3E3D0;
+    border: 1.5px solid rgba(243, 227, 208, 0.45);
+    font-weight: 900;
+    font-size: 21px !important;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Bloc jaune/orangé; deux étoiles décoratives sont dessinées en CSS. */
+.etiquette.tag-repetitions {
+    background: linear-gradient(160deg, #F9BD3F, #F2A12A);
+    color: #FFF1DC;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    line-height: 1.15;
+    box-shadow: none;
+}
+
+/* Variante de style ou de durée d’une étiquette. */
+.etiquette.tag-repetitions::before, .etiquette.tag-repetitions::after {
+    content: "✦";
+    position: absolute;
+    color: rgba(255, 241, 220, 0.9);
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Variante de style ou de durée d’une étiquette. */
+.etiquette.tag-repetitions::before {
+    top: 5px;
+    right: 8px;
+}
+
+/* Variante de style ou de durée d’une étiquette. */
+.etiquette.tag-repetitions::after {
+    bottom: 5px;
+    left: 8px;
+}
+
+/* Bloc orange; disposition verticale pour le texte et les étoiles. */
+.etiquette.tag-evaluations {
+    background: #F26B2C;
+    color: #FFF1DC;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    box-shadow: none;
+}
+
+/* Variante de style ou de durée d’une étiquette. */
+.etiquette.tag-evaluations .ev-star {
+    font-size: 18px;
+    line-height: 1;
+    color: rgba(255, 241, 220, 0.9);
+}
+
+/* Bloc bleu clair avec coins arrondis en diagonale. */
+.etiquette.tag-sport {
+    background: #6DB3E8;
+    color: #E3F2FF;
+    border-radius: 14px 3px 14px 3px;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    line-height: 1;
+    box-shadow: none;
+}
+
+/* Bloc rose avec coins évidés par un masque CSS. */
+.etiquette.tag-theatre {
+    background: #C8409F;
+    color: #FFE3F3;
+    border-radius: 0;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    line-height: 1;
+    box-shadow: inset 0 0 0 1.5px rgba(255, 227, 243, 0.3);
+    -webkit-mask: radial-gradient(circle 8px at 0 0, #0000 97%, #000) 0 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 0, #0000 97%, #000) 100% 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 0 100%, #0000 97%, #000) 0 100% / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 100%, #0000 97%, #000) 100% 100% / 51% 51% no-repeat;
+    mask: radial-gradient(circle 8px at 0 0, #0000 97%, #000) 0 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 0, #0000 97%, #000) 100% 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 0 100%, #0000 97%, #000) 0 100% / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 100%, #0000 97%, #000) 100% 100% / 51% 51% no-repeat;
+}
+
+
+.etiquette.tag-showtime {
+    left: 2% !important;
+    width: 96% !important;
+    background: linear-gradient(180deg, #F79562 0%, #E87978 32%, #CE537E 65%, #9C3077 100%) !important;
+    color: #FFF1E6 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: none;
+    white-space: nowrap;
+    /* Courbes dessinées individuellement de haut en bas. */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20680%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M12%200%20L188%200%20C187.8%204.0%20189.0%2017.0%20187%2024%20C185.0%2031.0%20175.8%2035.2%20176%2042%20C176.2%2048.8%20186.3%2056.8%20188%2065%20C189.7%2073.2%20188.5%2083.3%20186%2091%20C183.5%2098.7%20172.7%20103.3%20173%20111%20C173.3%20118.7%20185.7%20128.3%20188%20137%20C190.3%20145.7%20188.8%20155.3%20187%20163%20C185.2%20170.7%20176.5%20175.3%20177%20183%20C177.5%20190.7%20188.5%20199.8%20190%20209%20C191.5%20218.2%20188.5%20230.2%20186%20238%20C183.5%20245.8%20174.5%20248.3%20175%20256%20C175.5%20263.7%20187.2%20274.5%20189%20284%20C190.8%20293.5%20188.2%20304.8%20186%20313%20C183.8%20321.2%20175.7%20325.5%20176%20333%20C176.3%20340.5%20186.5%20348.8%20188%20358%20C189.5%20367.2%20187.3%20379.7%20185%20388%20C182.7%20396.3%20173.7%20400.5%20174%20408%20C174.3%20415.5%20184.7%20424.2%20187%20433%20C189.3%20441.8%20189.7%20453.3%20188%20461%20C186.3%20468.7%20176.8%20471.8%20177%20479%20C177.2%20486.2%20187.5%20495.2%20189%20504%20C190.5%20512.8%20188.3%20524.0%20186%20532%20C183.7%20540.0%20174.7%20544.0%20175%20552%20C175.3%20560.0%20186.2%20570.3%20188%20580%20C189.8%20589.7%20188.0%20602.0%20186%20610%20C184.0%20618.0%20175.7%20621.3%20176%20628%20C176.3%20634.7%20186.0%20641.3%20188%20650%20C190.0%20658.7%20188.0%20675.0%20188%20680%20L12%20680%20C12.3%20675.0%2011.8%20658.7%2014%20650%20C16.2%20641.3%2025.3%20634.7%2025%20628%20C24.7%20621.3%2014.0%20618.0%2012%20610%20C10.0%20602.0%2010.7%20589.7%2013%20580%20C15.3%20570.3%2026.2%20560.0%2026%20552%20C25.8%20544.0%2014.0%20540.0%2012%20532%20C10.0%20524.0%2012.0%20512.8%2014%20504%20C16.0%20495.2%2024.5%20486.2%2024%20479%20C23.5%20471.8%2012.7%20468.7%2011%20461%20C9.3%20453.3%2011.7%20441.8%2014%20433%20C16.3%20424.2%2025.3%20415.5%2025%20408%20C24.7%20400.5%2014.0%20396.3%2012%20388%20C10.0%20379.7%2011.0%20367.2%2013%20358%20C15.0%20348.8%2024.3%20340.5%2024%20333%20C23.7%20325.5%2012.7%20321.2%2011%20313%20C9.3%20304.8%2011.5%20293.5%2014%20284%20C16.5%20274.5%2026.3%20263.7%2026%20256%20C25.7%20248.3%2014.3%20245.8%2012%20238%20C9.7%20230.2%2010.0%20218.2%2012%20209%20C14.0%20199.8%2024.0%20190.7%2024%20183%20C24.0%20175.3%2013.8%20170.7%2012%20163%20C10.2%20155.3%2010.7%20145.7%2013%20137%20C15.3%20128.3%2026.2%20118.7%2026%20111%20C25.8%20103.3%2014.0%2098.7%2012%2091%20C10.0%2083.3%2011.8%2073.2%2014%2065%20C16.2%2056.8%2025.3%2048.8%2025%2042%20C24.7%2035.2%2014.2%2031.0%2012%2024%20C9.8%2017.0%2012.0%204.0%2012%200%20Z%22%2F%3E%3C%2Fsvg%3E") !important;
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20680%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M12%200%20L188%200%20C187.8%204.0%20189.0%2017.0%20187%2024%20C185.0%2031.0%20175.8%2035.2%20176%2042%20C176.2%2048.8%20186.3%2056.8%20188%2065%20C189.7%2073.2%20188.5%2083.3%20186%2091%20C183.5%2098.7%20172.7%20103.3%20173%20111%20C173.3%20118.7%20185.7%20128.3%20188%20137%20C190.3%20145.7%20188.8%20155.3%20187%20163%20C185.2%20170.7%20176.5%20175.3%20177%20183%20C177.5%20190.7%20188.5%20199.8%20190%20209%20C191.5%20218.2%20188.5%20230.2%20186%20238%20C183.5%20245.8%20174.5%20248.3%20175%20256%20C175.5%20263.7%20187.2%20274.5%20189%20284%20C190.8%20293.5%20188.2%20304.8%20186%20313%20C183.8%20321.2%20175.7%20325.5%20176%20333%20C176.3%20340.5%20186.5%20348.8%20188%20358%20C189.5%20367.2%20187.3%20379.7%20185%20388%20C182.7%20396.3%20173.7%20400.5%20174%20408%20C174.3%20415.5%20184.7%20424.2%20187%20433%20C189.3%20441.8%20189.7%20453.3%20188%20461%20C186.3%20468.7%20176.8%20471.8%20177%20479%20C177.2%20486.2%20187.5%20495.2%20189%20504%20C190.5%20512.8%20188.3%20524.0%20186%20532%20C183.7%20540.0%20174.7%20544.0%20175%20552%20C175.3%20560.0%20186.2%20570.3%20188%20580%20C189.8%20589.7%20188.0%20602.0%20186%20610%20C184.0%20618.0%20175.7%20621.3%20176%20628%20C176.3%20634.7%20186.0%20641.3%20188%20650%20C190.0%20658.7%20188.0%20675.0%20188%20680%20L12%20680%20C12.3%20675.0%2011.8%20658.7%2014%20650%20C16.2%20641.3%2025.3%20634.7%2025%20628%20C24.7%20621.3%2014.0%20618.0%2012%20610%20C10.0%20602.0%2010.7%20589.7%2013%20580%20C15.3%20570.3%2026.2%20560.0%2026%20552%20C25.8%20544.0%2014.0%20540.0%2012%20532%20C10.0%20524.0%2012.0%20512.8%2014%20504%20C16.0%20495.2%2024.5%20486.2%2024%20479%20C23.5%20471.8%2012.7%20468.7%2011%20461%20C9.3%20453.3%2011.7%20441.8%2014%20433%20C16.3%20424.2%2025.3%20415.5%2025%20408%20C24.7%20400.5%2014.0%20396.3%2012%20388%20C10.0%20379.7%2011.0%20367.2%2013%20358%20C15.0%20348.8%2024.3%20340.5%2024%20333%20C23.7%20325.5%2012.7%20321.2%2011%20313%20C9.3%20304.8%2011.5%20293.5%2014%20284%20C16.5%20274.5%2026.3%20263.7%2026%20256%20C25.7%20248.3%2014.3%20245.8%2012%20238%20C9.7%20230.2%2010.0%20218.2%2012%20209%20C14.0%20199.8%2024.0%20190.7%2024%20183%20C24.0%20175.3%2013.8%20170.7%2012%20163%20C10.2%20155.3%2010.7%20145.7%2013%20137%20C15.3%20128.3%2026.2%20118.7%2026%20111%20C25.8%20103.3%2014.0%2098.7%2012%2091%20C10.0%2083.3%2011.8%2073.2%2014%2065%20C16.2%2056.8%2025.3%2048.8%2025%2042%20C24.7%2035.2%2014.2%2031.0%2012%2024%20C9.8%2017.0%2012.0%204.0%2012%200%20Z%22%2F%3E%3C%2Fsvg%3E") !important;
+    -webkit-mask-size: 100% 100% !important;
+    mask-size: 100% 100% !important;
+    -webkit-mask-repeat: no-repeat !important;
+    mask-repeat: no-repeat !important;
+    -webkit-mask-position: center !important;
+    mask-position: center !important;
+}
+
+/* Le samedi couvre toujours 17 créneaux horaires. */
+.etiquette.tag-showtime.h-journee {
+    height: calc(1700% - 4px);
+}
+
+/* On remplace les anciennes étoiles HTML par les étoiles CSS. */
+/* Étoiles : une grande en haut à droite, une grande en bas à gauche */
+.etiquette.tag-showtime::before,
+.etiquette.tag-showtime::after {
+    content: "✦"; position: absolute; color: #FFF1E6; line-height: 1; z-index: 2;
+}
+.etiquette.tag-showtime::before { top: 14px; right: 18%; font-size: 48px; }
+.etiquette.tag-showtime::after  { bottom: 14px; left: 18%; font-size: 48px; }
+
+/* Petites étoiles (les deux spans .st-star envoyés par la régie) */
+.etiquette.tag-showtime .st-star {
+    display: block !important; position: absolute; color: #FFF1E6; font-size: 20px; line-height: 1; z-index: 2;
+}
+.etiquette.tag-showtime .st-star:first-child { top: 64px; left: 30%; }
+.etiquette.tag-showtime .st-star:last-child  { bottom: 64px; right: 30%; }
+
+/* Texte vertical, lu de bas en haut comme sur le mur */
+.etiquette.tag-showtime .cursive {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    /* On applique la police globale Inter du site pour un rendu ultra propre */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    /* On force en gras et en LETTRES CAPITALES */
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    /* Ajustement de la taille pour la grille paysage */
+    font-size: 46px !important; 
+    line-height: 1;
+    letter-spacing: 4px; /* Un peu d'espace entre les lettres pour faire premium */
+    color: #FFF1E6;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+/* Étiquette marron taillée en hexagone grâce à clip-path. */
+.etiquette.tag-chant {
+    background: #8C5332 !important;
+    color: #FFFFFF !important;
+    clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0 50%);
+    border-radius: 0 !important;
+    font-size: 25px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Étiquette verte avec coins arrondis opposés (forme feuille). */
+.etiquette.tag-danse {
+    background: #5E8037 !important;
+    color: #FFFFFF !important;
+    border-radius: 0 25px 0 25px !important;
+    font-size: 25px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* COURS PARTICULIERS (Rectangle propre et premium) */
+.etiquette.tag-cp-chant, .etiquette.tag-cp-danse, .etiquette.tag-cp-expression {
+    background: #467DBB !important;
+    color: #FFFFFF !important;
+    width: 90% !important;
+    left: 5% !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px !important;
+    border-radius: 6px !important; /* Arrondi propre */
+    border: none !important;
+}
+
+/* Forme bordeaux en dents de scie créée avec clip-path. */
+.etiquette.tag-surprise {
+    background: #A63B40 !important;
+    color: #FFFFFF !important;
+    clip-path: polygon(
+
+    0% 0%, 100% 0%, 92% 16.5%, 100% 33%, 92% 50%, 100% 66.5%, 92% 83%, 100% 100%, 0% 100%, 8% 83%, 0% 66.5%, 8% 50%, 0% 33%, 8% 16.5%
+
+  );
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    letter-spacing: 1px;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Carte prune avec coins arrondis asymétriques. */
+.etiquette.tag-masterclass {
+    background: #61334E !important;
+    color: #FFFFFF !important;
+    border-radius: 20px 0 20px 0 !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border: none !important;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Carte de débrief du Prime en dégradé framboise/bordeaux. */
+.etiquette.tag-debrief {
+    background: linear-gradient(180deg, #A84562 0%, #892849 50%, #5E162F 100%) !important;
+    color: #FFFFFF !important;
+    border-radius: 8px !important;
+    font-size: 25px !important;
+    font-weight: 900 !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border: none !important;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Durée de quatre heures et demie. */
+.etiquette.h-4-5 {
+    height: calc(450% - 4px);
+}
+
+/* Étiquette jaune/orange de prise de tonalité, sans étoiles. */
+.etiquette.tag-tonalite {
+    background: linear-gradient(160deg, #F9BD3F, #F2A12A) !important;
+    color: #FFF1DC !important;
+    border-radius: 10px !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.8px;
+    line-height: 1.15 !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ==================================================================
+   10 — PLANNING INTERACTIF (version consolidée)
+   ================================================================== */
+
+/* Cadre extérieur */
+.planning-board-interactive {
+    width: 100%;
+    min-width: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* En-tête intégré */
+.planning-entete-integre {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 12px 18px;
+    background: #F7E9D6;
+    border: 1px solid #D5B49A;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+}
+.planning-identite { display: flex; align-items: center; justify-content: center; gap: 7px; margin-bottom: 6px; }
+.planning-logo-entete { width: 18px; height: 18px; object-fit: contain; }
+.planning-marque { color: #EE7C00; font-size: 10px; font-weight: 900; letter-spacing: 1.6px; text-transform: uppercase; line-height: 1; }
+.planning-entete-integre h2 { margin: 0 0 4px !important; padding: 0 !important; color: #13082B; font-size: 18px !important; font-weight: 900; letter-spacing: -0.4px; line-height: 1.2; text-transform: none; }
+.planning-entete-integre .planning-dates { margin: 0 !important; padding: 0 !important; color: #8C5332; font-size: 12px !important; font-weight: 700; line-height: 1.35; }
+.planning-entete-integre::after { content: ""; display: block; width: 34px; height: 3px; margin: 8px auto 0; background: #EE7C00; border-radius: 10px; }
+
+/* Zone de défilement : ne scrolle QUE si l'écran est plus étroit que la grille */
+.planning-scroll-mobile {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 5px; /* Un poil d'air en bas */
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch; /* Rendu ultra-fluide sur iPhone */
+    touch-action: pan-x pan-y; /* Dit au téléphone : "Autorise le swipe ici !" */
+}
+
+/* Le mur beige */
+.planning-mur {
+    width: 100%;
+    min-width: 0;                      /* ordi : s'adapte, plus de débordement */
+    background: #F3E0C9;
+    border: 2px solid #D5B49A;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 15px 35px rgba(11, 7, 26, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+.planning-mur::before {
+    content: ""; position: absolute; inset: 0;
+    background: url("assets/FILIFM.png") repeat; background-size: 350px;
+    opacity: 0.5; pointer-events: none; z-index: 1;
+}
+
+/* Grille : 34px d'en-tête + 17 lignes de 30px = format paysage */
+.planning-grid { 
+  display: grid; 
+  grid-template-columns: 60px repeat(7, 1fr); 
+  grid-template-rows: 40px repeat(17, 36px); /* <-- Passe de 40px à 36px ici */
+  position: relative; 
+  z-index: 2; 
+}
+
+/* Jours */
+.header-jour { background: #9D3650; color: #fff; text-transform: uppercase; font-weight: 900; text-align: center; padding-top: 2px; font-size: 20px; letter-spacing: 1px; border-radius: 16px 16px 0 0; margin: 6px 3px 0 3px; }
+.header-vide { border-bottom: 2px solid #9D3650; }
+.col-mercredi { border-right: 3px solid #9D3650 !important; }
+
+/* Heures */
+.col-heure { color: #9D3650; font-weight: 900; position: relative; border-right: 1px solid #D5B49A; }
+.heure-pleine { position: absolute; top: 0; left: 0; width: 100%; margin: 0; line-height: 1; transform: translateY(-50%); text-align: center; font-size: 12px; font-weight: 900; z-index: 6; }
+.heure-demi { color: #D96E14; font-size: 8px; font-weight: 900; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.col-heure::before { content: "✦"; position: absolute; right: -6px; top: -7px; color: #9D3650; font-size: 13px; background: #F3E0C9; line-height: 1; z-index: 5; }
+.col-heure::after { content: "♦"; position: absolute; right: -5px; top: 50%; transform: translateY(-50%); color: #D96E14; font-size: 9px; background: #F3E0C9; line-height: 1; z-index: 5; }
+.col-heure-first::before { display: none !important; }
+
+/* Cases */
+.case-grille { position: relative; border-right: 1px solid #D5B49A; border-bottom: 1px solid #D5B49A; }
+.case-grille::before { content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 1px solid #E1C5AF; z-index: 1; pointer-events: none; }
+
+/* Mobile / tablette : la grille garde sa largeur et défile */
+@media (max-width: 1023px) {
+    .planning-mur { min-width: 1000px; }
+    .planning-scroll-mobile::-webkit-scrollbar { display: none; }
+    .planning-scroll-mobile { scrollbar-width: none; }
+}
+@media (max-width: 768px) {
+    .planning-entete-integre { padding: 10px; }
+    .planning-entete-integre h2 { font-size: 16px !important; }
+    .planning-entete-integre .planning-dates { font-size: 11px !important; }
+}
+
+/* Confort tactile */
+.planning-grid, .planning-grid .etiquette, .planning-grid .header-jour, .planning-grid .col-heure {
+    -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+
+/* ==================================================================
+   13 — CORRECTIF GRANDES TABLETTES TACTILES (HONOR, IPAD PRO...)
+   ================================================================== */
+/* Détecte les écrans géants (jusqu'à 1600px) MAIS qui s'utilisent au doigt (tactile) */
+@media (max-width: 1600px) and (hover: none) and (pointer: coarse) {
+    
+    /* 1. Répare la superposition du gros titre et de la grille Bento */
+    .hero-starac { 
+        min-height: auto !important; 
+        padding: 140px 24px 80px !important; 
+    }
+    .home-grid-section { 
+        margin-top: -40px !important; 
+    }
+
+    /* 2. Aère les cartes qui se condensent */
+    .bento-grid { 
+        gap: 20px !important; 
+    }
+    .hub-card {
+        padding: 30px !important;
+    }
+
+    /* 3. Force le programme du prime à passer sur 2 lignes pour ne pas s'écraser */
+    .card-programme {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+
+    /* 4. Aère les badges des horaires TV pour qu'ils ne se touchent pas */
+    .tv-badges-row {
+        gap: 15px !important;
+    }
+    
+    /* 5. Ajustement de la largeur de la grille de planning pour l'écran 16:10 */
+    .planning-mur {
+        min-width: 1000px !important;
+    }
 }
