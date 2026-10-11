@@ -61,14 +61,14 @@
   .card-academie p { color: #6E6E90; }
   .card-academie:hover { border-color: rgba(230, 161, 0, 0.3); transform: translateY(-2px); }
 
-  /* --- LE PLANNING (Style Punaise + Image) --- */
+  /* --- LE PLANNING --- */
   .planning-wrapper { grid-column: 1 / -1; margin: 40px 0 20px 0; text-align: center; }
   .planning-wrapper h2 { font-size: 30px; font-weight: 900; color: #13082B; margin-bottom: 40px; letter-spacing: -0.5px; text-transform: uppercase;}
   .planning-board { background: #fff; padding: 15px; border-radius: 4px; box-shadow: 0 20px 40px rgba(11, 7, 26, 0.1); transform: rotate(-1.5deg); position: relative; max-width: 800px; margin: 0 auto; transition: transform 0.3s ease; }
   .planning-board:hover { transform: rotate(0deg) scale(1.02); }
   .planning-pin { font-size: 35px; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); text-shadow: 0 5px 10px rgba(0,0,0,0.2); z-index: 10; }
 
-  /* --- CARTE 3 : LE PROGRAMME DU PRIME (Dégradé Violet/Orange) --- */
+  /* --- CARTE 3 : LE PROGRAMME DU PRIME --- */
   .card-programme { 
     grid-column: 1 / -1; 
     border: 1px solid rgba(124, 77, 255, 0.15);
@@ -79,7 +79,6 @@
     gap: 40px; 
     position: relative;
   }
-  /* La fameuse bordure supérieure avec le dégradé de ton image */
   .card-programme::before {
     content: "";
     position: absolute;
@@ -90,7 +89,6 @@
   .card-programme:hover { border-color: rgba(124, 77, 255, 0.3); transform: translateY(-2px); }
   .card-programme h3 { color: #13082B; display: flex; align-items: center; gap: 10px; }
   .card-programme p { color: #6E6E90; }
-  /* Bouton aux couleurs de l'identité */
   .card-programme .card-btn { background: linear-gradient(135deg, #7C4DFF, #5E35FF); box-shadow: 0 8px 20px rgba(124, 77, 255, 0.3); }
 
   @media (max-width: 900px) {
@@ -105,30 +103,26 @@
     .planning-wrapper h2 { font-size: 24px; }
   }
 
-
   /* =========================================
      PARTENAIRE CARNET STAR AC
   ========================================= */
 .card-carnet-sa {
   grid-column: 1 / -1;
-  background: #0B071A; /* Fond sombre cohérent avec la page */
+  background: #0B071A; 
   border-radius: 32px;
   overflow: hidden;
   display: flex;
   text-decoration: none;
   border: 1px solid rgba(239, 127, 0, 0.2);
   box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05);
-  /* Plus de transform ici, la carte est fixe */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 20px;
   position: relative;
 }
-/* La belle barre orange en haut de la carte */
 .card-carnet-sa::before {
   content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
   background: linear-gradient(90deg, #EF7F00, #E65C00);
 }
-/* Au survol : plus de soulèvement, juste une lumière sur la bordure et l'ombre */
 .card-carnet-sa:hover {
   border-color: rgba(239, 127, 0, 0.4);
   box-shadow: 0 20px 50px rgba(239, 127, 0, 0.15);
@@ -181,7 +175,6 @@
   gap: 8px;
   box-shadow: 0 8px 20px rgba(239, 127, 0, 0.3);
 }
-/* C'est uniquement la petite flèche qui s'anime vers la droite */
 .ccsa-btn svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
 .card-carnet-sa:hover .ccsa-btn svg { transform: translateX(4px); }
 
@@ -261,18 +254,249 @@
         </div>
       </a>
 
-      <!-- LE PLANNING EN IMAGE (Avant le Programme) -->
+      <!-- LE PLANNING INTERACTIF CONNECTÉ -->
       <div class="planning-wrapper">
-        <h2>📅 Le Planning de la Semaine</h2>
-        <div class="planning-board">
-          <div class="planning-pin">📌</div>
-          <img src="assets/planning-semaine.png" alt="Le planning du château" style="width: 100%; height: auto; border: 1px solid rgba(0,0,0,0.05); display: block;">
+      <div class="planning-board-interactive">
+        <div class="planning-entete-integre">
+
+            <div class="planning-identite">
+                <img
+                    src="assets/logo-star-ac.png"
+                    alt="Inside Star Ac"
+                    class="planning-logo-entete"
+                >
+
+                <span class="planning-marque">
+                    INSIDE STAR AC
+                </span>
+            </div>
+
+            <h2>
+                Planning de la semaine
+                <span id="planning-numero">01</span>
+            </h2>
+
+            <p class="planning-dates" id="planning-dates">
+                Du lundi 12 au dimanche 18 octobre 2026
+            </p>
+
+        </div>
+          <!-- SEULE LA GRILLE DÉFILE SUR MOBILE -->
+          <div class="planning-scroll-mobile">
+
+              <div class="planning-mur" id="planning-mur-public">
+                  <!-- TON LOGO ACTUEL -->
+                  <img
+                      src="assets/logo-star-ac.png"
+                      alt="Inside Star Ac"
+                      class="logo-sur-papier"
+            >
+
+            <!-- ICI TU GARDES TOUTE TA GRILLE -->
+            <div class="planning-grid">
+
+                <!-- LES ONGLETS (JOURS) -->
+                <div class="header-vide"></div>
+                <div class="header-jour">Lundi</div>
+                <div class="header-jour">Mardi</div>
+                <div class="header-jour col-mercredi">Mercredi</div>
+                <div class="header-jour">Jeudi</div>
+                <div class="header-jour">Vendredi</div>
+                <div class="header-jour">Samedi</div>
+                <div class="header-jour">Dimanche</div>
+
+                <!-- TOUTES LES CASES SONT MAINTENANT VIDES. FIREBASE S'OCCUPE DU RESTE ! -->
+
+                <!-- LIGNE 7H (07h30) -->
+                <div class="col-heure col-heure-first">
+                   <span class="heure-demi">07h30</span>
+                </div>
+                <div class="case-grille" id="lundi-7"></div>
+                <div class="case-grille" id="mardi-7"></div>
+                <div class="case-grille col-mercredi" id="mercredi-7"></div>
+                <div class="case-grille" id="jeudi-7"></div>
+                <div class="case-grille" id="vendredi-7"></div>
+                <div class="case-grille showtime-col" id="samedi-7"></div>
+                <div class="case-grille" id="dimanche-7"></div>
+
+                <!-- LIGNE 8H -->
+                <div class="col-heure"><span class="heure-pleine">8H</span><span class="heure-demi">08h30</span></div>
+                <div class="case-grille" id="lundi-8"></div> 
+                <div class="case-grille" id="mardi-8"></div> 
+                <div class="case-grille col-mercredi" id="mercredi-8"></div>
+                <div class="case-grille" id="jeudi-8"></div>
+                <div class="case-grille" id="vendredi-8"></div>
+                <div class="case-grille showtime-col" id="samedi-8"></div>
+                <div class="case-grille" id="dimanche-8"></div>
+
+                <!-- LIGNE 9H -->
+                <div class="col-heure"><span class="heure-pleine">9H</span><span class="heure-demi">09h30</span></div>
+                <div class="case-grille" id="lundi-9"></div>
+                <div class="case-grille" id="mardi-9"></div>
+                <div class="case-grille col-mercredi" id="mercredi-9"></div>
+                <div class="case-grille" id="jeudi-9"></div>
+                <div class="case-grille" id="vendredi-9"></div>
+                <div class="case-grille showtime-col" id="samedi-9"></div>
+                <div class="case-grille" id="dimanche-9"></div>
+
+                <!-- LIGNE 10H -->
+                <div class="col-heure"><span class="heure-pleine">10H</span><span class="heure-demi">10h30</span></div>
+                <div class="case-grille" id="lundi-10"></div>
+                <div class="case-grille" id="mardi-10"></div>
+                <div class="case-grille col-mercredi" id="mercredi-10"></div>
+                <div class="case-grille" id="jeudi-10"></div>
+                <div class="case-grille" id="vendredi-10"></div>
+                <div class="case-grille showtime-col" id="samedi-10"></div>
+                <div class="case-grille" id="dimanche-10"></div>
+
+                <!-- LIGNE 11H -->
+                <div class="col-heure"><span class="heure-pleine">11H</span><span class="heure-demi">11h30</span></div>
+                <div class="case-grille" id="lundi-11"></div>
+                <div class="case-grille" id="mardi-11"></div>
+                <div class="case-grille col-mercredi" id="mercredi-11"></div>
+                <div class="case-grille" id="jeudi-11"></div>
+                <div class="case-grille" id="vendredi-11"></div>
+                <div class="case-grille showtime-col" id="samedi-11"></div>
+                <div class="case-grille" id="dimanche-11"></div>
+
+                <!-- LIGNE 12H -->
+                <div class="col-heure"><span class="heure-pleine">12H</span><span class="heure-demi">12h30</span></div>
+                <div class="case-grille" id="lundi-12"></div>
+                <div class="case-grille" id="mardi-12"></div>
+                <div class="case-grille col-mercredi" id="mercredi-12"></div>
+                <div class="case-grille" id="jeudi-12"></div>
+                <div class="case-grille" id="vendredi-12"></div>
+                <div class="case-grille showtime-col" id="samedi-12"></div>
+                <div class="case-grille" id="dimanche-12"></div>
+
+                <!-- LIGNE 13H -->
+                <div class="col-heure"><span class="heure-pleine">13H</span><span class="heure-demi">13h30</span></div>
+                <div class="case-grille" id="lundi-13"></div>
+                <div class="case-grille" id="mardi-13"></div>
+                <div class="case-grille col-mercredi" id="mercredi-13"></div>
+                <div class="case-grille" id="jeudi-13"></div>
+                <div class="case-grille" id="vendredi-13"></div>
+                <div class="case-grille showtime-col" id="samedi-13"></div>
+                <div class="case-grille" id="dimanche-13"></div>
+
+                <!-- LIGNE 14H -->
+                <div class="col-heure"><span class="heure-pleine">14H</span><span class="heure-demi">14h30</span></div>
+                <div class="case-grille" id="lundi-14"></div>
+                <div class="case-grille" id="mardi-14"></div>
+                <div class="case-grille col-mercredi" id="mercredi-14"></div>
+                <div class="case-grille" id="jeudi-14"></div>
+                <div class="case-grille" id="vendredi-14"></div>
+                <div class="case-grille showtime-col" id="samedi-14"></div>
+                <div class="case-grille" id="dimanche-14"></div>
+
+                <!-- LIGNE 15H -->
+                <div class="col-heure"><span class="heure-pleine">15H</span><span class="heure-demi">15h30</span></div>
+                <div class="case-grille" id="lundi-15"></div>
+                <div class="case-grille" id="mardi-15"></div>
+                <div class="case-grille col-mercredi" id="mercredi-15"></div>
+                <div class="case-grille" id="jeudi-15"></div>
+                <div class="case-grille" id="vendredi-15"></div>
+                <div class="case-grille showtime-col" id="samedi-15"></div>
+                <div class="case-grille" id="dimanche-15"></div>
+
+                <!-- LIGNE 16H -->
+                <div class="col-heure"><span class="heure-pleine">16H</span><span class="heure-demi">16h30</span></div>
+                <div class="case-grille" id="lundi-16"></div>
+                <div class="case-grille" id="mardi-16"></div>
+                <div class="case-grille col-mercredi" id="mercredi-16"></div>
+                <div class="case-grille" id="jeudi-16"></div>
+                <div class="case-grille" id="vendredi-16"></div>
+                <div class="case-grille showtime-col" id="samedi-16"></div>
+                <div class="case-grille" id="dimanche-16"></div>
+
+                <!-- LIGNE 17H -->
+                <div class="col-heure"><span class="heure-pleine">17H</span><span class="heure-demi">17h30</span></div>
+                <div class="case-grille" id="lundi-17"></div>
+                <div class="case-grille" id="mardi-17"></div>
+                <div class="case-grille col-mercredi" id="mercredi-17"></div>
+                <div class="case-grille" id="jeudi-17"></div>
+                <div class="case-grille" id="vendredi-17"></div>
+                <div class="case-grille showtime-col" id="samedi-17"></div>
+                <div class="case-grille" id="dimanche-17"></div>
+
+                <!-- LIGNE 18H -->
+                <div class="col-heure"><span class="heure-pleine">18H</span><span class="heure-demi">18h30</span></div>
+                <div class="case-grille" id="lundi-18"></div>
+                <div class="case-grille" id="mardi-18"></div>
+                <div class="case-grille col-mercredi" id="mercredi-18"></div>
+                <div class="case-grille" id="jeudi-18"></div>
+                <div class="case-grille" id="vendredi-18"></div>
+                <div class="case-grille showtime-col" id="samedi-18"></div>
+                <div class="case-grille" id="dimanche-18"></div>
+
+                <!-- LIGNE 19H -->
+                <div class="col-heure"><span class="heure-pleine">19H</span><span class="heure-demi">19h30</span></div>
+                <div class="case-grille" id="lundi-19"></div>
+                <div class="case-grille" id="mardi-19"></div>
+                <div class="case-grille col-mercredi" id="mercredi-19"></div>
+                <div class="case-grille" id="jeudi-19"></div>
+                <div class="case-grille" id="vendredi-19"></div>
+                <div class="case-grille showtime-col" id="samedi-19"></div>
+                <div class="case-grille" id="dimanche-19"></div>
+
+                <!-- LIGNE 20H -->
+                <div class="col-heure"><span class="heure-pleine">20H</span><span class="heure-demi">20h30</span></div>
+                <div class="case-grille" id="lundi-20"></div>
+                <div class="case-grille" id="mardi-20"></div>
+                <div class="case-grille col-mercredi" id="mercredi-20"></div>
+                <div class="case-grille" id="jeudi-20"></div>
+                <div class="case-grille" id="vendredi-20"></div>
+                <div class="case-grille showtime-col" id="samedi-20"></div>
+                <div class="case-grille" id="dimanche-20"></div>
+
+                <!-- LIGNE 21H -->
+                <div class="col-heure"><span class="heure-pleine">21H</span><span class="heure-demi">21h30</span></div>
+                <div class="case-grille" id="lundi-21"></div>
+                <div class="case-grille" id="mardi-21"></div>
+                <div class="case-grille col-mercredi" id="mercredi-21"></div>
+                <div class="case-grille" id="jeudi-21"></div>
+                <div class="case-grille" id="vendredi-21"></div>
+                <div class="case-grille showtime-col" id="samedi-21"></div>
+                <div class="case-grille" id="dimanche-21"></div>
+
+                <!-- LIGNE 22H -->
+                <div class="col-heure"><span class="heure-pleine">22H</span><span class="heure-demi">22h30</span></div>
+                <div class="case-grille" id="lundi-22"></div>
+                <div class="case-grille" id="mardi-22"></div>
+                <div class="case-grille col-mercredi" id="mercredi-22"></div>
+                <div class="case-grille" id="jeudi-22"></div>
+                <div class="case-grille" id="vendredi-22"></div>
+                <div class="case-grille showtime-col" id="samedi-22"></div>
+                <div class="case-grille" id="dimanche-22"></div>
+
+                <!-- LIGNE 23H (Finit à minuit) -->
+                <div class="col-heure" style="border-bottom: none;">
+                   <span class="heure-pleine">23H</span>
+                   <span class="heure-demi">23h30</span>
+                </div>
+                <div class="case-grille" id="lundi-23"></div>
+                <div class="case-grille" id="mardi-23"></div>
+                <div class="case-grille col-mercredi" id="mercredi-23"></div>
+                <div class="case-grille" id="jeudi-23"></div>
+                <div class="case-grille" id="vendredi-23"></div>
+                <div class="case-grille showtime-col" id="samedi-23"></div>
+                <div class="case-grille" id="dimanche-23"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
-            <!-- HORAIRES TV DÉTAILLÉS -->
+      <!-- HORAIRES TV DÉTAILLÉS -->
+      <!-- HORAIRES TV DÉTAILLÉS -->
       <div class="tv-schedule-container">
-        <p class="tv-launch-alert">🚀 <b>Première Quotidienne :</b> Lundi 12 Octobre</p>
+        
+        <h3 style="color: #ffffff; font-size: 20px; font-weight: 900; margin-top: 0; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase;">
+          📺 Les Quotidiennes & Le Prime
+        </h3>
+        <p style="color: #EDE7FF; font-size: 13px; font-weight: 600; margin-top: 0; margin-bottom: 25px; opacity: 0.7;">
+          Suivez le résumé de la journée au château chaque soir sur TF1.
+        </p>
         
         <div class="tv-badges-row">
           <div class="tv-badge">
@@ -281,7 +505,7 @@
           </div>
           <div class="tv-badge">
             <span class="tv-day">SAMEDI</span>
-            <span class="tv-time">17H10</span>
+            <span class="tv-time">17H15</span>
           </div>
           <div class="tv-badge">
             <span class="tv-day">DIMANCHE</span>
@@ -302,7 +526,7 @@
       <a href="Programme.html" class="hub-card card-programme">
         <div>
           <h3>📺 Programme du Prime</h3>
-          <p>Qui chante avec qui ce samedi ? Découvrez la liste officielle des duos avec les artistes invités, les défis solos et la chanson collégiale de la semaine.</p>
+          <p>Qui chante avec qui au prime ? Découvrez la liste des duos avec les artistes invités, les défis solos et la chanson collégiale de la semaine.</p>
           <span class="card-btn">Voir la Setlist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
@@ -313,9 +537,65 @@
 
 <div id="footer-placeholder"></div>
 
+<!-- CONNEXION DU PLANNING À FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  
+<script>
+  const firebaseConfigPlanning = {
+    apiKey: "AIzaSyAgmhwesxB9uDwXc-JrsyAXFsggkirpczY",
+    authDomain: "inside-fan-media.firebaseapp.com",
+    databaseURL: "https://inside-fan-media-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "inside-fan-media"
+  };
+  if (!firebase.apps.length) { firebase.initializeApp(firebaseConfigPlanning); }
+  const databasePlanning = firebase.database();
+
+  // Écoute les changements depuis la base de données
+  databasePlanning.ref("planning/infosSemaine").on("value", snap => {
+      const m = snap.val(); if (!m) return;
+      document.getElementById("planning-numero").textContent = m.numero;
+      document.getElementById("planning-dates").textContent  = m.dates;
+  });
+  databasePlanning.ref("planning/semaine1").on("value", function(snapshot) {
+    // 1. On efface toutes les étiquettes existantes
+    document.querySelectorAll('.case-grille .etiquette').forEach(e => e.remove());
+    
+    // 2. On récupère les données de la régie
+    const data = snapshot.val();
+    if (!data) return;
+
+    // 3. On replace chaque étiquette dans la bonne case
+    for (const idCase in data) {
+      const caseCible = document.getElementById(idCase);
+      if (caseCible) {
+        const coursDeCetteCase = data[idCase];
+        for (const keyId in coursDeCetteCase) {
+          const cours = coursDeCetteCase[keyId];
+          caseCible.innerHTML += `<div class="etiquette ${cours.type} ${cours.depart} ${cours.duree}">${cours.texte}</div>`;
+        }
+      }
+    }
+  });
+  
+</script>
+
+<script>
+  // Bloquer le clic droit
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  
+  // Bloquer les raccourcis de copie (Ctrl+C, Ctrl+U pour voir le code source)
+  document.onkeydown = function(e) {
+    if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 123)) {
+      return false;
+    }
+  };
+</script>
+
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="menu.js"></script>
+
 
 </body>
 </html>
