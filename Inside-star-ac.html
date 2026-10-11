@@ -35,8 +35,15 @@
 
   /* ===== SECTION BENTO GRID ===== */
   .home-grid-section { position: relative; z-index: 10; margin-top: -120px; padding-bottom: 90px; max-width: 1100px; }
-  .bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-
+ .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+  }
+  
+  .bento-grid > * {
+      min-width: 0;
+  }
   .hub-card { background: #fff; border-radius: 32px; padding: 35px; text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; position: relative; overflow: hidden; }
   .hub-card h3 { margin: 0 0 10px; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;}
   .hub-card p { font-size: 15px; line-height: 1.6; margin: 0 0 25px; flex-grow: 1; }
@@ -62,7 +69,14 @@
   .card-academie:hover { border-color: rgba(230, 161, 0, 0.3); transform: translateY(-2px); }
 
   /* --- LE PLANNING --- */
-  .planning-wrapper { grid-column: 1 / -1; margin: 40px 0 20px 0; text-align: center; }
+  .planning-wrapper {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 40px 0 20px 0;
+    text-align: center;
+  }
   .planning-wrapper h2 { font-size: 30px; font-weight: 900; color: #13082B; margin-bottom: 40px; letter-spacing: -0.5px; text-transform: uppercase;}
   .planning-board { background: #fff; padding: 15px; border-radius: 4px; box-shadow: 0 20px 40px rgba(11, 7, 26, 0.1); transform: rotate(-1.5deg); position: relative; max-width: 800px; margin: 0 auto; transition: transform 0.3s ease; }
   .planning-board:hover { transform: rotate(0deg) scale(1.02); }
@@ -92,7 +106,7 @@
   .card-programme .card-btn { background: linear-gradient(135deg, #7C4DFF, #5E35FF); box-shadow: 0 8px 20px rgba(124, 77, 255, 0.3); }
 
   @media (max-width: 900px) {
-    .bento-grid { grid-template-columns: 1fr; gap: 30px; }
+    .bento-grid {grid-template-columns: minmax(0, 1fr); gap: 30px; }
     .card-programme { flex-direction: column; align-items: flex-start; gap: 20px; padding: 35px; }
   }
   @media (max-width: 768px) {
