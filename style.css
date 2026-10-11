@@ -1788,14 +1788,16 @@ html, body {
 
 /* Zone de défilement : ne scrolle QUE si l'écran est plus étroit que la grille */
 .planning-scroll-mobile {
+    display: block;
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-bottom: 5px; /* Un poil d'air en bas */
+    padding-bottom: 10px;
     overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch; /* Rendu ultra-fluide sur iPhone */
-    touch-action: pan-x pan-y; /* Dit au téléphone : "Autorise le swipe ici !" */
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
 }
 
 /* Le mur beige */
@@ -1893,9 +1895,5 @@ html, body {
     .tv-badges-row {
         gap: 15px !important;
     }
-    
-    /* 5. Ajustement de la largeur de la grille de planning pour l'écran 16:10 */
-    .planning-mur {
-        min-width: 1000px !important;
-    }
+
 }
