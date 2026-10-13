@@ -4,45 +4,160 @@
   <meta charset="UTF-8">
   <title>Les Nommés – Inside Star Ac</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Retrouvez ici les académiciens nommés et nos estimations dès le lancement de la saison 2026.">
-  <link rel="canonical" href="https://insidefanmedia.fr/Nommes.html">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-star-ac.png">
-  <link rel="stylesheet" href="style.css">
   
+  <meta name="description" content="Découvrez les académiciens nommés cette semaine. Soutenez votre favori par SMS et participez aux estimations en direct de la communauté.">
+  <link rel="canonical" href="https://insidefanmedia.fr/Nommes.html">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-star-ac.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    .hero-starac { position: relative; padding: 140px 0 160px; display: flex; align-items: center; background: url("assets/Ban Star Ac.png") center/cover no-repeat; overflow: hidden; }
+
+    .hero-starac { 
+      position: relative; 
+      padding: 140px 0 200px;  /* <-- MODIFIÉ ICI */
+      display: flex; 
+      align-items: center; 
+      background: url("assets/Ban Star Ac.png") center/cover no-repeat; 
+      overflow: hidden; 
+    }
     .hero-starac::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11, 7, 26, 0.92) 0%, rgba(11, 7, 26, 0.75) 100%); }
     .hero-content { position: relative; z-index: 2; max-width: 900px; margin: auto; padding: 0 24px; color: #fff; text-align: center; }
-    .univers-logo-hero { height: 90px; margin-bottom: 25px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5)); }
+    .hero-content img.logo-univers { height: 90px; margin-bottom: 25px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5)); }
     .hero-content h1 { font-size: 52px; font-weight: 900; margin-bottom: 15px; letter-spacing: -1px; }
     .hero-content p { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; color: rgba(255, 255, 255, 0.95); }
-    .roster-section { padding: 90px 0; background: #F9F9FB; }
-    @media (max-width: 768px) { .hero-starac { padding: 120px 0 120px; } .hero-content h1 { font-size: 38px; } }
+
+    .nommes-grid-section { 
+      position: relative; 
+      z-index: 10; 
+      margin-top: -50px;  /* <-- MODIFIÉ ICI */
+      padding-bottom: 90px; 
+      max-width: 1200px;  
+      margin-left: auto; 
+      margin-right: auto; 
+      padding-left: 24px; 
+      padding-right: 24px; 
+    }
+    .bento-nommes { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: center; }
+
+    .card-affiche { border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15); display: flex; background: #0B071A; border: 1px solid rgba(255,255,255,0.05); }
+    .card-affiche img { width: 100%; height: auto; display: block; }
+
+    .card-officiel { background: linear-gradient(135deg, #EF7F00, #E65C00); border-radius: 32px; padding: 40px 30px; color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 20px 40px rgba(239, 127, 0, 0.25); height: 100%; }
+    .card-officiel h3 { font-size: 26px; font-weight: 900; margin: 0 0 25px; }
+    .vote-block { margin-bottom: 15px; }
+    .vote-label { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(255, 255, 255, 0.85); }
+    .vote-number { font-size: 42px; font-weight: 900; letter-spacing: -1px; margin: 2px 0 0; text-shadow: 0 4px 15px rgba(0,0,0,0.15);}
+    .vote-divider { width: 40px; height: 4px; background: rgba(255, 255, 255, 0.3); border-radius: 2px; margin: 15px auto 25px; }
+    .vote-legal { font-size: 11px; color: rgba(255, 255, 255, 0.7); margin-top: auto; padding-top: 15px; }
+    .badge-white { background: rgba(0, 0, 0, 0.3); color: #fff; display: inline-block; font-size: 11px; font-weight: 900; padding: 6px 14px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px;}
+
+    .card-sondage-modern { grid-column: 1 / -1; margin-top: 20px; background: linear-gradient(to right, #0B071A 0%, #301865 50%, #7C4DFF 100%); border-radius: 32px; border: 1px solid rgba(124, 77, 255, 0.3); box-shadow: 0 25px 50px rgba(11, 7, 26, 0.2); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; }
+    .sondage-left { padding: 60px 50px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+    .badge-starac { align-self: flex-start; background: linear-gradient(135deg, #EF7F00, #E65C00); color: #fff; padding: 8px 16px; border-radius: 50px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(239, 127, 0, 0.25); }
+    .sondage-left h3 { font-size: 42px; font-weight: 900; color: #fff; margin: 0 0 15px; line-height: 1.1; letter-spacing: -1px; }
+    .sondage-left p { font-size: 16px; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 0 35px; }
+    .live-stat { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 12px; color: #fff; font-size: 14px; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.15); width: fit-content; }
+    .pulse-dot { width: 8px; height: 8px; background: #FF4757; border-radius: 50%; }
+    .sondage-right { background: rgba(0, 0, 0, 0.15); padding: 40px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; border-left: 1px solid rgba(255, 255, 255, 0.1); }
+    .sondage-brut-wrapper { width: 100%; max-width: 450px; min-height: 350px; background: #1F222E; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .sondage-brut-wrapper iframe { width: 100%; height: 350px; border: none; }
+    .poll-lock { padding: 30px; text-align: center; }
+
+    @media (max-width: 900px) { .bento-nommes { grid-template-columns: 1fr; gap: 20px; } .card-sondage-modern { grid-template-columns: 1fr; text-align: center; } .sondage-left { padding: 40px 30px 20px; align-items: center; } .sondage-right { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; } .badge-starac { align-self: center; } }
+    @media (max-width: 768px) { .hero-starac { padding: 120px 0 120px; } .hero-content h1 { font-size: 38px; } .nommes-grid-section { margin-top: -60px; } .sondage-left h3 { font-size: 32px; } .sondage-brut-wrapper iframe { height: 380px; } }
   </style>
+
+  <!-- Firebase (Ajout pour la mise à jour de l'image) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </head>
+
 <body>
   <div id="header-placeholder"></div>
+  
   <main>
     <section class="hero-starac">
       <div class="hero-content">
-        <img src="assets/logo-star-ac.png" alt="Star Academy" class="univers-logo-hero">
-        <h1>Les Nommés</h1>
-        <p>Votre vote peut tout changer, mais il va falloir patienter.</p>
+        <img src="assets/logo-star-ac.png" alt="Star Academy" class="logo-univers">
+        <h1>Les Nommés de la semaine</h1>
+        <p>Les nommés de la semaine, le numéro de vote TV, et notre sondage communautaire (non officiel).</p>
       </div>
     </section>
 
-    <section class="roster-section" style="min-height: 40vh; display: flex; align-items: center; justify-content: center; padding: 40px 24px;">
-      <div style="background: #ffffff; border-radius: 32px; padding: 60px 40px; text-align: center; box-shadow: 0 15px 35px rgba(11, 7, 26, 0.05); border: 1px solid rgba(0,0,0,0.05); border-top: 6px solid #EF7F00; width: 100%; max-width: 800px;">
-        <h2 style="font-size: 32px; font-weight: 900; margin: 0 0 20px; color: #13082B; letter-spacing: -1px;">Évaluations à venir 🎤</h2>
-        <p style="font-size: 18px; color: #6E6E90; margin: 0 auto 35px; max-width: 600px; line-height: 1.6;">La compétition n'a pas encore débuté. Retrouvez sur cette page les nommés de la semaine et notre grand sondage d'estimation dès les premières nominations.</p>
-        <a href="Inside-star-ac.html" style="display: inline-block; background: linear-gradient(135deg, #EF7F00, #E65C00); color: #fff; padding: 16px 32px; border-radius: 14px; font-weight: 800; text-decoration: none; text-transform: uppercase;">Retourner au Hub</a>
+    <section class="nommes-grid-section">
+      <div class="bento-nommes">
+        
+        <div class="card-affiche">
+          <!-- C'EST ICI QUE LA MAGIE OPÈRE : ID ajouté pour Firebase -->
+          <img id="affiche-nommes-img" src="assets/image.png" alt="Affiche des Nommés">
+        </div>
+        
+        <div class="card-officiel">
+          <span class="badge-white">Soutenez par SMS</span>
+          <h3>Sauvez votre favori</h3>
+          <div class="vote-block"><div class="vote-label">Envoyez 1, 2 ou 3 par SMS</div><div class="vote-number">71 500</div></div>
+          <div class="vote-divider"></div>
+          <div class="vote-block"><div class="vote-label">Ou appelez le</div><div class="vote-number">34 80</div></div>
+          <div class="vote-legal">* 0,99 € par SMS ou Appel + Prix du SMS/Appel</div>
+        </div>
+
+        <div class="card-sondage-modern">
+          <div class="sondage-left">
+            <span class="badge-starac">Sondage Inside</span>
+            <h3>Le Grand Sondage</h3>
+            <p>Qui voulez-vous sauver cette semaine ?<br>Votez et faites bouger les estimations en temps réel avec la communauté.</p>
+            <div class="live-stat"><span class="pulse-dot"></span> Sondage non officiel</div>
+          </div>
+          <div class="sondage-right">
+            <div class="sondage-brut-wrapper" id="home-poll-wrapper">
+              <iframe id="home-poll-iframe" data-src="https://viewerplus.plus/s#s=inside-fan-media&p=phs3fct1t" scrolling="no" style="display:none;"></iframe>
+              <div id="home-poll-lock" class="poll-lock">
+                <p style="margin:0 0 15px; font-size:15px; color:rgba(255,255,255,0.8);">Le sondage interactif nécessite l'acceptation des cookies.</p>
+                <button onclick="localStorage.setItem('ifm_cookie_consent','accepted'); document.dispatchEvent(new Event('ifm-consent-updated'));" style="padding:12px 24px; border-radius:12px; border:none; background:#7C4DFF; color:#fff; font-weight:800; cursor:pointer; transition: 0.3s;">Activer le sondage</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
+
   <div id="footer-placeholder"></div>
   <script src="header.js"></script>
   <script src="footer.js"></script>
   <script src="menu.js"></script>
+
+  <!-- Script Viewer+ et Connexion Firebase -->
+  <script>
+    function checkPollConsent() {
+      const consent = localStorage.getItem('ifm_cookie_consent');
+      const iframe = document.getElementById('home-poll-iframe');
+      const lock = document.getElementById('home-poll-lock');
+      if (consent === 'accepted' && iframe && lock) { iframe.src = iframe.getAttribute('data-src'); iframe.style.display = 'block'; lock.style.display = 'none'; }
+    }
+    document.addEventListener('DOMContentLoaded', checkPollConsent);
+    document.addEventListener('ifm-consent-updated', checkPollConsent);
+
+    // Initialisation Firebase pour l'image
+    const firebaseConfigNommes = {
+      apiKey: "AIzaSyAgmhwesxB9uDwXc-JrsyAXFsggkirpczY",
+      authDomain: "inside-fan-media.firebaseapp.com",
+      databaseURL: "https://inside-fan-media-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "inside-fan-media"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfigNommes);
+    const dbNommes = firebase.database();
+
+    // Écoute de l'image en temps réel
+    dbNommes.ref("nommes/affiche").on("value", (snap) => {
+      if (snap.exists() && snap.val().trim() !== "") {
+        document.getElementById("affiche-nommes-img").src = snap.val();
+      }
+    });
+  </script>
 </body>
 </html>
