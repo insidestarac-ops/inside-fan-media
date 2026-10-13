@@ -52,17 +52,17 @@ const footerContent = `
   <div class="footer-grid">
     <div class="footer-col">
       <h4><img src="assets/logo-inside-fan-media.png" alt="Logo">Inside Fan Media</h4>
-      <a href="a-propos.html">À propos</a>
-      <a href="Contact.html">Contact & Support</a>
-      <a href="mentions-legales.html">Mentions Légales</a>
-      <a href="conditions-generales.html">Conditions Générales</a>
-      <a href="politique-confidentialite.html">Confidentialité</a>
+      <a href="a-propos">À propos</a>
+      <a href="Contact">Contact & Support</a>
+      <a href="mentions-legales">Mentions Légales</a>
+      <a href="conditions-generales">Conditions Générales</a>
+      <a href="politique-confidentialite">Confidentialité</a>
     </div>
 
     <div class="footer-col">
       <h4>Nos Univers</h4>
-      <a href="Inside-star-ac.html">Star Academy</a>
-      <a href="Inside-dals.html">Danse avec les stars</a>
+      <a href="Inside-star-ac">Star Academy</a>
+      <a href="Inside-dals">Danse avec les stars</a>
     </div>
 
     <!-- Colonne Partenaires -->
@@ -110,7 +110,7 @@ const footerContent = `
 <div id="ifm-cookie-banner">
   <h4 style="margin: 0 0 10px; font-size: 16px; font-weight: 900;">🍪 Utilisation des cookies</h4>
   <p style="margin: 0 0 20px; font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5;">
-    Nous utilisons des services tiers (tchat et sondages Viewer+, formulaire de contact) qui nécessitent des cookies fonctionnels. Vous pouvez les refuser, mais certaines fonctionnalités (comme le tchat en direct) resteront alors désactivées. <a href="politique-confidentialite.html" style="color: #7C4DFF; font-weight: 700;">En savoir plus</a>.
+    Nous utilisons des services tiers (tchat et sondages Viewer+, formulaire de contact) qui nécessitent des cookies fonctionnels. Vous pouvez les refuser, mais certaines fonctionnalités (comme le tchat en direct) resteront alors désactivées. <a href="politique-confidentialite" style="color: #7C4DFF; font-weight: 700;">En savoir plus</a>.
   </p>
   <div style="display: flex; gap: 10px;">
     <button id="btn-refuse-cookies" style="flex: 1; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #fff; font-weight: 800; cursor: pointer;">Refuser</button>
@@ -140,7 +140,6 @@ setTimeout(() => {
   };
 }, 100);
 
-// Petite fonction utilitaire réutilisable sur n'importe quelle page
 window.ifmHasConsent = function() {
   return localStorage.getItem('ifm_cookie_consent') === 'accepted';
 };
