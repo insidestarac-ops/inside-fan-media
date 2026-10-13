@@ -317,6 +317,30 @@
     </div>
   </div> 
 
+  <!-- ENCART 2.5 : AFFICHE DES NOMMÉS -->
+    <div class="regie-cockpit" style="border-color: #FF4757;">
+      <div class="regie-header">
+        <h2 style="color: #FF4757;">📸 Affiche des Nommés</h2>
+      </div>
+      <div class="regie-row">
+        <div class="regie-input-group" style="flex: 2;">
+          <label class="regie-label">Média (Upload direct de l'image)</label>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" id="afficheNommesInput" class="regie-input" placeholder="Lien généré automatiquement..." style="flex: 1;">
+            
+            <!-- Le fameux bouton 📁 pour aller chercher la photo sur le PC -->
+            <label for="fileUploadNommes" style="background: rgba(255,255,255,0.1); padding: 12px 15px; border-radius: 12px; cursor: pointer; font-weight: bold; border: 1px solid rgba(255,255,255,0.15);">📁</label>
+            <input type="file" id="fileUploadNommes" accept="image/*" style="display: none;">
+          </div>
+          <div id="uploadProgressNommes" style="font-size: 12px; color: #fff; font-weight: bold; margin-top: 10px;"></div>
+        </div>
+        
+        <div class="regie-input-group" style="flex: 1; justify-content: flex-end;">
+          <button id="btnPublishNommes" class="btn-publish" onclick="mettreAJourAfficheNommes()" style="background: #FF4757; margin-top: 0;">🚀 Publier l'Affiche</button>
+        </div>
+      </div>
+    </div>
+
   <script>
     function connexionRegie() {
       const email = document.getElementById('emailInput').value.trim();
