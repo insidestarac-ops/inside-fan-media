@@ -114,7 +114,7 @@ const headerContent = `
 
 <header class="site-header" id="mainHeader">
   <div class="header-inner">
-    <a href="index.html" class="brand">
+    <a href="/" class="brand">
       <img src="assets/logo-inside-fan-media.png" alt="INSIDE">
       <span id="brand-text">INSIDE FAN MEDIA</span>
     </a>
@@ -122,30 +122,30 @@ const headerContent = `
     <div class="pc-nav-container">
       <nav class="pc-nav">
         <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="actu.html">L'Actu Live</a></li>
-          <li><a href="Live.html">Le QG Live</a></li>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="actu">L'Actu Live</a></li>
+          <li><a href="Live">Le QG Live</a></li>
           <li class="has-dropdown">
-            <a href="Inside-star-ac.html">Inside Star Ac</a>
+            <a href="Inside-star-ac">Inside Star Ac</a>
             <div class="dropdown">
-              <a href="Nommes.html">Les Nommés</a>
-              <a href="Academie.html">L'Académie</a>
-              <a href="Programme.html">Le Programme</a>
+              <a href="Nommes">Les Nommés</a>
+              <a href="Academie">L'Académie</a>
+              <a href="Programme">Le Programme</a>
             </div>
           </li>
           <li class="has-dropdown">
-            <a href="Inside-dals.html">Inside DALS</a>
+            <a href="Inside-dals">Inside DALS</a>
             <div class="dropdown">
-              <a href="Casting.html">Le Casting</a>
-              <a href="Classement.html">Classement</a>
+              <a href="Casting">Le Casting</a>
+              <a href="Classement">Classement</a>
             </div>
           </li>
-          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="a-propos">À propos</a></li>
         </ul>
       </nav>
     </div>
     
-    <a href="Contact.html" class="btn-contact">Contact</a>
+    <a href="Contact" class="btn-contact">Contact</a>
 
     <button id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -155,34 +155,34 @@ const headerContent = `
 
 <nav class="mobile-nav-panel">
   <div class="mob-nav-content">
-    <a href="index.html" class="mob-link-main">Accueil</a>
-    <a href="actu.html" class="mob-link-main" style="color: #FF4D4D;">L'Actu Live</a>
-    <a href="Live.html" class="mob-link-main" style="color: #00A6FF;">Le QG Live</a>
+    <a href="/" class="mob-link-main">Accueil</a>
+    <a href="actu" class="mob-link-main" style="color: #FF4D4D;">L'Actu Live</a>
+    <a href="Live" class="mob-link-main" style="color: #00A6FF;">Le QG Live</a>
     
     <div class="mob-accordion">
       <button class="mob-acc-trigger" type="button">Inside Star Ac</button>
       <div class="mob-acc-content">
-        <a href="Inside-star-ac.html">Le Hub</a>
-        <a href="Nommes.html">Les Nommés</a>
-        <a href="Academie.html">L'Académie</a>
-        <a href="Programme.html">Le Programme</a>
+        <a href="Inside-star-ac">Le Hub</a>
+        <a href="Nommes">Les Nommés</a>
+        <a href="Academie">L'Académie</a>
+        <a href="Programme">Le Programme</a>
       </div>
     </div>
 
     <div class="mob-accordion">
       <button class="mob-acc-trigger" type="button">Inside DALS</button>
       <div class="mob-acc-content">
-        <a href="Inside-dals.html">Le Hub</a>
-        <a href="Casting.html">Le Casting</a>
-        <a href="Classement.html">Classement</a>
+        <a href="Inside-dals">Le Hub</a>
+        <a href="Casting">Le Casting</a>
+        <a href="Classement">Classement</a>
       </div>
     </div>
 
-    <a href="a-propos.html" class="mob-link-main">À propos de nous</a>
+    <a href="a-propos" class="mob-link-main">À propos de nous</a>
   </div>
   
   <div class="mob-nav-footer">
-    <a href="Contact.html" class="btn-mob-contact">Nous contacter</a>
+    <a href="Contact" class="btn-mob-contact">Nous contacter</a>
   </div>
 </nav>
 `;
