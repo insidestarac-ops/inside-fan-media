@@ -399,5 +399,29 @@
           });
       }, 1000);
     </script>
+    <!-- FIN DE L'ENCART -->
+
+  </div> <!-- C'EST CETTE BALISE QUI FERME LA ZONE CACHÉE -->
+
+  <!-- SCRIPTS INDISPENSABLES POUR LA CONNEXION (QUE TU AVAIS EFFACÉS) -->
+  <script>
+    function connexionRegie() {
+      const email = document.getElementById('emailInput').value.trim();
+      const mdp = document.getElementById('passInput').value;
+      firebase.auth().signInWithEmailAndPassword(email, mdp).catch(() => {
+        alert("❌ E-mail ou mot de passe incorrect !"); document.getElementById('passInput').value = "";
+      });
+    }
+    document.getElementById('passInput').addEventListener('keypress', e => { if(e.key==='Enter') connexionRegie(); });
+  </script>
+  
+  <script src="live.js"></script>
+  
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      document.getElementById('login-screen').style.display = user ? "none" : "block";
+      document.getElementById('regie-content').style.display = user ? "block" : "none";
+    });
+  </script>
 </body>
 </html>
