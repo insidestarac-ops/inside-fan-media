@@ -35,7 +35,15 @@ injecterMoteursSociaux();
 ========================================================= */
 function publierMessage() {
   const titre = document.getElementById("titleInput").value;
-  const message = document.getElementById("messageInput").value;
+  
+  // Récupération propre du HTML généré par Quill
+  let message = "";
+  let messageVide = true;
+  if (quillRegie) {
+      message = quillRegie.root.innerHTML;
+      messageVide = quillRegie.getText().trim() === "";
+  }
+  
   const media = document.getElementById("mediaInput").value;
   const lien = document.getElementById("linkInput").value;
   
@@ -45,7 +53,7 @@ function publierMessage() {
   const tag = tagEl ? tagEl.value : "";
   const dateProg = dateEl ? dateEl.value : "";
   
-  if (message.trim() === "" && titre.trim() === "") { 
+  if (messageVide && titre.trim() === "" && media.trim() === "") { 
     alert("Impossible d'envoyer un message vide !"); return; 
   }
 
@@ -71,16 +79,16 @@ function publierMessage() {
     heure: heureAffichee,
     date: dateAffichee,
     titre: titre,
-    texte: message,
+    texte: message, // Envoi du code HTML généré par Quill
     media: media,
     lien: lien,
-    tag: tag, // On enregistre le tag
-    timestamp: postTimestamp // On utilise notre propre calcul de temps pour la programmation
+    tag: tag,
+    timestamp: postTimestamp
   });
 
   // On vide les champs après l'envoi
   document.getElementById("titleInput").value = "";
-  document.getElementById("messageInput").value = "";
+  if (quillRegie) quillRegie.root.innerHTML = ""; // Vide l'éditeur visuel
   document.getElementById("mediaInput").value = "";
   document.getElementById("linkInput").value = "";
   if(dateEl) dateEl.value = "";
@@ -150,7 +158,11 @@ function afficherArticleHTML(data) {
   `;
 
   if (data.titre && data.titre.trim() !== "") htmlContent += `<h3 class="actu-post-title">${data.titre}</h3>`;
-  if (data.texte && data.texte.trim() !== "") htmlContent += `<p>${data.texte.replace(/\n/g, '<br>')}</p>`;
+  
+  // On utilise une div pour accueillir le HTML propre envoyé par la nouvelle régie Quill
+  if (data.texte && data.texte.trim() !== "" && data.texte !== "<p><br></p>") { 
+      htmlContent += `<div style="font-size: 15px;">${data.texte}</div>`; 
+  }
 
   // --- GESTION DES MÉDIAS ---
   if (data.media && data.media.trim() !== "") {
@@ -185,7 +197,7 @@ function afficherArticleHTML(data) {
     else {
       htmlContent += `<img src="${url}" alt="Illustration" class="actu-image" style="width: auto; max-width: 100%; height: auto; max-height: 65vh; display: block; margin: 15px auto 0; border-radius: 12px; object-fit: contain;">`;
     }
-     
+      
   }
 
   if (data.lien && data.lien.trim() !== "") {
@@ -229,7 +241,7 @@ if (liveFeed) {
 /* =========================================================
    5. UPLOAD DIRECT DES MÉDIAS (IMGBB - 100% GRATUIT)
 ========================================================= */
-const IMGBB_API_KEY = "c0dc37036ae1706a4820e4f9e9d271f4"; // <-- COLLE TA CLÉ ICI
+const IMGBB_API_KEY = "c0dc37036ae1706a4820e4f9e9d271f4"; 
 
 const fileUpload = document.getElementById('fileUpload');
 const uploadPreviewContainer = document.getElementById('uploadPreviewContainer');
@@ -537,3 +549,58 @@ db.ref("planning/infosSemaine").on("value", function(snapshot) {
     if (document.getElementById("planDates")) document.getElementById("planDates").value = data.dates;
   }
 });
+
+/* =========================================================
+   9. INITIALISATION DE L'ÉDITEUR VISUEL (RÉGIE PRO)
+========================================================= */
+let quillRegie;
+
+if (document.getElementById('quill-editor')) {
+    // 1. Astuce Pro : Forcer Quill à utiliser des styles universels (ex: style="text-align: center")
+    var AlignStyle = Quill.import('attributors/style/align');
+    var DirectionStyle = Quill.import('attributors/style/direction');
+    Quill.register(AlignStyle, true);
+    Quill.register(DirectionStyle, true);
+
+    // 2. Lancement de l'éditeur avec toutes les options
+    quillRegie = new Quill('#quill-editor', {
+        theme: 'snow',
+        modules: { toolbar: '#quill-toolbar' },
+        placeholder: "Que se passe-t-il actuellement au château ?..."
+    });
+}
+
+// Fonction : Insérer un Emoji à l'endroit du curseur
+function insererEmoji(emoji) {
+    if (quillRegie) {
+        const range = quillRegie.getSelection(true);
+        if (range) {
+            quillRegie.insertText(range.index, emoji + ' ');
+            quillRegie.setSelection(range.index + 2);
+        } else {
+            const length = quillRegie.getLength();
+            quillRegie.insertText(length - 1, emoji + ' ');
+        }
+    }
+}
+
+// Fonction MAGIQUE : Insérer un modèle de texte complet en 1 clic
+function insererModele(type) {
+    if (!quillRegie) return;
+    
+    let html = '';
+    if (type === 'sondage') {
+        html = '<p style="text-align: center;">📊 <strong><u>SONDAGE EXPRESS</u></strong></p><p style="text-align: center;"><em>Qui a fait la meilleure prestation ce soir ?</em></p><p><br></p><p>🔸 Option 1 : ...</p><p>🔸 Option 2 : ...</p><p><br></p><p style="text-align: center; color: #EF7F00;"><strong>👉 Donnez votre avis en commentaire !</strong></p>';
+    } else if (type === 'eval') {
+        html = '<p>📝 <strong>ÉVALUATION DE [PRÉNOM] :</strong></p><p><br></p><p>🎵 <strong>Titre choisi :</strong> ...</p><p>🗣️ <strong>Avis des professeurs :</strong></p><ul><li><em>Michaël Goldman :</em> "..."</li><li><em>Marlène Schaff :</em> "..."</li></ul><p><br></p>';
+    } else if (type === 'citation') {
+        html = '<blockquote style="border-left: 4px solid #7C4DFF; padding-left: 10px; font-style: italic; margin-left: 0;">" [Insérez la phrase culte ou le clash ici] "</blockquote><p style="text-align: right;">— <strong>[Prénom de l\'élève]</strong></p><p><br></p>';
+    }
+    
+    const range = quillRegie.getSelection(true);
+    const index = range ? range.index : quillRegie.getLength();
+    
+    // On injecte le HTML proprement à l'endroit du curseur
+    quillRegie.clipboard.dangerouslyPasteHTML(index, html);
+    quillRegie.setSelection(index + html.length);
+}
