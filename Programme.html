@@ -101,17 +101,21 @@
     border: none; 
   }
   
-  /* Badges sobres */
-  .tag-avec { 
-    background: #25134A; 
-    color: #A77BFF; 
+  /* === BADGES HARMONISÉS === */
+  .tag-badge { 
     font-size: 11px; 
     text-transform: uppercase; 
     padding: 4px 10px; 
     border-radius: 6px; 
     font-weight: 800; 
     letter-spacing: 0.5px;
+    display: inline-block;
   }
+  /* Styles spécifiques par type de badge */
+  .tag-de { background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.8); }
+  .tag-avec { background: #25134A; color: #A77BFF; }
+  .tag-inter { background: rgba(255, 193, 7, 0.08); color: #FFC107; border: 1px solid rgba(255, 193, 7, 0.4); }
+  .tag-regle { background: rgba(239, 127, 0, 0.15); color: #EF7F00; }
 
   @media (max-width: 768px) {
     .hero-starac { padding: 130px 20px 80px; min-height: auto; }
@@ -123,7 +127,7 @@
     .track-avatar + .track-avatar, .track-avatar + .mystery-avatar { margin-left: -15px; }
     .track-song { font-size: 20px; }
     .track-artist { font-size: 14px; gap: 8px;}
-    .tag-avec { padding: 3px 8px; font-size: 10px;}
+    .tag-badge { padding: 3px 8px; font-size: 10px;}
   }
 </style>
 </head>
@@ -154,7 +158,7 @@
         <div class="track-details">
           <div class="track-students">Les Académiciens</div>
           <h3 class="track-song">Dans un autre monde</h3>
-          <p class="track-artist"><span class="tag-avec">De</span> <strong>Céline Dion</strong></p>
+          <p class="track-artist"><span class="tag-badge tag-de">De</span> <strong>Céline Dion</strong></p>
         </div>
       </div>
 
@@ -169,7 +173,7 @@
           <div class="track-students">10 élèves pressentis</div>
           <h3 class="track-song">Quand je marche</h3>
           <p class="track-artist">
-            <span class="tag-avec">Avec</span> 
+            <span class="tag-badge tag-avec">Avec</span> 
             <img src="Artistes/Ben.png" class="artist-mini-pic" alt="Ben Mazué">
             <strong>Ben Mazué</strong>
           </p>
@@ -187,7 +191,7 @@
           <div class="track-students">Un(e) élève à définir</div>
           <h3 class="track-song">Un été avec toi</h3>
           <p class="track-artist">
-            <span class="tag-avec">Avec</span> 
+            <span class="tag-badge tag-avec">Avec</span> 
             <img src="Artistes/Adele.png" class="artist-mini-pic" alt="Adèle Castillon">
             <strong>Adèle Castillon</strong>
           </p>
@@ -205,9 +209,10 @@
           <div class="track-students">Un(e) élève à définir</div>
           <h3 class="track-song">One Track Mind</h3>
           <p class="track-artist">
-            <span class="tag-avec">Artiste Internationale</span> 
+            <span class="tag-badge tag-inter">Avec</span> 
             <img src="Artistes/Naika.png" class="artist-mini-pic" alt="Naïka">
-            <strong>Naïka</strong>
+            <strong>Naïka</strong> 
+            <span style="font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); font-style: italic; margin-left: 2px;">(Artiste internationale)</span>
           </p>
         </div>
       </div>
@@ -223,7 +228,7 @@
           <div class="track-students">Un(e) élève (Sans Répétitions !)</div>
           <h3 class="track-song">Titre Mystère</h3>
           <p class="track-artist">
-            <span class="tag-avec">Avec</span> 
+            <span class="tag-badge tag-avec">Avec</span> 
             <img src="Artistes/BF.png" class="artist-mini-pic" alt="Bigflo et Oli">
             <strong>Bigflo et Oli</strong>
           </p>
@@ -242,9 +247,32 @@
           <div class="track-students">Kylian & Ses Choix</div>
           <h3 class="track-song">Chanson Imposée</h3>
           <p class="track-artist">
-            <span class="tag-avec">Règle</span> 
+            <span class="tag-badge tag-regle">Règle</span> 
             <strong>Kylian impose un titre à ses camarades.</strong>
           </p>
+        </div>
+      </div>
+
+      <!-- BATTLE DU TOP 3 -->
+      <h2 class="category-title"><span>🛡️</span> Battle du Top 3</h2>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Morgan.png" alt="Morgan" class="track-avatar">
+          <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar">
+          <img src="Eleves SF/Cameron.png" alt="Cameron" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Morgan, Amel & Cameron</div>
+          <h3 class="track-song">Hier encore</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-de">De</span> 
+            <strong>Charles Aznavour</strong>
+          </p>
+          <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
+            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
+            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Ils s’affronteront lors du prime avec l'objectif de gagner l’immunité.</span>
+          </div>
         </div>
       </div>
 
