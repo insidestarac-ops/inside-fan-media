@@ -74,11 +74,12 @@ const footerContent = `
         <img src="assets/viewer.png" alt="Viewer+" class="partner-logo" style="margin-top: 0;">
       </a>
       
-      <!-- Carnet Star Ac (Texte discret et élégant) -->
+      <!-- Carnet Star Ac (Texte discret et élégant)
       <a href="https://carnet-starac.shoplit.io/" target="_blank" style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #6E6E90; text-decoration: none;">
         <span style="font-size: 16px;">📓</span> Les Carnets Star Ac 
         <span style="background: rgba(124, 77, 255, 0.1); color: #7C4DFF; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 900; margin-left: 2px;">-15%</span>
       </a>
+      -->
     </div>
 
     <div class="footer-col">
