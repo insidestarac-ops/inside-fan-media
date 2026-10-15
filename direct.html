@@ -72,7 +72,8 @@
 
   <div id="regie-content">
     
-    <!-- ENCART 1 : ACTUS -->
+    <!-- ENCART 1 : ACTUS (MASQUÉ) -->
+    <div style="display: none;">
     <div class="regie-cockpit">
       <div class="regie-header">
         <h2>Régie Studio (Fil d'Actu)</h2>
@@ -165,6 +166,61 @@
       
       <button class="btn-publish" onclick="publierMessage()">🚀 Publier dans le Fil d'Actu</button>
     </div>
+    </div> <!-- FIN ENCART 1 MASQUÉ -->
+
+    <!-- NOUVEL ENCART : GESTION DES SONDAGES -->
+    <div class="regie-cockpit" style="border-color: #7C4DFF;">
+      <div class="regie-header">
+        <h2 style="color: #7C4DFF;">📊 Sondages Viewer+</h2>
+      </div>
+      <div class="regie-row">
+        <div class="regie-input-group" style="flex: 1;">
+          <label class="regie-label">ID du Sondage Accueil</label>
+          <input type="text" id="sondageAccueilInput" class="regie-input" placeholder="ex: p4rhfg94w">
+        </div>
+      </div>
+      <div class="regie-row">
+        <div class="regie-input-group" style="flex: 1;">
+          <label class="regie-label">ID du Sondage Nommés</label>
+          <input type="text" id="sondageNommesInput" class="regie-input" placeholder="ex: pey7me20c">
+        </div>
+      </div>
+      <button class="btn-publish" onclick="publierSondages()" style="background: linear-gradient(135deg, #7C4DFF, #5E35FF);">💾 Sauvegarder les Sondages</button>
+    </div>
+
+    <!-- SCRIPT GESTION DES SONDAGES -->
+    <script>
+      function publierSondages() {
+          const accueil = document.getElementById("sondageAccueilInput").value.trim();
+          const nommes = document.getElementById("sondageNommesInput").value.trim();
+          
+          let updates = {};
+          if (accueil) updates["sondages/accueil"] = accueil;
+          if (nommes) updates["sondages/nommes"] = nommes;
+
+          if (Object.keys(updates).length > 0) {
+              firebase.database().ref().update(updates)
+              .then(() => {
+                  alert("✅ Liens des sondages mis à jour avec succès !");
+              })
+              .catch((error) => {
+                  alert("❌ Erreur lors de la mise à jour : " + error.message);
+              });
+          }
+      }
+
+      // Chargement initial des IDs de sondages
+      setTimeout(() => {
+          firebase.database().ref("sondages").on("value", (snap) => {
+              if(snap.exists()) {
+                  const data = snap.val();
+                  if (data.accueil) document.getElementById("sondageAccueilInput").value = data.accueil;
+                  if (data.nommes) document.getElementById("sondageNommesInput").value = data.nommes;
+              }
+          });
+      }, 1000);
+    </script>
+
 
     <!-- ENCART 2 : TICKER -->
     <div class="regie-cockpit" style="border-color: #00A6FF;">
