@@ -743,7 +743,7 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ==========================================
+// ==========================================
   // SONDAGE ET ANIMATIONS CARNET
   // ==========================================
   function loadHomePoll() {
@@ -752,7 +752,19 @@
     if (window.ifmHasConsent && window.ifmHasConsent()) {
       lock.style.display = 'none';
       iframe.style.display = 'block';
-      if (!iframe.src) iframe.src = iframe.getAttribute('data-src');
+      
+      // On écoute Firebase pour avoir le bon lien depuis la régie
+      firebase.database().ref("sondages/accueil").once("value").then(snap => {
+          if(snap.exists() && snap.val() !== "") {
+               iframe.src = `https://viewerplus.plus/s#s=inside-fan-media&p=${snap.val()}`;
+          } else {
+               // Lien de secours
+               iframe.src = iframe.getAttribute('data-src');
+          }
+      }).catch(() => {
+          // Si erreur de connexion, on met le lien de secours
+          if (!iframe.src) iframe.src = iframe.getAttribute('data-src');
+      });
     } else {
       lock.style.display = 'block';
       iframe.style.display = 'none';
