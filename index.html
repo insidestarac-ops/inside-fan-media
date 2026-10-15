@@ -524,7 +524,7 @@
   const DUREE_PRIME = 170; // 2h50
   const listePrimes = [
     { dateStr: "2026-10-10T21:10:00+02:00", tag: "Saison 14", titre: "PRIME 1 - LANCEMENT SAISON 14" },
-    { dateStr: "2026-10-17T21:10:00+02:00", tag: "", titre: "PRIME 2" },
+    { dateStr: "2026-10-17T21:10:00+02:00", tag: "Prime des défis", titre: "PRIME 2" },
     { dateStr: "2026-10-24T21:10:00+02:00", tag: "", titre: "PRIME 3" }
   ];
 
@@ -678,8 +678,22 @@
         let quotiHtml = "";
         
         if (nextQuoti) {
-           let dayName = (nextQuoti.start - nowMs < 86400000 && new Date(nextQuoti.start).getDay() === new Date().getDay()) ? "Aujourd'hui" : joursStr[nextQuoti.day];
+           // Calcul précis des dates pour Aujourd'hui et Demain
+           let todayObj = new Date();
+           let targetObj = new Date(nextQuoti.start);
+           let tmrwObj = new Date();
+           tmrwObj.setDate(todayObj.getDate() + 1);
+
+           let dayName = joursStr[nextQuoti.day]; // Par défaut : "Lundi", "Mardi", etc.
+           
+           if (targetObj.toDateString() === todayObj.toDateString()) {
+             dayName = "Aujourd'hui";
+           } else if (targetObj.toDateString() === tmrwObj.toDateString()) {
+             dayName = "Demain";
+           }
+
            let timeStr = `${nextQuoti.h}h${String(nextQuoti.m).padStart(2,'0')}`;
+           
            quotiHtml = `
              <div style="margin-top:12px; padding:8px 14px; background:rgba(124, 77, 255, 0.08); border-radius:10px; border:1px solid rgba(124, 77, 255, 0.2); font-size:13px; font-weight:700; color:#13082B; display:inline-flex; align-items:center; gap:8px; max-width:100%; box-sizing:border-box; justify-content:center; text-align:center;">
                <span style="font-size:15px;">📺</span>
