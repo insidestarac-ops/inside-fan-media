@@ -133,31 +133,45 @@
 
   <!-- Script Viewer+ et Connexion Firebase -->
   <script>
-    function checkPollConsent() {
-      const consent = localStorage.getItem('ifm_cookie_consent');
-      const iframe = document.getElementById('home-poll-iframe');
-      const lock = document.getElementById('home-poll-lock');
-      if (consent === 'accepted' && iframe && lock) { iframe.src = iframe.getAttribute('data-src'); iframe.style.display = 'block'; lock.style.display = 'none'; }
+  function checkPollConsent() {
+    const consent = localStorage.getItem('ifm_cookie_consent');
+    const iframe = document.getElementById('home-poll-iframe');
+    const lock = document.getElementById('home-poll-lock');
+    if (consent === 'accepted' && iframe && lock) { 
+        iframe.style.display = 'block'; 
+        lock.style.display = 'none'; 
+        
+        firebase.database().ref("sondages/nommes").once("value").then(snap => {
+            if(snap.exists() && snap.val() !== "") {
+                 iframe.src = `https://viewerplus.plus/s#s=inside-fan-media&p=${snap.val()}`;
+            } else {
+                 iframe.src = iframe.getAttribute('data-src');
+            }
+        }).catch(() => {
+            // Sécurité : si Firebase échoue, on charge le lien de base
+            if (!iframe.src) iframe.src = iframe.getAttribute('data-src');
+        });
     }
-    document.addEventListener('DOMContentLoaded', checkPollConsent);
-    document.addEventListener('ifm-consent-updated', checkPollConsent);
+  }
+  document.addEventListener('DOMContentLoaded', checkPollConsent);
+  document.addEventListener('ifm-consent-updated', checkPollConsent);
 
-    // Initialisation Firebase pour l'image
-    const firebaseConfigNommes = {
-      apiKey: "AIzaSyAgmhwesxB9uDwXc-JrsyAXFsggkirpczY",
-      authDomain: "inside-fan-media.firebaseapp.com",
-      databaseURL: "https://inside-fan-media-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "inside-fan-media"
-    };
-    if (!firebase.apps.length) firebase.initializeApp(firebaseConfigNommes);
-    const dbNommes = firebase.database();
+  // Initialisation Firebase pour l'image
+  const firebaseConfigNommes = {
+    apiKey: "AIzaSyAgmhwesxB9uDwXc-JrsyAXFsggkirpczY",
+    authDomain: "inside-fan-media.firebaseapp.com",
+    databaseURL: "https://inside-fan-media-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "inside-fan-media"
+  };
+  if (!firebase.apps.length) firebase.initializeApp(firebaseConfigNommes);
+  const dbNommes = firebase.database();
 
-    // Écoute de l'image en temps réel
-    dbNommes.ref("nommes/affiche").on("value", (snap) => {
-      if (snap.exists() && snap.val().trim() !== "") {
-        document.getElementById("affiche-nommes-img").src = snap.val();
-      }
-    });
-  </script>
+  // Écoute de l'image en temps réel
+  dbNommes.ref("nommes/affiche").on("value", (snap) => {
+    if (snap.exists() && snap.val().trim() !== "") {
+      document.getElementById("affiche-nommes-img").src = snap.val();
+    }
+  });
+</script>
 </body>
 </html>
