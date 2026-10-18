@@ -608,6 +608,56 @@
   };
 </script>
 
+<!-- =========================================================
+   BOUTON SECRET : TÉLÉCHARGEMENT DU PLANNING EN PNG (QUALITÉ X4)
+========================================================= -->
+
+<!-- 1. La librairie magique pour faire la capture -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- 2. Ton script JS secret -->
+<script>
+    // ⚠️ IMPORTANT : Remplace 'mon-planning-visuel' par l'ID exact de la grande div qui entoure tout ton planning
+    const idDuPlanning = "mon-planning-visuel"; 
+
+    // Détection du code secret "?regie=true" dans l'URL
+    if (window.location.search.includes("regie=true")) {
+        
+        // Création du bouton secret
+        const btnSecret = document.createElement("button");
+        btnSecret.innerHTML = "📸 TÉLÉCHARGER LE PLANNING HD (ADMIN)";
+        btnSecret.style.cssText = "display: block; margin: 20px auto; background: #EF7F00; color: white; border: none; padding: 15px 30px; border-radius: 12px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 15px rgba(239, 127, 0, 0.4); position: relative; z-index: 9999;";
+        
+        // On place le bouton juste en dessous de la grille
+        const planningElement = document.getElementById(idDuPlanning);
+        if (planningElement) {
+            planningElement.parentNode.insertBefore(btnSecret, planningElement.nextSibling);
+        }
+
+        // L'action au clic
+        btnSecret.addEventListener("click", function() {
+            const texteOriginal = btnSecret.innerHTML;
+            btnSecret.innerHTML = "⏳ Génération de l'image Ultra HD...";
+            btnSecret.style.background = "#7C4DFF"; // Devient violet
+
+            html2canvas(document.getElementById(idDuPlanning), {
+                scale: 4, // Multiplie la netteté par 4 !
+                useCORS: true,
+                backgroundColor: null // Garde ton fond d'origine
+            }).then(canvas => {
+                let lien = document.createElement('a');
+                lien.download = 'Planning-Inside-Star-Ac.png'; // Le nom du fichier sera toujours celui-ci
+                lien.href = canvas.toDataURL("image/png");
+                lien.click();
+                
+                // Remet le bouton à son état initial
+                btnSecret.innerHTML = texteOriginal;
+                btnSecret.style.background = "#EF7F00";
+            });
+        });
+    }
+</script>
+
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="menu.js"></script>
