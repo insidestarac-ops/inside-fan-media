@@ -430,10 +430,14 @@ function texteEtiquette(type, duree) {
 
 function ajouterCoursPlanning() {
     const jour   = document.getElementById("planJour").value;
-    const heure  = document.getElementById("planHeure").value;
-    const depart = document.getElementById("planDepart").value;
+    const heureExacte = document.getElementById("planHeureExacte").value; // Format "10-30"
     const duree  = document.getElementById("planDuree").value;
     const type   = document.getElementById("planType").value;
+
+    // Découpage magique pour être compatible avec l'ancien système !
+    const parts = heureExacte.split('-');
+    const heure = parts[0]; 
+    const depart = "start-" + parts[1]; // Recrée "start-30", "start-00" etc.
 
     db.ref("planning/semaine1/" + jour + "-" + heure).push({
         depart, duree, type, texte: texteEtiquette(type, duree)
@@ -443,35 +447,14 @@ function ajouterCoursPlanning() {
 
 // --- SEMAINE TYPE (relevée sur le vrai mur de l'Académie) ---
 const SEMAINE_TYPE = [
-    // Lundi
-    ["lundi",7,"start-30","h-0-5","tag-reveil"], ["lundi",9,"start-00","h-2-5","tag-repetitions"],
-    ["lundi",11,"start-30","h-0-5","tag-dejeuner"], ["lundi",13,"start-00","h-1-5","tag-chant"],
-    ["lundi",15,"start-00","h-2","tag-danse"], ["lundi",18,"start-00","h-2-5","tag-repetitions"],
-    ["lundi",21,"start-00","h-0-5","tag-diner"],
-    // Mardi
-    ["mardi",7,"start-30","h-0-5","tag-reveil"], ["mardi",8,"start-30","h-2-5","tag-evaluations"],
-    ["mardi",11,"start-00","h-2-5","tag-evaluations"], ["mardi",14,"start-00","h-0-5","tag-dejeuner"],
-    ["mardi",15,"start-00","h-0-5","tag-cp-chant"], ["mardi",16,"start-00","h-0-5","tag-cp-danse"],
-    ["mardi",17,"start-00","h-0-5","tag-cp-expression"], ["mardi",18,"start-00","h-2-5","tag-tonalite"],
-    ["mardi",21,"start-00","h-0-5","tag-diner"],
-    // Mercredi
-    ["mercredi",7,"start-30","h-0-5","tag-reveil"], ["mercredi",9,"start-30","h-1-5","tag-expression"],
-    ["mercredi",12,"start-00","h-0-5","tag-sport"], ["mercredi",13,"start-00","h-0-5","tag-dejeuner"],
-    ["mercredi",16,"start-00","h-4","tag-repetitions"], ["mercredi",21,"start-00","h-0-5","tag-diner"],
-    ["mercredi",22,"start-00","h-0-5","tag-surprise"],
-    // Jeudi
-    ["jeudi",7,"start-30","h-0-5","tag-reveil"], ["jeudi",9,"start-00","h-1-5","tag-theatre"],
-    ["jeudi",11,"start-00","h-0-5","tag-dejeuner"], ["jeudi",13,"start-00","h-0-5","tag-surprise"],
-    ["jeudi",14,"start-30","h-1","tag-masterclass"], ["jeudi",16,"start-00","h-4","tag-repetitions"],
-    ["jeudi",21,"start-00","h-0-5","tag-diner"],
-    // Vendredi
-    ["vendredi",7,"start-30","h-0-5","tag-reveil"], ["vendredi",9,"start-00","h-1","tag-sport"],
-    ["vendredi",11,"start-30","h-0-5","tag-dejeuner"], ["vendredi",13,"start-30","h-1-5","tag-expression"],
-    ["vendredi",21,"start-00","h-0-5","tag-diner"],
-    // Samedi
-    ["samedi",7,"start-00","h-journee","tag-showtime"],
-    // Dimanche
-    ["dimanche",7,"start-30","h-0-5","tag-reveil"], ["dimanche",13,"start-30","h-3","tag-debrief"]
+    ["lundi", 8, "start-00", "h-0-5", "tag-reveil"],
+    ["mardi", 8, "start-00", "h-0-5", "tag-reveil"],
+    ["mercredi", 8, "start-00", "h-0-5", "tag-reveil"],
+    ["jeudi", 8, "start-00", "h-0-5", "tag-reveil"],
+    ["vendredi", 8, "start-00", "h-0-5", "tag-reveil"],
+    ["samedi", 7, "start-00", "h-journee", "tag-showtime"], // Jusqu'à minuit
+    ["dimanche", 8, "start-00", "h-0-5", "tag-reveil"],
+    ["dimanche", 13, "start-00", "h-4-5", "tag-debrief"]
 ];
 
 function chargerSemaineType() {
@@ -504,10 +487,13 @@ function viderPlanning() {
 // Supprimer UNE SEULE case du planning
 function supprimerCasePlanning() {
     const jour = document.getElementById("planJour").value;
-    const heure = document.getElementById("planHeure").value;
+    const heureExacte = document.getElementById("planHeureExacte").value;
+    
+    // On récupère juste l'heure (ex: "10" dans "10-30") pour cibler le bon endroit dans Firebase
+    const heure = heureExacte.split("-")[0]; 
     const idCase = jour + "-" + heure;
 
-    if(confirm(`Voulez-vous vraiment effacer ce qu'il y a le ${jour} à la ligne ${heure}H ?`)) {
+    if(confirm(`Voulez-vous vraiment effacer ce qu'il y a le ${jour} dans la case de ${heure}H ?`)) {
         db.ref("planning/semaine1/" + idCase).remove().then(() => {
             alert(`🗑️ Case ${jour} à ${heure}H vidée avec succès !`);
         }).catch((error) => {
