@@ -275,37 +275,9 @@
           </select>
         </div>
         <div class="regie-input-group">
-          <label class="regie-label">Heure de la case</label>
-          <select id="planHeure" class="regie-input">
-            <option value="7">07h00</option>
-            <option value="8">08h00</option>
-            <option value="9">09h00</option>
-            <option value="10">10h00</option>
-            <option value="11">11h00</option>
-            <option value="12">12h00</option>
-            <option value="13">13h00</option>
-            <option value="14">14h00</option>
-            <option value="15">15h00</option>
-            <option value="16">16h00</option>
-            <option value="17">17h00</option>
-            <option value="18">18h00</option>
-            <option value="19">19h00</option>
-            <option value="20">20h00</option>
-            <option value="21">21h00</option>
-            <option value="22">22h00</option>
-            <option value="23">23h00</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="regie-row">
-        <div class="regie-input-group">
-          <label class="regie-label">Départ</label>
-          <select id="planDepart" class="regie-input">
-            <option value="start-00">Pile (ex: 10h00)</option>
-            <option value="start-15">À :15 (ex: 10h15)</option>
-            <option value="start-30">À :30 (ex: 10h30)</option>
-            <option value="start-45">À :45 (ex: 10h45)</option>
+          <label class="regie-label">Heure exacte</label>
+          <select id="planHeureExacte" class="regie-input" style="max-height: 200px;">
+            <!-- Les options de 7h00 à 00h00 seront générées par le script ci-dessous -->
           </select>
         </div>
         <div class="regie-input-group">
@@ -321,11 +293,11 @@
             <option value="h-3-5">3h30</option>
             <option value="h-4">4 Heures</option>
             <option value="h-4-5">4 Heures 30</option>
-            <option value="h-journee">Toute la journée</option>
+            <option value="h-journee">Toute la journée (jusqu'à 00h00)</option>
           </select>
         </div>
       </div>
-
+        
       <div class="regie-row">
         <div class="regie-input-group" style="flex: 1;">
           <label class="regie-label">Étiquette</label>
@@ -454,6 +426,17 @@
               }
           });
       }, 1000);
+
+
+        const heureSelect = document.getElementById('planHeureExacte');
+          for (let h = 7; h <= 23; h++) {
+              ['00', '15', '30', '45'].forEach(m => {
+                  let text = `${h}h${m}`;
+                  let value = `${h}-${m}`;
+                  heureSelect.innerHTML += `<option value="${value}">${text}</option>`;
+              });
+          }
+          heureSelect.innerHTML += `<option value="0-00">00h00</option>`;
     </script>
     <!-- FIN DE L'ENCART -->
 
