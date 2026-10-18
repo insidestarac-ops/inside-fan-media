@@ -1592,9 +1592,9 @@ html, body {
     mask-position: center !important;
 }
 
-/* Le samedi couvre toujours 17 créneaux horaires. */
+/* Le samedi couvre toute la journée jusqu'à minuit */
 .etiquette.tag-showtime.h-journee {
-    height: calc(1700% - 4px);
+    height: calc(1750% - 4px);
 }
 
 /* On remplace les anciennes étoiles HTML par les étoiles CSS. */
