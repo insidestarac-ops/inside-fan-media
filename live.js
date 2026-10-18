@@ -484,24 +484,45 @@ function viderPlanning() {
     }
 }
 
-// Supprimer UNE SEULE case du planning
+// Supprimer UN SEUL CRÉNEAU précis du planning
 function supprimerCasePlanning() {
     const jour = document.getElementById("planJour").value;
-    const heureExacte = document.getElementById("planHeureExacte").value;
+    const heureExacte = document.getElementById("planHeureExacte").value; // Format "10-30"
     
-    // On récupère juste l'heure (ex: "10" dans "10-30") pour cibler le bon endroit dans Firebase
-    const heure = heureExacte.split("-")[0]; 
+    // On sépare l'heure et les minutes
+    const parts = heureExacte.split('-');
+    const heure = parts[0]; 
+    const departCible = "start-" + parts[1];
     const idCase = jour + "-" + heure;
 
-    if(confirm(`Voulez-vous vraiment effacer ce qu'il y a le ${jour} dans la case de ${heure}H ?`)) {
-        db.ref("planning/semaine1/" + idCase).remove().then(() => {
-            alert(`🗑️ Case ${jour} à ${heure}H vidée avec succès !`);
-        }).catch((error) => {
-            alert("❌ Erreur : " + error);
+    if(confirm(`Voulez-vous vraiment effacer le cours du ${jour} prévu à ${parts[0]}h${parts[1]} ?`)) {
+        const refHeure = db.ref("planning/semaine1/" + idCase);
+        
+        // On va chercher l'étiquette exacte qui commence à ces minutes-là
+        refHeure.once("value", snapshot => {
+            if (snapshot.exists()) {
+                let trouve = false;
+                snapshot.forEach(child => {
+                    // Si on trouve une étiquette qui a le même départ (ex: start-30)
+                    if (child.val().depart === departCible) {
+                        refHeure.child(child.key).remove();
+                        trouve = true;
+                    }
+                });
+                
+                if (trouve) {
+                    alert(`🗑️ L'étiquette de ${parts[0]}h${parts[1]} a été supprimée avec succès !`);
+                } else {
+                    alert(`⚠️ Aucune étiquette trouvée à ${parts[0]}h${parts[1]}. (Ce créneau est déjà vide)`);
+                }
+            } else {
+                alert(`⚠️ Aucune étiquette trouvée à ${parts[0]}h${parts[1]}. (Ce créneau est déjà vide)`);
+            }
+        }).catch(error => {
+            alert("❌ Erreur de connexion : " + error);
         });
     }
 }
-
 /* =========================================================
    8. INTERCONNEXION EN-TÊTE PLANNING (SEMAINE & DATES)
 ========================================================= */
