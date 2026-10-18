@@ -638,19 +638,28 @@
         btnSecret.addEventListener("click", function() {
             const texteOriginal = btnSecret.innerHTML;
             btnSecret.innerHTML = "⏳ Génération de l'image Ultra HD...";
-            btnSecret.style.background = "#7C4DFF"; // Devient violet
+            btnSecret.style.background = "#7C4DFF";
 
             html2canvas(document.getElementById(idDuPlanning), {
-                scale: 4, // Multiplie la netteté par 4 !
+                scale: 4,
                 useCORS: true,
-                backgroundColor: null // Garde ton fond d'origine
+                backgroundColor: null,
+                onclone: function(clonedDoc) {
+                    // Force le texte du showtime à s'afficher proprement à l'horizontale sur l'image exportée si besoin, 
+                    // ou neutralise le mask récalcitrant pour l'export PNG pur
+                    const showtimeCloned = clonedDoc.querySelector('.tag-showtime');
+                    if (showtimeCloned) {
+                        showtimeCloned.style.webkitMaskImage = 'none';
+                        showtimeCloned.style.maskImage = 'none';
+                        showtimeCloned.style.writingMode = 'horizontal-tb';
+                    }
+                }
             }).then(canvas => {
                 let lien = document.createElement('a');
-                lien.download = 'Planning-Inside-Star-Ac.png'; // Le nom du fichier sera toujours celui-ci
+                lien.download = 'Planning-Inside-Star-Ac.png';
                 lien.href = canvas.toDataURL("image/png");
                 lien.click();
                 
-                // Remet le bouton à son état initial
                 btnSecret.innerHTML = texteOriginal;
                 btnSecret.style.background = "#EF7F00";
             });
