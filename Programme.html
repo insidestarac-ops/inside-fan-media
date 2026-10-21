@@ -5,7 +5,7 @@
 <title>Programme du Prime – Inside Star Ac</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Découvrez la Setlist officielle du premier prime de la Star Academy : invités d'honneur, défis et hymne de la saison.">
+<meta name="description" content="Découvrez la Setlist officielle du Prime 2 de la Star Academy : carte blanche de Vianney, invités d'honneur, défis et nommés.">
 <link rel="canonical" href="https://insidefanmedia.fr/Programme.html">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-star-ac.png">
@@ -49,7 +49,7 @@
     background: #EF7F00;
   }
   .track-card:hover { 
-    background: #190C36; /* Très léger changement au survol, sans mouvement */
+    background: #190C36; 
   }
 
   /* Les Avatars Détourés (Stickers Élèves) */
@@ -62,21 +62,9 @@
     object-position: bottom center; 
     background: transparent; 
     border: none; 
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); /* Ombre plus discrète */
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); 
   }
-  .track-avatar + .track-avatar, .track-avatar + .mystery-avatar, .mystery-avatar + .mystery-avatar { margin-left: -20px; z-index: 2; }
-
-  /* Le Cercle Mystère Minimaliste */
-  .mystery-avatar {
-    width: 75px; 
-    height: 75px;
-    border-radius: 50%;
-    background: #1A0D38;
-    border: 1px solid rgba(255,255,255,0.05);
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.4); font-size: 28px; font-weight: 700;
-    flex-shrink: 0;
-  }
+  .track-avatar + .track-avatar { margin-left: -20px; z-index: 2; }
 
   /* Les Infos Texte */
   .track-details { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
@@ -111,12 +99,11 @@
     letter-spacing: 0.5px;
     display: inline-block;
   }
-  /* Styles spécifiques par type de badge */
   .tag-de { background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.8); }
   .tag-avec { background: #25134A; color: #A77BFF; }
   .tag-inter { background: rgba(255, 193, 7, 0.08); color: #FFC107; border: 1px solid rgba(255, 193, 7, 0.4); }
   .tag-regle { background: rgba(239, 127, 0, 0.15); color: #EF7F00; }
-  .tag-immunise { background: rgba(255, 215, 0, 0.15); color: #FFD700; border: 1px solid rgba(255, 215, 0, 0.4); }
+  .tag-nomme { background: rgba(255, 71, 87, 0.15); color: #FF4757; border: 1px solid rgba(255, 71, 87, 0.4); }
 
   @media (max-width: 768px) {
     .hero-starac { padding: 130px 20px 80px; min-height: auto; }
@@ -124,8 +111,8 @@
     .hero-content p { font-size: 16px; }
     .track-card { padding: 20px; gap: 15px; flex-direction: column; align-items: flex-start;}
     .track-avatars { padding-left: 0; }
-    .track-avatar, .mystery-avatar { width: 65px; height: 65px;}
-    .track-avatar + .track-avatar, .track-avatar + .mystery-avatar { margin-left: -15px; }
+    .track-avatar { width: 65px; height: 65px;}
+    .track-avatar + .track-avatar { margin-left: -15px; }
     .track-song { font-size: 20px; }
     .track-artist { font-size: 14px; gap: 8px;}
     .tag-badge { padding: 3px 8px; font-size: 10px;}
@@ -141,13 +128,30 @@
   <section class="hero-starac">
     <div class="hero-content">
       <img src="assets/logo-star-ac.png" alt="Logo Star Academy" class="logo-univers">
-      <h1>Prime du 17 Octobre</h1>
-      <p>La Setlist du  Prime 2</p>
+      <h1>Prime du 24 Octobre</h1>
+      <p>Prime 2 – Carte Blanche de Vianney</p>
     </div>
   </section>
 
   <section class="setlist-section">
     <div class="setlist-container">
+
+      <!-- OUVERTURE DU PRIME -->
+      <h2 class="category-title"><span>🌟</span> Ouverture du Prime</h2>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Amel</div>
+          <h3 class="track-song">Empire State of Mind</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-de">De</span> 
+            <strong>Jay-Z et Alicia Keys</strong>
+          </p>
+        </div>
+      </div>
 
       <!-- L'HYMNE -->
       <h2 class="category-title"><span>✨</span> L'Hymne de la Saison</h2>
@@ -163,8 +167,22 @@
         </div>
       </div>
 
-      <!-- OUVERTURE DU PRIME -->
-      <h2 class="category-title"><span>🌟</span> Ouverture du Prime</h2>
+      <!-- CARTE BLANCHE DE VIANNEY -->
+      <h2 class="category-title"><span>🤍</span> Carte Blanche : Vianney</h2>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Antoine.png" alt="Antoine" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Antoine</div>
+          <h3 class="track-song">Je m'en vais</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-avec">Avec</span> 
+            <strong>Vianney</strong>
+          </p>
+        </div>
+      </div>
 
       <div class="track-card">
         <div class="track-avatars">
@@ -172,213 +190,153 @@
         </div>
         <div class="track-details">
           <div class="track-students">Isabella</div>
-          <h3 class="track-song">Virile</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Suzanne</strong>
-          </p>
-          <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
-            <span class="tag-badge tag-immunise" style="margin-top: 2px; flex-shrink: 0;">Immunisée</span> 
-            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">En tant qu'élève immunisée, Isabella a le privilège d'ouvrir le prime.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- INVITÉ D'HONNEUR -->
-      <h2 class="category-title"><span>👑</span> Invité d'Honneur</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Cameron.png" alt="Cameron" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Cameron</div>
-          <h3 class="track-song">Quand je marche</h3>
+          <h3 class="track-song">D'or et d'étain</h3>
           <p class="track-artist">
             <span class="tag-badge tag-avec">Avec</span> 
-            <img src="Artistes/Ben.png" class="artist-mini-pic" alt="Ben Mazué">
-            <strong>Ben Mazué</strong>
+            <strong>Vianney</strong>
           </p>
         </div>
       </div>
 
-      <!-- CARTE BLANCHE -->
-      <h2 class="category-title"><span>🤍</span> Carte Blanche de l'Artiste</h2>
+      <!-- ZAZIE : ARTISTE CARTE BLANCHE -->
+      <h2 class="category-title"><span>🎤</span> Invité : Zazie</h2>
 
       <div class="track-card">
         <div class="track-avatars">
-          <img src="Eleves SF/Elija.png" alt="Elija" class="track-avatar">
+          <img src="Eleves SF/Melina.png" alt="Mélina" class="track-avatar">
         </div>
         <div class="track-details">
-          <div class="track-students">Elija</div>
-          <h3 class="track-song">Un été avec toi</h3>
+          <div class="track-students">Mélina</div>
+          <h3 class="track-song">Si j'étais moi</h3>
           <p class="track-artist">
             <span class="tag-badge tag-avec">Avec</span> 
-            <img src="Artistes/Adele.png" class="artist-mini-pic" alt="Adèle Castillon">
-            <strong>Adèle Castillon</strong>
+            <strong>Zazie</strong>
           </p>
         </div>
       </div>
 
-      <!-- LE DÉFI DU PRIME -->
-      <h2 class="category-title"><span>🔥</span> Le Défi du Prime</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Leelo.png" alt="Leeloo" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Leeloo</div>
-          <h3 class="track-song">One Track Mind</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-inter">Avec</span> 
-            <img src="Artistes/Naika.png" class="artist-mini-pic" alt="Naïka">
-            <strong>Naïka</strong> 
-            <span style="font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); font-style: italic; margin-left: 2px;">(Artiste internationale)</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- L'INVITÉ MYSTÈRE -->
-      <h2 class="category-title"><span>🎭</span> L'Invité Mystère</h2>
+      <!-- CLARA YSÉ -->
+      <h2 class="category-title"><span>🎵</span> Invité : Clara Ysé</h2>
 
       <div class="track-card">
         <div class="track-avatars">
           <img src="Eleves SF/Maud.png" alt="Maud" class="track-avatar">
         </div>
         <div class="track-details">
-          <div class="track-students">Maud (Sans Répétitions !)</div>
-          <h3 class="track-song">Picasso</h3>
+          <div class="track-students">Maud</div>
+          <h3 class="track-song">Douce</h3>
           <p class="track-artist">
             <span class="tag-badge tag-avec">Avec</span> 
-            <img src="Artistes/BF.png" class="artist-mini-pic" alt="Bigflo et Oli">
-            <strong>Bigflo et Oli</strong>
+            <strong>Clara Ysé</strong>
           </p>
         </div>
       </div>
 
-      <!-- DUOS ENTRE ÉLÈVES -->
-      <h2 class="category-title"><span>🎤</span> Duos entre élèves</h2>
+      <!-- INVITÉ SURPRISE -->
+      <h2 class="category-title"><span>🎁</span> Invité Surprise</h2>
 
       <div class="track-card">
         <div class="track-avatars">
-          <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar">
-          <img src="Eleves SF/Kylian.png" alt="Kylian" class="track-avatar">
+          <div class="track-avatar" style="display:flex; align-items:center; justify-content:center; background:#1A0D38; border-radius:50%; font-size:30px;">⭐</div>
         </div>
         <div class="track-details">
-          <div class="track-students">Amel & Kylian</div>
-          <h3 class="track-song">XY</h3>
+          <div class="track-students">Prestation Surprise</div>
+          <h3 class="track-song">Héléna</h3>
           <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Vitaa et Slimane</strong>
+            <span class="tag-badge tag-inter">Invitée surprise</span> 
+            <strong>Présente lors du prime</strong>
           </p>
         </div>
       </div>
+
+      <!-- COLLÉGIALE -->
+      <h2 class="category-title"><span>🎶</span> Collégiale</h2>
 
       <div class="track-card">
         <div class="track-avatars">
-          <img src="Eleves SF/Felix.png" alt="Félix" class="track-avatar">
-          <img src="Eleves SF/Melina.png" alt="Mélina" class="track-avatar">
+          <img src="assets/Logo 2026.png" alt="Collégiale" class="track-avatar" style="object-fit: contain;">
         </div>
         <div class="track-details">
-          <div class="track-students">Félix & Mélina</div>
-          <h3 class="track-song">Up Where We Belong</h3>
+          <div class="track-students">Les Académiciens & Vianney</div>
+          <h3 class="track-song">Hallelujah</h3>
           <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Jennifer Warnes et Joe Cocker</strong>
+            <span class="tag-badge tag-de">Version</span> 
+            <strong>Vianney</strong>
           </p>
         </div>
       </div>
 
-      <!-- L'AUTOPORTRAIT -->
-      <h2 class="category-title"><span>🎨</span> L'Autoportrait</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Noemie.png" alt="Noémie" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Noémie</div>
-          
-          <!-- Titre 1 -->
-          <h3 class="track-song" style="margin-bottom: 5px;">Dans les yeux d'Émilie</h3>
-          <p class="track-artist" style="margin-bottom: 15px;">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Joe Dassin</strong>
-          </p>
-
-          <!-- Titre 2 -->
-          <h3 class="track-song" style="margin-bottom: 5px;">Le portrait</h3>
-          <p class="track-artist" style="margin-bottom: 15px;">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Calogero</strong>
-          </p>
-
-          <!-- Titre 3 -->
-          <h3 class="track-song" style="margin-bottom: 5px;">Slipping Through My Fingers</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>ABBA (Version Française)</strong>
-          </p>
-
-           <!-- Titre 4 -->
-          <h3 class="track-song" style="margin-bottom: 5px;">Vogue</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Madonna</strong>
-          </p>
-          
-          <!-- Titre 5 -->
-          <h3 class="track-song" style="margin-bottom: 5px;">The Power of Love</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Céline Dion</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- TABLEAU CHANTÉ ET DANSÉ -->
+      <!-- TABLEAU CHANTÉ DANSÉ -->
       <h2 class="category-title"><span>💃</span> Tableau Chanté et Dansé</h2>
 
       <div class="track-card">
         <div class="track-avatars">
-          <img src="Eleves SF/Zoe.png" alt="Zoé" class="track-avatar">
+          <img src="Eleves SF/Morgan.png" alt="Morgan" class="track-avatar">
         </div>
         <div class="track-details">
-          <div class="track-students">Zoé</div>
-          <h3 class="track-song">Bring Me to Life</h3>
+          <div class="track-students">Morgan</div>
+          <h3 class="track-song">Rock Your Body</h3>
           <p class="track-artist">
             <span class="tag-badge tag-de">De</span> 
-            <strong>Evanescence</strong>
+            <strong>Justin Timberlake</strong>
           </p>
-          <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
-            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
-            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Faire la meilleure prestation possible pour décrocher sa place sur la tournée.</span>
-          </div>
+        </div>
+      </div>
+
+      <!-- AUTOPORTRAIT -->
+      <h2 class="category-title"><span>🎨</span> L'Autoportrait</h2>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Tracy.png" alt="Tracy" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Tracy</div>
+          <h3 class="track-song">Autoportrait</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-regle">Performance</span> 
+            <strong>Mise en avant de l'élève</strong>
+          </p>
         </div>
       </div>
 
       <!-- CHANSON CHALLENGE -->
-      <h2 class="category-title"><span>⚔️</span> La Chanson Challenge</h2>
+      <h2 class="category-title"><span>🔥</span> La Chanson Challenge</h2>
 
       <div class="track-card">
         <div class="track-avatars">
-          <img src="Eleves SF/Ydriss.png" alt="Ydriss" class="track-avatar">
-          <img src="Eleves SF/Brieuc.png" alt="Brieuc" class="track-avatar">
-          <img src="Eleves SF/Morgan.png" alt="Morgan" class="track-avatar">
-          <img src="Eleves SF/Antoine.png" alt="Antoine" class="track-avatar">
+          <img src="Eleves SF/Noemie.png" alt="Noémie" class="track-avatar">
+          <img src="Eleves SF/Leelo.png" alt="Leeloo" class="track-avatar">
         </div>
         <div class="track-details">
-          <div class="track-students">Ydriss, Brieuc, Morgan & Antoine</div>
-          <h3 class="track-song">On va s'aimer</h3>
+          <div class="track-students">Noémie & Leeloo</div>
+          <h3 class="track-song">Confessions Nocturnes</h3>
           <p class="track-artist">
             <span class="tag-badge tag-de">De</span> 
-            <strong>Gilbert Montagné</strong>
+            <strong>Vitaa & Diam's</strong>
           </p>
           <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
-            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
-            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Kylian impose ce titre à ses camarades, qui devront chanter avec une chorégraphie.</span>
+            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Défi 100%</span> 
+            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Reproduire le clip à 100% (Noémie incarne Vitaa, Leeloo incarne Diam's).</span>
           </div>
+        </div>
+      </div>
+
+      <!-- DUO ENTRE ÉLÈVES -->
+      <h2 class="category-title"><span>🎤</span> Duo entre Élèves</h2>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Kylian.png" alt="Kylian" class="track-avatar">
+          <img src="Eleves SF/Ydriss.png" alt="Ydriss" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Kylian & Ydriss</div>
+          <h3 class="track-song">Mon Frère</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-de">De</span> 
+            <strong>Les Dix Commandements</strong>
+          </p>
         </div>
       </div>
 
@@ -387,21 +345,70 @@
 
       <div class="track-card">
         <div class="track-avatars">
-          <img src="Eleves SF/Morgan.png" alt="Morgan" class="track-avatar">
-          <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar">
-          <img src="Eleves SF/Cameron.png" alt="Cameron" class="track-avatar">
+          <img src="Eleves SF/Melina.png" alt="Mélina" class="track-avatar">
+          <img src="Eleves SF/Leelo.png" alt="Leeloo" class="track-avatar">
+          <!-- Troisième avatar (Isabelle/Isabella selon les données) -->
+          <img src="Eleves SF/Isabella.png" alt="Isabelle" class="track-avatar">
         </div>
         <div class="track-details">
-          <div class="track-students">Morgan, Amel & Cameron</div>
-          <h3 class="track-song">Hier encore</h3>
+          <div class="track-students">Isabelle, Mélina & Leeloo</div>
+          <h3 class="track-song">Et Bam</h3>
           <p class="track-artist">
             <span class="tag-badge tag-de">De</span> 
-            <strong>Charles Aznavour</strong>
+            <strong>Mentissa</strong>
           </p>
           <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
-            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
-            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Ils s’affronteront lors du prime avec l'objectif de gagner l’immunité.</span>
+            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Battle</span> 
+            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Affrontement direct pour marquer des points lors du prime.</span>
           </div>
+        </div>
+      </div>
+
+      <!-- LES NOMMÉES -->
+      <h2 class="category-title"><span>🚨</span> Les Nommées de la Semaine</h2>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Zoe.png" alt="Zoé" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Zoé</div>
+          <h3 class="track-song">Hypersensible</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-de">De</span> 
+            <strong>Charles Doré</strong>
+          </p>
+          <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommée</span></div>
+        </div>
+      </div>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Elija.png" alt="Elija" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Elija</div>
+          <h3 class="track-song">Back To Black</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-de">De</span> 
+            <strong>Amy Winehouse</strong>
+          </p>
+          <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommée</span></div>
+        </div>
+      </div>
+
+      <div class="track-card">
+        <div class="track-avatars">
+          <img src="Eleves SF/Brieuc.png" alt="Brieuc" class="track-avatar">
+        </div>
+        <div class="track-details">
+          <div class="track-students">Brieuc</div>
+          <h3 class="track-song">Die On This Hill</h3>
+          <p class="track-artist">
+            <span class="tag-badge tag-de">De</span> 
+            <strong>Sienna Spiro</strong>
+          </p>
+          <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommé</span></div>
         </div>
       </div>
 
