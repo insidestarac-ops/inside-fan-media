@@ -401,6 +401,7 @@ function supprimerTicker() {
 // Ajouter un cours sur la grille (Version Intégrale TV)
 // Le vrai Cerveau (Clone TV)
 // Génère le HTML intérieur d'une étiquette selon son type
+// Génère le HTML intérieur d'une étiquette selon son type
 function texteEtiquette(type, duree) {
     switch (type) {
         case "tag-expression":    return "<div class='tag-expression-wrapper'><div class='exp-top'>EXPRESSION</div><div class='exp-bot'>SCÉNIQUE</div></div>";
@@ -424,6 +425,12 @@ function texteEtiquette(type, duree) {
         case "tag-reveil":        return "réveil";
         case "tag-dejeuner":      return "déjeuner";
         case "tag-diner":         return "dîner";
+        
+        /* 🚨 NOUVELLES MATIÈRES AJOUTÉES ICI 🚨 */
+        case "tag-annonces-dir":  return "ANNONCES DIRECTEUR";
+        case "tag-annonces-rep":  return "ANNONCES RÉPÉTITRICES";
+        case "tag-all-access":    return "ALL ACCESS<br>DU DIRECTEUR";
+        
         default:                  return type.replace("tag-", "").toUpperCase();
     }
 }
