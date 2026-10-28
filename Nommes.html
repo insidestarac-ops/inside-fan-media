@@ -12,12 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <style>
+ <style>
     *, *::before, *::after { box-sizing: border-box; }
 
     .hero-starac { 
       position: relative; 
-      padding: 140px 0 200px;  /* <-- MODIFIÉ ICI */
+      padding: 140px 0 200px; 
       display: flex; 
       align-items: center; 
       background: url("assets/Ban Star Ac.png") center/cover no-repeat; 
@@ -32,7 +32,7 @@
     .nommes-grid-section { 
       position: relative; 
       z-index: 10; 
-      margin-top: -50px;  /* <-- MODIFIÉ ICI */
+      margin-top: -50px; 
       padding-bottom: 90px; 
       max-width: 1200px;  
       margin-left: auto; 
@@ -40,12 +40,13 @@
       padding-left: 24px; 
       padding-right: 24px; 
     }
-    /* Grille adaptative : 1 colonne sur mobile, 2 colonnes équilibrées sur PC */
+
+    /* Grille principale : on force 2 colonnes parfaitement égales sur PC */
     .bento-nommes { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      grid-template-columns: 1fr 1fr; /* Exactement 2 colonnes */
       gap: 30px; 
-      align-items: stretch; /* Les deux cartes font la même hauteur */
+      align-items: stretch; /* Étire les cartes à la même hauteur */
     }
 
     /* Carte Affiche Instagram (Verticale) */
@@ -58,16 +59,17 @@
       border: 1px solid rgba(255,255,255,0.05); 
       justify-content: center;
       align-items: center;
-      /* On limite la largeur sur PC pour que la hauteur reste harmonieuse avec la carte des votes */
-      max-width: 450px; 
-      margin: 0 auto; 
+      
+      /* Le secret de l'élégance : on limite la largeur et on pousse vers le centre */
       width: 100%;
+      max-width: 450px;
+      justify-self: end; /* Aligne la carte à droite de sa colonne (vers le centre de l'écran) */
     }
     
     .card-affiche img { 
       width: 100%; 
       height: 100%; 
-      object-fit: cover; /* Remplit tout l'espace de la carte */
+      object-fit: contain; /* L'image s'affiche en entier sans rogner */
       display: block; 
     }
 
@@ -79,11 +81,15 @@
       color: #fff; 
       display: flex; 
       flex-direction: column; 
-      justify-content: center; /* Centre le texte verticalement */
+      justify-content: center;
       align-items: center; 
       text-align: center; 
       box-shadow: 0 20px 40px rgba(239, 127, 0, 0.25); 
-      height: 100%; /* S'étire à la même hauteur que l'affiche */
+      
+      /* Même taille max et on pousse vers le centre */
+      width: 100%;
+      max-width: 450px;
+      justify-self: start; /* Aligne la carte à gauche de sa colonne (vers le centre de l'écran) */
     }
     .card-officiel h3 { font-size: 26px; font-weight: 900; margin: 0 0 25px; }
     .vote-block { margin-bottom: 15px; }
@@ -105,8 +111,22 @@
     .sondage-brut-wrapper iframe { width: 100%; height: 350px; border: none; }
     .poll-lock { padding: 30px; text-align: center; }
 
-    @media (max-width: 900px) { .bento-nommes { grid-template-columns: 1fr; gap: 20px; } .card-sondage-modern { grid-template-columns: 1fr; text-align: center; } .sondage-left { padding: 40px 30px 20px; align-items: center; } .sondage-right { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; } .badge-starac { align-self: center; } }
-    @media (max-width: 768px) { .hero-starac { padding: 120px 0 120px; } .hero-content h1 { font-size: 38px; } .nommes-grid-section { margin-top: -60px; } .sondage-left h3 { font-size: 32px; } .sondage-brut-wrapper iframe { height: 380px; } }
+    /* Rendu Mobile : les éléments se recentrent et s'empilent ! */
+    @media (max-width: 900px) { 
+      .bento-nommes { grid-template-columns: 1fr; gap: 20px; } 
+      .card-affiche, .card-officiel { justify-self: center; max-width: 500px; } /* Recentre les deux cartes sur mobile */
+      .card-sondage-modern { grid-template-columns: 1fr; text-align: center; } 
+      .sondage-left { padding: 40px 30px 20px; align-items: center; } 
+      .sondage-right { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; } 
+      .badge-starac { align-self: center; } 
+    }
+    @media (max-width: 768px) { 
+      .hero-starac { padding: 120px 0 120px; } 
+      .hero-content h1 { font-size: 38px; } 
+      .nommes-grid-section { margin-top: -60px; } 
+      .sondage-left h3 { font-size: 32px; } 
+      .sondage-brut-wrapper iframe { height: 380px; } 
+    }
   </style>
 
   <!-- Firebase (Ajout pour la mise à jour de l'image) -->
