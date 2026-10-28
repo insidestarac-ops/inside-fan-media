@@ -40,13 +40,15 @@
       padding-left: 24px; 
       padding-right: 24px; 
     }
+    /* Grille adaptative : 1 colonne sur mobile, 2 colonnes équilibrées sur PC */
     .bento-nommes { 
       display: grid; 
-      grid-template-columns: 1fr 1fr; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
       gap: 30px; 
-      align-items: stretch; /* Les deux cartes feront la même hauteur */
+      align-items: stretch; /* Les deux cartes font la même hauteur */
     }
-    
+
+    /* Carte Affiche Instagram (Verticale) */
     .card-affiche { 
       border-radius: 32px; 
       overflow: hidden; 
@@ -56,19 +58,33 @@
       border: 1px solid rgba(255,255,255,0.05); 
       justify-content: center;
       align-items: center;
-      /* On s'assure qu'elle ne dépasse pas une certaine largeur pour ne pas devenir trop haute */
-      max-width: 500px;
-      margin: 0 auto; /* Centre l'image dans sa colonne */
+      /* On limite la largeur sur PC pour que la hauteur reste harmonieuse avec la carte des votes */
+      max-width: 450px; 
+      margin: 0 auto; 
       width: 100%;
     }
     
     .card-affiche img { 
       width: 100%; 
       height: 100%; 
-      object-fit: contain; /* L'image s'affiche EN ENTIER, avec des bords noirs si nécessaire pour combler le vide, mais sans rogner l'affiche */
+      object-fit: cover; /* Remplit tout l'espace de la carte */
       display: block; 
     }
-    .card-officiel { background: linear-gradient(135deg, #EF7F00, #E65C00); border-radius: 32px; padding: 40px 30px; color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 20px 40px rgba(239, 127, 0, 0.25); height: 100%; }
+
+    /* Carte des Votes (Orange) */
+    .card-officiel { 
+      background: linear-gradient(135deg, #EF7F00, #E65C00); 
+      border-radius: 32px; 
+      padding: 40px 30px; 
+      color: #fff; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; /* Centre le texte verticalement */
+      align-items: center; 
+      text-align: center; 
+      box-shadow: 0 20px 40px rgba(239, 127, 0, 0.25); 
+      height: 100%; /* S'étire à la même hauteur que l'affiche */
+    }
     .card-officiel h3 { font-size: 26px; font-weight: 900; margin: 0 0 25px; }
     .vote-block { margin-bottom: 15px; }
     .vote-label { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(255, 255, 255, 0.85); }
@@ -136,7 +152,7 @@
           </div>
           <div class="sondage-right">
             <div class="sondage-brut-wrapper" id="home-poll-wrapper">
-              <iframe id="home-poll-iframe" data-src="https://viewerplus.plus/s#s=inside-fan-media&p=pwzy9656k" scrolling="no" style="display:none;"></iframe>
+              <iframe id="home-poll-iframe" data-src="https://viewerplus.plus/s#s=inside-fan-media&p=pxk7q76a5" scrolling="no" style="display:none;"></iframe>
               <div id="home-poll-lock" class="poll-lock">
                 <p style="margin:0 0 15px; font-size:15px; color:rgba(255,255,255,0.8);">Le sondage interactif nécessite l'acceptation des cookies.</p>
                 <button onclick="localStorage.setItem('ifm_cookie_consent','accepted'); document.dispatchEvent(new Event('ifm-consent-updated'));" style="padding:12px 24px; border-radius:12px; border:none; background:#7C4DFF; color:#fff; font-weight:800; cursor:pointer; transition: 0.3s;">Activer le sondage</button>
