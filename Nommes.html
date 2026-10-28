@@ -40,11 +40,34 @@
       padding-left: 24px; 
       padding-right: 24px; 
     }
-    .bento-nommes { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: center; }
-
-    .card-affiche { border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15); display: flex; background: #0B071A; border: 1px solid rgba(255,255,255,0.05); }
-    .card-affiche img { width: 100%; height: auto; display: block; }
-
+    .bento-nommes { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 30px; 
+      align-items: stretch; /* Les deux cartes feront la même hauteur */
+    }
+    
+    .card-affiche { 
+      border-radius: 32px; 
+      overflow: hidden; 
+      box-shadow: 0 20px 40px rgba(11, 7, 26, 0.15); 
+      display: flex; 
+      background: #0B071A; 
+      border: 1px solid rgba(255,255,255,0.05); 
+      justify-content: center;
+      align-items: center;
+      /* On s'assure qu'elle ne dépasse pas une certaine largeur pour ne pas devenir trop haute */
+      max-width: 500px;
+      margin: 0 auto; /* Centre l'image dans sa colonne */
+      width: 100%;
+    }
+    
+    .card-affiche img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain; /* L'image s'affiche EN ENTIER, avec des bords noirs si nécessaire pour combler le vide, mais sans rogner l'affiche */
+      display: block; 
+    }
     .card-officiel { background: linear-gradient(135deg, #EF7F00, #E65C00); border-radius: 32px; padding: 40px 30px; color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 20px 40px rgba(239, 127, 0, 0.25); height: 100%; }
     .card-officiel h3 { font-size: 26px; font-weight: 900; margin: 0 0 25px; }
     .vote-block { margin-bottom: 15px; }
