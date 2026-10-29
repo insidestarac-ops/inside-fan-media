@@ -5,6 +5,9 @@
 <title>Programme du Prime – Inside Star Ac</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
 <meta name="description" content="Découvrez la Setlist officielle du prochain Prime de la Star Academy : invités, défis et surprises.">
 <link rel="canonical" href="https://insidefanmedia.fr/Programme.html">
 
@@ -480,33 +483,49 @@
 
 <div id="footer-placeholder"></div>
 
-<!-- SCRIPT MAGIQUE : FLOU + CHRONO (VENDREDI 21H10) + PASSE-PARTOUT ADMIN -->
+<!-- SCRIPT MAGIQUE : FLOU + CHRONO (VENDREDI 21H10) + SÉCURITÉ FIREBASE -->
 <script>
-  function gererTeasingProgramme() {
-    // Clé secrète : ajoute ?admin=true à la fin de ton URL pour déverrouiller la page
-    const urlParams = new URLSearchParams(window.location.search);
-    const isAdmin = urlParams.get('admin') === 'true';
+  // 1. Initialisation de Firebase avec tes accès
+  const firebaseConfig = {
+    apiKey: "AIzaSyAgmhwesxB9uDwXc-JrsyAXFsggkirpczY",
+    authDomain: "inside-fan-media.firebaseapp.com",
+    databaseURL: "https://inside-fan-media-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "inside-fan-media"
+  };
+  if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 
+  let isAdminAuthentifie = false;
+
+  // 2. Vérification silencieuse : es-tu connecté à la régie ?
+  firebase.auth().onAuthStateChanged(user => {
+    isAdminAuthentifie = !!user; // Vrai si connecté, Faux sinon
+    gererTeasingProgramme(); // Force la mise à jour visuelle immédiatement
+  });
+
+  // 3. Le moteur d'affichage
+  function gererTeasingProgramme() {
     const maintenant = new Date();
     const jour = maintenant.getDay(); // 0 = Dimanche, 1 = Lundi, ..., 5 = Vendredi, 6 = Samedi
     const heure = maintenant.getHours();
     const minutes = maintenant.getMinutes();
 
-    // La page est OUVERTE : Vendredi APRÈS 21h10, et Samedi toute la journée
-    let estOuvert = false;
+    // La page est OUVERTE publiquement : Vendredi APRÈS 21h10, et Samedi entier
+    let estOuvertPubliquement = false;
     if (jour === 5 && (heure > 21 || (heure === 21 && minutes >= 10))) {
-      estOuvert = true; // Vendredi passé 21h10
+      estOuvertPubliquement = true; 
     } else if (jour === 6) {
-      estOuvert = true; // Samedi (jour du prime)
+      estOuvertPubliquement = true; 
     }
 
     const setlistBlock = document.getElementById("setlist-blur-target");
     const overlay = document.getElementById("teasing-overlay");
 
-    if (estOuvert || isAdmin) {
+    // DÉVERROUILLAGE : Si c'est l'heure OU si tu es connecté en tant qu'Admin
+    if (estOuvertPubliquement || isAdminAuthentifie) {
       setlistBlock.classList.remove("locked-blur");
       overlay.style.display = "none";
     } else {
+      // VERROUILLAGE : Flou et Chrono pour les visiteurs
       setlistBlock.classList.add("locked-blur");
       overlay.style.display = "flex";
       
@@ -514,7 +533,7 @@
       let prochainVendredi = new Date();
       let joursAajouter = (5 - jour + 7) % 7;
       
-      // Sécurité : si on est vendredi mais AVANT 21h10, le chrono vise aujourd'hui
+      // Sécurité : si on est vendredi avant 21h10, on vise aujourd'hui
       if (jour === 5 && (heure < 21 || (heure === 21 && minutes < 10))) { 
           joursAajouter = 0; 
       }
@@ -535,8 +554,8 @@
     }
   }
 
+  // Actualise le chrono toutes les secondes
   setInterval(gererTeasingProgramme, 1000);
-  gererTeasingProgramme();
 </script>
 
 <script src="header.js"></script>
