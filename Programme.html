@@ -5,7 +5,7 @@
 <title>Programme du Prime – Inside Star Ac</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Découvrez la Setlist officielle du Prime 2 de la Star Academy : parrainage de Vianney, carte blanche, invités, défis et nommés.">
+<meta name="description" content="Découvrez la Setlist officielle du prochain Prime de la Star Academy : invités, défis et surprises.">
 <link rel="canonical" href="https://insidefanmedia.fr/Programme.html">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-star-ac.png">
@@ -16,12 +16,12 @@
   .hero-starac { position: relative; min-height: 55vh; display: flex; align-items: center; background: url("assets/Ban Star Ac.png") center/cover no-repeat; padding: 140px 0 100px; overflow: hidden; }
   .hero-starac::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11, 7, 26, 0.8) 0%, rgba(11, 7, 26, 1) 100%); }
   .hero-content { position: relative; z-index: 2; max-width: 900px; margin: auto; padding: 0 24px; color: #fff; text-align: center; }
-  .hero-content img.logo-univers { height: 90px; margin-bottom: 20px; }
+  .hero-content img.logo-univers { height: 90px; margin-bottom: 20px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));}
   .hero-content h1 { font-size: 52px; font-weight: 900; margin-bottom: 10px; letter-spacing: -1px; text-transform: uppercase;}
   .hero-content p { font-size: 20px; margin: 0 auto; color: #EF7F00; font-weight: 800; letter-spacing: 1px;}
 
   /* ===== SETLIST (MODE ÉPURÉ) ===== */
-  .setlist-section { padding: 60px 24px 100px; background: #0B071A; }
+  .setlist-section { padding: 60px 24px 100px; background: #0B071A; position: relative;}
   .setlist-container { max-width: 850px; margin: 0 auto; }
 
   /* Titre de catégorie */
@@ -44,66 +44,98 @@
     position: relative; overflow: hidden;
     transition: background 0.2s ease;
   }
-  .track-card::before {
-    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-    background: #EF7F00;
-  }
-  .track-card:hover { 
-    background: #190C36; 
-  }
+  .track-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #EF7F00; }
+  .track-card:hover { background: #190C36; }
 
   /* Les Avatars Détourés (Stickers Élèves) */
   .track-avatars { display: flex; align-items: center; flex-shrink: 0; padding-left: 10px; }
-  
-  .track-avatar { 
-    width: 85px; 
-    height: 85px; 
-    object-fit: contain; 
-    object-position: bottom center; 
-    background: transparent; 
-    border: none; 
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); 
-  }
+  .track-avatar { width: 85px; height: 85px; object-fit: contain; object-position: bottom center; background: transparent; border: none; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); }
   .track-avatar + .track-avatar { margin-left: -20px; z-index: 2; }
 
   /* Les Infos Texte */
   .track-details { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-  
   .track-students { font-size: 13px; font-weight: 900; color: #EF7F00; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
   .track-song { font-size: 24px; font-weight: 900; color: #FFFFFF; margin: 0 0 10px 0; letter-spacing: -0.5px; line-height: 1.1; }
-  
-  /* Ligne de l'artiste invité */
-  .track-artist { 
-    font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.5); margin: 0; 
-    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  }
+  .track-artist { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.5); margin: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .track-artist strong { color: #FFFFFF; font-weight: 800; letter-spacing: 0.5px;}
-  
-  /* Mini Photo Artiste (Mode Sticker Détouré) */
-  .artist-mini-pic { 
-    width: 35px; 
-    height: 35px; 
-    object-fit: contain; 
-    object-position: bottom center; 
-    background: transparent; 
-    border: none; 
-  }
+  .artist-mini-pic { width: 35px; height: 35px; object-fit: contain; object-position: bottom center; background: transparent; border: none; }
   
   /* === BADGES HARMONISÉS === */
-  .tag-badge { 
-    font-size: 11px; 
-    text-transform: uppercase; 
-    padding: 4px 10px; 
-    border-radius: 6px; 
-    font-weight: 800; 
-    letter-spacing: 0.5px;
-    display: inline-block;
-  }
+  .tag-badge { font-size: 11px; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; font-weight: 800; letter-spacing: 0.5px; display: inline-block; }
   .tag-de { background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.8); }
   .tag-avec { background: #25134A; color: #A77BFF; }
   .tag-inter { background: rgba(255, 193, 7, 0.08); color: #FFC107; border: 1px solid rgba(255, 193, 7, 0.4); }
   .tag-regle { background: rgba(239, 127, 0, 0.15); color: #EF7F00; }
   .tag-nomme { background: rgba(255, 71, 87, 0.15); color: #FF4757; border: 1px solid rgba(255, 71, 87, 0.4); }
+
+  /* ===== NOUVEAU DESIGN TEASING (PREMIUM DARK & NEON) ===== */
+  /* On force le fond sombre derrière pour bloquer le blanc */
+  .setlist-wrapper { position: relative; background: #0B071A; }
+
+  /* Le flou net, SANS opacité pour ne pas voir le fond blanc du site */
+  .locked-blur {
+    filter: blur(8px) brightness(0.8); /* <-- MODIFIÉ : Flou augmenté à 8px + Léger assombrissement */
+    pointer-events: none;
+    user-select: none;
+    max-height: 80vh; 
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Le dégradé qui fond doucement vers le noir en bas (remplace le masque raté) */
+  .locked-blur::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 250px;
+    background: linear-gradient(to bottom, transparent, #0B071A);
+    z-index: 10;
+  }
+
+  #teasing-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 50px; 
+  }
+  
+  /* La carte beaucoup plus stylée (Fond très noir & Halo Orange) */
+  .teasing-content {
+    background: rgba(11, 7, 26, 0.95); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(239, 127, 0, 0.4); /* Bordure fine orange */
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    /* <-- MODIFIÉ : Ombre plus forte et plus large pour détacher la carte du fond */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.95), 0 0 50px rgba(239, 127, 0, 0.2); 
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .cd-icon { font-size: 42px; margin-bottom: 10px; display: block; filter: drop-shadow(0 0 15px rgba(239, 127, 0, 0.8));}
+  .cd-title { font-size: 28px; font-weight: 900; margin-bottom: 8px; color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.5px;}
+  .cd-subtitle { font-size: 15px; color: rgba(255,255,255,0.7); font-weight: 600; margin-bottom: 30px; line-height: 1.5; }
+  
+  .cd-timer { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;}
+  
+  /* Les cases du chrono en violet sombre */
+  .cd-box { 
+    background: #13082B; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 14px; 
+    padding: 15px 12px; 
+    min-width: 80px;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.5);
+  }
+  
+  /* Les chiffres en Orange vibrant */
+  .cd-num { font-size: 38px; font-weight: 900; display: block; line-height: 1; margin-bottom: 5px; color: #EF7F00; text-shadow: 0 2px 10px rgba(239,127,0,0.4); }
+  .cd-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FFFFFF; font-weight: 800; opacity: 0.8;}
 
   @media (max-width: 768px) {
     .hero-starac { padding: 130px 20px 80px; min-height: auto; }
@@ -116,6 +148,14 @@
     .track-song { font-size: 20px; }
     .track-artist { font-size: 14px; gap: 8px;}
     .tag-badge { padding: 3px 8px; font-size: 10px;}
+    
+    .teasing-content { padding: 30px 20px; }
+    .cd-icon { font-size: 36px; }
+    .cd-title { font-size: 22px; }
+    .cd-subtitle { font-size: 14px; margin-bottom: 25px; }
+    .cd-timer { gap: 8px; }
+    .cd-box { min-width: 65px; padding: 12px 8px; }
+    .cd-num { font-size: 28px; }
   }
 </style>
 </head>
@@ -128,297 +168,377 @@
   <section class="hero-starac">
     <div class="hero-content">
       <img src="assets/logo-star-ac.png" alt="Logo Star Academy" class="logo-univers">
-      <h1>Prime du 24 Octobre</h1>
-      <p>Prime 2 – Carte Blanche de Vianney</p>
+      <!-- LE TITRE UNIVERSEL : Modifie-le par le vrai thème uniquement le jeudi quand tu as les infos ! -->
+      <h1>Le Prochain Prime</h1>
+      <p>La Setlist de la semaine est en préparation...</p>
     </div>
   </section>
 
-  <section class="setlist-section">
-    <div class="setlist-container">
-
-      <!-- OUVERTURE DU PRIME -->
-      <h2 class="category-title"><span>🌟</span> Ouverture du Prime</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Amel</div>
-          <h3 class="track-song">Empire State of Mind</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Jay-Z et Alicia Keys</strong>
-          </p>
+  <div class="setlist-wrapper">
+    
+    <!-- LE NOUVEAU CHRONO GLASSMORPHISM -->
+    <div id="teasing-overlay" style="display: none;">
+      <div class="teasing-content">
+        <span class="cd-icon">🔒</span>
+        <h2 class="cd-title">Setlist verrouillée</h2>
+        <p class="cd-subtitle">Rendez-vous vendredi à 21h10 pour l'ouverture<br>(H-24 avant le Prime)</p>
+        <div class="cd-timer">
+          <div class="cd-box"><span class="cd-num" id="cd-d">00</span><span class="cd-label">Jours</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd-h">00</span><span class="cd-label">Heures</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd-m">00</span><span class="cd-label">Min</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd-s">00</span><span class="cd-label">Sec</span></div>
         </div>
       </div>
-
-      <!-- L'HYMNE -->
-      <h2 class="category-title"><span>🎶</span> L'Hymne de la Saison</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="assets/Logo 2026.png" alt="Hymne" class="track-avatar" style="object-fit: contain;">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Les Académiciens</div>
-          <h3 class="track-song">Dans un autre monde</h3>
-          <p class="track-artist"><span class="tag-badge tag-de">De</span> <strong>Céline Dion</strong></p>
-        </div>
-      </div>
-
-      <!-- DUOS AVEC LE PARRAIN (VIANNEY) -->
-      <h2 class="category-title"><span>👑</span> Duo avec le Parrain</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Antoine.png" alt="Antoine" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Antoine</div>
-          <h3 class="track-song">Je m'en vais</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-avec">Avec le parrain</span> 
-            <img src="Artistes/Vianney.png" class="artist-mini-pic" alt="Vianney">
-            <strong>Vianney</strong>
-          </p>
-        </div>
-      </div>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Isabella.png" alt="Isabella" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Isabella</div>
-          <h3 class="track-song">D'or et d'étain</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-avec">Avec le parrain</span> 
-            <img src="Artistes/Vianney.png" class="artist-mini-pic" alt="Vianney">
-            <strong>Vianney</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- CARTE BLANCHE -->
-      <h2 class="category-title"><span>🤍</span> Carte Blanche</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Melina.png" alt="Mélina" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Mélina</div>
-          <h3 class="track-song">Si j'étais moi</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-avec">Avec</span> 
-            <img src="Artistes/Zazie.png" class="artist-mini-pic" alt="Zazie">
-            <strong>Zazie</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- INVITÉS -->
-      <h2 class="category-title"><span>🎤</span> Invité</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Maud.png" alt="Maud" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Maud</div>
-          <h3 class="track-song">Douce</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-avec">Avec</span> 
-            <img src="Artistes/ClaraYse.png" class="artist-mini-pic" alt="Clara Ysé">
-            <strong>Clara Ysé</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- INVITÉ SURPRISE -->
-      <h2 class="category-title"><span>🎁</span> Invité Mystère</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <div class="track-avatar" style="display:flex; align-items:center; justify-content:center; background:#1A0D38; border-radius:50%; font-size:30px;">⭐</div>
-        </div>
-        <div class="track-details">
-          <div class="track-students">Un(e) élève</div>
-          <h3 class="track-song">Titre Surprise</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-avec">Avec</span> 
-            <img src="Artistes/Helena.png" class="artist-mini-pic" alt="Héléna">
-            <strong>Héléna</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- COLLÉGIALE -->
-      <h2 class="category-title"><span>🌟</span> Collégiale</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="assets/Logo 2026.png" alt="Collégiale" class="track-avatar" style="object-fit: contain;">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Les Académiciens & Vianney</div>
-          <h3 class="track-song">Hallelujah</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">Version</span> 
-            <strong>Vianney</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- DUO ENTRE ÉLÈVES -->
-      <h2 class="category-title"><span>🤝</span> Duo entre Élèves</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Kylian.png" alt="Kylian" class="track-avatar">
-          <img src="Eleves SF/Ydriss.png" alt="Ydriss" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Kylian & Ydriss</div>
-          <h3 class="track-song">Mon Frère</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Les Dix Commandements</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- TABLEAU CHANTÉ DANSÉ -->
-      <h2 class="category-title"><span>💃</span> Tableau Chanté et Dansé</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Morgan.png" alt="Morgan" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Morgan</div>
-          <h3 class="track-song">Rock Your Body</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Justin Timberlake</strong>
-          </p>
-        </div>
-      </div>
-
-      <!-- AUTOPORTRAIT -->
-      <h2 class="category-title"><span>🎨</span> L'Autoportrait</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Tracy.png" alt="Tracy" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Tracy</div>
-          <h3 class="track-song">Autoportrait</h3>
-          <p class="track-artist">
-          </p>
-        </div>
-      </div>
-
-      <!-- CHANSON CHALLENGE -->
-      <h2 class="category-title"><span>⚔️</span> La Chanson Challenge</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Noemie.png" alt="Noémie" class="track-avatar">
-          <img src="Eleves SF/Leelo.png" alt="Leeloo" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Noémie & Leeloo</div>
-          <h3 class="track-song">Confessions Nocturnes</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Vitaa & Diam's</strong>
-          </p>
-          <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
-            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
-            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Reproduire le clip à 100% (Noémie incarne Vitaa, Leeloo incarne Diam's).</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- BATTLE DU TOP 3 -->
-      <h2 class="category-title"><span>🛡️</span> Battle du Top 3</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Melina.png" alt="Mélina" class="track-avatar">
-          <img src="Eleves SF/Leelo.png" alt="Leeloo" class="track-avatar">
-          <img src="Eleves SF/Isabella.png" alt="Isabelle" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Isabella, Mélina & Leeloo</div>
-          <h3 class="track-song">Et Bam</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Mentissa</strong>
-          </p>
-          <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
-            <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
-            <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Ils s’affronteront lors du prime avec l'objectif de gagner l’immunité.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- LES NOMMÉS (TRIÉS PAR ORDRE ALPHABÉTIQUE) -->
-      <h2 class="category-title"><span>🚨</span> Les Nommés de la Semaine</h2>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Brieuc.png" alt="Brieuc" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Brieuc</div>
-          <h3 class="track-song">Die On This Hill</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Sienna Spiro</strong>
-          </p>
-          <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommé</span></div>
-        </div>
-      </div>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Elija.png" alt="Elija" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Elija</div>
-          <h3 class="track-song">Back To Black</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Amy Winehouse</strong>
-          </p>
-          <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommée</span></div>
-        </div>
-      </div>
-
-      <div class="track-card">
-        <div class="track-avatars">
-          <img src="Eleves SF/Zoe.png" alt="Zoé" class="track-avatar">
-        </div>
-        <div class="track-details">
-          <div class="track-students">Zoé</div>
-          <h3 class="track-song">Hypersensible</h3>
-          <p class="track-artist">
-            <span class="tag-badge tag-de">De</span> 
-            <strong>Charles Doré</strong>
-          </p>
-          <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommée</span></div>
-        </div>
-      </div>
-
     </div>
-  </section>
+
+    <!-- LA SETLIST -->
+    <section class="setlist-section" id="setlist-blur-target">
+      <div class="setlist-container">
+
+        <!-- OUVERTURE DU PRIME -->
+        <h2 class="category-title"><span>🌟</span> Ouverture du Prime</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Amel</div>
+            <h3 class="track-song">Empire State of Mind</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Jay-Z et Alicia Keys</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- L'HYMNE -->
+        <h2 class="category-title"><span>🎶</span> L'Hymne de la Saison</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="assets/Logo 2026.png" alt="Hymne" class="track-avatar" style="object-fit: contain;">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Les Académiciens</div>
+            <h3 class="track-song">Dans un autre monde</h3>
+            <p class="track-artist"><span class="tag-badge tag-de">De</span> <strong>Céline Dion</strong></p>
+          </div>
+        </div>
+
+        <!-- DUOS AVEC LE PARRAIN (VIANNEY) -->
+        <h2 class="category-title"><span>👑</span> Duo avec le Parrain</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Antoine.png" alt="Antoine" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Antoine</div>
+            <h3 class="track-song">Je m'en vais</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-avec">Avec le parrain</span> 
+              <img src="Artistes/Vianney.png" class="artist-mini-pic" alt="Vianney">
+              <strong>Vianney</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Isabella.png" alt="Isabella" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Isabella</div>
+            <h3 class="track-song">D'or et d'étain</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-avec">Avec le parrain</span> 
+              <img src="Artistes/Vianney.png" class="artist-mini-pic" alt="Vianney">
+              <strong>Vianney</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- CARTE BLANCHE -->
+        <h2 class="category-title"><span>🤍</span> Carte Blanche</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Melina.png" alt="Mélina" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Mélina</div>
+            <h3 class="track-song">Si j'étais moi</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-avec">Avec</span> 
+              <img src="Artistes/Zazie.png" class="artist-mini-pic" alt="Zazie">
+              <strong>Zazie</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- INVITÉS -->
+        <h2 class="category-title"><span>🎤</span> Invité</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Maud.png" alt="Maud" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Maud</div>
+            <h3 class="track-song">Douce</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-avec">Avec</span> 
+              <img src="Artistes/ClaraYse.png" class="artist-mini-pic" alt="Clara Ysé">
+              <strong>Clara Ysé</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- INVITÉ SURPRISE -->
+        <h2 class="category-title"><span>🎁</span> Invité Mystère</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <div class="track-avatar" style="display:flex; align-items:center; justify-content:center; background:#1A0D38; border-radius:50%; font-size:30px;">⭐</div>
+          </div>
+          <div class="track-details">
+            <div class="track-students">Un(e) élève</div>
+            <h3 class="track-song">Titre Surprise</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-avec">Avec</span> 
+              <img src="Artistes/Helena.png" class="artist-mini-pic" alt="Héléna">
+              <strong>Héléna</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- COLLÉGIALE -->
+        <h2 class="category-title"><span>🌟</span> Collégiale</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="assets/Logo 2026.png" alt="Collégiale" class="track-avatar" style="object-fit: contain;">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Les Académiciens & Vianney</div>
+            <h3 class="track-song">Hallelujah</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">Version</span> 
+              <strong>Vianney</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- DUO ENTRE ÉLÈVES -->
+        <h2 class="category-title"><span>🤝</span> Duo entre Élèves</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Kylian.png" alt="Kylian" class="track-avatar">
+            <img src="Eleves SF/Ydriss.png" alt="Ydriss" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Kylian & Ydriss</div>
+            <h3 class="track-song">Mon Frère</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Les Dix Commandements</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- TABLEAU CHANTÉ DANSÉ -->
+        <h2 class="category-title"><span>💃</span> Tableau Chanté et Dansé</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Morgan.png" alt="Morgan" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Morgan</div>
+            <h3 class="track-song">Rock Your Body</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Justin Timberlake</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- AUTOPORTRAIT -->
+        <h2 class="category-title"><span>🎨</span> L'Autoportrait</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Tracy.png" alt="Tracy" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Tracy</div>
+            <h3 class="track-song">Autoportrait</h3>
+            <p class="track-artist">
+            </p>
+          </div>
+        </div>
+
+        <!-- CHANSON CHALLENGE -->
+        <h2 class="category-title"><span>⚔️</span> La Chanson Challenge</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Noemie.png" alt="Noémie" class="track-avatar">
+            <img src="Eleves SF/Leelo.png" alt="Leeloo" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Noémie & Leeloo</div>
+            <h3 class="track-song">Confessions Nocturnes</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Vitaa & Diam's</strong>
+            </p>
+            <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
+              <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
+              <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Reproduire le clip à 100% (Noémie incarne Vitaa, Leeloo incarne Diam's).</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BATTLE DU TOP 3 -->
+        <h2 class="category-title"><span>🛡️</span> Battle du Top 3</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Melina.png" alt="Mélina" class="track-avatar">
+            <img src="Eleves SF/Leelo.png" alt="Leeloo" class="track-avatar">
+            <img src="Eleves SF/Isabella.png" alt="Isabelle" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Isabella, Mélina & Leeloo</div>
+            <h3 class="track-song">Et Bam</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Mentissa</strong>
+            </p>
+            <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px;">
+              <span class="tag-badge tag-regle" style="margin-top: 2px; flex-shrink: 0;">Règle</span> 
+              <span style="color: #FFFFFF; font-size: 14px; font-weight: 600; line-height: 1.4;">Ils s’affronteront lors du prime avec l'objectif de gagner l’immunité.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LES NOMMÉS (TRIÉS PAR ORDRE ALPHABÉTIQUE) -->
+        <h2 class="category-title"><span>🚨</span> Les Nommés de la Semaine</h2>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Brieuc.png" alt="Brieuc" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Brieuc</div>
+            <h3 class="track-song">Die On This Hill</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Sienna Spiro</strong>
+            </p>
+            <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommé</span></div>
+          </div>
+        </div>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Elija.png" alt="Elija" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Elija</div>
+            <h3 class="track-song">Back To Black</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Amy Winehouse</strong>
+            </p>
+            <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommée</span></div>
+          </div>
+        </div>
+
+        <div class="track-card">
+          <div class="track-avatars">
+            <img src="Eleves SF/Zoe.png" alt="Zoé" class="track-avatar">
+          </div>
+          <div class="track-details">
+            <div class="track-students">Zoé</div>
+            <h3 class="track-song">Hypersensible</h3>
+            <p class="track-artist">
+              <span class="tag-badge tag-de">De</span> 
+              <strong>Charles Doré</strong>
+            </p>
+            <div style="margin-top: 8px;"><span class="tag-badge tag-nomme">Nommée</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
 </main>
 
 <div id="footer-placeholder"></div>
+
+<!-- SCRIPT MAGIQUE : FLOU + CHRONO (VENDREDI 21H10) + PASSE-PARTOUT ADMIN -->
+<script>
+  function gererTeasingProgramme() {
+    // Clé secrète : ajoute ?admin=true à la fin de ton URL pour déverrouiller la page
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdmin = urlParams.get('admin') === 'true';
+
+    const maintenant = new Date();
+    const jour = maintenant.getDay(); // 0 = Dimanche, 1 = Lundi, ..., 5 = Vendredi, 6 = Samedi
+    const heure = maintenant.getHours();
+    const minutes = maintenant.getMinutes();
+
+    // La page est OUVERTE : Vendredi APRÈS 21h10, et Samedi toute la journée
+    let estOuvert = false;
+    if (jour === 5 && (heure > 21 || (heure === 21 && minutes >= 10))) {
+      estOuvert = true; // Vendredi passé 21h10
+    } else if (jour === 6) {
+      estOuvert = true; // Samedi (jour du prime)
+    }
+
+    const setlistBlock = document.getElementById("setlist-blur-target");
+    const overlay = document.getElementById("teasing-overlay");
+
+    if (estOuvert || isAdmin) {
+      setlistBlock.classList.remove("locked-blur");
+      overlay.style.display = "none";
+    } else {
+      setlistBlock.classList.add("locked-blur");
+      overlay.style.display = "flex";
+      
+      // Calcul du temps jusqu'au prochain Vendredi à 21h10
+      let prochainVendredi = new Date();
+      let joursAajouter = (5 - jour + 7) % 7;
+      
+      // Sécurité : si on est vendredi mais AVANT 21h10, le chrono vise aujourd'hui
+      if (jour === 5 && (heure < 21 || (heure === 21 && minutes < 10))) { 
+          joursAajouter = 0; 
+      }
+      
+      prochainVendredi.setDate(maintenant.getDate() + joursAajouter);
+      prochainVendredi.setHours(21, 10, 0, 0);
+
+      const diff = prochainVendredi - maintenant;
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / 1000 / 60) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("cd-d").innerText = d.toString().padStart(2, '0');
+      document.getElementById("cd-h").innerText = h.toString().padStart(2, '0');
+      document.getElementById("cd-m").innerText = m.toString().padStart(2, '0');
+      document.getElementById("cd-s").innerText = s.toString().padStart(2, '0');
+    }
+  }
+
+  setInterval(gererTeasingProgramme, 1000);
+  gererTeasingProgramme();
+</script>
+
 <script src="header.js"></script>
 <script src="footer.js"></script>
 <script src="menu.js"></script>
