@@ -1694,6 +1694,27 @@ html, body {
     justify-content: center;
 }
 
+/* Étiquette SURPRISE en diagonale */
+.etiquette.tag-surprise {
+    background: #B33939 !important; /* Le rouge/bordeaux de la photo */
+    color: #FFFFFF !important;
+    font-weight: 900 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border: none !important;
+    border-radius: 2px !important;
+    
+    /* C'EST ICI QUE LA MAGIE OPÈRE (La diagonale) */
+    transform: rotate(-22deg) scale(0.9) !important;
+    
+    /* On ajoute une belle ombre pour l'effet "décollé" du papier */
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.4) !important;
+    
+    /* Pour s'assurer qu'elle passe au-dessus des autres éléments */
+    z-index: 10 !important;
+}
+
 /* Carte prune avec coins arrondis asymétriques. */
 .etiquette.tag-masterclass {
     background: #61334E !important;
