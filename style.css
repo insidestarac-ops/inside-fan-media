@@ -1694,9 +1694,9 @@ html, body {
     justify-content: center;
 }
 
-/* Étiquette SURPRISE en diagonale */
-.etiquette.tag-surprise {
-    background: #B33939 !important; /* Le rouge/bordeaux de la photo */
+/* Étiquette SURPRISE (Version Diagonale "Scotch") */
+.etiquette.tag-surprise-diago {
+    background: #B33939 !important; /* Le rouge/bordeaux */
     color: #FFFFFF !important;
     font-weight: 900 !important;
     font-size: 11px !important;
@@ -1705,14 +1705,15 @@ html, body {
     border: none !important;
     border-radius: 2px !important;
     
-    /* C'EST ICI QUE LA MAGIE OPÈRE (La diagonale) */
+    /* La magie de la diagonale */
     transform: rotate(-22deg) scale(0.9) !important;
-    
-    /* On ajoute une belle ombre pour l'effet "décollé" du papier */
     box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.4) !important;
-    
-    /* Pour s'assurer qu'elle passe au-dessus des autres éléments */
     z-index: 10 !important;
+    
+    /* Pour bien centrer le texte dedans */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* Carte prune avec coins arrondis asymétriques. */
