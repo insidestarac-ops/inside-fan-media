@@ -421,7 +421,8 @@ function texteEtiquette(type, duree) {
         case "tag-danse":         return "DANSE";
         case "tag-chant":         return "CHANT";
         case "tag-sport":         return "SPORT";
-        case "tag-surprise":      return "SURPRISE !";
+        case "tag-surprise":          return "SURPRISE !";
+        case "tag-surprise-diago":    return "SURPRISE !";
         case "tag-reveil":        return "réveil";
         case "tag-dejeuner":      return "déjeuner";
         case "tag-diner":         return "dîner";
