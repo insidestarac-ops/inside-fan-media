@@ -1694,26 +1694,27 @@ html, body {
     justify-content: center;
 }
 
-/* Étiquette SURPRISE (Version Diagonale "Scotch") */
+/* Étiquette SURPRISE (Dents de scie + Diagonale) */
 .etiquette.tag-surprise-diago {
-    background: #B33939 !important; /* Le rouge/bordeaux */
+    background: #A63B40 !important;
     color: #FFFFFF !important;
+    clip-path: polygon(
+        0% 0%, 100% 0%, 92% 16.5%, 100% 33%, 92% 50%, 100% 66.5%, 92% 83%, 100% 100%, 0% 100%, 8% 83%, 0% 66.5%, 8% 50%, 0% 33%, 8% 16.5%
+    );
+    font-size: 16px !important;
     font-weight: 900 !important;
-    font-size: 11px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    border: none !important;
-    border-radius: 2px !important;
+    font-style: normal !important;
+    letter-spacing: 1px;
+    border-radius: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
-    /* La magie de la diagonale */
-    transform: rotate(-22deg) scale(0.9) !important;
-    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.4) !important;
-    z-index: 10 !important;
-    
-    /* Pour bien centrer le texte dedans */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    /* --- LIGNES AJOUTÉES POUR L'INCLINAISON --- */
+    transform: rotate(-22deg) scale(0.9) !important; /* Incline et réduit un poil pour rentrer dans la case */
+    z-index: 10 !important; /* Passe par-dessus les autres éléments */
+    box-shadow: none !important; 
+    filter: drop-shadow(3px 4px 3px rgba(0, 0, 0, 0.4)) !important; /* Remplace box-shadow pour suivre la forme découpée */
 }
 
 /* Carte prune avec coins arrondis asymétriques. */
