@@ -1767,6 +1767,19 @@ html, body {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
 }
 
+/* Entretien Directeur : Violet profond */
+.etiquette.tag-entretien-dir {
+    background: #4A0E78 !important; 
+    color: #FFFFFF !important;
+    border-radius: 12px !important; /* Bords un peu plus arrondis façon "pilule" comme sur ta photo */
+    font-size: 8px !important; 
+    font-weight: 900 !important;
+    letter-spacing: 0.5px;
+    white-space: nowrap !important; 
+    border: none !important;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
 /* Annonces Répétitrices : Jaune/Orange doux */
 .etiquette.tag-annonces-rep {
     background: #FFB359 !important; 
