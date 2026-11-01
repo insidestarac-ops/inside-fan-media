@@ -428,6 +428,7 @@ function texteEtiquette(type, duree) {
         
         /* 🚨 NOUVELLES MATIÈRES AJOUTÉES ICI 🚨 */
         case "tag-annonces-dir":  return "ANNONCES DIRECTEUR";
+        case "tag-entretien-dir": return "ENTRETIEN DIRECTEUR";
         case "tag-annonces-rep":  return "ANNONCES RÉPÉTITRICES";
         case "tag-all-access":    return "ALL ACCESS<br>DU DIRECTEUR";
         
