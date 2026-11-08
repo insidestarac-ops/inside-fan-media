@@ -1381,17 +1381,17 @@ html, body {
 .start-45 { top: 75%; }
 
 /* ===== DURÉES DES ÉTIQUETTES (Ajustées à -1px pour laisser respirer la ligne du bas) ===== */
-.etiquette.h-0-5     { height: calc(50% - 1px); }
-.etiquette.h-1       { height: calc(100% - 1px); }
-.etiquette.h-1-5     { height: calc(150% - 1px); }
-.etiquette.h-2       { height: calc(200% - 1px); }
-.etiquette.h-2-5     { height: calc(250% - 1px); }
-.etiquette.h-2-75    { height: calc(275% - 1px); }
-.etiquette.h-3       { height: calc(300% - 1px); }
-.etiquette.h-3-5     { height: calc(350% - 1px); }
-.etiquette.h-4       { height: calc(400% - 1px); }
-.etiquette.h-4-5     { height: calc(450% - 1px); }
-.etiquette.h-journee { height: calc(1700% - 1px); }
+.etiquette.h-0-5     { height: calc(50% - -2px); }
+.etiquette.h-1       { height: calc(100% - 2px); }
+.etiquette.h-1-5     { height: calc(150% - 2px); }
+.etiquette.h-2       { height: calc(200% - 2px); }
+.etiquette.h-2-5     { height: calc(250% - 2px); }
+.etiquette.h-2-75    { height: calc(275% - 2px); }
+.etiquette.h-3       { height: calc(300% - 2px); }
+.etiquette.h-3-5     { height: calc(350% - 2px); }
+.etiquette.h-4       { height: calc(400% - 2px); }
+.etiquette.h-4-5     { height: calc(450% - 2px); }
+.etiquette.h-journee { height: calc(1700% - 2px); }
 
 
 /* ==================================================================
@@ -1786,4 +1786,20 @@ html, body {
     z-index: 4; 
     mix-blend-mode: color-burn; 
     filter: grayscale(100%); 
+}
+
+/* Signature discrète incrustée pour contrer le rognage d'image sur X */
+.signature-voleurs {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #8C5332;
+    opacity: 0.4; /* Très discret, fondé dans les tons du mur */
+    pointer-events: none;
+    z-index: 5;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
 }
