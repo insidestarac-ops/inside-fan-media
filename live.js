@@ -407,7 +407,7 @@ function texteEtiquette(type, duree) {
         case "tag-expression":    return "<div class='tag-expression-wrapper'><div class='exp-top'>EXPRESSION</div><div class='exp-bot'>SCÉNIQUE</div></div>";
         case "tag-repetitions":   return "RÉPÉTITIONS";
         case "tag-evaluations": 
-          return "<span>ÉVALUATIONS</span><span class='ev-star'>✦</span>";
+          return "<span class='ev-star'>✦</span><span>ÉVALUATIONS</span><span class='ev-star'>✦</span>";
         case "tag-debrief":       return "DÉBRIEF<br>DU<br>PRIME";
         case "tag-showtime":      return "<span class='st-star'>✦</span><span class='cursive'>show time</span><span class='st-star'>✦</span>";
         case "tag-masterclass":   return "MASTERCLASS<br>DU DIRECTEUR";
