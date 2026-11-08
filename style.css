@@ -1689,18 +1689,15 @@ html, body {
    14 — FINITIONS PREMIUM (RÉALISME MATÉRIEL) & SÉCURITÉ
    ================================================================== */
 
-/* 1. L'Aspect "Magnet / Carton" (Sans bordure, couleurs profondes) */
+/* 1. L'Aspect "Magnet / Carton" (Couleurs profondes, vraie ombre 3D) */
 .planning-grid .etiquette {
-    /* On supprime la bordure blanche et les anciens effets */
-    border: none !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
+    /* On supprime uniquement la bordure indésirable */
+    border: 0 !important;
     
-    /* LA MAGIE EST ICI : 
-       - saturate(1.15) contrast(1.05) : ravive et approfondit toutes tes couleurs !
-       - drop-shadow : double ombre (une foncée pour l'épaisseur, une diffuse pour le mur) */
-    filter: saturate(1.15) contrast(1.05) drop-shadow(1px 2px 2px rgba(15, 5, 25, 0.35)) drop-shadow(2px 5px 6px rgba(15, 5, 25, 0.15)) !important;
+    /* LA MAGIE SAINE : 
+       - saturate(1.15) : ravive légèrement les couleurs
+       - drop-shadow : double ombre (une sombre pour l'épaisseur, une diffuse pour le mur) */
+    filter: saturate(1.15) drop-shadow(1px 2px 1px rgba(15, 5, 25, 0.4)) drop-shadow(2px 5px 6px rgba(15, 5, 25, 0.15)) !important;
 }
 
 /* 2. Le mur creusé (Doux et réaliste) */
