@@ -1519,30 +1519,33 @@ html, body {
     left: 8px;
 }
 
-/* Bloc ÉVALUATIONS : Simple, centré, sans pli et aéré */
+/* Bloc ÉVALUATIONS : Nettoyé, aéré, sans pli */
 .etiquette.tag-evaluations {
     background: #F26B2C !important;
     color: #FFF1DC !important;
     border-radius: 10px !important;
     flex-direction: column !important;
-    justify-content: center !important; /* Centre l'ensemble au lieu de l'écarter vers les bords */
-    gap: 6px !important; /* Ajoute un espace régulier et propre entre les textes et les étoiles */
-    font-size: 14px !important; /* Légèrement réduit pour ne pas toucher les bords gauche/droite */
+    justify-content: center !important; /* Centre l'ensemble verticalement */
+    align-items: center !important;
+    gap: 8px !important; /* Espace propre entre le texte et l'étoile */
+    font-size: 14px !important; /* Un peu plus petit pour aérer sur les côtés */
     font-weight: 900 !important;
     letter-spacing: 0.8px !important;
     line-height: 1 !important;
+    /* L'ombre premium */
     box-shadow: 3px 5px 8px rgba(11, 7, 26, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Sécurité : on tue définitivement le pseudo-élément qui faisait le pli */
-.etiquette.tag-evaluations::after {
-    display: none !important;
-}
-
 .etiquette.tag-evaluations .ev-star {
-    font-size: 16px !important; /* Étoiles un poil plus fines */
+    font-size: 18px !important;
     line-height: 1 !important;
     color: rgba(255, 241, 220, 0.9) !important;
+}
+
+/* Sécurité anti coin-corné ou vieux pseudos-éléments */
+.etiquette.tag-evaluations::before,
+.etiquette.tag-evaluations::after {
+    display: none !important;
 }
 
 /* Bloc bleu clair avec coins arrondis en diagonale. */
