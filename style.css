@@ -1416,9 +1416,26 @@ html, body {
 /* Expression Scénique (Clap) */
 .etiquette.tag-expression { background: transparent !important; box-shadow: none !important; left: 0; width: 100%; display: block !important; container-type: size; }
 .tag-expression-wrapper { position: absolute; inset: 0; display: block; }
-.exp-top { position: absolute; z-index: 1; top: 3px; left: 2%; width: 90%; height: 44%; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #9C4143, #7A3032); color: #F3E3D0; font-weight: 900; font-size: 15px !important; line-height: 1; letter-spacing: 1px; border-radius: 2px; text-transform: uppercase; transform: rotate(-3deg); }
-.exp-bot { position: absolute; z-index: 2; bottom: 0; left: 3%; width: 94%; height: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #7A3038, #5A2128); color: #F3E3D0; font-weight: 900; font-size: 18px !important; line-height: 1; letter-spacing: 0.5px; border-radius: 2px; text-transform: uppercase; }
-
+.exp-top, .exp-bot {
+    left: 3% !important;
+    width: 94% !important;
+    transform: none !important;
+}
+.exp-top {
+    top: 0 !important;
+    height: 50% !important;
+    border-radius: 6px 6px 0 0 !important;
+    font-size: 15px !important;
+    background: linear-gradient(145deg, #9C4143, #7A3032) !important;
+    border-bottom: 1px solid rgba(243, 227, 208, 0.35) !important; /* fine ligne de jonction */
+}
+.exp-bot {
+    bottom: 0 !important;
+    height: 50% !important;
+    border-radius: 0 0 6px 6px !important;
+    font-size: 17px !important;
+    background: linear-gradient(145deg, #7A3038, #5A2128) !important;
+}
 /* Répétitions */
 .etiquette.tag-repetitions {
     background: linear-gradient(145deg, #F9BD3F, #E6941C) !important;
