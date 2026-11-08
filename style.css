@@ -1366,32 +1366,32 @@ html, body {
     font-weight: 900;
     text-transform: uppercase;
     font-size: 12px;
+    left: 4% !important;
+    width: 92% !important;
     z-index: 10;
     letter-spacing: 0.5px;
     /* Légère texture granuleuse pour casser l'effet "plastique plat" du web */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
 }
 
-/* (Plus de hover ici !) */
-
-/* Départ à l’heure pile : Alignement chirurgical sur la ligne de la grille */
-.start-00 { top: 0; }
+/* Départ à l’heure pile : Ancrage chirurgical sur la ligne */
+.start-00 { top: 0px; }
 .start-15 { top: 25%; }
 .start-30 { top: 50%; }
 .start-45 { top: 75%; }
 
-/* ===== DURÉES DES ÉTIQUETTES (Ajustées à -1px pour laisser respirer la ligne du bas) ===== */
-.etiquette.h-0-5     { height: calc(50% - -2px); }
-.etiquette.h-1       { height: calc(100% - 2px); }
-.etiquette.h-1-5     { height: calc(150% - 2px); }
-.etiquette.h-2       { height: calc(200% - 2px); }
-.etiquette.h-2-5     { height: calc(250% - 2px); }
-.etiquette.h-2-75    { height: calc(275% - 2px); }
-.etiquette.h-3       { height: calc(300% - 2px); }
-.etiquette.h-3-5     { height: calc(350% - 2px); }
-.etiquette.h-4       { height: calc(400% - 2px); }
-.etiquette.h-4-5     { height: calc(450% - 2px); }
-.etiquette.h-journee { height: calc(1700% - 2px); }
+/* On retire quelques pixels à la hauteur ET on décale légèrement du haut pour créer un "jour" d'un millimètre entre chaque cours */
+.etiquette.h-0-5     { height: calc(50% - 3px); top: attr(top) + 1.5px; }
+.etiquette.h-1       { height: calc(100% - 4px); }
+.etiquette.h-1-5     { height: calc(150% - 4px); }
+.etiquette.h-2       { height: calc(200% - 4px); }
+.etiquette.h-2-5     { height: calc(250% - 4px); }
+.etiquette.h-2-75    { height: calc(275% - 4px); }
+.etiquette.h-3       { height: calc(300% - 4px); }
+.etiquette.h-3-5     { height: calc(350% - 4px); }
+.etiquette.h-4       { height: calc(400% - 4px); }
+.etiquette.h-4-5     { height: calc(450% - 4px); }
+.etiquette.h-journee { height: calc(1700% - 4px); }
 
 
 /* ==================================================================
@@ -1727,6 +1727,8 @@ html, body {
 .planning-grid .etiquette {
     /* On supprime uniquement la bordure indésirable */
     border: 0 !important;
+    margin-top: 1px;
+    margin-bottom: 1px;
     
     /* LA MAGIE SAINE : 
        - saturate(1.15) : ravive légèrement les couleurs
