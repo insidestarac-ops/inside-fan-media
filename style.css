@@ -1394,12 +1394,11 @@ html, body {
 
 
 /* ==================================================================
-   12 — FORMES DES ACTIVITÉS
-   Chaque tag définit la couleur et la silhouette d’une activité. Les durées restent indépendantes.
+   12 — FORMES DES ACTIVITÉS (LUMIÈRE & MATIÈRE PREMIUM)
    ================================================================== */
-/* Routines en vert sauge, largeur accrue et texte en minuscules. */
+/* Routines */
 .etiquette.tag-reveil, .etiquette.tag-dejeuner, .etiquette.tag-diner {
-    background: #959E7C !important;
+    background: linear-gradient(145deg, #A8B28D, #848D6B) !important;
     color: #ffffff !important;
     border-radius: 6px !important;
     text-transform: lowercase !important;
@@ -1410,426 +1409,139 @@ html, body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
     border: none !important;
 }
 
-/* Étiquette transparente contenant deux cartons superposés. */
-.etiquette.tag-expression {
-    background: transparent !important;
-    box-shadow: none !important;
-    left: 0;
-    width: 100%;
-    display: block !important;
-    container-type: size;
-}
+/* Expression Scénique (Clap) */
+.etiquette.tag-expression { background: transparent !important; box-shadow: none !important; left: 0; width: 100%; display: block !important; container-type: size; }
+.tag-expression-wrapper { position: absolute; inset: 0; display: block; }
+.exp-top { position: absolute; z-index: 1; top: 3px; left: 2%; width: 90%; height: 44%; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #9C4143, #7A3032); color: #F3E3D0; font-weight: 900; font-size: 15px !important; line-height: 1; letter-spacing: 1px; border-radius: 2px; text-transform: uppercase; transform: rotate(-3deg); }
+.exp-bot { position: absolute; z-index: 2; bottom: 0; left: 3%; width: 94%; height: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #7A3038, #5A2128); color: #F3E3D0; font-weight: 900; font-size: 18px !important; line-height: 1; letter-spacing: 0.5px; border-radius: 2px; text-transform: uppercase; }
 
-.tag-expression-wrapper {
-    position: absolute;
-    inset: 0;
-    display: block;
-}
-
-/* Carton supérieur incliné du clap expression scénique. */
-.exp-top {
-    position: absolute;
-    z-index: 1;
-    top: 3px;
-    left: 2%;
-    width: 90%;
-    height: 44%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #8E3A3C;
-    color: #F3E3D0;
-    border: 1.5px solid rgba(243, 227, 208, 0.45);
-    font-weight: 900;
-    font-size: 15px !important;
-    line-height: 1;
-    letter-spacing: 1px;
-    border-radius: 2px;
-    text-transform: uppercase;
-    transform: rotate(-3deg);
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Carton inférieur du clap expression scénique. */
-.exp-bot {
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    left: 3%;
-    width: 94%;
-    height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #6F2B33;
-    color: #F3E3D0;
-    border: 1.5px solid rgba(243, 227, 208, 0.45);
-    font-weight: 900;
-    font-size: 18px !important;
-    line-height: 1;
-    letter-spacing: 0.5px;
-    border-radius: 2px;
-    text-transform: uppercase;
-    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
-}
-
-/* Bloc jaune/orangé; deux étoiles décoratives sont dessinées en CSS. */
+/* Répétitions */
 .etiquette.tag-repetitions {
-    background: linear-gradient(160deg, #F9BD3F, #F2A12A);
-    color: #FFF1DC;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 900;
-    letter-spacing: 0.8px;
-    line-height: 1.15;
-    box-shadow: none;
+    background: linear-gradient(145deg, #F9BD3F, #E6941C) !important;
+    color: #FFF1DC !important;
+    border-radius: 10px !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.8px !important;
 }
+.etiquette.tag-repetitions::before, .etiquette.tag-repetitions::after { content: "✦"; position: absolute; color: rgba(255, 241, 220, 0.9); font-size: 18px; line-height: 1; }
+.etiquette.tag-repetitions::before { top: 5px; right: 8px; }
+.etiquette.tag-repetitions::after { bottom: 5px; left: 8px; }
 
-/* Variante de style ou de durée d’une étiquette. */
-.etiquette.tag-repetitions::before, .etiquette.tag-repetitions::after {
-    content: "✦";
-    position: absolute;
-    color: rgba(255, 241, 220, 0.9);
-    font-size: 18px;
-    line-height: 1;
-}
-
-/* Variante de style ou de durée d’une étiquette. */
-.etiquette.tag-repetitions::before {
-    top: 5px;
-    right: 8px;
-}
-
-/* Variante de style ou de durée d’une étiquette. */
-.etiquette.tag-repetitions::after {
-    bottom: 5px;
-    left: 8px;
-}
-
-/* Bloc ÉVALUATIONS : Nettoyé, aéré, sans pli */
+/* Évaluations */
 .etiquette.tag-evaluations {
-    background: #F26B2C !important;
+    background: linear-gradient(145deg, #FF7B33, #DE5A14) !important;
     color: #FFF1DC !important;
     border-radius: 10px !important;
     flex-direction: column !important;
-    justify-content: center !important; /* Centre l'ensemble verticalement */
+    justify-content: center !important;
     align-items: center !important;
-    gap: 8px !important; /* Espace propre entre le texte et l'étoile */
-    font-size: 14px !important; /* Un peu plus petit pour aérer sur les côtés */
+    gap: 8px !important;
+    font-size: 14px !important;
     font-weight: 900 !important;
     letter-spacing: 0.8px !important;
     line-height: 1 !important;
-    /* L'ombre premium */
-    box-shadow: 3px 5px 8px rgba(11, 7, 26, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
 }
+.etiquette.tag-evaluations .ev-star { font-size: 18px !important; line-height: 1 !important; color: rgba(255, 241, 220, 0.9) !important; }
 
-.etiquette.tag-evaluations .ev-star {
-    font-size: 18px !important;
-    line-height: 1 !important;
-    color: rgba(255, 241, 220, 0.9) !important;
-}
-
-/* Sécurité anti coin-corné ou vieux pseudos-éléments */
-.etiquette.tag-evaluations::before,
-.etiquette.tag-evaluations::after {
-    display: none !important;
-}
-
-/* Bloc bleu clair avec coins arrondis en diagonale. */
+/* Sport */
 .etiquette.tag-sport {
-    background: #6DB3E8;
-    color: #E3F2FF;
-    border-radius: 14px 3px 14px 3px;
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    line-height: 1;
-    box-shadow: none;
+    background: linear-gradient(145deg, #85C2F2, #59A0D9) !important;
+    color: #E3F2FF !important;
+    border-radius: 14px 3px 14px 3px !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1.5px !important;
 }
 
-/* Bloc rose avec coins évidés par un masque CSS. */
+/* Théâtre */
 .etiquette.tag-theatre {
-    background: #C8409F;
-    color: #FFE3F3;
-    border-radius: 0;
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: 1.2px;
-    line-height: 1;
-    box-shadow: inset 0 0 0 1.5px rgba(255, 227, 243, 0.3);
-    -webkit-mask: radial-gradient(circle 8px at 0 0, #0000 97%, #000) 0 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 0, #0000 97%, #000) 100% 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 0 100%, #0000 97%, #000) 0 100% / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 100%, #0000 97%, #000) 100% 100% / 51% 51% no-repeat;
-    mask: radial-gradient(circle 8px at 0 0, #0000 97%, #000) 0 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 0, #0000 97%, #000) 100% 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 0 100%, #0000 97%, #000) 0 100% / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 100%, #0000 97%, #000) 100% 100% / 51% 51% no-repeat;
-}
-
-
-.etiquette.tag-showtime {
-    left: 2% !important;
-    width: 96% !important;
-    background: linear-gradient(180deg, #F79562 0%, #E87978 32%, #CE537E 65%, #9C3077 100%) !important;
-    color: #FFF1E6 !important;
-    border: 0 !important;
+    background: linear-gradient(145deg, #D954B0, #A82A82) !important;
+    color: #FFE3F3 !important;
     border-radius: 0 !important;
-    box-shadow: none !important;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-transform: none;
-    white-space: nowrap;
-    /* Courbes dessinées individuellement de haut en bas. */
+    font-size: 19px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1.2px !important;
+    -webkit-mask: radial-gradient(circle 8px at 0 0, #0000 97%, #000) 0 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 0, #0000 97%, #000) 100% 0 / 51% 51% no-repeat, radial-gradient(circle 8px at 0 100%, #0000 97%, #000) 0 100% / 51% 51% no-repeat, radial-gradient(circle 8px at 100% 100%, #0000 97%, #000) 100% 100% / 51% 51% no-repeat;
+}
+
+/* Show Time */
+.etiquette.tag-showtime {
+    left: 2% !important; width: 96% !important;
+    background: linear-gradient(180deg, #F79562 0%, #E87978 32%, #CE537E 65%, #9C3077 100%) !important;
+    color: #FFF1E6 !important; border: 0 !important; border-radius: 0 !important;
+    flex-direction: column !important; justify-content: center !important; align-items: center !important;
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20680%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M12%200%20L188%200%20C187.8%204.0%20189.0%2017.0%20187%2024%20C185.0%2031.0%20175.8%2035.2%20176%2042%20C176.2%2048.8%20186.3%2056.8%20188%2065%20C189.7%2073.2%20188.5%2083.3%20186%2091%20C183.5%2098.7%20172.7%20103.3%20173%20111%20C173.3%20118.7%20185.7%20128.3%20188%20137%20C190.3%20145.7%20188.8%20155.3%20187%20163%20C185.2%20170.7%20176.5%20175.3%20177%20183%20C177.5%20190.7%20188.5%20199.8%20190%20209%20C191.5%20218.2%20188.5%20230.2%20186%20238%20C183.5%20245.8%20174.5%20248.3%20175%20256%20C175.5%20263.7%20187.2%20274.5%20189%20284%20C190.8%20293.5%20188.2%20304.8%20186%20313%20C183.8%20321.2%20175.7%20325.5%20176%20333%20C176.3%20340.5%20186.5%20348.8%20188%20358%20C189.5%20367.2%20187.3%20379.7%20185%20388%20C182.7%20396.3%20173.7%20400.5%20174%20408%20C174.3%20415.5%20184.7%20424.2%20187%20433%20C189.3%20441.8%20189.7%20453.3%20188%20461%20C186.3%20468.7%20176.8%20471.8%20177%20479%20C177.2%20486.2%20187.5%20495.2%20189%20504%20C190.5%20512.8%20188.3%20524.0%20186%20532%20C183.7%20540.0%20174.7%20544.0%20175%20552%20C175.3%20560.0%20186.2%20570.3%20188%20580%20C189.8%20589.7%20188.0%20602.0%20186%20610%20C184.0%20618.0%20175.7%20621.3%20176%20628%20C176.3%20634.7%20186.0%20641.3%20188%20650%20C190.0%20658.7%20188.0%20675.0%20188%20680%20L12%20680%20C12.3%20675.0%2011.8%20658.7%2014%20650%20C16.2%20641.3%2025.3%20634.7%2025%20628%20C24.7%20621.3%2014.0%20618.0%2012%20610%20C10.0%20602.0%2010.7%20589.7%2013%20580%20C15.3%20570.3%2026.2%20560.0%2026%20552%20C25.8%20544.0%2014.0%20540.0%2012%20532%20C10.0%20524.0%2012.0%20512.8%2014%20504%20C16.0%20495.2%2024.5%20486.2%2024%20479%20C23.5%20471.8%2012.7%20468.7%2011%20461%20C9.3%20453.3%2011.7%20441.8%2014%20433%20C16.3%20424.2%2025.3%20415.5%2025%20408%20C24.7%20400.5%2014.0%20396.3%2012%20388%20C10.0%20379.7%2011.0%20367.2%2013%20358%20C15.0%20348.8%2024.3%20340.5%2024%20333%20C23.7%20325.5%2012.7%20321.2%2011%20313%20C9.3%20304.8%2011.5%20293.5%2014%20284%20C16.5%20274.5%2026.3%20263.7%2026%20256%20C25.7%20248.3%2014.3%20245.8%2012%20238%20C9.7%20230.2%2010.0%20218.2%2012%20209%20C14.0%20199.8%2024.0%20190.7%2024%20183%20C24.0%20175.3%2013.8%20170.7%2012%20163%20C10.2%20155.3%2010.7%20145.7%2013%20137%20C15.3%20128.3%2026.2%20118.7%2026%20111%20C25.8%20103.3%2014.0%2098.7%2012%2091%20C10.0%2083.3%2011.8%2073.2%2014%2065%20C16.2%2056.8%2025.3%2048.8%2025%2042%20C24.7%2035.2%2014.2%2031.0%2012%2024%20C9.8%2017.0%2012.0%204.0%2012%200%20Z%22%2F%3E%3C%2Fsvg%3E") !important;
-    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20680%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M12%200%20L188%200%20C187.8%204.0%20189.0%2017.0%20187%2024%20C185.0%2031.0%20175.8%2035.2%20176%2042%20C176.2%2048.8%20186.3%2056.8%20188%2065%20C189.7%2073.2%20188.5%2083.3%20186%2091%20C183.5%2098.7%20172.7%20103.3%20173%20111%20C173.3%20118.7%20185.7%20128.3%20188%20137%20C190.3%20145.7%20188.8%20155.3%20187%20163%20C185.2%20170.7%20176.5%20175.3%20177%20183%20C177.5%20190.7%20188.5%20199.8%20190%20209%20C191.5%20218.2%20188.5%20230.2%20186%20238%20C183.5%20245.8%20174.5%20248.3%20175%20256%20C175.5%20263.7%20187.2%20274.5%20189%20284%20C190.8%20293.5%20188.2%20304.8%20186%20313%20C183.8%20321.2%20175.7%20325.5%20176%20333%20C176.3%20340.5%20186.5%20348.8%20188%20358%20C189.5%20367.2%20187.3%20379.7%20185%20388%20C182.7%20396.3%20173.7%20400.5%20174%20408%20C174.3%20415.5%20184.7%20424.2%20187%20433%20C189.3%20441.8%20189.7%20453.3%20188%20461%20C186.3%20468.7%20176.8%20471.8%20177%20479%20C177.2%20486.2%20187.5%20495.2%20189%20504%20C190.5%20512.8%20188.3%20524.0%20186%20532%20C183.7%20540.0%20174.7%20544.0%20175%20552%20C175.3%20560.0%20186.2%20570.3%20188%20580%20C189.8%20589.7%20188.0%20602.0%20186%20610%20C184.0%20618.0%20175.7%20621.3%20176%20628%20C176.3%20634.7%20186.0%20641.3%20188%20650%20C190.0%20658.7%20188.0%20675.0%20188%20680%20L12%20680%20C12.3%20675.0%2011.8%20658.7%2014%20650%20C16.2%20641.3%2025.3%20634.7%2025%20628%20C24.7%20621.3%2014.0%20618.0%2012%20610%20C10.0%20602.0%2010.7%20589.7%2013%20580%20C15.3%20570.3%2026.2%20560.0%2026%20552%20C25.8%20544.0%2014.0%20540.0%2012%20532%20C10.0%20524.0%2012.0%20512.8%2014%20504%20C16.0%20495.2%2024.5%20486.2%2024%20479%20C23.5%20471.8%2012.7%20468.7%2011%20461%20C9.3%20453.3%2011.7%20441.8%2014%20433%20C16.3%20424.2%2025.3%20415.5%2025%20408%20C24.7%20400.5%2014.0%20396.3%2012%20388%20C10.0%20379.7%2011.0%20367.2%2013%20358%20C15.0%20348.8%2024.3%20340.5%2024%20333%20C23.7%20325.5%2012.7%20321.2%2011%20313%20C9.3%20304.8%2011.5%20293.5%2014%20284%20C16.5%20274.5%2026.3%20263.7%2026%20256%20C25.7%20248.3%2014.3%20245.8%2012%20238%20C9.7%20230.2%2010.0%20218.2%2012%20209%20C14.0%20199.8%2024.0%20190.7%2024%20183%20C24.0%20175.3%2013.8%20170.7%2012%20163%20C10.2%20155.3%2010.7%20145.7%2013%20137%20C15.3%20128.3%2026.2%20118.7%2026%20111%20C25.8%20103.3%2014.0%2098.7%2012%2091%20C10.0%2083.3%2011.8%2073.2%2014%2065%20C16.2%2056.8%2025.3%2048.8%2025%2042%20C24.7%2035.2%2014.2%2031.0%2012%2024%20C9.8%2017.0%2012.0%204.0%2012%200%20Z%22%2F%3E%3C%2Fsvg%3E") !important;
     -webkit-mask-size: 100% 100% !important;
-    mask-size: 100% 100% !important;
-    -webkit-mask-repeat: no-repeat !important;
-    mask-repeat: no-repeat !important;
-    -webkit-mask-position: center !important;
-    mask-position: center !important;
 }
-
-/* Le samedi couvre toute la journée jusqu'à minuit */
-.etiquette.tag-showtime.h-journee {
-    height: calc(1750% - 4px);
-}
-
-/* On remplace les anciennes étoiles HTML par les étoiles CSS. */
-/* Étoiles : une grande en haut à droite, une grande en bas à gauche */
-.etiquette.tag-showtime::before,
-.etiquette.tag-showtime::after {
-    content: "✦"; position: absolute; color: #FFF1E6; line-height: 1; z-index: 2;
-}
+.etiquette.tag-showtime.h-journee { height: calc(1750% - 4px); }
+.etiquette.tag-showtime::before, .etiquette.tag-showtime::after { content: "✦"; position: absolute; color: #FFF1E6; line-height: 1; z-index: 2; }
 .etiquette.tag-showtime::before { top: 14px; right: 18%; font-size: 48px; }
 .etiquette.tag-showtime::after  { bottom: 14px; left: 18%; font-size: 48px; }
-
-/* Petites étoiles (les deux spans .st-star envoyés par la régie) */
-.etiquette.tag-showtime .st-star {
-    display: block !important; position: absolute; color: #FFF1E6; font-size: 20px; line-height: 1; z-index: 2;
-}
+.etiquette.tag-showtime .st-star { display: block !important; position: absolute; color: #FFF1E6; font-size: 20px; line-height: 1; z-index: 2; }
 .etiquette.tag-showtime .st-star:first-child { top: 64px; left: 30%; }
 .etiquette.tag-showtime .st-star:last-child  { bottom: 64px; right: 30%; }
+.etiquette.tag-showtime .cursive { writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Inter', system-ui, sans-serif !important; font-weight: 900 !important; text-transform: uppercase !important; font-size: 46px !important; line-height: 1; letter-spacing: 4px; color: #FFF1E6; text-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 
-/* Texte vertical, lu de bas en haut comme sur le mur */
-.etiquette.tag-showtime .cursive {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    /* On applique la police globale Inter du site pour un rendu ultra propre */
-    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-    /* On force en gras et en LETTRES CAPITALES */
-    font-weight: 900 !important;
-    text-transform: uppercase !important;
-    /* Ajustement de la taille pour la grille paysage */
-    font-size: 46px !important; 
-    line-height: 1;
-    letter-spacing: 4px; /* Un peu d'espace entre les lettres pour faire premium */
-    color: #FFF1E6;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-/* Étiquette marron taillée en hexagone grâce à clip-path. */
+/* Chant */
 .etiquette.tag-chant {
-    background: #8C5332 !important;
+    background: linear-gradient(145deg, #A6643C, #784527) !important;
     color: #FFFFFF !important;
     clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0 50%);
     border-radius: 0 !important;
-    font-size: 25px !important;
-    font-weight: 900 !important;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 25px !important; font-weight: 900 !important; letter-spacing: 1px !important;
+    display: flex; align-items: center; justify-content: center;
 }
 
-/* Étiquette verte avec coins arrondis opposés (forme feuille). */
+/* Danse */
 .etiquette.tag-danse {
-    background: #5E8037 !important;
+    background: linear-gradient(145deg, #719942, #496E26) !important;
     color: #FFFFFF !important;
     border-radius: 0 25px 0 25px !important;
-    font-size: 25px !important;
-    font-weight: 900 !important;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 25px !important; font-weight: 900 !important; letter-spacing: 1px !important;
+    display: flex; align-items: center; justify-content: center;
 }
 
-/* COURS PARTICULIERS (Rectangle propre et premium) */
+/* Cours Particuliers */
 .etiquette.tag-cp-chant, .etiquette.tag-cp-danse, .etiquette.tag-cp-expression {
-    background: #467DBB !important;
+    background: linear-gradient(145deg, #5A95D6, #3B6B9E) !important;
     color: #FFFFFF !important;
-    width: 90% !important;
-    left: 5% !important;
-    font-size: 9px !important;
-    font-weight: 800 !important;
-    line-height: 1.15 !important;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px !important;
-    border-radius: 6px !important; /* Arrondi propre */
-    border: none !important;
+    width: 90% !important; left: 5% !important;
+    font-size: 9px !important; font-weight: 800 !important; line-height: 1.15 !important;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px !important; border: none !important;
 }
 
-/* Forme bordeaux en dents de scie créée avec clip-path. */
-.etiquette.tag-surprise {
-    background: #A63B40 !important;
+/* Surprise */
+.etiquette.tag-surprise, .etiquette.tag-surprise-diago {
+    background: linear-gradient(145deg, #C2454B, #912D32) !important;
     color: #FFFFFF !important;
-    clip-path: polygon(
-
-    0% 0%, 100% 0%, 92% 16.5%, 100% 33%, 92% 50%, 100% 66.5%, 92% 83%, 100% 100%, 0% 100%, 8% 83%, 0% 66.5%, 8% 50%, 0% 33%, 8% 16.5%
-
-  );
-    font-size: 16px !important;
-    font-weight: 900 !important;
-    font-style: normal !important;
-    letter-spacing: 1px;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    clip-path: polygon(0% 0%, 100% 0%, 92% 16.5%, 100% 33%, 92% 50%, 100% 66.5%, 92% 83%, 100% 100%, 0% 100%, 8% 83%, 0% 66.5%, 8% 50%, 0% 33%, 8% 16.5%);
+    font-size: 16px !important; font-weight: 900 !important; letter-spacing: 1px !important;
+    border-radius: 0 !important; display: flex; align-items: center; justify-content: center;
 }
+.etiquette.tag-surprise-diago { transform: rotate(-22deg) scale(0.9) !important; z-index: 10 !important; }
 
-/* Étiquette SURPRISE (Dents de scie + Diagonale) */
-.etiquette.tag-surprise-diago {
-    background: #A63B40 !important;
-    color: #FFFFFF !important;
-    clip-path: polygon(
-        0% 0%, 100% 0%, 92% 16.5%, 100% 33%, 92% 50%, 100% 66.5%, 92% 83%, 100% 100%, 0% 100%, 8% 83%, 0% 66.5%, 8% 50%, 0% 33%, 8% 16.5%
-    );
-    font-size: 16px !important;
-    font-weight: 900 !important;
-    font-style: normal !important;
-    letter-spacing: 1px;
-    border-radius: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* --- LIGNES AJOUTÉES POUR L'INCLINAISON --- */
-    transform: rotate(-22deg) scale(0.9) !important; /* Incline et réduit un poil pour rentrer dans la case */
-    z-index: 10 !important; /* Passe par-dessus les autres éléments */
-    box-shadow: none !important; 
-    filter: drop-shadow(3px 4px 3px rgba(0, 0, 0, 0.4)) !important; /* Remplace box-shadow pour suivre la forme découpée */
-}
+/* Masterclass */
+.etiquette.tag-masterclass { background: linear-gradient(145deg, #7A4062, #4D263D) !important; color: #FFFFFF !important; border-radius: 20px 0 20px 0 !important; font-size: 15px !important; font-weight: 900 !important; }
 
-/* Carte prune avec coins arrondis asymétriques. */
-.etiquette.tag-masterclass {
-    background: #61334E !important;
-    color: #FFFFFF !important;
-    border-radius: 20px 0 20px 0 !important;
-    font-size: 15px !important;
-    font-weight: 900 !important;
-    line-height: 1.1 !important;
-    letter-spacing: 0.5px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    border: none !important;
-    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3) !important;
-}
+/* Debrief */
+.etiquette.tag-debrief { background: linear-gradient(180deg, #A84562 0%, #892849 50%, #5E162F 100%) !important; color: #FFFFFF !important; border-radius: 8px !important; font-size: 25px !important; font-weight: 900 !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
 
-/* Carte de débrief du Prime en dégradé framboise/bordeaux. */
-.etiquette.tag-debrief {
-    background: linear-gradient(180deg, #A84562 0%, #892849 50%, #5E162F 100%) !important;
-    color: #FFFFFF !important;
-    border-radius: 8px !important;
-    font-size: 25px !important;
-    font-weight: 900 !important;
-    line-height: 1.15 !important;
-    letter-spacing: 0.5px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    border: none !important;
-    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3) !important;
-}
+/* Tonalité */
+.etiquette.tag-tonalite { background: linear-gradient(160deg, #F9BD3F, #E6941C) !important; color: #FFF1DC !important; border-radius: 10px !important; font-size: 20px !important; font-weight: 900 !important; }
 
-/* Durée de quatre heures et demie. */
-.etiquette.h-4-5 {
-    height: calc(450% - 4px);
-}
+/* Annonces/Entretien */
+.etiquette.tag-annonces-dir { background: linear-gradient(145deg, #913959, #66253C) !important; color: #FFFFFF !important; border-radius: 8px !important; font-size: 8px !important; font-weight: 900 !important; }
+.etiquette.tag-entretien-dir { background: linear-gradient(145deg, #62149E, #380B5C) !important; color: #FFFFFF !important; border-radius: 12px !important; font-size: 8px !important; font-weight: 900 !important; }
+.etiquette.tag-annonces-rep { background: linear-gradient(145deg, #FFC475, #E69D45) !important; color: #FFFFFF !important; border-radius: 8px !important; font-size: 8px !important; font-weight: 900 !important; }
+.etiquette.tag-all-access { background: linear-gradient(90deg, #85374C, #5C1E2F) !important; color: #FFFFFF !important; border-radius: 8px !important; font-size: 14px !important; font-weight: 900 !important; }
 
-/* Étiquette jaune/orange de prise de tonalité, sans étoiles. */
-.etiquette.tag-tonalite {
-    background: linear-gradient(160deg, #F9BD3F, #F2A12A) !important;
-    color: #FFF1DC !important;
-    border-radius: 10px !important;
-    font-size: 20px !important;
-    font-weight: 900 !important;
-    letter-spacing: 0.8px;
-    line-height: 1.15 !important;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* Annonces Directeur : Bordeaux/Prune */
-.etiquette.tag-annonces-dir {
-    background: #792F4A !important; 
-    color: #FFFFFF !important;
-    border-radius: 8px !important;
-    font-size: 8px !important; /* Taille réduite */
-    font-weight: 900 !important;
-    letter-spacing: 0.5px;
-    white-space: nowrap !important; /* Force sur une seule ligne */
-    border: none !important;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Entretien Directeur : Violet profond */
-.etiquette.tag-entretien-dir {
-    background: #4A0E78 !important; 
-    color: #FFFFFF !important;
-    border-radius: 12px !important; /* Bords un peu plus arrondis façon "pilule" comme sur ta photo */
-    font-size: 8px !important; 
-    font-weight: 900 !important;
-    letter-spacing: 0.5px;
-    white-space: nowrap !important; 
-    border: none !important;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Annonces Répétitrices : Jaune/Orange doux */
-.etiquette.tag-annonces-rep {
-    background: #FFB359 !important; 
-    color: #FFFFFF !important;
-    border-radius: 8px !important;
-    font-size: 8px !important; /* Taille réduite */
-    font-weight: 900 !important;
-    letter-spacing: 0.5px;
-    white-space: nowrap !important; /* Force sur une seule ligne */
-    text-shadow: 0px 1px 2px rgba(0,0,0,0.15);
-    border: none !important;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* All Access du Directeur : Dégradé Bordeaux vers Framboise */
-.etiquette.tag-all-access {
-    background: linear-gradient(90deg, #6B293C 0%, #B84766 100%) !important;
-    color: #FFFFFF !important;
-    border-radius: 8px !important;
-    font-size: 14px !important; /* Taille réduite */
-    font-weight: 900 !important;
-    white-space: nowrap !important; /* Force sur une seule ligne */
-    letter-spacing: 0.5px;
-    border: none !important;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2) !important;
-}
 /* ==================================================================
-   10 — PLANNING INTERACTIF (version consolidée)
+   13 — PLANNING INTERACTIF (version consolidée)
    ================================================================== */
 
 /* Cadre extérieur */
@@ -1976,16 +1688,17 @@ html, body {
    14 — FINITIONS PREMIUM (FORCÉES) & SÉCURITÉ ANTI-COPIE
    ================================================================== */
 
-/* 1. L'Aspect "Magnet/Papier Épais" Universel (Sans bordure fantôme) */
+/* 1. L'Aspect Épaisseur Physique (Magnet/Papier cartonné) */
 .planning-grid .etiquette {
-    /* Le secret 3D : 1ère ombre fine/sombre (épaisseur) + 2ème ombre douce (portée au mur) */
-    filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.4)) drop-shadow(3px 6px 8px rgba(0, 0, 0, 0.2)) !important;
+    /* Ombre #1 très courte/foncée (épaisseur de l'objet) + Ombre #2 floutée (portée sur le mur) */
+    filter: drop-shadow(1px 2px 1px rgba(30, 10, 20, 0.5)) drop-shadow(3px 6px 10px rgba(30, 10, 20, 0.25)) !important;
+    /* Encrage du texte : donne l'impression que le texte blanc ressort physiquement */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* 2. Le mur creusé en 3D */
+/* 2. Le mur creusé en 3D (Fait ressortir les étiquettes par contraste) */
 .planning-mur {
-    /* Ajout d'un reflet clair en bas/droite pour renforcer l'effet "tableau encastré" */
-    box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.12), inset 0 -5px 15px rgba(255, 255, 255, 0.4), 0 15px 35px rgba(11, 7, 26, 0.1) !important;
+    box-shadow: inset 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 -3px 10px rgba(255, 255, 255, 0.3), 0 15px 35px rgba(11, 7, 26, 0.1) !important;
 }
 
 /* 3. Anti-Copie IA (Poison texturé invisible dans le mur) */
