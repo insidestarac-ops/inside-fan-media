@@ -1753,7 +1753,7 @@ html, body {
 
 body.export .planning-mur::after {
     opacity: 1;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='200'%3E%3Ctext x='20' y='110' transform='rotate(-20 180 100)' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='16' letter-spacing='2' fill='%2313082B' fill-opacity='0.09'%3E@insidefanmedia%3C/text%3E%3C/svg%3E") repeat;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='200'%3E%3Ctext x='20' y='110' transform='rotate(-20 180 100)' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='16' letter-spacing='2' fill='%2313082B' fill-opacity='0.16'%3E@insidefanmedia%3C/text%3E%3C/svg%3E") repeat;
 }
 
 /* 4. Anti-Copie Image (Logo ineffaçable pour X) */
