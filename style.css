@@ -1519,41 +1519,30 @@ html, body {
     left: 8px;
 }
 
-/* Bloc ÉVALUATIONS avec effet coin corné premium et texte centré */
+/* Bloc ÉVALUATIONS : Simple, centré, sans pli et aéré */
 .etiquette.tag-evaluations {
-    /* On coupe le coin en haut à droite */
-    background: linear-gradient(225deg, transparent 15px, #F26B2C 15px) !important;
+    background: #F26B2C !important;
     color: #FFF1DC !important;
     border-radius: 10px !important;
-    border-top-right-radius: 0 !important; 
     flex-direction: column !important;
-    justify-content: center !important; /* On centre tout parfaitement au milieu */
-    gap: 6px !important; /* Petit espace entre l'étoile et le texte */
-    font-size: 15px !important;
+    justify-content: center !important; /* Centre l'ensemble au lieu de l'écarter vers les bords */
+    gap: 6px !important; /* Ajoute un espace régulier et propre entre les textes et les étoiles */
+    font-size: 14px !important; /* Légèrement réduit pour ne pas toucher les bords gauche/droite */
     font-weight: 900 !important;
     letter-spacing: 0.8px !important;
     line-height: 1 !important;
-    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 3px 5px 8px rgba(11, 7, 26, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Le pli du coin (dessiné par-dessus en haut à droite) */
+/* Sécurité : on tue définitivement le pseudo-élément qui faisait le pli */
 .etiquette.tag-evaluations::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 21px;
-    height: 21px;
-    /* Couleur légèrement plus sombre pour simuler le dos du papier */
-    background: linear-gradient(225deg, transparent 50%, #C4501D 50%) !important;
-    border-bottom-left-radius: 6px !important;
-    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2) !important;
+    display: none !important;
 }
 
 .etiquette.tag-evaluations .ev-star {
-    font-size: 18px;
-    line-height: 1;
-    color: rgba(255, 241, 220, 0.9);
+    font-size: 16px !important; /* Étoiles un poil plus fines */
+    line-height: 1 !important;
+    color: rgba(255, 241, 220, 0.9) !important;
 }
 
 /* Bloc bleu clair avec coins arrondis en diagonale. */
