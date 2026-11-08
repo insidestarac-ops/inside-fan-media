@@ -1851,3 +1851,17 @@ body.export .planning-mur::after {
     color: #FFF1E6 !important;
     font-size: 18px !important;
 }
+
+/* Étoiles plus grandes : Répétitions et Évaluations */
+.etiquette.tag-repetitions::before,
+.etiquette.tag-repetitions::after {
+    font-size: 30px !important;
+    text-shadow: 0 0 8px rgba(255, 241, 220, 0.6);
+}
+.etiquette.tag-repetitions::before { top: 8px !important; right: 10px !important; }
+.etiquette.tag-repetitions::after  { bottom: 8px !important; left: 10px !important; }
+
+.etiquette.tag-evaluations .ev-star {
+    font-size: 32px !important;
+    text-shadow: 0 0 8px rgba(255, 241, 220, 0.6);
+}
