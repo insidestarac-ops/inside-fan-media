@@ -1829,21 +1829,25 @@ body.export .planning-mur::after {
 .h-journee { --h: 17; }   /* plus besoin du 1750% */
 
 /* Clap « Expression scénique » : plus de chevauchement entre les deux plaques */
+/* Expression scénique : effet clap proche de l'original */
 .exp-top {
-    top: 3px !important;
-    left: 4% !important;
-    width: 88% !important;
-    height: 46% !important;
-    transform: rotate(-3deg) !important;
+    top: 4px !important;
+    left: 6% !important;
+    width: 82% !important;
+    height: 44% !important;
+    transform: rotate(-4deg) !important;
     transform-origin: left bottom !important;
-    border-radius: 3px !important;
-    background: linear-gradient(145deg, #B04F52, #8E3A3D) !important;
+    border-radius: 2px !important;
+    background: linear-gradient(145deg, #C4575B, #A8444A) !important;
+    color: #FFF1E6 !important;
     font-size: 14px !important;
 }
 .exp-bot {
-    left: 3% !important;
-    width: 94% !important;
-    height: 56% !important;
-    border-radius: 3px !important;
-    background: linear-gradient(145deg, #7A3038, #5A2128) !important;
+    left: 2% !important;
+    width: 96% !important;
+    height: 54% !important;
+    border-radius: 2px !important;
+    background: linear-gradient(145deg, #9A3B42, #7E2D34) !important;
+    color: #FFF1E6 !important;
+    font-size: 18px !important;
 }
