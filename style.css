@@ -1368,39 +1368,17 @@ html, body {
     font-size: 12px;
     z-index: 10;
     letter-spacing: 0.5px;
-    /* Ombre portée réaliste (plus douce) + Léger liseré clair en haut pour le volume */
-    box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.3) !important; 
     /* Légère texture granuleuse pour casser l'effet "plastique plat" du web */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
 }
 
-/* Effet de lévitation quand la souris passe dessus (bonus web) */
-.etiquette:hover {
-    transform: scale(1.03) translateY(-3px);
-    box-shadow: 6px 12px 20px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
-    z-index: 30 !important;
-}
+/* (Plus de hover ici !) */
 
 /* Départ à l’heure pile : top de 2 px pour ne pas coller la ligne. */
-.start-00 {
-    top: 2px;
-}
-
-/* Départ à +15 minutes : 25 % de la hauteur de la case. */
-.start-15 {
-    top: calc(25% + 2px);
-}
-
-/* Départ à +30 minutes : milieu de la case. */
-.start-30 {
-    top: calc(50% + 2px);
-}
-
-/* Départ à +45 minutes : 75 % de la case. */
-.start-45 {
-    top: calc(75% + 2px);
-}
+.start-00 { top: 2px; }
+.start-15 { top: calc(25% + 2px); }
+.start-30 { top: calc(50% + 2px); }
+.start-45 { top: calc(75% + 2px); }
 
 /* ===== DURÉES DES ÉTIQUETTES ===== */
 .etiquette.h-0-5     { height: calc(50% - 2px); }
