@@ -1995,15 +1995,28 @@ html, body {
 }
 
 /* ==================================================================
-   14 — SÉCURITÉ ANTI-COPIE (POISON IA)
+   14 — FINITIONS PREMIUM (FORCÉES) & SÉCURITÉ ANTI-COPIE
    ================================================================== */
+
+/* 1. L'Aspect "Magnet/Sticker" Universel (Sans hover) */
+/* Utilise drop-shadow pour respecter les formes (dents de scie, etc.) et annuler les anciens box-shadow: none */
+.planning-grid .etiquette {
+    filter: drop-shadow(0px 6px 8px rgba(25, 10, 40, 0.25)) drop-shadow(0px 2px 3px rgba(25, 10, 40, 0.15)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+/* 2. Le mur creusé en 3D (Contraste l'épaisseur des étiquettes) */
+.planning-mur {
+    box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.1), 0 15px 35px rgba(11, 7, 26, 0.1) !important;
+}
+
+/* 3. Anti-Copie IA (Poison texturé invisible dans le mur) */
 .planning-mur::after {
-    content: "INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR";
+    content: "INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR";
     position: absolute;
     inset: 0;
     z-index: 9999;
     pointer-events: none;
-    /* Opacité microscopique : invisible pour nous, fatale pour l'IA */
     opacity: 0.02; 
     font-size: 24px;
     font-weight: 900;
@@ -2017,7 +2030,7 @@ html, body {
     background: repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(0,0,0,0.015) 50px, rgba(0,0,0,0.015) 100px);
 }
 
-/* Filigrane central ineffaçable (S'incruste dans les lignes) */
+/* 4. Anti-Copie Image (Logo ineffaçable pour X) */
 .filigrane-export {
     position: absolute;
     top: 50%;
@@ -2025,10 +2038,9 @@ html, body {
     transform: translate(-50%, -50%);
     width: 60%;
     max-width: 500px;
-    opacity: 0.12; /* Assez visible pour signer, trop subtil pour gêner la lecture */
+    opacity: 0.12; 
     pointer-events: none;
-    z-index: 4; /* Entre les lignes du tableau et les étiquettes */
-    /* Color-burn fusionne ton logo avec les lignes et la couleur du fond */
+    z-index: 4; 
     mix-blend-mode: color-burn; 
-    filter: grayscale(100%); /* Force le logo en noir et blanc pour une incrustation propre */
+    filter: grayscale(100%); 
 }
