@@ -1741,22 +1741,36 @@ html, body {
 
 /* 3. Anti-Copie IA (Poison texturé invisible dans le mur) */
 .planning-mur::after {
-    content: "INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR";
+    content: "INSIDE FAN MEDIA • EXCLUSIVITÉ • INTERdit AUX COPIES • ";
     position: absolute;
     inset: 0;
     z-index: 9999;
-    pointer-events: none;
-    opacity: 0.02; 
-    font-size: 24px;
+    pointer-events: none; /* Laisse l'utilisateur cliquer et interagir normalement */
+    
+    /* Ultra discret (1.5% d'opacité) : invisible à l'œil nu sur portable ou PC */
+    opacity: 0.015; 
+    
+    font-size: 18px;
     font-weight: 900;
-    color: #000;
+    color: #13082B;
     display: flex;
     flex-wrap: wrap;
-    transform: rotate(-12deg) scale(2);
+    align-content: space-around;
+    
+    /* Rotation diagonale pour perturber les algorithmes de remplissage d'IA */
+    transform: rotate(-15deg) scale(1.3);
     overflow: hidden;
-    letter-spacing: 8px;
-    line-height: 2.5;
-    background: repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(0,0,0,0.015) 50px, rgba(0,0,0,0.015) 100px);
+    letter-spacing: 4px;
+    line-height: 4;
+    
+    /* Texture tramée qui pourrit l'OCR (reconnaissance de caractères automatique des voleurs) */
+    background: repeating-linear-gradient(
+        45deg, 
+        transparent, 
+        transparent 30px, 
+        rgba(0, 0, 0, 0.01) 30px, 
+        rgba(0, 0, 0, 0.01) 60px
+    );
 }
 
 /* 4. Anti-Copie Image (Logo ineffaçable pour X) */
