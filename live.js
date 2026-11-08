@@ -407,8 +407,8 @@ function texteEtiquette(type, duree) {
         case "tag-expression":    return "<div class='tag-expression-wrapper'><div class='exp-top'>EXPRESSION</div><div class='exp-bot'>SCÉNIQUE</div></div>";
         case "tag-repetitions":   return "RÉPÉTITIONS";
         case "tag-evaluations": {
-            const bloc = "<span class='ev-star'>✦</span><span>ÉVALUATIONS</span><span class='ev-star'>✦</span>";
-            return ["h-3","h-3-5","h-4","h-4-5","h-journee"].includes(duree) ? bloc + bloc : bloc;
+            const bloc = "<span>ÉVALUATIONS</span><span class='ev-star'>✦</span>";
+            return ["h-3","h-3-5","h-4","h-4-5","h-journee"].includes(duree) ? bloc + "<br>" + bloc : bloc;
         }
         case "tag-debrief":       return "DÉBRIEF<br>DU<br>PRIME";
         case "tag-showtime":      return "<span class='st-star'>✦</span><span class='cursive'>show time</span><span class='st-star'>✦</span>";
