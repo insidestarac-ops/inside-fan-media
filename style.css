@@ -1743,12 +1743,19 @@ html, body {
 
 /* 3. Anti-Copie IA (Poison texturé invisible dans le mur) */
 .planning-mur::after {
-    content: "INSIDE FAN MEDIA • EXCLUSIVITÉ • INTERdit AUX COPIES • ";
+    content: "" !important;
     position: absolute;
     inset: 0;
-    z-index: 9999;
-    pointer-events: none; /* Laisse l'utilisateur cliquer et interagir normalement */
-    
+    z-index: 50;
+    pointer-events: none;
+    transform: none !important;
+    opacity: 0;
+
+   /* Mode export (pour tes captures X) : filigrane discret mais répété partout */
+   body.export .planning-mur::after {
+       opacity: 1;
+       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='200'%3E%3Ctext x='20' y='110' transform='rotate(-20 180 100)' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='16' letter-spacing='2' fill='%2313082B' fill-opacity='0.09'%3E@TON_COMPTE_X%3C/text%3E%3C/svg%3E") repeat;
+   }
     /* Ultra discret (1.5% d'opacité) : invisible à l'œil nu sur portable ou PC */
     opacity: 0.015; 
     
@@ -1795,11 +1802,11 @@ html, body {
     position: absolute;
     bottom: 8px;
     right: 12px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 900;
-    letter-spacing: 1.5px;
-    color: #8C5332;
-    opacity: 0.4; /* Très discret, fondé dans les tons du mur */
+    letter-spacing: 2px;
+   color: #9D3650;
+    opacity: 1;
     pointer-events: none;
     z-index: 5;
     text-transform: uppercase;
