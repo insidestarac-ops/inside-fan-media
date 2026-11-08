@@ -1177,15 +1177,17 @@ html, body {
     transform: none;
 }
 
-/* Fond beige, bordure et débordement masqué : support visuel du tableau. */
+/* Le mur beige : Effet creusé réaliste */
 .planning-mur {
-    min-width: 1100px;
+    width: 100%;
+    min-width: 0; 
     background: #F3E0C9;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(11, 7, 26, 0.1);
-    position: relative;
     border: 2px solid #D5B49A;
     border-top: none;
+    border-radius: 0 0 12px 12px;
+    /* L'ombre INSET crée la profondeur, comme un tableau encadré */
+    box-shadow: inset 0 10px 25px rgba(11, 7, 26, 0.08), 0 15px 35px rgba(11, 7, 26, 0.1);
+    position: relative;
     overflow: hidden;
 }
 
@@ -1351,7 +1353,7 @@ html, body {
    11 — MOTEUR DES ÉTIQUETTES
    Positions absolues, heures de départ et durées. ATTENTION : une modification peut décaler tout le planning.
    ================================================================== */
-/* Style commun : position absolute à l’intérieur d’une case, largeur et texte centré. */
+/* Style commun des étiquettes : Effet papier épais / Magnétique */
 .etiquette {
     position: absolute;
     left: 4%;
@@ -1366,7 +1368,18 @@ html, body {
     font-size: 12px;
     z-index: 10;
     letter-spacing: 0.5px;
-    box-shadow: 2px 3px 2px rgba(11, 7, 26, 0.12); 
+    /* Ombre portée réaliste (plus douce) + Léger liseré clair en haut pour le volume */
+    box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.3) !important; 
+    /* Légère texture granuleuse pour casser l'effet "plastique plat" du web */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+}
+
+/* Effet de lévitation quand la souris passe dessus (bonus web) */
+.etiquette:hover {
+    transform: scale(1.03) translateY(-3px);
+    box-shadow: 6px 12px 20px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+    z-index: 30 !important;
 }
 
 /* Départ à l’heure pile : top de 2 px pour ne pas coller la ligne. */
@@ -1979,4 +1992,43 @@ html, body {
         gap: 15px !important;
     }
 
+}
+
+/* ==================================================================
+   14 — SÉCURITÉ ANTI-COPIE (POISON IA)
+   ================================================================== */
+.planning-mur::after {
+    content: "INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR INSIDEFANMEDIA.FR";
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    /* Opacité microscopique : invisible pour nous, fatale pour l'IA */
+    opacity: 0.02; 
+    font-size: 24px;
+    font-weight: 900;
+    color: #000;
+    display: flex;
+    flex-wrap: wrap;
+    transform: rotate(-12deg) scale(2);
+    overflow: hidden;
+    letter-spacing: 8px;
+    line-height: 2.5;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(0,0,0,0.015) 50px, rgba(0,0,0,0.015) 100px);
+}
+
+/* Filigrane central ineffaçable (S'incruste dans les lignes) */
+.filigrane-export {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 500px;
+    opacity: 0.12; /* Assez visible pour signer, trop subtil pour gêner la lecture */
+    pointer-events: none;
+    z-index: 4; /* Entre les lignes du tableau et les étiquettes */
+    /* Color-burn fusionne ton logo avec les lignes et la couleur du fond */
+    mix-blend-mode: color-burn; 
+    filter: grayscale(100%); /* Force le logo en noir et blanc pour une incrustation propre */
 }
