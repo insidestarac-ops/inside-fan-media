@@ -1686,23 +1686,21 @@ html, body {
 }
 
 /* ==================================================================
-   14 — FINITIONS PREMIUM (EFFET STICKER) & SÉCURITÉ ANTI-COPIE
+   14 — FINITIONS PREMIUM (RÉALISME MATÉRIEL) & SÉCURITÉ
    ================================================================== */
 
-/* 1. L'Aspect "Sticker / Magnet" (Bordure blanche et ombre franche) */
+/* 1. L'Aspect "Magnet / Carton" (Sans bordure, couleurs profondes) */
 .planning-grid .etiquette {
-    /* On annule la texture buggée qui effaçait tes couleurs */
-    background-image: none; 
-    
-    /* La fameuse bordure blanche type "Sticker" */
-    border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
-    
-    /* L'ombre franche qui détache l'étiquette du mur (plus réaliste) */
-    filter: drop-shadow(2px 5px 5px rgba(25, 10, 40, 0.25)) !important;
-    
-    /* On supprime les ombres internes qui faisaient "bouton web 3D" */
+    /* On supprime la bordure blanche et les anciens effets */
+    border: none !important;
+    background-image: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
+    
+    /* LA MAGIE EST ICI : 
+       - saturate(1.15) contrast(1.05) : ravive et approfondit toutes tes couleurs !
+       - drop-shadow : double ombre (une foncée pour l'épaisseur, une diffuse pour le mur) */
+    filter: saturate(1.15) contrast(1.05) drop-shadow(1px 2px 2px rgba(15, 5, 25, 0.35)) drop-shadow(2px 5px 6px rgba(15, 5, 25, 0.15)) !important;
 }
 
 /* 2. Le mur creusé (Doux et réaliste) */
