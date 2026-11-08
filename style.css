@@ -1805,3 +1805,54 @@ html, body {
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
 }
+
+/* ==================================================================
+   15 — CORRECTIF ALIGNEMENT DES ÉTIQUETTES (à coller TOUT EN BAS)
+   ================================================================== */
+.planning-grid {
+    --row: 36px;   /* hauteur d'une heure */
+    --gap: 2px;    /* respiration de chaque côté (2 + 2 = 4px entre 2 étiquettes) */
+    --line: 1px;   /* épaisseur du trait de la grille */
+    grid-template-rows: 40px repeat(17, var(--row)) !important;
+}
+
+/* Trait de demi-heure calé pile au milieu de l'heure */
+.case-grille::before {
+    top: calc(var(--row) / 2 - var(--line)) !important;
+}
+
+/* Position + hauteur calculées en pixels exacts */
+.planning-grid .etiquette {
+    margin: 0 !important;
+    top: calc(var(--s, 0) * var(--row) + var(--gap)) !important;
+    height: calc(var(--h, 1) * var(--row) - var(--line) - 2 * var(--gap)) !important;
+}
+
+/* Heure de départ (en fraction d'heure) */
+.start-00 { --s: 0; }
+.start-15 { --s: .25; }
+.start-30 { --s: .5; }
+.start-45 { --s: .75; }
+
+/* Durée (en heures) */
+.h-0-5   { --h: .5; }
+.h-1     { --h: 1; }
+.h-1-5   { --h: 1.5; }
+.h-2     { --h: 2; }
+.h-2-5   { --h: 2.5; }
+.h-2-75  { --h: 2.75; }
+.h-3     { --h: 3; }
+.h-3-5   { --h: 3.5; }
+.h-4     { --h: 4; }
+.h-4-5   { --h: 4.5; }
+.h-journee { --h: 17; }   /* plus besoin du 1750% */
+
+/* Clap « Expression scénique » : plus de chevauchement entre les deux plaques */
+.exp-top {
+    top: 2px !important;
+    height: calc(50% - 5px) !important;
+    transform: rotate(-2deg) !important;
+}
+.exp-bot {
+    height: calc(50% - 1px) !important;
+}
