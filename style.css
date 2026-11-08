@@ -1390,6 +1390,7 @@ html, body {
 .etiquette.h-3       { height: calc(300% - 2px); }
 .etiquette.h-3-5     { height: calc(350% - 2px); }
 .etiquette.h-4       { height: calc(400% - 2px); }
+.etiquette.h-4-5     { height: calc(450% - 2px); }
 .etiquette.h-journee { height: calc(1700% - 2px); }
 
 
