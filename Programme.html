@@ -475,46 +475,49 @@
              ========================================== -->
         <h2 class="category-title"><span>🔥</span> La Battle des Équipes</h2>
         
-        <div class="track-card" style="flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 25px;">
+        <div class="track-card" style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 30px 20px;">
           
-          <!-- Section Face à Face (Jaunes à gauche, VS au centre, Rouges à droite) -->
-          <div style="display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%;">
+          <!-- ZONE DES ÉQUIPES FACE À FACE -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%; flex-wrap: wrap;">
             
-            <!-- ÉQUIPE JAUNE (Gauche) -->
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-              <div style="display: flex; margin-left: 15px;">
-                <img src="Eleves SF/Brieuc.png" alt="Brieuc" class="track-avatar" style="border: 3px solid #D96E14; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 4;">
-                <img src="Eleves SF/Felix.png" alt="Félix" class="track-avatar" style="border: 3px solid #D96E14; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 3;">
-                <img src="Eleves SF/Kylian.png" alt="Kylian" class="track-avatar" style="border: 3px solid #D96E14; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 2;">
-                <img src="Eleves SF/Ydriss.png" alt="Ydriss" class="track-avatar" style="border: 3px solid #D96E14; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 1;">
+            <!-- ÉQUIPE JAUNE -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+              <!-- Ton alignement natif habituel -->
+              <div class="track-avatars">
+                <img src="Eleves SF/Brieuc.png" alt="Brieuc" class="track-avatar">
+                <img src="Eleves SF/Felix.png" alt="Félix" class="track-avatar">
+                <img src="Eleves SF/Kylian.png" alt="Kylian" class="track-avatar">
+                <img src="Eleves SF/Ydriss.png" alt="Ydriss" class="track-avatar">
               </div>
-              <span style="background: #D96E14; color: #FFF; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">Jaunes</span>
+              <span style="background: #D96E14; color: #FFF; font-size: 11px; font-weight: 900; padding: 4px 12px; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px;">Jaunes</span>
             </div>
         
-            <!-- VS au centre -->
-            <span style="font-size: 20px; font-weight: 900; color: #13082B; opacity: 0.3; margin: 0 10px;">VS</span>
+            <!-- LE "VS" -->
+            <span style="font-size: 22px; font-weight: 900; color: #13082B; opacity: 0.4; margin: 0 10px;">VS</span>
         
-            <!-- ÉQUIPE ROUGE (Droite) -->
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-              <div style="display: flex; margin-left: 15px;">
-                <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar" style="border: 3px solid #D32F2F; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 4;">
-                <img src="Eleves SF/Leeloo.png" alt="Leeloo" class="track-avatar" style="border: 3px solid #D32F2F; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 3;">
-                <img src="Eleves SF/Noemie.png" alt="Noémie" class="track-avatar" style="border: 3px solid #D32F2F; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 2;">
-                <img src="Eleves SF/Tracy.png" alt="Tracy" class="track-avatar" style="border: 3px solid #D32F2F; padding: 2px; width: 50px; height: 50px; margin-left: -15px; position: relative; z-index: 1;">
+            <!-- ÉQUIPE ROUGE -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+              <!-- Ton alignement natif habituel -->
+              <div class="track-avatars">
+                <img src="Eleves SF/Amel.png" alt="Amel" class="track-avatar">
+                <img src="Eleves SF/Leeloo.png" alt="Leeloo" class="track-avatar">
+                <img src="Eleves SF/Noemie.png" alt="Noémie" class="track-avatar">
+                <img src="Eleves SF/Tracy.png" alt="Tracy" class="track-avatar">
               </div>
-              <span style="background: #D32F2F; color: #FFF; font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">Rouges</span>
+              <span style="background: #D32F2F; color: #FFF; font-size: 11px; font-weight: 900; padding: 4px 12px; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px;">Rouges</span>
             </div>
-            
+        
           </div>
         
-          <!-- Section Détails du titre (En dessous) -->
-          <div class="track-details" style="display: flex; flex-direction: column; align-items: center; width: 100%; border-top: 1px solid rgba(124, 77, 255, 0.1); padding-top: 15px;">
+          <!-- DÉTAILS DE LA CHANSON -->
+          <div class="track-details" style="display: flex; flex-direction: column; align-items: center; width: 100%; border-top: 1px solid rgba(124, 77, 255, 0.15); padding-top: 20px; margin-top: 5px; text-align: center;">
+            <div class="track-students">Les Jaunes & Les Rouges</div>
             <h3 class="track-song" style="font-size: 22px;">The Show Must Go On</h3>
             <p class="track-artist">
               <span class="tag-badge tag-de">De</span> 
               <strong>Queen</strong>
             </p>
-            <div style="margin-top: 10px;">
+            <div style="margin-top: 12px;">
               <span class="tag-badge" style="background: #13082B; color: #FFFFFF;">🎤 Prestation des 8 élèves</span>
             </div>
           </div>
