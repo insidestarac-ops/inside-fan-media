@@ -160,6 +160,54 @@
     .cd-box { min-width: 65px; padding: 12px 8px; }
     .cd-num { font-size: 28px; }
   }
+
+
+
+
+  /* =========================================================
+   ADAPTATIONS MOBILE POUR LES NOUVELLES BATTLES
+   ========================================================= */
+@media (max-width: 768px) {
+  
+  /* --- BATTLE DES ÉQUIPES (Show Must Go On) --- */
+  /* Force les 2 équipes et le VS à rester sur une seule ligne */
+  .track-card div[style*="flex-wrap: wrap"] {
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+  }
+  
+  /* Réduit la taille des avatars pour que les 8 élèves rentrent sur l'écran */
+  .track-card div[style*="flex-wrap: wrap"] .track-avatar {
+    width: 42px !important;
+    height: 42px !important;
+  }
+  
+  /* Rapproche les têtes pour gagner de la place */
+  .track-card div[style*="flex-wrap: wrap"] .track-avatar + .track-avatar {
+    margin-left: -14px !important;
+  }
+  
+  /* Réduit un peu la taille du texte "VS" */
+  .track-card div[style*="flex-wrap: wrap"] > span {
+    font-size: 16px !important;
+    margin: 0 4px !important;
+  }
+
+  /* --- BATTLES DE RAP (1v1) --- */
+  /* Centre le face à face (Amel VS Brieuc, etc.) au milieu de la carte */
+  .track-avatars[style*="margin-right: 20px"] {
+    margin-right: 0 !important;
+    margin-bottom: 12px !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+  
+  /* Centre le titre de la chanson et les règles juste en dessous */
+  .track-avatars[style*="margin-right: 20px"] + .track-details {
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
 </style>
 </head>
 
