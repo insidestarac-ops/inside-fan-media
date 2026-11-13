@@ -570,12 +570,12 @@
     const heure = maintenant.getHours();
     const minutes = maintenant.getMinutes();
 
-    // La page est OUVERTE publiquement : Vendredi APRÈS 21h10, et Samedi entier
+    // La page est OUVERTE publiquement : Vendredi APRÈS 23h30, et Samedi entier
     let estOuvertPubliquement = false;
-    if (jour === 5 && (heure > 21 || (heure === 23 && minutes >= 30))) {
-      estOuvertPubliquement = true; 
+    if (jour === 5 && (heure > 23 || (heure === 23 && minutes >= 30))) {
+        estOuvertPubliquement = true;
     } else if (jour === 6) {
-      estOuvertPubliquement = true; 
+        estOuvertPubliquement = true;
     }
 
     const setlistBlock = document.getElementById("setlist-blur-target");
