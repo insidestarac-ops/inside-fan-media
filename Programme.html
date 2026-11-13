@@ -355,7 +355,7 @@
           </div>
         </div>
         
-        <!-- INVITÉ SURPRISE 
+        <!-- INVITÉ SURPRISE -->
         <h2 class="category-title"><span>🎁</span> Invité Mystère</h2>
 
         <div class="track-card">
@@ -367,11 +367,11 @@
             <h3 class="track-song">Titre Surprise</h3>
             <p class="track-artist">
               <span class="tag-badge tag-avec">Avec</span> 
-              <img src="Artistes/Helena.png" class="artist-mini-pic" alt="Héléna">
-              <strong>Héléna</strong>
+              <img src="Artistes/Iliona.png" class="artist-mini-pic" alt="Iliona">
+              <strong>Iliona</strong>
             </p>
           </div>
-        </div> -->
+        </div> 
 
         <!-- COLLÉGIALE 
         <h2 class="category-title"><span>🌟</span> Collégiale</h2>
@@ -917,9 +917,9 @@
     const heure = maintenant.getHours();
     const minutes = maintenant.getMinutes();
 
-    // La page est OUVERTE publiquement : Vendredi APRÈS 23h30, et Samedi entier
+    // La page est OUVERTE publiquement : Vendredi APRÈS 21h10, et Samedi entier
     let estOuvertPubliquement = false;
-    if (jour === 5 && (heure > 23 || (heure === 23 && minutes >= 30))) {
+    if (jour === 5 && (heure > 21 || (heure === 21 && minutes >= 10))) {
         estOuvertPubliquement = true;
     } else if (jour === 6) {
         estOuvertPubliquement = true;
@@ -964,7 +964,7 @@
 
   // Actualise le chrono toutes les secondes
   setInterval(gererTeasingProgramme, 1000);
-</script> 
+</script>
 
 <!-- SCRIPT MAGIQUE : FLOU + CHRONO (JEUDI 21H10 EXCEPTIONNEL) + SÉCURITÉ FIREBASE 
 <script>
