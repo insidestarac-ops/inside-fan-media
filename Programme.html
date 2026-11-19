@@ -232,7 +232,7 @@
       <div class="teasing-content">
         <span class="cd-icon">🔒</span>
         <h2 class="cd-title">Setlist verrouillée</h2>
-        <p class="cd-subtitle">Rendez-vous jeudi à 21h10 pour l'ouverture<br>(H-24 avant le Prime)</p>
+        <p class="cd-subtitle">Rendez-vous jeudi à 22h00 pour l'ouverture</p>
         <div class="cd-timer">
           <div class="cd-box"><span class="cd-num" id="cd-d">00</span><span class="cd-label">Jours</span></div>
           <div class="cd-box"><span class="cd-num" id="cd-h">00</span><span class="cd-label">Heures</span></div>
@@ -1041,7 +1041,7 @@
 
     // EXCEPTION : La page est OUVERTE publiquement le Jeudi APRÈS 21h10, et Vendredi entier
     let estOuvertPubliquement = false;
-    if (jour === 4 && (heure > 21 || (heure === 21 && minutes >= 10))) {
+    if (jour === 4 && (heure > 22 || (heure === 22 && minutes >= 00))) {
       estOuvertPubliquement = true; 
     } else if (jour === 5) {
       estOuvertPubliquement = true; 
