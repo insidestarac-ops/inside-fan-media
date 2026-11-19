@@ -1013,19 +1013,16 @@
   setInterval(gererTeasingProgramme, 1000);
 </script>-->
 
-<!-- SCRIPT MAGIQUE : FLOU + CHRONO (JEUDI 22H00 EXCEPTIONNEL) + SÉCURITÉ FIREBASE -->
+<!-- SCRIPT MAGIQUE : FLOU + CHRONO (JEUDI 22H00) + SÉCURITÉ FIREBASE -->
 <script>
   // 1. Initialisation de Firebase avec tes accès
   const firebaseConfig = {
     apiKey: "AIzaSyAgmhwesxB9uDwXc-JrsyAXFsggkirpczY",
-    authDomain: "inside-fan-media.firebaseapp.com",
-    databaseURL: "https://inside-fan-media-default-rtdb.europe-west1.firebasedatabase.app",
+    authDomain: "://firebaseapp.com",
+    databaseURL: "https://firebasedatabase.app",
     projectId: "inside-fan-media"
   };
-
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
+  if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 
   let isAdminAuthentifie = false;
 
@@ -1042,12 +1039,12 @@
     const heure = maintenant.getHours();
     const minutes = maintenant.getMinutes();
 
-    // EXCEPTION : La page est OUVERTE publiquement le Jeudi APRÈS 22h00, et Vendredi entier
+    // La page est OUVERTE publiquement : Jeudi APRÈS 22h00, et Vendredi entier
     let estOuvertPubliquement = false;
-    if (jour === 4 && (heure > 22 || (heure === 22 && minutes >= 0))) {
-      estOuvertPubliquement = true;
+    if (jour === 4 && heure >= 22) {
+        estOuvertPubliquement = true;
     } else if (jour === 5) {
-      estOuvertPubliquement = true;
+        estOuvertPubliquement = true;
     }
 
     const setlistBlock = document.getElementById("setlist-blur-target");
@@ -1055,44 +1052,42 @@
 
     // DÉVERROUILLAGE : Si c'est l'heure OU si tu es connecté en tant qu'Admin
     if (estOuvertPubliquement || isAdminAuthentifie) {
-      if (setlistBlock) setlistBlock.classList.remove("locked-blur");
-      if (overlay) overlay.style.display = "none";
+      setlistBlock.classList.remove("locked-blur");
+      overlay.style.display = "none";
     } else {
       // VERROUILLAGE : Flou et Chrono pour les visiteurs
-      if (setlistBlock) setlistBlock.classList.add("locked-blur");
-      if (overlay) overlay.style.display = "flex";
-
-      // Calcul du temps jusqu'au prochain JEUDI (4) à 22h00
+      setlistBlock.classList.add("locked-blur");
+      overlay.style.display = "flex";
+      
+      // Calcul du temps jusqu'au prochain Jeudi à 22h00
       let prochainJeudi = new Date();
       let joursAajouter = (4 - jour + 7) % 7;
-
+      
       // Sécurité : si on est jeudi avant 22h00, on vise aujourd'hui
-      if (jour === 4 && (heure < 22 || (heure === 22 && minutes < 0))) {
-        joursAajouter = 0;
+      if (jour === 4 && heure < 22) { 
+          joursAajouter = 0; 
       }
-
+      
       prochainJeudi.setDate(maintenant.getDate() + joursAajouter);
       prochainJeudi.setHours(22, 0, 0, 0);
 
-      const diff = Math.max(0, prochainJeudi - maintenant);
-
+      const diff = prochainJeudi - maintenant;
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const m = Math.floor((diff / 1000 / 60) % 60);
       const s = Math.floor((diff / 1000) % 60);
 
-      if (document.getElementById("cd-d")) document.getElementById("cd-d").innerText = d.toString().padStart(2, "0");
-      if (document.getElementById("cd-h")) document.getElementById("cd-h").innerText = h.toString().padStart(2, "0");
-      if (document.getElementById("cd-m")) document.getElementById("cd-m").innerText = m.toString().padStart(2, "0");
-      if (document.getElementById("cd-s")) document.getElementById("cd-s").innerText = s.toString().padStart(2, "0");
+      document.getElementById("cd-d").innerText = d.toString().padStart(2, '0');
+      document.getElementById("cd-h").innerText = h.toString().padStart(2, '0');
+      document.getElementById("cd-m").innerText = m.toString().padStart(2, '0');
+      document.getElementById("cd-s").innerText = s.toString().padStart(2, '0');
     }
   }
-</script>
-
 
   // Actualise le chrono toutes les secondes
   setInterval(gererTeasingProgramme, 1000);
 </script>
+
 
 <script src="header.js"></script>
 <script src="footer.js"></script>
